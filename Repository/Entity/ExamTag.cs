@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
+
+namespace BlazorVNPTQuiz.Repository.Entity
+{
+    public partial class ExamTag
+    {
+        public ulong Id { get; set; }
+        public long? ExamId { get; set; }
+        public long? TagId { get; set; }
+        public int? Num { get; set; }
+    }
+}

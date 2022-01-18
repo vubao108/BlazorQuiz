@@ -1,0 +1,88 @@
+﻿@page "/exam"
+@using BlazorVNPTQuiz.Models
+@using BlazorVNPTQuiz.Repository
+@using System.Threading;
+@inject IRepository repository;
+<h3>Exam @RemainTime</h3>
+
+
+@if (questions == null )
+{
+
+
+    <h2>loading</h2>
+}
+else
+{
+    
+    <h4>  @CurrentDisplayQuestion.QuestionText </h4>
+    
+    <EditForm Model="CurrentDisplayQuestion">
+        <InputRadioGroup @bind-Value="CurrentAnswerId">
+            @foreach (var answer in CurrentDisplayQuestion.Answers)
+                {
+                <div border="2px solid #333">
+                <InputRadio Value="answer.AnswerId" /> @answer.AnswerText <br />
+                </div>
+                }
+        </InputRadioGroup>
+    </EditForm>
+
+    <button @onclick="MoveNext">Next</button>
+}
+
+@code {
+    private QuestionUserExam questions;
+    int CurrentIndex = 0;
+    QuestionDAO CurrentDisplayQuestion;
+    int CurrentAnswerId;
+    String RemainTime;
+    int RemainSecondToDoExam;
+
+    protected override async Task OnInitializedAsync()
+    {
+        questions =  await repository.LayDanhSachCauHoi(1, 74);
+        CurrentDisplayQuestion = questions.Questions[CurrentIndex];
+        RemainSecondToDoExam = questions.RemainSeCond;
+        RemainTime = $"{RemainSecondToDoExam / 60} phút:{RemainSecondToDoExam % 60} giây ";
+        StartCountdown();
+
+    }
+
+    public void MoveNext()
+    {
+        CapNhatCauTraLoi();
+
+        CurrentIndex++;
+        CurrentDisplayQuestion = questions.Questions[CurrentIndex%questions.Questions.Count];
+        CurrentAnswerId = 0;
+    }
+
+    private async void CapNhatCauTraLoi()
+    {
+        if(CurrentAnswerId > 0)
+        {
+           await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentAnswerId);
+        }
+     }
+    void StartCountdown()
+    {
+        var timer = new Timer(new TimerCallback(_ =>
+        {
+            if (RemainSecondToDoExam > 0)
+            {
+                RemainSecondToDoExam--;
+                RemainTime = $"{RemainSecondToDoExam / 60} phút:{RemainSecondToDoExam % 60} giây ";
+                // Note that the following line is necessary because otherwise
+                // Blazor would not recognize the state change and not refresh the UI
+                InvokeAsync(() =>
+                {
+
+                    StateHasChanged();
+                });
+            }
+        }), null, 1000, 1000);
+    }
+
+
+}
