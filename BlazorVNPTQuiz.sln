@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32002.261
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("***REMOVED***FAE04EC0-301F-11D3-BF4B-00C04F79EFBC***REMOVED***") = "BlazorVNPTQuiz", "BlazorVNPTQuiz.csproj", "***REMOVED***471DFB86-9558-4A47-BAD8-477617CB415B***REMOVED***"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		***REMOVED***471DFB86-9558-4A47-BAD8-477617CB415B***REMOVED***.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		***REMOVED***471DFB86-9558-4A47-BAD8-477617CB415B***REMOVED***.Debug|Any CPU.Build.0 = Debug|Any CPU
+		***REMOVED***471DFB86-9558-4A47-BAD8-477617CB415B***REMOVED***.Release|Any CPU.ActiveCfg = Release|Any CPU
+		***REMOVED***471DFB86-9558-4A47-BAD8-477617CB415B***REMOVED***.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = ***REMOVED***0D538609-85FB-4AAF-9552-44D01ABF9C85***REMOVED***
+	EndGlobalSection
+EndGlobal

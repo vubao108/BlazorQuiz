@@ -1,0 +1,88 @@
+﻿@page "/exam"
+@using BlazorVNPTQuiz.Models
+@using BlazorVNPTQuiz.Repository
+@using System.Threading;
+@inject IRepository repository;
+<h3>Exam @RemainTime</h3>
+
+
+@if (questions == null )
+***REMOVED***
+
+
+    <h2>loading</h2>
+***REMOVED***
+else
+***REMOVED***
+    
+    <h4>  @CurrentDisplayQuestion.QuestionText </h4>
+    
+    <EditForm Model="CurrentDisplayQuestion">
+        <InputRadioGroup @bind-Value="CurrentAnswerId">
+            @foreach (var answer in CurrentDisplayQuestion.Answers)
+                ***REMOVED***
+                <div border="2px solid #333">
+                <InputRadio Value="answer.AnswerId" /> @answer.AnswerText <br />
+                </div>
+            ***REMOVED***
+        </InputRadioGroup>
+    </EditForm>
+
+    <button @onclick="MoveNext">Next</button>
+***REMOVED***
+
+@code ***REMOVED***
+    private QuestionUserExam questions;
+    int CurrentIndex = 0;
+    QuestionDAO CurrentDisplayQuestion;
+    int CurrentAnswerId;
+    String RemainTime;
+    int RemainSecondToDoExam;
+
+    protected override async Task OnInitializedAsync()
+    ***REMOVED***
+        questions =  await repository.LayDanhSachCauHoi(1, 74);
+        CurrentDisplayQuestion = questions.Questions[CurrentIndex];
+        RemainSecondToDoExam = questions.RemainSeCond;
+        RemainTime = $"***REMOVED***RemainSecondToDoExam / 60***REMOVED*** phút:***REMOVED***RemainSecondToDoExam % 60***REMOVED*** giây ";
+        StartCountdown();
+
+***REMOVED***
+
+    public void MoveNext()
+    ***REMOVED***
+        CapNhatCauTraLoi();
+
+        CurrentIndex++;
+        CurrentDisplayQuestion = questions.Questions[CurrentIndex%questions.Questions.Count];
+        CurrentAnswerId = 0;
+***REMOVED***
+
+    private async void CapNhatCauTraLoi()
+    ***REMOVED***
+        if(CurrentAnswerId > 0)
+        ***REMOVED***
+           await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentAnswerId);
+    ***REMOVED***
+ ***REMOVED***
+    void StartCountdown()
+    ***REMOVED***
+        var timer = new Timer(new TimerCallback(_ =>
+        ***REMOVED***
+            if (RemainSecondToDoExam > 0)
+            ***REMOVED***
+                RemainSecondToDoExam--;
+                RemainTime = $"***REMOVED***RemainSecondToDoExam / 60***REMOVED*** phút:***REMOVED***RemainSecondToDoExam % 60***REMOVED*** giây ";
+                // Note that the following line is necessary because otherwise
+                // Blazor would not recognize the state change and not refresh the UI
+                InvokeAsync(() =>
+                ***REMOVED***
+
+                    StateHasChanged();
+            ***REMOVED***);
+        ***REMOVED***
+    ***REMOVED***), null, 1000, 1000);
+***REMOVED***
+
+
+***REMOVED***

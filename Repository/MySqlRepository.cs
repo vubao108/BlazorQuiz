@@ -1,0 +1,80 @@
+﻿using BlazorVNPTQuiz.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
+using Microsoft.Extensions.Configuration;
+
+namespace BlazorVNPTQuiz.Repository
+***REMOVED***
+    public class MySqlRepository : IRepository
+    ***REMOVED***
+
+        private IConfiguration configuration;
+        public MySqlRepository( IConfiguration configuration)
+        ***REMOVED***
+            this.configuration = configuration;
+    ***REMOVED***
+
+        public async Task CapNhatCauTraLoi(int questionExamId, int userAnswerId)
+        ***REMOVED***
+
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            ***REMOVED***
+                using (var command = new MySqlCommand($"update exam_question_official set answer_id = ***REMOVED***userAnswerId***REMOVED*** where id = ***REMOVED***questionExamId***REMOVED***", connection))
+                ***REMOVED***
+                    await connection.OpenAsync();
+                    await command.ExecuteNonQueryAsync();
+            ***REMOVED***
+        ***REMOVED***
+    ***REMOVED***
+
+        public async Task<QuestionUserExam> LayDanhSachCauHoi(int user_id, int exam_id)
+        ***REMOVED***
+            QuestionUserExam questionExam = new QuestionUserExam() ***REMOVED*** UserId = user_id, ExamID = exam_id***REMOVED***;
+            questionExam.Questions = new List<QuestionDAO>();
+
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            ***REMOVED***
+                using (var command = new MySqlCommand($"call proc_get_question_exam_v2(***REMOVED***exam_id***REMOVED***,***REMOVED***user_id***REMOVED***,1,' ',' ')", connection))
+                ***REMOVED***
+                    await connection.OpenAsync();
+                    using var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    ***REMOVED***
+                        questionExam.UserExamId = reader.GetInt32("uet_id");
+                        questionExam.TryNum = reader.GetInt32("try_num");
+                        questionExam.RemainSeCond = reader.GetInt32("remain_second");
+                        AnswerDAO answerDAO = new AnswerDAO()
+                        ***REMOVED***
+                            AnswerId = reader.GetInt32("answer_id"),
+                            AnswerText = reader.GetString("answer_text"),
+                            IsCorrect = reader.GetInt32("state") == 1
+
+                    ***REMOVED***;
+                        QuestionDAO currentQuestionDAO = new QuestionDAO()
+                        ***REMOVED***
+                            ExamQuestionId = reader.GetInt32("id"),
+                            QuestionId = reader.GetInt32("question_id"),
+                            QuestionText = reader.GetString("question_text"),
+                            UserAnswerId = reader.GetInt32("user_answer_id")
+
+                    ***REMOVED***;
+
+                        if (!questionExam.IsContainQuestion(currentQuestionDAO))
+                        ***REMOVED***
+                            questionExam.AddQuestion(currentQuestionDAO);
+                    ***REMOVED***
+                        questionExam.GetQuestion(currentQuestionDAO.QuestionId).AddAnswer(answerDAO);
+                ***REMOVED***
+            ***REMOVED***
+        ***REMOVED***
+            return questionExam;
+
+    ***REMOVED***
+
+        
+***REMOVED***
+***REMOVED***
