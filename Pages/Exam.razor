@@ -75,25 +75,7 @@ else
 ***REMOVED***
     void StartCountdown()
     ***REMOVED***
-        //timer = new Timer(new TimerCallback(_ =>
-        //***REMOVED***
-        //    if (RemainSecondToDoExam > 0)
-        //    ***REMOVED***
-        //        RemainSecondToDoExam--;
-        //        RemainTime = $"***REMOVED***RemainSecondToDoExam / 60***REMOVED*** phút:***REMOVED***RemainSecondToDoExam % 60***REMOVED*** giây ";
-        //        // Note that the following line is necessary because otherwise
-        //        // Blazor would not recognize the state change and not refresh the UI
-        //        InvokeAsync(() =>
-        //        ***REMOVED***
-
-        //            StateHasChanged();
-        //    ***REMOVED***);
-        //***REMOVED***
-        //    else
-        //    ***REMOVED***
-        //        CapNhatDiem();
-        //***REMOVED***
-        //***REMOVED***), null, 1000, 1000);
+        
         timer = new Timer(1000);
         timer.Elapsed += OnTimedEvent;
         timer.Enabled = true;
@@ -114,8 +96,9 @@ else
     ***REMOVED***
         else
         ***REMOVED***
-            CapNhatDiem();
             timer.Stop();
+            CapNhatDiem();
+
     ***REMOVED***
 ***REMOVED***
 
