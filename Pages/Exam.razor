@@ -1,7 +1,7 @@
 ﻿@page "/exam"
 @using BlazorVNPTQuiz.Models
 @using BlazorVNPTQuiz.Repository
-@using System.Threading;
+@using System.Timers;
 @inject IRepository repository;
 <h3>Exam @RemainTime</h3>
 
@@ -74,26 +74,50 @@ else
     }
     void StartCountdown()
     {
-        timer = new Timer(new TimerCallback(_ =>
-        {
-            if (RemainSecondToDoExam > 0)
-            {
-                RemainSecondToDoExam--;
-                RemainTime = $"{RemainSecondToDoExam / 60} phút:{RemainSecondToDoExam % 60} giây ";
-                // Note that the following line is necessary because otherwise
-                // Blazor would not recognize the state change and not refresh the UI
-                InvokeAsync(() =>
-                {
+        //timer = new Timer(new TimerCallback(_ =>
+        //{
+        //    if (RemainSecondToDoExam > 0)
+        //    {
+        //        RemainSecondToDoExam--;
+        //        RemainTime = $"{RemainSecondToDoExam / 60} phút:{RemainSecondToDoExam % 60} giây ";
+        //        // Note that the following line is necessary because otherwise
+        //        // Blazor would not recognize the state change and not refresh the UI
+        //        InvokeAsync(() =>
+        //        {
 
-                    StateHasChanged();
-                });
-            }
-            else
-            {
-                CapNhatDiem();
-            }
-        }), null, 1000, 1000);
+        //            StateHasChanged();
+        //        });
+        //    }
+        //    else
+        //    {
+        //        CapNhatDiem();
+        //    }
+        //}), null, 1000, 1000);
+        timer = new Timer(1000);
+        timer.Elapsed += OnTimedEvent;
+        timer.Enabled = true;
     }
+    private  void OnTimedEvent(Object source, ElapsedEventArgs e)
+    {
+        if (RemainSecondToDoExam > 0)
+        {
+            RemainSecondToDoExam--;
+            RemainTime = $"{RemainSecondToDoExam / 60} phút:{RemainSecondToDoExam % 60} giây ";
+            // Note that the following line is necessary because otherwise
+            // Blazor would not recognize the state change and not refresh the UI
+            InvokeAsync(() =>
+            {
+
+                StateHasChanged();
+            });
+        }
+        else
+        {
+            CapNhatDiem();
+        }
+    }
+
+
 
 
 }
