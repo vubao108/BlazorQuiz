@@ -14,12 +14,15 @@ namespace BlazorVNPTQuiz.Models
         public int NumOfRight ***REMOVED*** get; set; ***REMOVED***
         public DateTime JoinTime ***REMOVED*** get; set; ***REMOVED***
         public DateTime FinishTime ***REMOVED*** get; set; ***REMOVED***
+        public int TryNum ***REMOVED*** get; set; ***REMOVED***
 ***REMOVED***
 
     public class ExamInfo
     ***REMOVED***
         public int ExamId ***REMOVED*** get; set; ***REMOVED***
+        public int MaxTry ***REMOVED*** get; set; ***REMOVED***
         public string ExamName ***REMOVED*** get; set; ***REMOVED***
+
         public int Duration ***REMOVED*** get; set; ***REMOVED***
         public int NumOfQuestion ***REMOVED*** get; set; ***REMOVED***
 ***REMOVED***
