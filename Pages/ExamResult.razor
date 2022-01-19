@@ -1,0 +1,33 @@
+﻿@using BlazorVNPTQuiz.Repository;
+@using BlazorVNPTQuiz.Models;
+@inject IRepository repository;
+@page "/ExamResult/{userExamId:int}"
+
+@if (CurrentKetQuaBaiThi == null)
+{
+
+<h3>Đang Tải Kết Quả</h3>
+ }
+else
+{
+    <h3>@CurrentKetQuaBaiThi.Exam.ExamName</h3>
+    <h4>@CurrentKetQuaBaiThi.User.FullName</h4>
+    <h4>Lần thi: @CurrentKetQuaBaiThi.TryNum</h4>
+    <h4>Tỉ lệ đúng: @CurrentKetQuaBaiThi.NumOfRight / @CurrentKetQuaBaiThi.Exam.NumOfQuestion</h4>
+    <h4>Điểm số: @CurrentKetQuaBaiThi.Score</h4>
+    <h4>Thời gian làm bài : @TimeToFinish.Hours giờ : @TimeToFinish.Minutes phút : @TimeToFinish.Seconds giây</h4>
+    
+}
+
+@code {
+    [Parameter]
+    public int UserExamId { get; set; }
+
+    public KetQuaBaiThi CurrentKetQuaBaiThi { get; set; }
+    public TimeSpan TimeToFinish;
+    protected override async Task OnInitializedAsync()
+    {
+        CurrentKetQuaBaiThi = await repository.LayBaoCaoDiem(UserExamId);
+        TimeToFinish = CurrentKetQuaBaiThi.FinishTime.Subtract(CurrentKetQuaBaiThi.JoinTime);
+    }
+}
