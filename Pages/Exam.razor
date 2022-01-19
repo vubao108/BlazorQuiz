@@ -1,4 +1,4 @@
-﻿@page "/exam"
+﻿@page "/exam/***REMOVED***userid***REMOVED***/***REMOVED***examid***REMOVED***"
 @implements IDisposable
 @using BlazorVNPTQuiz.Models
 @using BlazorVNPTQuiz.Repository
@@ -35,6 +35,11 @@ else
 ***REMOVED***
 
 @code ***REMOVED***
+    [Parameter]
+    public int UserId***REMOVED*** get; set; ***REMOVED***
+    [Parameter]
+    public int ExamId***REMOVED*** get; set; ***REMOVED***
+
     private QuestionUserExam questions;
     int CurrentIndex = 0;
     QuestionDAO CurrentDisplayQuestion;
@@ -44,7 +49,7 @@ else
     Timer timer;
     protected override async Task OnInitializedAsync()
     ***REMOVED***
-        questions = await repository.LayDanhSachCauHoi(1, 74);
+        questions = await repository.LayDanhSachCauHoi(UserId, ExamId);
         if (questions.UserExamId == 0)
             return;
 
