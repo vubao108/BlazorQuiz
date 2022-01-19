@@ -36,6 +36,12 @@ namespace BlazorVNPTQuiz.Models
         ***REMOVED***
             return this.Questions.FirstOrDefault(item => item.QuestionId == question_id);
     ***REMOVED***
+
+        public (decimal,int) GetScore()
+        ***REMOVED***
+            int numOfRightAnswer = this.Questions.Count(question => question.UserAnswerId == question.Answers.FirstOrDefault(ans => ans.IsCorrect).AnswerId);
+            return (Convert.ToDecimal(numOfRightAnswer *10) / this.Questions.Count, numOfRightAnswer);
+    ***REMOVED***
 ***REMOVED***
 
 

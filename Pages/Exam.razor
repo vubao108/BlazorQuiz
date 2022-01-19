@@ -38,7 +38,7 @@ else
     int CurrentAnswerId;
     String RemainTime;
     int RemainSecondToDoExam;
-
+    Timer timer;
     protected override async Task OnInitializedAsync()
     ***REMOVED***
         questions =  await repository.LayDanhSachCauHoi(1, 74);
@@ -66,9 +66,15 @@ else
             await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentAnswerId);
     ***REMOVED***
 ***REMOVED***
+    private async void CapNhatDiem()
+    ***REMOVED***
+        (decimal score, int numOfRight) = questions.GetScore();
+        await repository.CapNhatDiem(questions.UserExamId, numOfRight, score);
+
+***REMOVED***
     void StartCountdown()
     ***REMOVED***
-        var timer = new Timer(new TimerCallback(_ =>
+        timer = new Timer(new TimerCallback(_ =>
         ***REMOVED***
             if (RemainSecondToDoExam > 0)
             ***REMOVED***
@@ -81,6 +87,10 @@ else
 
                     StateHasChanged();
             ***REMOVED***);
+        ***REMOVED***
+            else
+            ***REMOVED***
+                CapNhatDiem();
         ***REMOVED***
     ***REMOVED***), null, 1000, 1000);
 ***REMOVED***

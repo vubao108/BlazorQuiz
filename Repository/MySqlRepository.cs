@@ -75,6 +75,18 @@ namespace BlazorVNPTQuiz.Repository
 
     ***REMOVED***
 
+        public async Task CapNhatDiem(int userExamId,int numOfRight, decimal score)
+        ***REMOVED***
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            ***REMOVED***
+                using (var command = new MySqlCommand($"update user_exam set num_of_right = ***REMOVED***numOfRight***REMOVED***, score = ***REMOVED***score***REMOVED***, finished_time = ***REMOVED***DateTime.Now***REMOVED***", connection))
+                ***REMOVED***
+                    await connection.OpenAsync();
+                    await command.ExecuteNonQueryAsync();
+            ***REMOVED***
+        ***REMOVED***
+    ***REMOVED***
+
         
 ***REMOVED***
 ***REMOVED***
