@@ -13,5 +13,7 @@ namespace BlazorVNPTQuiz.Repository
         Task CapNhatCauTraLoi(int questionExamId, int userAnswerId);
 
         Task CapNhatDiem(int userExamId, int numOfRight, decimal score);
+
+        Task<KetQuaBaiThi> LayBaoCaoDiem(int userExamId);
 ***REMOVED***
 ***REMOVED***
