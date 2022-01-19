@@ -44,7 +44,13 @@ namespace BlazorVNPTQuiz.Repository
                     using var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
+                        if(reader.GetInt32("id") == 0)
+                        {
+                            questionExam.UserExamId = 0;
+                            break;
+                        } 
                         questionExam.UserExamId = reader.GetInt32("uet_id");
+                        
                         questionExam.TryNum = reader.GetInt32("try_num");
                         questionExam.RemainSeCond = reader.GetInt32("remain_second");
                         AnswerDAO answerDAO = new AnswerDAO()
@@ -92,10 +98,10 @@ namespace BlazorVNPTQuiz.Repository
             KetQuaBaiThi ketQuaBaiThi = new KetQuaBaiThi();
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
             {
-                string sql = $"select  a.score, a.num_of_right, a.finished_time, a.join_time," +
-                    $"a.exam_id,  b.name, b.duration, b.num_of_question, c.user, a.user_id, c.ho_ten, c.ttvt" +
-                    $"from user_exam  a, exam b, user c " +
-                    $"where a.id = {userExamId} and a.exam_id = b.id and a.user_id = c.id";
+                string sql = $"select  a.score, a.num_of_right, a.finished_time, a.join_time, a.try_num" +
+                    $" a.exam_id,  b.max_try, b.name, b.duration, b.num_of_question, c.user, a.user_id, c.ho_ten, c.ttvt " +
+                    $" from user_exam  a, exam b, users c " +
+                    $" where a.id = {userExamId} and a.exam_id = b.id and a.user_id = c.id";
                 using (var command = new MySqlCommand(sql, connection))
                 {
                     await connection.OpenAsync();
@@ -108,12 +114,14 @@ namespace BlazorVNPTQuiz.Repository
                             ketQuaBaiThi.NumOfRight = reader.GetInt32("num_of_right");
                             ketQuaBaiThi.JoinTime = reader.GetDateTime("join_time");
                             ketQuaBaiThi.FinishTime = reader.GetDateTime("finished_time");
+                            ketQuaBaiThi.TryNum = reader.GetInt32("try_num");
                             ketQuaBaiThi.Exam = new ExamInfo()
                             {
                                 ExamId = reader.GetInt32("exam_id"),
                                 ExamName = reader.GetString("name"),
                                 Duration = reader.GetInt32("duration"),
-                                NumOfQuestion = reader.GetInt32("num_of_question")
+                                NumOfQuestion = reader.GetInt32("num_of_question"),
+                                MaxTry = reader.GetInt32("max_try")
                             };
                             ketQuaBaiThi.User = new UserInfo()
                             {
