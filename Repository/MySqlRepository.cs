@@ -87,6 +87,48 @@ namespace BlazorVNPTQuiz.Repository
             }
         }
 
+        public async Task<KetQuaBaiThi> LayBaoCaoDiem(int userExamId)
+        {
+            KetQuaBaiThi ketQuaBaiThi = new KetQuaBaiThi();
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                string sql = $"select  a.score, a.num_of_right, a.finished_time, a.join_time," +
+                    $"a.exam_id,  b.name, b.duration, b.num_of_question, c.user, a.user_id, c.ho_ten, c.ttvt" +
+                    $"from user_exam  a, exam b, user c " +
+                    $"where a.id = {userExamId} and a.exam_id = b.id and a.user_id = c.id";
+                using (var command = new MySqlCommand(sql, connection))
+                {
+                    await connection.OpenAsync();
+                    using (var reader = await command.ExecuteReaderAsync())
+                    {
+                        while(await reader.ReadAsync())
+                        {
+                            ketQuaBaiThi.UserExamId = userExamId;
+                            ketQuaBaiThi.Score = reader.GetDecimal("score");
+                            ketQuaBaiThi.NumOfRight = reader.GetInt32("num_of_right");
+                            ketQuaBaiThi.JoinTime = reader.GetDateTime("join_time");
+                            ketQuaBaiThi.FinishTime = reader.GetDateTime("finished_time");
+                            ketQuaBaiThi.Exam = new ExamInfo()
+                            {
+                                ExamId = reader.GetInt32("exam_id"),
+                                ExamName = reader.GetString("name"),
+                                Duration = reader.GetInt32("duration"),
+                                NumOfQuestion = reader.GetInt32("num_of_question")
+                            };
+                            ketQuaBaiThi.User = new UserInfo()
+                            {
+                                UserId = reader.GetInt32("user_id"),
+                                UserName = reader.GetString("user"),
+                                FullName = reader.GetString("ho_ten"),
+                                TenDonVi = reader.GetString("ttvt")
+                            };
+                        }
+                    }
+                }
+            }
+            return ketQuaBaiThi;
+        }
+
         
     }
 }

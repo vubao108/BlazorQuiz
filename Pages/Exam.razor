@@ -19,7 +19,7 @@ else
     <h4>  @CurrentDisplayQuestion.QuestionText </h4>
 
     <EditForm Model="CurrentDisplayQuestion">
-        <InputRadioGroup @bind-Value="CurrentAnswerId">
+        <InputRadioGroup @bind-Value="CurrentDisplayQuestion.UserAnswerId">
             @foreach (var answer in CurrentDisplayQuestion.Answers)
                 {
                 <div border="2px solid #333">
@@ -36,7 +36,7 @@ else
     private QuestionUserExam questions;
     int CurrentIndex = 0;
     QuestionDAO CurrentDisplayQuestion;
-    int CurrentAnswerId;
+    
     String RemainTime;
     int RemainSecondToDoExam;
     Timer timer;
@@ -56,15 +56,15 @@ else
 
         CurrentIndex++;
         CurrentDisplayQuestion = questions.Questions[CurrentIndex % questions.Questions.Count];
-        CurrentAnswerId = 0;
+        
     }
 
     private async void CapNhatCauTraLoi()
     {
-        if (CurrentAnswerId > 0)
+        if (CurrentDisplayQuestion.UserAnswerId > 0)
         {
-            CurrentDisplayQuestion.UserAnswerId = CurrentAnswerId;
-            await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentAnswerId);
+            
+            await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentDisplayQuestion.UserAnswerId);
         }
     }
     private async void CapNhatDiem()
