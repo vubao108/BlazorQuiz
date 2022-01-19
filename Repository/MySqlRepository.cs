@@ -79,7 +79,7 @@ namespace BlazorVNPTQuiz.Repository
         {
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
             {
-                using (var command = new MySqlCommand($"update user_exam set num_of_right = {numOfRight}, score = {score}, finished_time = {DateTime.Now}", connection))
+                using (var command = new MySqlCommand($"update user_exam set state = 1, num_of_right = {numOfRight}, score = {score}, finished_time = '{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}' where id = {userExamId}", connection))
                 {
                     await connection.OpenAsync();
                     await command.ExecuteNonQueryAsync();
