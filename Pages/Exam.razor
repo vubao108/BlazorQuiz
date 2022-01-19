@@ -62,9 +62,10 @@ else
     {
         if(CurrentAnswerId > 0)
         {
-           await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentAnswerId);
+            CurrentDisplayQuestion.UserAnswerId = CurrentAnswerId;
+            await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentAnswerId);
         }
-     }
+    }
     void StartCountdown()
     {
         var timer = new Timer(new TimerCallback(_ =>
