@@ -62,9 +62,10 @@ else
     ***REMOVED***
         if(CurrentAnswerId > 0)
         ***REMOVED***
-           await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentAnswerId);
+            CurrentDisplayQuestion.UserAnswerId = CurrentAnswerId;
+            await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentAnswerId);
     ***REMOVED***
- ***REMOVED***
+***REMOVED***
     void StartCountdown()
     ***REMOVED***
         var timer = new Timer(new TimerCallback(_ =>
