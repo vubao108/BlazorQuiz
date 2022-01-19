@@ -16,6 +16,7 @@ using MySqlConnector;
 using BlazorVNPTQuiz.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Components.Authorization;
+using BlazorVNPTQuiz.Areas.Identity;
 
 namespace BlazorVNPTQuiz
 {
@@ -42,7 +43,7 @@ namespace BlazorVNPTQuiz
 
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            //services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+            services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
            
            
