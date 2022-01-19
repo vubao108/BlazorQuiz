@@ -38,7 +38,7 @@ else
     int CurrentAnswerId;
     String RemainTime;
     int RemainSecondToDoExam;
-
+    Timer timer;
     protected override async Task OnInitializedAsync()
     {
         questions =  await repository.LayDanhSachCauHoi(1, 74);
@@ -66,9 +66,15 @@ else
             await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentAnswerId);
         }
     }
+    private async void CapNhatDiem()
+    {
+        (decimal score, int numOfRight) = questions.GetScore();
+        await repository.CapNhatDiem(questions.UserExamId, numOfRight, score);
+
+    }
     void StartCountdown()
     {
-        var timer = new Timer(new TimerCallback(_ =>
+        timer = new Timer(new TimerCallback(_ =>
         {
             if (RemainSecondToDoExam > 0)
             {
@@ -81,6 +87,10 @@ else
 
                     StateHasChanged();
                 });
+            }
+            else
+            {
+                CapNhatDiem();
             }
         }), null, 1000, 1000);
     }
