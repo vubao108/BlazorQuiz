@@ -14,6 +14,9 @@ using BlazorVNPTQuiz.Repository.DataContext;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
 using BlazorVNPTQuiz.Repository;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Components.Authorization;
+
 namespace BlazorVNPTQuiz
 {
     public class Startup
@@ -29,12 +32,21 @@ namespace BlazorVNPTQuiz
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContextPool<ApplicationDbContext>(options =>
+                options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            //services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
            
-            string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
-            //services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(mySqlConnectionStr, ServerVersion.AutoDetect(mySqlConnectionStr)));
+           
+            
             
             services.AddScoped<IRepository, MySqlRepository>();
 
@@ -59,6 +71,9 @@ namespace BlazorVNPTQuiz
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
