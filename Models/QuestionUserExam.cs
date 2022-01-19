@@ -36,6 +36,12 @@ namespace BlazorVNPTQuiz.Models
         {
             return this.Questions.FirstOrDefault(item => item.QuestionId == question_id);
         }
+
+        public (decimal,int) GetScore()
+        {
+            int numOfRightAnswer = this.Questions.Count(question => question.UserAnswerId == question.Answers.FirstOrDefault(ans => ans.IsCorrect).AnswerId);
+            return (Convert.ToDecimal(numOfRightAnswer *10) / this.Questions.Count, numOfRightAnswer);
+        }
     }
 
 

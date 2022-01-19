@@ -11,5 +11,7 @@ namespace BlazorVNPTQuiz.Repository
         Task<QuestionUserExam> LayDanhSachCauHoi(int user_id, int exam_id);
 
         Task CapNhatCauTraLoi(int questionExamId, int userAnswerId);
+
+        Task CapNhatDiem(int userExamId, int numOfRight, decimal score);
     }
 }
