@@ -13,7 +13,7 @@ namespace BlazorVNPTQuiz.Repository
     ***REMOVED***
 
         private IConfiguration configuration;
-        public MySqlRepository( IConfiguration configuration)
+        public MySqlRepository(IConfiguration configuration)
         ***REMOVED***
             this.configuration = configuration;
     ***REMOVED***
@@ -33,7 +33,7 @@ namespace BlazorVNPTQuiz.Repository
 
         public async Task<QuestionUserExam> LayDanhSachCauHoi(int user_id, int exam_id)
         ***REMOVED***
-            QuestionUserExam questionExam = new QuestionUserExam() ***REMOVED*** UserId = user_id, ExamID = exam_id***REMOVED***;
+            QuestionUserExam questionExam = new QuestionUserExam() ***REMOVED*** UserId = user_id, ExamID = exam_id ***REMOVED***;
             questionExam.Questions = new List<QuestionDAO>();
 
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
@@ -44,13 +44,13 @@ namespace BlazorVNPTQuiz.Repository
                     using var reader = command.ExecuteReader();
                     while (reader.Read())
                     ***REMOVED***
-                        if(reader.GetInt32("id") == 0)
+                        if (reader.GetInt32("id") == 0)
                         ***REMOVED***
                             questionExam.UserExamId = 0;
                             break;
-                    ***REMOVED*** 
+                    ***REMOVED***
                         questionExam.UserExamId = reader.GetInt32("uet_id");
-                        
+
                         questionExam.TryNum = reader.GetInt32("try_num");
                         questionExam.RemainSeCond = reader.GetInt32("remain_second");
                         AnswerDAO answerDAO = new AnswerDAO()
@@ -81,7 +81,7 @@ namespace BlazorVNPTQuiz.Repository
 
     ***REMOVED***
 
-        public async Task CapNhatDiem(int userExamId,int numOfRight, decimal score)
+        public async Task CapNhatDiem(int userExamId, int numOfRight, decimal score)
         ***REMOVED***
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
             ***REMOVED***
@@ -107,7 +107,7 @@ namespace BlazorVNPTQuiz.Repository
                     await connection.OpenAsync();
                     using (var reader = await command.ExecuteReaderAsync())
                     ***REMOVED***
-                        while(await reader.ReadAsync())
+                        while (await reader.ReadAsync())
                         ***REMOVED***
                             ketQuaBaiThi.UserExamId = userExamId;
                             ketQuaBaiThi.Score = reader.GetDecimal("score");
@@ -137,6 +137,38 @@ namespace BlazorVNPTQuiz.Repository
             return ketQuaBaiThi;
     ***REMOVED***
 
-        
+        public async Task<List<ExamInfo>> LayDanhSachBaiThi(int userId)
+        ***REMOVED***
+            List<ExamInfo> examInfos = new List<ExamInfo>();
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            ***REMOVED***
+                string sql = $"call proc_lay_ds_baithi(***REMOVED***userId***REMOVED***)";
+                using (var command = new MySqlCommand(sql, connection))
+                ***REMOVED***
+                    await connection.OpenAsync();
+                    using(var reader = await command.ExecuteReaderAsync())
+                    ***REMOVED***
+                        while (await reader.ReadAsync())
+                        ***REMOVED***
+                            examInfos.Add(
+                                new ExamInfo()
+                                ***REMOVED***
+                                    ExamId = reader.GetInt32("id"),
+                                    ExamName = reader.GetString("name"),
+                                    Duration = reader.GetInt32("duration"),
+                                    NumOfQuestion = reader.GetInt32("num_of_question"),
+                                    MaxTry = reader.GetInt32("max_try")
+
+                            ***REMOVED***
+                            );
+                    ***REMOVED***
+                        
+                ***REMOVED***
+
+            ***REMOVED***
+        ***REMOVED***
+
+            return examInfos;
+    ***REMOVED***
 ***REMOVED***
 ***REMOVED***
