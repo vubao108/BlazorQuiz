@@ -1,0 +1,41 @@
+﻿@page "/listexam"
+@using Microsoft.AspNetCore.Identity;
+@using BlazorVNPTQuiz.Models;
+@inject UserManager<IdentityUser> userManager;
+@inject AuthenticationStateProvider GetAuthenticationStateAsync
+@inject BlazorVNPTQuiz.Repository.IRepository repository
+
+
+<h3>Danh sách bài thi</h3>
+@if(examInfos == null)
+{
+               <b>Đang tải bài thi ....</b>
+}
+else if(examInfos.Count == 0)
+            {
+<h4>Không có bài thi nào !</h4>
+            }
+else { 
+    foreach(var exam in examInfos)
+    {
+        <ExamComponent ExamItem="exam"/>
+
+        
+    }
+
+}
+
+@code {
+    public IdentityUser CurrentUser { get; set; }
+    public List<ExamInfo> examInfos { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+        var user = authstate.User;
+        CurrentUser = await userManager.FindByNameAsync(user.Identity.Name);
+        examInfos = await repository.LayDanhSachBaiThi(Convert.ToInt32(CurrentUser.Id));
+
+    }
+
+}

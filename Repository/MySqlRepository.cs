@@ -13,7 +13,7 @@ namespace BlazorVNPTQuiz.Repository
     {
 
         private IConfiguration configuration;
-        public MySqlRepository( IConfiguration configuration)
+        public MySqlRepository(IConfiguration configuration)
         {
             this.configuration = configuration;
         }
@@ -33,7 +33,7 @@ namespace BlazorVNPTQuiz.Repository
 
         public async Task<QuestionUserExam> LayDanhSachCauHoi(int user_id, int exam_id)
         {
-            QuestionUserExam questionExam = new QuestionUserExam() { UserId = user_id, ExamID = exam_id};
+            QuestionUserExam questionExam = new QuestionUserExam() { UserId = user_id, ExamID = exam_id };
             questionExam.Questions = new List<QuestionDAO>();
 
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
@@ -44,13 +44,13 @@ namespace BlazorVNPTQuiz.Repository
                     using var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        if(reader.GetInt32("id") == 0)
+                        if (reader.GetInt32("id") == 0)
                         {
                             questionExam.UserExamId = 0;
                             break;
-                        } 
+                        }
                         questionExam.UserExamId = reader.GetInt32("uet_id");
-                        
+
                         questionExam.TryNum = reader.GetInt32("try_num");
                         questionExam.RemainSeCond = reader.GetInt32("remain_second");
                         AnswerDAO answerDAO = new AnswerDAO()
@@ -81,7 +81,7 @@ namespace BlazorVNPTQuiz.Repository
 
         }
 
-        public async Task CapNhatDiem(int userExamId,int numOfRight, decimal score)
+        public async Task CapNhatDiem(int userExamId, int numOfRight, decimal score)
         {
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
             {
@@ -107,7 +107,7 @@ namespace BlazorVNPTQuiz.Repository
                     await connection.OpenAsync();
                     using (var reader = await command.ExecuteReaderAsync())
                     {
-                        while(await reader.ReadAsync())
+                        while (await reader.ReadAsync())
                         {
                             ketQuaBaiThi.UserExamId = userExamId;
                             ketQuaBaiThi.Score = reader.GetDecimal("score");
@@ -137,6 +137,38 @@ namespace BlazorVNPTQuiz.Repository
             return ketQuaBaiThi;
         }
 
-        
+        public async Task<List<ExamInfo>> LayDanhSachBaiThi(int userId)
+        {
+            List<ExamInfo> examInfos = new List<ExamInfo>();
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                string sql = $"call proc_lay_ds_baithi({userId})";
+                using (var command = new MySqlCommand(sql, connection))
+                {
+                    await connection.OpenAsync();
+                    using(var reader = await command.ExecuteReaderAsync())
+                    {
+                        while (await reader.ReadAsync())
+                        {
+                            examInfos.Add(
+                                new ExamInfo()
+                                {
+                                    ExamId = reader.GetInt32("id"),
+                                    ExamName = reader.GetString("name"),
+                                    Duration = reader.GetInt32("duration"),
+                                    NumOfQuestion = reader.GetInt32("num_of_question"),
+                                    MaxTry = reader.GetInt32("max_try")
+
+                                }
+                            );
+                        }
+                        
+                    }
+
+                }
+            }
+
+            return examInfos;
+        }
     }
 }
