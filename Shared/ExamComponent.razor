@@ -1,0 +1,16 @@
+﻿
+@using BlazorVNPTQuiz.Models;
+
+
+<div>
+    <b>@ExamItem.ExamName</b><br />
+    Thời gian làm bài: @(ExamItem.Duration/60) phút<br />
+    
+    
+
+</div>
+@code {
+    [Parameter]
+    public ExamInfo ExamItem { get; set; }
+
+}
