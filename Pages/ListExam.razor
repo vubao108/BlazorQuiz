@@ -18,7 +18,7 @@ else if(examInfos.Count == 0)
 else ***REMOVED*** 
     foreach(var exam in examInfos)
     ***REMOVED***
-        <ExamComponent ExamItem="exam"/>
+        <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))"/>
 
         
 ***REMOVED***
