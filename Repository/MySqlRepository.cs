@@ -98,7 +98,7 @@ namespace BlazorVNPTQuiz.Repository
             KetQuaBaiThi ketQuaBaiThi = new KetQuaBaiThi();
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
             ***REMOVED***
-                string sql = $"select  a.score, a.num_of_right, a.finished_time, a.join_time, a.try_num" +
+                string sql = $"select  a.score, a.num_of_right, a.finished_time, a.join_time, a.try_num, " +
                     $" a.exam_id,  b.max_try, b.name, b.duration, b.num_of_question, c.user, a.user_id, c.ho_ten, c.ttvt " +
                     $" from user_exam  a, exam b, users c " +
                     $" where a.id = ***REMOVED***userExamId***REMOVED*** and a.exam_id = b.id and a.user_id = c.id";
@@ -142,7 +142,7 @@ namespace BlazorVNPTQuiz.Repository
             List<ExamInfo> examInfos = new List<ExamInfo>();
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
             ***REMOVED***
-                string sql = $"call proc_lay_ds_baithi(***REMOVED***userId***REMOVED***)";
+                string sql = $"call proc_lay_ds_baithi_web(***REMOVED***userId***REMOVED***)";
                 using (var command = new MySqlCommand(sql, connection))
                 ***REMOVED***
                     await connection.OpenAsync();

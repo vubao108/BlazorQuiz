@@ -1,16 +1,25 @@
 ﻿
 @using BlazorVNPTQuiz.Models;
 
+@inject NavigationManager NavManager
 
 <div>
     <b>@ExamItem.ExamName</b><br />
     Thời gian làm bài: @(ExamItem.Duration/60) phút<br />
-    
-    
+    <button @onclick="StartBaiThi">Vào thi</button>
+
+
 
 </div>
 @code ***REMOVED***
     [Parameter]
     public ExamInfo ExamItem ***REMOVED*** get; set; ***REMOVED***
+    [Parameter]
+    public int UserId ***REMOVED*** get; set; ***REMOVED***
+
+    public void StartBaiThi()
+    ***REMOVED***
+        NavManager.NavigateTo($"/exam/***REMOVED***UserId***REMOVED***/***REMOVED***ExamItem.ExamId***REMOVED***");
+***REMOVED***
 
 ***REMOVED***
