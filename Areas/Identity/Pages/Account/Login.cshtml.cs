@@ -82,21 +82,24 @@ namespace BlazorVNPTQuiz.Areas.Identity.Pages.Account
             ***REMOVED***
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
+                //var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                var dbUser = _userManager.Users.FirstOrDefault(user => user.UserName == Input.UserName && user.PasswordHash == Input.Password);
+              
+                if (dbUser != null)
                 ***REMOVED***
+                     await _signInManager.SignInAsync(dbUser, Input.RememberMe);
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
             ***REMOVED***
-                if (result.RequiresTwoFactor)
-                ***REMOVED***
-                    return RedirectToPage("./LoginWith2fa", new ***REMOVED*** ReturnUrl = returnUrl, RememberMe = Input.RememberMe ***REMOVED***);
-            ***REMOVED***
-                if (result.IsLockedOut)
-                ***REMOVED***
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToPage("./Lockout");
-            ***REMOVED***
+                //if (result.RequiresTwoFactor)
+                //***REMOVED***
+                //    return RedirectToPage("./LoginWith2fa", new ***REMOVED*** ReturnUrl = returnUrl, RememberMe = Input.RememberMe ***REMOVED***);
+                //***REMOVED***
+                //if (result.IsLockedOut)
+                //***REMOVED***
+                //    _logger.LogWarning("User account locked out.");
+                //    return RedirectToPage("./Lockout");
+                //***REMOVED***
                 else
                 ***REMOVED***
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
