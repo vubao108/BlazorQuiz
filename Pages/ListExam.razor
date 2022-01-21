@@ -1,29 +1,34 @@
 ﻿@page "/listexam"
+@attribute [Authorize]
 @using Microsoft.AspNetCore.Identity;
 @using BlazorVNPTQuiz.Models;
 @inject UserManager<IdentityUser> userManager;
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
 @inject BlazorVNPTQuiz.Repository.IRepository repository
+@inject NavigationManager navManager;
 
+<AuthorizeView >
+    <h3>Danh sách bài thi</h3>
 
-<h3>Danh sách bài thi</h3>
-@if(examInfos == null)
-***REMOVED***
-               <b>Đang tải bài thi ....</b>
-***REMOVED***
-else if(examInfos.Count == 0)
-            ***REMOVED***
-<h4>Không có bài thi nào !</h4>
-        ***REMOVED***
-else ***REMOVED*** 
-    foreach(var exam in examInfos)
+    @if (examInfos == null)
     ***REMOVED***
-        <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))"/>
-
-        
+        <b>Đang tải bài thi ....</b>
 ***REMOVED***
+    else if (examInfos.Count == 0)
+    ***REMOVED***
+        <h4>Không có bài thi nào !</h4>
+***REMOVED***
+    else
+    ***REMOVED***
+        foreach (var exam in examInfos)
+        ***REMOVED***
+            <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))" />
+
+
+    ***REMOVED***
 
 ***REMOVED***
+</AuthorizeView>
 
 @code ***REMOVED***
     public IdentityUser CurrentUser ***REMOVED*** get; set; ***REMOVED***
@@ -33,9 +38,15 @@ else ***REMOVED***
     ***REMOVED***
         var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
         var user = authstate.User;
-        CurrentUser = await userManager.FindByNameAsync(user.Identity.Name);
-        examInfos = await repository.LayDanhSachBaiThi(Convert.ToInt32(CurrentUser.Id));
-
+        if (user.Identity.IsAuthenticated)
+        ***REMOVED***
+            CurrentUser = await userManager.FindByNameAsync(user.Identity.Name);
+            examInfos = await repository.LayDanhSachBaiThi(Convert.ToInt32(CurrentUser.Id));
+    ***REMOVED***
+        else
+        ***REMOVED***
+            navManager.NavigateTo("/");
+    ***REMOVED***
 ***REMOVED***
 
 ***REMOVED***
