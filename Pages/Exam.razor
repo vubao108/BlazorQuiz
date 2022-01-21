@@ -21,17 +21,20 @@ else
     <h4>  @CurrentDisplayQuestion.QuestionText </h4>
 
     <EditForm Model="CurrentDisplayQuestion">
-        <InputRadioGroup @bind-Value="CurrentDisplayQuestion.UserAnswerId">
-            @foreach (var answer in CurrentDisplayQuestion.Answers)
-                {
+        <div>
+            <InputRadioGroup @bind-Value="CurrentDisplayQuestion.UserAnswerId">
+                @foreach (var answer in CurrentDisplayQuestion.Answers)
+                    {
 
 
-         @if (!string.IsNullOrEmpty(answer.AnswerText.Trim())) {
-                    <InputRadio Value="answer.AnswerId" /> @answer.AnswerText <br />
-                }
+                    @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
+                        {
+                        <InputRadio Value="answer.AnswerId" /> @answer.AnswerText <br />
+                        }
 
-            }
-        </InputRadioGroup>
+                    }
+            </InputRadioGroup>
+        </div>
     </EditForm>
 
     <button @onclick="MoveNext" class="btn-success">Next</button> <button @onclick="Submit" class="btn-primary"> Nộp Bài</button>
