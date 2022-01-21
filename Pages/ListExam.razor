@@ -23,7 +23,7 @@
         ***REMOVED***
             foreach (var exam in examInfos)
             ***REMOVED***
-                <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))" />
+                <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))" /><br />
 
 
         ***REMOVED***
@@ -53,6 +53,14 @@
             examInfos = await repository.LayDanhSachBaiThi(Convert.ToInt32(CurrentUser.Id));
     ***REMOVED***
         else
+        ***REMOVED***
+            var returnUrl = navManager.ToBaseRelativePath(navManager.Uri);
+            if (string.IsNullOrWhiteSpace(returnUrl))***REMOVED***
+                navManager.NavigateTo("/Identity/Account/Login", true);
+        ***REMOVED***
+            else
+            ***REMOVED***
+                navManager.NavigateTo($"/Identity/Account/Login?returnUrl=~/***REMOVED***returnUrl***REMOVED***", true);
         ***REMOVED***
             //navManager.NavigateTo("Identity/Account/Login?returnUrl=~/listexam");
 
