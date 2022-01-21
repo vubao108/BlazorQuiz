@@ -64,23 +64,27 @@ namespace BlazorVNPTQuiz
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         ***REMOVED***
-
+           
             if (env.IsDevelopment())
             ***REMOVED***
                 app.UseDeveloperExceptionPage();
-                app.UseForwardedHeaders();
+                //app.UseForwardedHeaders();
         ***REMOVED***
             else
             ***REMOVED***
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseForwardedHeaders();
-                app.UseHsts();
+                //app.UseForwardedHeaders();
+               // app.UseHsts();
         ***REMOVED***
-
-            app.UseHttpsRedirection();
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            ***REMOVED***
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+        ***REMOVED***);
+            // app.UseHttpsRedirection();
+            app.UsePathBase("/quiz");
             app.UseStaticFiles();
-
+           
             app.UseRouting();
 
             app.UseAuthentication();
