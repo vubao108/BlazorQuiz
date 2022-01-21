@@ -17,6 +17,7 @@ using BlazorVNPTQuiz.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Components.Authorization;
 using BlazorVNPTQuiz.Areas.Identity;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace BlazorVNPTQuiz
 {
@@ -42,6 +43,11 @@ namespace BlazorVNPTQuiz
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddRazorPages();
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+            });
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             services.AddSingleton<WeatherForecastService>();
@@ -50,6 +56,7 @@ namespace BlazorVNPTQuiz
             
             
             services.AddScoped<IRepository, MySqlRepository>();
+            
 
 
         }
@@ -57,14 +64,17 @@ namespace BlazorVNPTQuiz
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseForwardedHeaders();
             }
             else
             {
                 app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseForwardedHeaders();
                 app.UseHsts();
             }
 
