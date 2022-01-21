@@ -1,29 +1,34 @@
 ﻿@page "/listexam"
+@attribute [Authorize]
 @using Microsoft.AspNetCore.Identity;
 @using BlazorVNPTQuiz.Models;
 @inject UserManager<IdentityUser> userManager;
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
 @inject BlazorVNPTQuiz.Repository.IRepository repository
+@inject NavigationManager navManager;
 
+<AuthorizeView >
+    <h3>Danh sách bài thi</h3>
 
-<h3>Danh sách bài thi</h3>
-@if(examInfos == null)
-{
-               <b>Đang tải bài thi ....</b>
-}
-else if(examInfos.Count == 0)
-            {
-<h4>Không có bài thi nào !</h4>
-            }
-else { 
-    foreach(var exam in examInfos)
+    @if (examInfos == null)
     {
-        <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))"/>
-
-        
+        <b>Đang tải bài thi ....</b>
     }
+    else if (examInfos.Count == 0)
+    {
+        <h4>Không có bài thi nào !</h4>
+    }
+    else
+    {
+        foreach (var exam in examInfos)
+        {
+            <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))" />
 
-}
+
+        }
+
+    }
+</AuthorizeView>
 
 @code {
     public IdentityUser CurrentUser { get; set; }
@@ -33,9 +38,15 @@ else {
     {
         var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
         var user = authstate.User;
-        CurrentUser = await userManager.FindByNameAsync(user.Identity.Name);
-        examInfos = await repository.LayDanhSachBaiThi(Convert.ToInt32(CurrentUser.Id));
-
+        if (user.Identity.IsAuthenticated)
+        {
+            CurrentUser = await userManager.FindByNameAsync(user.Identity.Name);
+            examInfos = await repository.LayDanhSachBaiThi(Convert.ToInt32(CurrentUser.Id));
+        }
+        else
+        {
+            navManager.NavigateTo("/");
+        }
     }
 
 }
