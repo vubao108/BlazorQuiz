@@ -8,26 +8,35 @@
 @inject NavigationManager navManager;
 
 <AuthorizeView >
-    <h3>Danh sách bài thi</h3>
+    <Authorized>
+        <h3>Danh sách bài thi</h3>
 
-    @if (examInfos == null)
-    ***REMOVED***
-        <b>Đang tải bài thi ....</b>
-***REMOVED***
-    else if (examInfos.Count == 0)
-    ***REMOVED***
-        <h4>Không có bài thi nào !</h4>
-***REMOVED***
-    else
-    ***REMOVED***
-        foreach (var exam in examInfos)
+        @if (examInfos == null)
         ***REMOVED***
-            <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))" />
+            <b>Đang tải bài thi ....</b>
+    ***REMOVED***
+        else if (examInfos.Count == 0)
+        ***REMOVED***
+            <h4>Không có bài thi nào !</h4>
+    ***REMOVED***
+        else
+        ***REMOVED***
+            foreach (var exam in examInfos)
+            ***REMOVED***
+                <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))" />
 
+
+        ***REMOVED***
 
     ***REMOVED***
-
-***REMOVED***
+    </Authorized>
+    <NotAuthorized>
+        <h3>
+            Bạn cần đăng nhập đã  <NavLink class="nav-link" href="Identity/Account/Login">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Đăng nhập
+            </NavLink>
+        </h3>
+    </NotAuthorized>
 </AuthorizeView>
 
 @code ***REMOVED***
@@ -45,7 +54,8 @@
     ***REMOVED***
         else
         ***REMOVED***
-            navManager.NavigateTo("/");
+            //navManager.NavigateTo("Identity/Account/Login?returnUrl=~/listexam");
+
     ***REMOVED***
 ***REMOVED***
 
