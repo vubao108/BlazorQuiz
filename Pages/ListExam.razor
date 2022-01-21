@@ -23,7 +23,7 @@
         {
             foreach (var exam in examInfos)
             {
-                <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))" />
+                <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))" /><br />
 
 
             }
@@ -54,6 +54,14 @@
         }
         else
         {
+            var returnUrl = navManager.ToBaseRelativePath(navManager.Uri);
+            if (string.IsNullOrWhiteSpace(returnUrl)){
+                navManager.NavigateTo("/Identity/Account/Login", true);
+            }
+            else
+            {
+                navManager.NavigateTo($"/Identity/Account/Login?returnUrl=~/{returnUrl}", true);
+            }
             //navManager.NavigateTo("Identity/Account/Login?returnUrl=~/listexam");
 
         }

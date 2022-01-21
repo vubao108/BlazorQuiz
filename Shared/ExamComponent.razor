@@ -5,7 +5,10 @@
 
 <div>
     <b>@ExamItem.ExamName</b><br />
+    Số câu: @ExamItem.NumOfQuestion<br />
     Thời gian làm bài: @(ExamItem.Duration/60) phút<br />
+    Số lần thi tối đa: @ExamItem.MaxTry lần<br />
+    
     <button @onclick="StartBaiThi" class="btn-success">Vào thi</button>
 
 
@@ -19,7 +22,7 @@
 
     public void StartBaiThi()
     {
-        NavManager.NavigateTo($"/exam/{UserId}/{ExamItem.ExamId}");
+        NavManager.NavigateTo($"/exam/{UserId}/{ExamItem.ExamId}/{ExamItem.ExamName}");
     }
 
 }
