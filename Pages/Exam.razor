@@ -5,7 +5,7 @@
 @using System.Timers;
 @inject IRepository repository;
 @inject NavigationManager navigationManager
-<h3>Exam @RemainTime</h3>
+<h3>@RemainTime</h3>
 
 
 @if (questions == null)
@@ -34,7 +34,7 @@ else
         </InputRadioGroup>
     </EditForm>
 
-    <button @onclick="MoveNext">Next</button>
+    <button @onclick="MoveNext" class="btn-success">Next</button> <button @onclick="Submit" class="btn-primary"> Nộp Bài</button>
 ***REMOVED***
 
 @code ***REMOVED***
@@ -63,16 +63,25 @@ else
 
 ***REMOVED***
 
-    public void MoveNext()
+    public async void MoveNext()
     ***REMOVED***
-        CapNhatCauTraLoi();
+        await CapNhatCauTraLoi();
 
         CurrentIndex++;
         CurrentDisplayQuestion = questions.Questions[CurrentIndex % questions.Questions.Count];
 
 ***REMOVED***
+    public async void Submit()
+    ***REMOVED***
+        timer.Stop();
+        await CapNhatCauTraLoi();
+        await CapNhatDiem();
+        NavigateToResultPage();
 
-    private async void CapNhatCauTraLoi()
+***REMOVED***
+
+
+    private async Task CapNhatCauTraLoi()
     ***REMOVED***
         if (CurrentDisplayQuestion.UserAnswerId > 0)
         ***REMOVED***
@@ -80,7 +89,7 @@ else
             await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentDisplayQuestion.UserAnswerId);
     ***REMOVED***
 ***REMOVED***
-    private async void CapNhatDiem()
+    private async Task CapNhatDiem()
     ***REMOVED***
         (decimal score, int numOfRight) = questions.GetScore();
         await repository.CapNhatDiem(questions.UserExamId, numOfRight, score);
@@ -93,7 +102,7 @@ else
         timer.Elapsed += OnTimedEvent;
         timer.Enabled = true;
 ***REMOVED***
-    private void OnTimedEvent(Object source, ElapsedEventArgs e)
+    private async void OnTimedEvent(Object source, ElapsedEventArgs e)
     ***REMOVED***
         if (RemainSecondToDoExam > 0)
         ***REMOVED***
@@ -101,7 +110,7 @@ else
             RemainTime = $"***REMOVED***RemainSecondToDoExam / 60***REMOVED*** phút:***REMOVED***RemainSecondToDoExam % 60***REMOVED*** giây ";
             // Note that the following line is necessary because otherwise
             // Blazor would not recognize the state change and not refresh the UI
-            InvokeAsync(() =>
+            await InvokeAsync(() =>
             ***REMOVED***
 
                 StateHasChanged();
@@ -110,7 +119,7 @@ else
         else
         ***REMOVED***
             timer.Stop();
-            CapNhatDiem();
+            await CapNhatDiem();
             NavigateToResultPage();
 
     ***REMOVED***
