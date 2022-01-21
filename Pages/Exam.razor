@@ -1,11 +1,10 @@
-﻿@page "/exam/***REMOVED***userid:int***REMOVED***/***REMOVED***examid:int***REMOVED***"
+﻿@page "/exam/***REMOVED***userid:int***REMOVED***/***REMOVED***examid:int***REMOVED***/***REMOVED***examname***REMOVED***"
 @implements IDisposable
 @using BlazorVNPTQuiz.Models
 @using BlazorVNPTQuiz.Repository
 @using System.Timers;
 @inject IRepository repository;
 @inject NavigationManager navigationManager
-<h3>@RemainTime</h3>
 
 
 @if (questions == null)
@@ -14,11 +13,20 @@
 
     <h2>loading</h2>
 ***REMOVED***
-else if (questions.UserExamId == 0) ***REMOVED*** <h4>Hết lượt thi hoặc bài thi bị khoá</h4> ***REMOVED***
+else if (questions.UserExamId == 0)
+***REMOVED*** <h4>Hết lượt thi hoặc bài thi bị khoá</h4> ***REMOVED***
 else
 ***REMOVED***
+    <div class="container">
+        <div class="row">
+            <div class="col-6"><strong> @ExamName </strong></div>
+            <div class="col-4"> <span style="color:red">@RemainTime</span></div>
+            <div class="col-2"><button @onclick="Submit" class="btn-success"> Nộp Bài</button></div>
 
-    <h4>  @CurrentDisplayQuestion.QuestionText </h4>
+        </div>
+    </div>
+
+    <h4> @(CurrentIndex+1). @CurrentDisplayQuestion.QuestionText </h4>
 
     <EditForm Model="CurrentDisplayQuestion">
         <div>
@@ -37,14 +45,18 @@ else
         </div>
     </EditForm>
 
-    <button @onclick="MoveNext" class="btn-success">Next</button> <button @onclick="Submit" class="btn-primary"> Nộp Bài</button>
+    <button @onclick="MovePrev" class="btn-primary">Trước</button>
+    <button @onclick="MoveNext" class="btn-primary">Tiếp</button>
+
 ***REMOVED***
 
 @code ***REMOVED***
     [Parameter]
-    public int UserId***REMOVED*** get; set; ***REMOVED***
+    public string ExamName ***REMOVED*** get; set; ***REMOVED***
     [Parameter]
-    public int ExamId***REMOVED*** get; set; ***REMOVED***
+    public int UserId ***REMOVED*** get; set; ***REMOVED***
+    [Parameter]
+    public int ExamId ***REMOVED*** get; set; ***REMOVED***
 
     private QuestionUserExam questions;
     int CurrentIndex = 0;
@@ -70,8 +82,16 @@ else
     ***REMOVED***
         await CapNhatCauTraLoi();
 
-        CurrentIndex++;
-        CurrentDisplayQuestion = questions.Questions[CurrentIndex % questions.Questions.Count];
+        CurrentIndex = (CurrentIndex + 1) % questions.Questions.Count;
+        CurrentDisplayQuestion = questions.Questions[CurrentIndex];
+
+***REMOVED***
+    public async void MovePrev()
+    ***REMOVED***
+        await CapNhatCauTraLoi();
+
+        CurrentIndex = (CurrentIndex - 1 + questions.Questions.Count) % questions.Questions.Count;
+        CurrentDisplayQuestion = questions.Questions[CurrentIndex];
 
 ***REMOVED***
     public async void Submit()
