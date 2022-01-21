@@ -5,7 +5,7 @@
 @using System.Timers;
 @inject IRepository repository;
 @inject NavigationManager navigationManager
-<h3>Exam @RemainTime</h3>
+<h3>@RemainTime</h3>
 
 
 @if (questions == null)
@@ -34,7 +34,7 @@ else
         </InputRadioGroup>
     </EditForm>
 
-    <button @onclick="MoveNext">Next</button>
+    <button @onclick="MoveNext" class="btn-success">Next</button> <button @onclick="Submit" class="btn-primary"> Nộp Bài</button>
 }
 
 @code {
@@ -63,16 +63,25 @@ else
 
     }
 
-    public void MoveNext()
+    public async void MoveNext()
     {
-        CapNhatCauTraLoi();
+        await CapNhatCauTraLoi();
 
         CurrentIndex++;
         CurrentDisplayQuestion = questions.Questions[CurrentIndex % questions.Questions.Count];
 
     }
+    public async void Submit()
+    {
+        timer.Stop();
+        await CapNhatCauTraLoi();
+        await CapNhatDiem();
+        NavigateToResultPage();
 
-    private async void CapNhatCauTraLoi()
+    }
+
+
+    private async Task CapNhatCauTraLoi()
     {
         if (CurrentDisplayQuestion.UserAnswerId > 0)
         {
@@ -80,7 +89,7 @@ else
             await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentDisplayQuestion.UserAnswerId);
         }
     }
-    private async void CapNhatDiem()
+    private async Task CapNhatDiem()
     {
         (decimal score, int numOfRight) = questions.GetScore();
         await repository.CapNhatDiem(questions.UserExamId, numOfRight, score);
@@ -93,7 +102,7 @@ else
         timer.Elapsed += OnTimedEvent;
         timer.Enabled = true;
     }
-    private void OnTimedEvent(Object source, ElapsedEventArgs e)
+    private async void OnTimedEvent(Object source, ElapsedEventArgs e)
     {
         if (RemainSecondToDoExam > 0)
         {
@@ -101,7 +110,7 @@ else
             RemainTime = $"{RemainSecondToDoExam / 60} phút:{RemainSecondToDoExam % 60} giây ";
             // Note that the following line is necessary because otherwise
             // Blazor would not recognize the state change and not refresh the UI
-            InvokeAsync(() =>
+            await InvokeAsync(() =>
             {
 
                 StateHasChanged();
@@ -110,7 +119,7 @@ else
         else
         {
             timer.Stop();
-            CapNhatDiem();
+            await CapNhatDiem();
             NavigateToResultPage();
 
         }
