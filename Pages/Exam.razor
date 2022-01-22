@@ -11,42 +11,44 @@
 {
 
 
-    <h2>loading</h2>
+<h2>loading</h2>
 }
 else if (questions.UserExamId == 0)
 { <h4>Hết lượt thi hoặc bài thi bị khoá</h4> }
 else
 {
-    <div class="container">
-        <div class="row">
-            <div class="col-6"><strong> @ExamName </strong></div>
-            <div class="col-4"> <span style="color:red">@RemainTime</span></div>
-            <div class="col-2"><button @onclick="Submit" class="btn-success"> Nộp Bài</button></div>
+<div class="container">
+    <div class="row">
+        <div class="col-6"><strong> @ExamName </strong></div>
+        <div class="col-4"> <span style="color:red">@RemainTime</span></div>
+        <div class="col-2"><button @onclick="Submit" class="btn-success"> Nộp Bài</button></div>
 
-        </div>
     </div>
+</div>
 
-    <h4> @(CurrentIndex+1). @CurrentDisplayQuestion.QuestionText </h4>
+<div style="border:1px dashed blue; border-radius:12px">
+    <h5> @(CurrentIndex+1). @CurrentDisplayQuestion.QuestionText </h5>
+
 
     <EditForm Model="CurrentDisplayQuestion">
-        <div>
-            <InputRadioGroup @bind-Value="CurrentDisplayQuestion.UserAnswerId">
-                @foreach (var answer in CurrentDisplayQuestion.Answers)
+
+        <InputRadioGroup @bind-Value="CurrentDisplayQuestion.UserAnswerId">
+            @foreach (var answer in CurrentDisplayQuestion.Answers)
                     {
 
 
-                    @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
+            @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
                         {
-                        <InputRadio Value="answer.AnswerId" /> @answer.AnswerText <br />
+            <InputRadio Value="answer.AnswerId" />  @answer.AnswerText  <br />
                         }
 
                     }
-            </InputRadioGroup>
-        </div>
-    </EditForm>
+        </InputRadioGroup>
 
-    <button @onclick="MovePrev" class="btn-primary">Trước</button>
-    <button @onclick="MoveNext" class="btn-primary">Tiếp</button>
+    </EditForm>
+</div>
+<button @onclick="MovePrev" class="btn-primary">Trước</button>
+<button @onclick="MoveNext" class="btn-primary">Tiếp</button>
 
 }
 
@@ -149,7 +151,7 @@ else
     }
     public void NavigateToResultPage()
     {
-        navigationManager.NavigateTo($"/ExamResult/{questions.UserExamId}");
+        navigationManager.NavigateTo($"ExamResult/{questions.UserExamId}");
     }
 
     public void Dispose()
