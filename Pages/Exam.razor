@@ -5,52 +5,81 @@
 @using System.Timers;
 @inject IRepository repository;
 @inject NavigationManager navigationManager
-
+@inject ILogger<LoginModel> _logger
 
 @if (questions == null)
 ***REMOVED***
 
 
-<h2>loading</h2>
+    <h2>loading</h2>
 ***REMOVED***
 else if (questions.UserExamId == 0)
 ***REMOVED*** <h4>Hết lượt thi hoặc bài thi bị khoá</h4> ***REMOVED***
 else
 ***REMOVED***
-<div class="container">
-    <div class="row">
-        <div class="col-6"><strong> @ExamName </strong></div>
-        <div class="col-4"> <span style="color:red">@RemainTime</span></div>
-        <div class="col-2"><button @onclick="Submit" class="btn-success"> Nộp Bài</button></div>
+    @if (kieu == 0)
+    ***REMOVED***
+        <div class="container">
+            <div class="row">
+                <div class="col-6"><strong> @ExamName </strong></div>
+                <div class="col-4"> <span style="color:red">@RemainTime</span></div>
+                <div class="col-2"><button @onclick="Submit" class="btn-success" style="border-radius:4px"> Nộp Bài</button></div>
 
-    </div>
-    
-</div>
+            </div>
+            <div class="row"></div>
 
-<div style="border:1px dashed blue; border-radius:12px">
-    <h5> @(CurrentIndex+1). @CurrentDisplayQuestion.QuestionText </h5>
+            @for (var index = 0; index < questions.Questions.Count; index++)
+            ***REMOVED***
+                var question = questions.Questions[index];
+                <div class="row">
+                    <div class="col" style="border:1px dashed blue; border-radius:24px; color:cadetblue">
+                        <b>@(index+1). @question.QuestionText</b>
+                        <EditForm Model="question">
+                            <InputRadioGroup @bind-Value="question.UserAnswerId">
+                                @foreach (var answer in question.Answers)
+                                            ***REMOVED***
 
 
-    <EditForm Model="CurrentDisplayQuestion">
+                                    @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
+                                                ***REMOVED***
+                                        <InputRadio Value="answer.AnswerId" /> @answer.AnswerText <br />
+                                            ***REMOVED***
 
-        <InputRadioGroup @bind-Value="CurrentDisplayQuestion.UserAnswerId">
-            @foreach (var answer in CurrentDisplayQuestion.Answers)
-                    ***REMOVED***
+                                        ***REMOVED***
+                            </InputRadioGroup>
+                        </EditForm>
+                    </div>
+                </div><br />
+
+        ***REMOVED***
+        </div> ***REMOVED***
+    else
+    ***REMOVED***
+        <div style="border:1px dashed blue; border-radius:12px">
+            <h5> @(CurrentIndex + 1). @CurrentDisplayQuestion.QuestionText </h5>
 
 
-            @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
+            <EditForm Model="CurrentDisplayQuestion">
+
+                <InputRadioGroup @bind-Value="CurrentDisplayQuestion.UserAnswerId">
+                    @foreach (var answer in CurrentDisplayQuestion.Answers)
+                            ***REMOVED***
+
+
+                        @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
+                                ***REMOVED***
+                            <InputRadio Value="answer.AnswerId" /> @answer.AnswerText <br />
+                            ***REMOVED***
+
                         ***REMOVED***
-            <InputRadio Value="answer.AnswerId" />  @answer.AnswerText  <br />
-                    ***REMOVED***
+                </InputRadioGroup>
 
-                ***REMOVED***
-        </InputRadioGroup>
+            </EditForm>
+        </div>
+        <button @onclick="MovePrev" class="btn-primary">Trước</button>
+        <button @onclick="MoveNext" class="btn-primary">Tiếp</button>
 
-    </EditForm>
-</div>
-<button @onclick="MovePrev" class="btn-primary">Trước</button>
-<button @onclick="MoveNext" class="btn-primary">Tiếp</button>
-
+***REMOVED***
 ***REMOVED***
 
 @code ***REMOVED***
@@ -60,6 +89,9 @@ else
     public int UserId ***REMOVED*** get; set; ***REMOVED***
     [Parameter]
     public int ExamId ***REMOVED*** get; set; ***REMOVED***
+
+    private int kieu = 0; // 0 : danh sach cau hoi  1: tung cau hoi.
+    private int CountToSync = 0;
 
     private QuestionUserExam questions;
     int CurrentIndex = 0;
@@ -109,12 +141,24 @@ else
 
     private async Task CapNhatCauTraLoi()
     ***REMOVED***
-        if (CurrentDisplayQuestion.UserAnswerId > 0)
-        ***REMOVED***
+        //if (CurrentDisplayQuestion.UserAnswerId > 0)
+        //***REMOVED***
 
-            await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentDisplayQuestion.UserAnswerId);
+        //    await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentDisplayQuestion.UserAnswerId);
+        //***REMOVED***
+        foreach (var question in questions.Questions)
+        ***REMOVED***
+            if (!question.IsSyncUserAnswer && question.UserAnswerId > 0)
+            ***REMOVED***
+                await repository.CapNhatCauTraLoi(question.ExamQuestionId, question.UserAnswerId);
+                question.IsSyncUserAnswer = true;
+                _logger.LogInformation($"update ExamQuestionId : ***REMOVED***question.ExamQuestionId***REMOVED***, UserAnswerId:***REMOVED***question.UserAnswerId***REMOVED***");
+        ***REMOVED***
     ***REMOVED***
+
 ***REMOVED***
+
+
     private async Task CapNhatDiem()
     ***REMOVED***
         (decimal score, int numOfRight) = questions.GetScore();
@@ -128,10 +172,11 @@ else
         timer.Elapsed += OnTimedEvent;
         timer.Enabled = true;
 ***REMOVED***
-    private  void OnTimedEvent(Object source, ElapsedEventArgs e)
+    private void OnTimedEvent(Object source, ElapsedEventArgs e)
     ***REMOVED***
         if (RemainSecondToDoExam > 0)
         ***REMOVED***
+            CountToSync++;
             RemainSecondToDoExam--;
             RemainTime = $"***REMOVED***RemainSecondToDoExam / 60***REMOVED*** phút:***REMOVED***RemainSecondToDoExam % 60***REMOVED*** giây ";
             // Note that the following line is necessary because otherwise
@@ -141,6 +186,11 @@ else
 
                 StateHasChanged();
         ***REMOVED***);
+            if (CountToSync % 10 == 0)
+            ***REMOVED***
+                CapNhatCauTraLoi();
+        ***REMOVED***
+
     ***REMOVED***
         else
         ***REMOVED***

@@ -47,11 +47,19 @@ namespace BlazorVNPTQuiz.Models
 
     public class QuestionDAO
     ***REMOVED***
+        public bool IsSyncUserAnswer ***REMOVED*** get; set; ***REMOVED***
         public int ExamQuestionId ***REMOVED*** get; set; ***REMOVED***
         public int QuestionId ***REMOVED*** get; set; ***REMOVED***
         public string QuestionText ***REMOVED*** get; set; ***REMOVED***
         public List<AnswerDAO> Answers ***REMOVED*** get; set; ***REMOVED***
-        public int UserAnswerId ***REMOVED*** get; set; ***REMOVED***
+        private int _userAnswerId;
+        public int UserAnswerId ***REMOVED*** get => _userAnswerId; set***REMOVED***
+                if(value != _userAnswerId)
+                ***REMOVED***
+                    IsSyncUserAnswer = false;
+                    _userAnswerId = value;
+            ***REMOVED***
+        ***REMOVED*** ***REMOVED***
 
         public void AddAnswer(AnswerDAO answerDAO)
         ***REMOVED***
@@ -59,6 +67,8 @@ namespace BlazorVNPTQuiz.Models
                 Answers = new List<AnswerDAO>();
             Answers.Add(answerDAO);
     ***REMOVED***
+
+       
 
 
 ***REMOVED***
