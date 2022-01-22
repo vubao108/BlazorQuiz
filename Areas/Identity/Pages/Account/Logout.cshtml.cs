@@ -36,7 +36,7 @@ namespace BlazorVNPTQuiz.Areas.Identity.Pages.Account
         ***REMOVED***
             else
             ***REMOVED***
-                return RedirectToPage();
+                return RedirectToPage("Login");
         ***REMOVED***
     ***REMOVED***
 ***REMOVED***
