@@ -22,7 +22,10 @@
 
     public void StartBaiThi()
     ***REMOVED***
-        NavManager.NavigateTo($"exam/***REMOVED***UserId***REMOVED***/***REMOVED***ExamItem.ExamId***REMOVED***/***REMOVED***ExamItem.ExamName***REMOVED***");
+        //string absulateUri = NavManager.ToBaseRelativePath();
+        Uri absUri = NavManager.ToAbsoluteUri($"exam/***REMOVED***UserId***REMOVED***/***REMOVED***ExamItem.ExamId***REMOVED***/***REMOVED***ExamItem.ExamName***REMOVED***");
+        NavManager.NavigateTo(absUri.ToString());
+
 ***REMOVED***
 
 ***REMOVED***
