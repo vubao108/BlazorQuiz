@@ -5,52 +5,81 @@
 @using System.Timers;
 @inject IRepository repository;
 @inject NavigationManager navigationManager
-
+@inject ILogger<LoginModel> _logger
 
 @if (questions == null)
 {
 
 
-<h2>loading</h2>
+    <h2>loading</h2>
 }
 else if (questions.UserExamId == 0)
 { <h4>Hết lượt thi hoặc bài thi bị khoá</h4> }
 else
 {
-<div class="container">
-    <div class="row">
-        <div class="col-6"><strong> @ExamName </strong></div>
-        <div class="col-4"> <span style="color:red">@RemainTime</span></div>
-        <div class="col-2"><button @onclick="Submit" class="btn-success"> Nộp Bài</button></div>
+    @if (kieu == 0)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-6"><strong> @ExamName </strong></div>
+                <div class="col-4"> <span style="color:red">@RemainTime</span></div>
+                <div class="col-2"><button @onclick="Submit" class="btn-success" style="border-radius:4px"> Nộp Bài</button></div>
 
-    </div>
-    
-</div>
+            </div>
+            <div class="row"></div>
 
-<div style="border:1px dashed blue; border-radius:12px">
-    <h5> @(CurrentIndex+1). @CurrentDisplayQuestion.QuestionText </h5>
+            @for (var index = 0; index < questions.Questions.Count; index++)
+            {
+                var question = questions.Questions[index];
+                <div class="row">
+                    <div class="col" style="border:1px dashed blue; border-radius:24px; color:cadetblue">
+                        <b>@(index+1). @question.QuestionText</b>
+                        <EditForm Model="question">
+                            <InputRadioGroup @bind-Value="question.UserAnswerId">
+                                @foreach (var answer in question.Answers)
+                                            {
 
 
-    <EditForm Model="CurrentDisplayQuestion">
+                                    @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
+                                                {
+                                        <InputRadio Value="answer.AnswerId" /> @answer.AnswerText <br />
+                                                }
 
-        <InputRadioGroup @bind-Value="CurrentDisplayQuestion.UserAnswerId">
-            @foreach (var answer in CurrentDisplayQuestion.Answers)
-                    {
+                                            }
+                            </InputRadioGroup>
+                        </EditForm>
+                    </div>
+                </div><br />
+
+            }
+        </div> }
+    else
+    {
+        <div style="border:1px dashed blue; border-radius:12px">
+            <h5> @(CurrentIndex + 1). @CurrentDisplayQuestion.QuestionText </h5>
 
 
-            @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
-                        {
-            <InputRadio Value="answer.AnswerId" />  @answer.AnswerText  <br />
-                        }
+            <EditForm Model="CurrentDisplayQuestion">
 
-                    }
-        </InputRadioGroup>
+                <InputRadioGroup @bind-Value="CurrentDisplayQuestion.UserAnswerId">
+                    @foreach (var answer in CurrentDisplayQuestion.Answers)
+                            {
 
-    </EditForm>
-</div>
-<button @onclick="MovePrev" class="btn-primary">Trước</button>
-<button @onclick="MoveNext" class="btn-primary">Tiếp</button>
 
+                        @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
+                                {
+                            <InputRadio Value="answer.AnswerId" /> @answer.AnswerText <br />
+                                }
+
+                            }
+                </InputRadioGroup>
+
+            </EditForm>
+        </div>
+        <button @onclick="MovePrev" class="btn-primary">Trước</button>
+        <button @onclick="MoveNext" class="btn-primary">Tiếp</button>
+
+    }
 }
 
 @code {
@@ -60,6 +89,9 @@ else
     public int UserId { get; set; }
     [Parameter]
     public int ExamId { get; set; }
+
+    private int kieu = 0; // 0 : danh sach cau hoi  1: tung cau hoi.
+    private int CountToSync = 0;
 
     private QuestionUserExam questions;
     int CurrentIndex = 0;
@@ -109,12 +141,24 @@ else
 
     private async Task CapNhatCauTraLoi()
     {
-        if (CurrentDisplayQuestion.UserAnswerId > 0)
-        {
+        //if (CurrentDisplayQuestion.UserAnswerId > 0)
+        //{
 
-            await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentDisplayQuestion.UserAnswerId);
+        //    await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentDisplayQuestion.UserAnswerId);
+        //}
+        foreach (var question in questions.Questions)
+        {
+            if (!question.IsSyncUserAnswer && question.UserAnswerId > 0)
+            {
+                await repository.CapNhatCauTraLoi(question.ExamQuestionId, question.UserAnswerId);
+                question.IsSyncUserAnswer = true;
+                _logger.LogInformation($"update ExamQuestionId : {question.ExamQuestionId}, UserAnswerId:{question.UserAnswerId}");
+            }
         }
+
     }
+
+
     private async Task CapNhatDiem()
     {
         (decimal score, int numOfRight) = questions.GetScore();
@@ -128,10 +172,11 @@ else
         timer.Elapsed += OnTimedEvent;
         timer.Enabled = true;
     }
-    private  void OnTimedEvent(Object source, ElapsedEventArgs e)
+    private void OnTimedEvent(Object source, ElapsedEventArgs e)
     {
         if (RemainSecondToDoExam > 0)
         {
+            CountToSync++;
             RemainSecondToDoExam--;
             RemainTime = $"{RemainSecondToDoExam / 60} phút:{RemainSecondToDoExam % 60} giây ";
             // Note that the following line is necessary because otherwise
@@ -141,6 +186,11 @@ else
 
                 StateHasChanged();
             });
+            if (CountToSync % 10 == 0)
+            {
+                CapNhatCauTraLoi();
+            }
+
         }
         else
         {
