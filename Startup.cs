@@ -42,6 +42,7 @@ namespace BlazorVNPTQuiz
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+           
             services.AddRazorPages();
             services.Configure<ForwardedHeadersOptions>(options =>
             ***REMOVED***
@@ -56,7 +57,7 @@ namespace BlazorVNPTQuiz
             
             
             services.AddScoped<IRepository, MySqlRepository>();
-            
+           
 
 
     ***REMOVED***
@@ -64,7 +65,7 @@ namespace BlazorVNPTQuiz
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         ***REMOVED***
-           
+            
             if (env.IsDevelopment())
             ***REMOVED***
                 app.UseDeveloperExceptionPage();

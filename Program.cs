@@ -18,8 +18,14 @@ namespace BlazorVNPTQuiz
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+             //.ConfigureLogging(logging =>
+             //***REMOVED***
+             //    logging.ClearProviders();
+             //    logging.AddConsole();
+             //***REMOVED***)
                 .ConfigureWebHostDefaults(webBuilder =>
                 ***REMOVED***
+                   
                     webBuilder.UseStartup<Startup>();
             ***REMOVED***);
 ***REMOVED***
