@@ -24,6 +24,7 @@ else
         <div class="col-2"><button @onclick="Submit" class="btn-success"> Nộp Bài</button></div>
 
     </div>
+    
 </div>
 
 <div style="border:1px dashed blue; border-radius:12px">
@@ -100,7 +101,7 @@ else
     {
         timer.Stop();
         await CapNhatCauTraLoi();
-        await CapNhatDiem();
+        //await CapNhatDiem();
         NavigateToResultPage();
 
     }
@@ -127,7 +128,7 @@ else
         timer.Elapsed += OnTimedEvent;
         timer.Enabled = true;
     }
-    private async void OnTimedEvent(Object source, ElapsedEventArgs e)
+    private  void OnTimedEvent(Object source, ElapsedEventArgs e)
     {
         if (RemainSecondToDoExam > 0)
         {
@@ -135,7 +136,7 @@ else
             RemainTime = $"{RemainSecondToDoExam / 60} phút:{RemainSecondToDoExam % 60} giây ";
             // Note that the following line is necessary because otherwise
             // Blazor would not recognize the state change and not refresh the UI
-            await InvokeAsync(() =>
+            InvokeAsync(() =>
             {
 
                 StateHasChanged();
@@ -144,13 +145,17 @@ else
         else
         {
             timer.Stop();
-            await CapNhatDiem();
+
+
+
+
             NavigateToResultPage();
 
         }
     }
-    public void NavigateToResultPage()
+    public async void NavigateToResultPage()
     {
+        await CapNhatDiem();
         navigationManager.NavigateTo($"ExamResult/{questions.UserExamId}");
     }
 
