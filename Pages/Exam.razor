@@ -3,9 +3,9 @@
 @using BlazorVNPTQuiz.Models
 @using BlazorVNPTQuiz.Repository
 @using System.Timers;
+
 @inject IRepository repository;
 @inject NavigationManager navigationManager
-@inject ILogger<LoginModel> _logger
 
 @if (questions == null)
 {
@@ -152,7 +152,7 @@ else
             {
                 await repository.CapNhatCauTraLoi(question.ExamQuestionId, question.UserAnswerId);
                 question.IsSyncUserAnswer = true;
-                _logger.LogInformation($"update ExamQuestionId : {question.ExamQuestionId}, UserAnswerId:{question.UserAnswerId}");
+                //_logger.LogInformation($"update ExamQuestionId : {question.ExamQuestionId}, UserAnswerId:{question.UserAnswerId}");
             }
         }
 
