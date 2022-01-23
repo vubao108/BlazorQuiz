@@ -57,11 +57,11 @@
         ***REMOVED***
             var returnUrl = navManager.ToBaseRelativePath(navManager.Uri);
             if (string.IsNullOrWhiteSpace(returnUrl))***REMOVED***
-                navManager.NavigateTo("/Identity/Account/Login", true);
+                navManager.NavigateTo("Identity/Account/Login", true);
         ***REMOVED***
             else
             ***REMOVED***
-                navManager.NavigateTo($"/Identity/Account/Login?returnUrl=~/***REMOVED***returnUrl***REMOVED***", true);
+                navManager.NavigateTo($"Identity/Account/Login?returnUrl=~/***REMOVED***returnUrl***REMOVED***", true);
         ***REMOVED***
             //navManager.NavigateTo("Identity/Account/Login?returnUrl=~/listexam");
 
