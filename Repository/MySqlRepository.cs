@@ -30,6 +30,7 @@ namespace BlazorVNPTQuiz.Repository
             ***REMOVED***
         ***REMOVED***
     ***REMOVED***
+       
 
         public async Task<QuestionUserExam> LayDanhSachCauHoi(int user_id, int exam_id)
         ***REMOVED***

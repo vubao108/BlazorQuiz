@@ -42,8 +42,11 @@ else
 
                                     @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
                                                 ***REMOVED***
-                                        <InputRadio Value="answer.AnswerId" /> @answer.AnswerText <br />
-                                            ***REMOVED***
+                                <label>
+                                    <InputRadio Value="answer.AnswerId" @onclick="OnAnswerClick" /> @answer.AnswerText
+                                </label><br />
+                              
+                            ***REMOVED***
 
                                         ***REMOVED***
                             </InputRadioGroup>
@@ -68,7 +71,7 @@ else
 
                         @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
                                 ***REMOVED***
-                            <InputRadio Value="answer.AnswerId" /> @answer.AnswerText <br />
+                            <InputRadio Value="answer.AnswerId" @onclick="OnAnswerClick"/> @answer.AnswerText <br />
                             ***REMOVED***
 
                         ***REMOVED***
@@ -100,6 +103,11 @@ else
     String RemainTime;
     int RemainSecondToDoExam;
     Timer timer;
+
+    private void OnAnswerClick()
+        ***REMOVED***
+
+    ***REMOVED***
     protected override async Task OnInitializedAsync()
     ***REMOVED***
         questions = await repository.LayDanhSachCauHoi(UserId, ExamId);
