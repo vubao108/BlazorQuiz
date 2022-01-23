@@ -24,21 +24,22 @@ else
 {
     @if (kieu == 0)
     {
-        <div class="container">
+        
             <div class="row">
                 <div class="col-12 col-md-6"><strong> @ExamName </strong></div>
                 <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>
                 <div class="col-6 col-md-2"><button @onclick="Submit" class="btn-success" style="border-radius:4px"> Nộp Bài</button></div>
 
             </div>
-            <div class="row"></div>
+            
 
             @for (var index = 0; index < questions.Questions.Count; index++)
             {
                 var question = questions.Questions[index];
-                <div class="row">
-                    <div class="col" style="border:1px dashed blue; border-radius:24px; color:cadetblue">
-                        <b>@(index+1). @question.QuestionText</b>
+                <div class="card bg-light text-dark">
+                    
+                        <div class="card-body">
+                            <span class="card-text">@(index+1). @question.QuestionText</span>
                         <EditForm Model="question">
                             <InputRadioGroup @bind-Value="question.UserAnswerId">
                                 @foreach (var answer in question.Answers)
@@ -58,9 +59,10 @@ else
                         </EditForm>
                     </div>
                 </div><br />
+                
 
             }
-        </div> }
+         }
     else
     {
         <div style="border:1px dashed blue; border-radius:12px">
