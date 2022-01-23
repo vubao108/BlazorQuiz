@@ -49,9 +49,10 @@ namespace BlazorVNPTQuiz.Areas.Identity.Pages.Account
 
             [Required]
             [DataType(DataType.Password)]
+            [Display(Name = "Mật khẩu")]
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Lưu thông tin đăng nhập?")]
             public bool RememberMe { get; set; }
         }
 
