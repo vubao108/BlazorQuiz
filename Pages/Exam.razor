@@ -1,11 +1,16 @@
 ﻿@page "/exam/{userid:int}/{examid:int}/{examname}"
+@attribute [Authorize(Roles = "CanJoinExam")]
 @implements IDisposable
 @using BlazorVNPTQuiz.Models
 @using BlazorVNPTQuiz.Repository
 @using System.Timers;
+@using Microsoft.Extensions.Configuration;
+
 
 @inject IRepository repository;
-@inject NavigationManager navigationManager
+@inject NavigationManager navigationManager;
+@inject IConfiguration configuration;
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 @if (questions == null)
 {
@@ -21,9 +26,9 @@ else
     {
         <div class="container">
             <div class="row">
-                <div class="col-6"><strong> @ExamName </strong></div>
-                <div class="col-4"> <span style="color:red">@RemainTime</span></div>
-                <div class="col-2"><button @onclick="Submit" class="btn-success" style="border-radius:4px"> Nộp Bài</button></div>
+                <div class="col-12 col-md-6"><strong> @ExamName </strong></div>
+                <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>
+                <div class="col-6 col-md-2"><button @onclick="Submit" class="btn-success" style="border-radius:4px"> Nộp Bài</button></div>
 
             </div>
             <div class="row"></div>
@@ -42,11 +47,11 @@ else
 
                                     @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
                                                 {
-                                <label>
-                                    <InputRadio Value="answer.AnswerId" @onclick="OnAnswerClick" /> @answer.AnswerText
-                                </label><br />
-                              
-                                }
+                                        <label>
+                                            <InputRadio Value="answer.AnswerId" @onclick="OnAnswerClick" /> @answer.AnswerText
+                                        </label><br />
+
+                                                }
 
                                             }
                             </InputRadioGroup>
@@ -71,7 +76,7 @@ else
 
                         @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
                                 {
-                            <InputRadio Value="answer.AnswerId" @onclick="OnAnswerClick"/> @answer.AnswerText <br />
+                            <InputRadio Value="answer.AnswerId" @onclick="OnAnswerClick" /> @answer.AnswerText <br />
                                 }
 
                             }
@@ -93,8 +98,11 @@ else
     [Parameter]
     public int ExamId { get; set; }
 
+    private ClaimsPrincipal User;
+
     private int kieu = 0; // 0 : danh sach cau hoi  1: tung cau hoi.
     private int CountToSync = 0;
+    private int SyncInterval;
 
     private QuestionUserExam questions;
     int CurrentIndex = 0;
@@ -105,11 +113,18 @@ else
     Timer timer;
 
     private void OnAnswerClick()
-        {
+    {
 
-        }
+    }
     protected override async Task OnInitializedAsync()
     {
+        var authState = await AuthenticationStateProvider
+           .GetAuthenticationStateAsync();
+
+        User = authState.User;
+        
+        
+
         questions = await repository.LayDanhSachCauHoi(UserId, ExamId);
         if (questions.UserExamId == 0)
             return;
@@ -117,6 +132,7 @@ else
         CurrentDisplayQuestion = questions.Questions[CurrentIndex];
         RemainSecondToDoExam = questions.RemainSeCond;
         RemainTime = $"{RemainSecondToDoExam / 60} phút:{RemainSecondToDoExam % 60} giây ";
+        SyncInterval = Convert.ToInt32(configuration.GetSection("SyncSetting")["SecondInterval"]);
         StartCountdown();
 
     }
