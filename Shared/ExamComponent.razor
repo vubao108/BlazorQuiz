@@ -3,14 +3,16 @@
 
 @inject NavigationManager NavManager
 
-<div>
-    <b>@ExamItem.ExamName</b><br />
-    Số câu: @ExamItem.NumOfQuestion<br />
-    Thời gian làm bài: @(ExamItem.Duration/60) phút<br />
-    Số lần thi tối đa: @ExamItem.MaxTry lần<br />
-    
-    <button @onclick="StartBaiThi" class="btn-success">Vào thi</button>
-
+<div class="card bg-light text-dark" >
+    <div class="card-header"><b>@ExamItem.ExamName</b></div>
+    <div class="card-body">
+        Số câu: @ExamItem.NumOfQuestion<br />
+        Thời gian làm bài: @(ExamItem.Duration/60) phút<br />
+        Số lần thi tối đa: @ExamItem.MaxTry lần<br />
+    </div>
+    <div class="card-footer">
+        <button @onclick="StartBaiThi" class="btn-success">Vào thi</button>
+    </div>
 
 
 </div>
