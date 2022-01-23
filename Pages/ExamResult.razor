@@ -10,12 +10,19 @@
  ***REMOVED***
 else
 ***REMOVED***
-    <h4 style="font-weight:bold"><i>@CurrentKetQuaBaiThi.Exam.ExamName</i></h4>
-    <h4>@CurrentKetQuaBaiThi.User.FullName</h4>
-    <h4>Lần thi: @CurrentKetQuaBaiThi.TryNum</h4>
-    <h4>Tỉ lệ đúng: @CurrentKetQuaBaiThi.NumOfRight / @CurrentKetQuaBaiThi.Exam.NumOfQuestion</h4>
-    <h4 style="color:red">Điểm số: @CurrentKetQuaBaiThi.Score</h4>
-    <h4>Thời gian làm bài : @TimeToFinish.Hours giờ : @TimeToFinish.Minutes phút : @TimeToFinish.Seconds giây</h4>
+<div class="card bg-light text-dark">
+    <div class="card-header"><b>@CurrentKetQuaBaiThi.Exam.ExamName </b></div>
+    <div class="card-body">
+        @CurrentKetQuaBaiThi.User.FullName<br />
+        Lần thi: @CurrentKetQuaBaiThi.TryNum<br />
+        Tỉ lệ đúng: @CurrentKetQuaBaiThi.NumOfRight / @CurrentKetQuaBaiThi.Exam.NumOfQuestion <br />
+
+        Thời gian làm bài : @TimeToFinish.Hours giờ : @TimeToFinish.Minutes phút : @TimeToFinish.Seconds giây
+        </div>
+    <div class="card-footer">
+        <span style="color:red">Điểm số: @CurrentKetQuaBaiThi.Score</span>
+    </div>
+</div>
     
 ***REMOVED***
 
