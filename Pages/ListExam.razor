@@ -57,11 +57,11 @@
         {
             var returnUrl = navManager.ToBaseRelativePath(navManager.Uri);
             if (string.IsNullOrWhiteSpace(returnUrl)){
-                navManager.NavigateTo("/Identity/Account/Login", true);
+                navManager.NavigateTo("Identity/Account/Login", true);
             }
             else
             {
-                navManager.NavigateTo($"/Identity/Account/Login?returnUrl=~/{returnUrl}", true);
+                navManager.NavigateTo($"Identity/Account/Login?returnUrl=~/{returnUrl}", true);
             }
             //navManager.NavigateTo("Identity/Account/Login?returnUrl=~/listexam");
 
