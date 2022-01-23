@@ -13,6 +13,7 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject AppState AppState;
 
+
 @if (questions == null)
 ***REMOVED***
 
@@ -136,6 +137,11 @@ else
            .GetAuthenticationStateAsync();
 
         User = authState.User;
+        if (!User.Identity.IsAuthenticated)
+        ***REMOVED***
+            navigationManager.NavigateTo("/Account/Identity/Login", true);
+            return;
+    ***REMOVED***
 
 
         AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
