@@ -2,8 +2,9 @@
 @using BlazorVNPTQuiz.Models;
 
 @inject NavigationManager NavManager
-
-<div class="card bg-light text-dark" >
+@inject AppState AppState;
+@implements IDisposable;
+<div class="card bg-light text-dark">
     <div class="card-header"><b>@ExamItem.ExamName</b></div>
     <div class="card-body">
         Số câu: @ExamItem.NumOfQuestion<br />
@@ -25,9 +26,28 @@
     public void StartBaiThi()
     {
         //string absulateUri = NavManager.ToBaseRelativePath();
-        Uri absUri = NavManager.ToAbsoluteUri($"exam/{UserId}/{ExamItem.ExamId}/test");//{ExamItem.ExamName}");
+        AppState.UpdateSelectedExam(this, ExamItem);
+        Uri absUri = NavManager.ToAbsoluteUri($"exam/{UserId}/{ExamItem.ExamId}");//{ExamItem.ExamName}");
         NavManager.NavigateTo(absUri.ToString());
 
+    }
+
+    private async Task AppState_StateChanged(ComponentBase Source, string Property)
+    {
+        if (Source != this)
+        {
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
+    }
+
+    void IDisposable.Dispose()
+    {
+        AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
     }
 
 }
