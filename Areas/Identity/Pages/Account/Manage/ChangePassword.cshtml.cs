@@ -81,6 +81,7 @@ namespace BlazorVNPTQuiz.Areas.Identity.Pages.Account.Manage
         ***REMOVED***
 
             var changePasswordResult = await _userManager.ChangePasswordAsync(user, Input.OldPassword, Input.NewPassword);
+
             if (!changePasswordResult.Succeeded)
             ***REMOVED***
                 foreach (var error in changePasswordResult.Errors)
