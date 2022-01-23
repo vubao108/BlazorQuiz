@@ -2,8 +2,9 @@
 @using BlazorVNPTQuiz.Models;
 
 @inject NavigationManager NavManager
-
-<div class="card bg-light text-dark" >
+@inject AppState AppState;
+@implements IDisposable;
+<div class="card bg-light text-dark">
     <div class="card-header"><b>@ExamItem.ExamName</b></div>
     <div class="card-body">
         Số câu: @ExamItem.NumOfQuestion<br />
@@ -25,9 +26,28 @@
     public void StartBaiThi()
     ***REMOVED***
         //string absulateUri = NavManager.ToBaseRelativePath();
-        Uri absUri = NavManager.ToAbsoluteUri($"exam/***REMOVED***UserId***REMOVED***/***REMOVED***ExamItem.ExamId***REMOVED***/test");//***REMOVED***ExamItem.ExamName***REMOVED***");
+        AppState.UpdateSelectedExam(this, ExamItem);
+        Uri absUri = NavManager.ToAbsoluteUri($"exam/***REMOVED***UserId***REMOVED***/***REMOVED***ExamItem.ExamId***REMOVED***");//***REMOVED***ExamItem.ExamName***REMOVED***");
         NavManager.NavigateTo(absUri.ToString());
 
+***REMOVED***
+
+    private async Task AppState_StateChanged(ComponentBase Source, string Property)
+    ***REMOVED***
+        if (Source != this)
+        ***REMOVED***
+            await InvokeAsync(StateHasChanged);
+    ***REMOVED***
+***REMOVED***
+
+    protected override void OnInitialized()
+    ***REMOVED***
+        AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
+***REMOVED***
+
+    void IDisposable.Dispose()
+    ***REMOVED***
+        AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
 ***REMOVED***
 
 ***REMOVED***

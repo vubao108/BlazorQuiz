@@ -171,5 +171,42 @@ namespace BlazorVNPTQuiz.Repository
 
             return examInfos;
     ***REMOVED***
+
+        public async Task<ExamInfo> LayThongTinBaiThi(int examId)
+        ***REMOVED***
+            ExamInfo examInfo = null;
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            ***REMOVED***
+                string sql = $"select * from exam where id = ***REMOVED***examId***REMOVED***";
+                using (var command = new MySqlCommand(sql, connection))
+                ***REMOVED***
+                    await connection.OpenAsync();
+                    using (var reader = await command.ExecuteReaderAsync())
+                    ***REMOVED***
+                        while (await reader.ReadAsync())
+                        ***REMOVED***
+
+                            examInfo = new ExamInfo()
+                            ***REMOVED***
+                                ExamId = reader.GetInt32("id"),
+                                ExamName = reader.GetString("name"),
+                                Duration = reader.GetInt32("duration"),
+                                NumOfQuestion = reader.GetInt32("num_of_question"),
+                                MaxTry = reader.GetInt32("max_try")
+
+                        ***REMOVED***;
+                            
+                    ***REMOVED***
+
+                ***REMOVED***
+
+            ***REMOVED***
+        ***REMOVED***
+            return examInfo;
+
+
+    ***REMOVED***
+
+
 ***REMOVED***
 ***REMOVED***

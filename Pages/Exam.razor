@@ -1,4 +1,4 @@
-﻿@page "/exam/***REMOVED***userid:int***REMOVED***/***REMOVED***examid:int***REMOVED***/***REMOVED***examname***REMOVED***"
+﻿@page "/exam/***REMOVED***userid:int***REMOVED***/***REMOVED***examid:int***REMOVED***"
 @attribute [Authorize(Roles = "CanJoinExam")]
 @implements IDisposable
 @using BlazorVNPTQuiz.Models
@@ -11,6 +11,7 @@
 @inject NavigationManager navigationManager;
 @inject IConfiguration configuration;
 @inject AuthenticationStateProvider AuthenticationStateProvider
+@inject AppState AppState;
 
 @if (questions == null)
 ***REMOVED***
@@ -26,7 +27,7 @@ else
     ***REMOVED***
         
             <div class="row">
-                <div class="col-12 col-md-6"><strong> @ExamName </strong></div>
+                <div class="col-12 col-md-6"><strong> @AppState.SelectedExamInfo.ExamName </strong></div>
                 <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>
                 <div class="col-6 col-md-2">
                     @if (@questions.Questions.Any(question => question.UserAnswerId == 0))
@@ -105,8 +106,7 @@ else
 ***REMOVED***
 
 @code ***REMOVED***
-    [Parameter]
-    public string ExamName ***REMOVED*** get; set; ***REMOVED***
+
     [Parameter]
     public int UserId ***REMOVED*** get; set; ***REMOVED***
     [Parameter]
@@ -136,8 +136,14 @@ else
            .GetAuthenticationStateAsync();
 
         User = authState.User;
-        
-        
+
+
+        AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
+
+        if(AppState.SelectedExamInfo == null)
+        ***REMOVED***
+            AppState.UpdateSelectedExam(this, await repository.LayThongTinBaiThi(ExamId));
+    ***REMOVED***
 
         questions = await repository.LayDanhSachCauHoi(UserId, ExamId);
         if (questions.UserExamId == 0)
@@ -247,8 +253,17 @@ else
         navigationManager.NavigateTo($"ExamResult/***REMOVED***questions.UserExamId***REMOVED***");
 ***REMOVED***
 
+    private async Task AppState_StateChanged(ComponentBase Source, string Property)
+    ***REMOVED***
+        if (Source != this)
+        ***REMOVED***
+            await InvokeAsync(StateHasChanged);
+    ***REMOVED***
+***REMOVED***
+
     public void Dispose()
     ***REMOVED***
+        AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
         timer?.Dispose();
 ***REMOVED***
 
