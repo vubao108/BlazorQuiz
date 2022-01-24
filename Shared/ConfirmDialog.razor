@@ -1,0 +1,19 @@
+﻿<div>
+    <p>@Message</p>
+
+    <button @onclick="Yes" class="btn btn-primary">Yes</button>
+    <button @onclick="Cancel" class="btn btn-secondary">Cancel</button>
+</div>
+
+@code {
+
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
+
+    [Parameter]
+    public String Message{ get; set;}
+    
+
+    async Task Yes() => await BlazoredModal.CloseAsync(ModalResult.Ok(true));
+    async Task Cancel() => await BlazoredModal.CancelAsync();
+
+}

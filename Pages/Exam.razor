@@ -27,33 +27,20 @@ else
     @if (kieu == 0)
     {
 
-        <div class="row">
-            <div class="col-12 col-md-6"><strong> @AppState.SelectedExamInfo.ExamName </strong></div>
-            <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>
-            @*<div class="col-6 col-md-2">*@
-            @*@if (@questions.Questions.Any(question => question.UserAnswerId == 0))
-                {*@
-
-            <!--}-->
-            @*else
-                {
-                    <button @onclick="Submit" class="btn-success floating-button"  >
-                        Nộp Bài
-                    </button>
-                }*@
-            @*</div>*@
-        </div>
-        @if (@questions.Questions.Any(question => question.UserAnswerId == 0))
-        {
-            <button @onclick="Submit" class="btn btn-success floating-button">
+<div class="row">
+    <div class="col-12 col-md-6"><strong> @AppState.SelectedExamInfo.ExamName </strong></div>
+    <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>
+    <div class="col-6 col-md-2">
+    <button @onclick="Submit" class="btn btn-success floating-button">
+            Nộp Bài
+        </button>
+    </div>
+</div>
+       
+            @*<button @onclick="Submit" class="btn btn-success floating-button">
                 Nộp Bài
-            </button>}
-        else
-        {
-            <button @onclick="Submit" class="btn btn-success floating-button" disabled>
-                Nộp Bài
-            </button>
-        }
+            </button>*@
+        
 
         @for (var index = 0; index < questions.Questions.Count; index++)
         {
@@ -117,10 +104,11 @@ else
 
 @code {
 
-    [Parameter]
-    public int UserId { get; set; }
-    [Parameter]
-    public int ExamId { get; set; }
+        [Parameter]
+        public int UserId { get; set; }
+        [Parameter]
+        public int ExamId { get; set; }
+        [CascadingParameter] public IModalService Modal { get; set; }
 
     private ClaimsPrincipal User;
 
@@ -140,6 +128,8 @@ else
     {
 
     }
+
+
     protected override async Task OnInitializedAsync()
     {
         var authState = await AuthenticationStateProvider
@@ -190,6 +180,11 @@ else
     }
     public async void Submit()
     {
+        if(!await XacNhanNopBai())
+        {
+            return;
+        }
+
         timer.Stop();
         await CapNhatCauTraLoi();
         //await CapNhatDiem();
@@ -197,6 +192,33 @@ else
 
     }
 
+    private List<string> GetThuTuCauHoiChuaTraLoi()
+    {
+        List<string> unAnswerQuestionOrders = new List<string>();
+        for(int i=0; i< questions.Questions.Count; i++)
+        {
+            if(questions.Questions[i].UserAnswerId == 0)
+            {
+                unAnswerQuestionOrders.Add($"{i + 1}");
+            }
+        }
+        return unAnswerQuestionOrders;
+    }
+
+
+    private async Task<bool> XacNhanNopBai()
+    {
+        var listChuaTraLoi = GetThuTuCauHoiChuaTraLoi();
+        if(listChuaTraLoi.Count == 0)
+        {
+            return await ShowConfirm("Bạn có chắc chắn muốn nộp bài ?");
+        }
+        else
+        {
+            String strCauChuaTraLoi = listChuaTraLoi.Aggregate( (current,next) => $"{current} , {next}").TrimStart(new char[] { ','});
+            return await ShowConfirm($"Bạn chưa trả lời các câu: {strCauChuaTraLoi}. Bạn có chắc chắn muốn nộp bài ?");
+        }
+    }
 
     private async Task CapNhatCauTraLoi()
     {
@@ -274,6 +296,16 @@ else
         {
             await InvokeAsync(StateHasChanged);
         }
+    }
+
+
+    async Task<bool> ShowConfirm(String message)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(ConfirmDialog.Message), message);
+        var confirmDialog = Modal.Show<ConfirmDialog>("Xác nhận nộp bài", parameters);
+        var result = await confirmDialog.Result;
+        return !result.Cancelled;
     }
 
     public void Dispose()
