@@ -27,33 +27,20 @@ else
     @if (kieu == 0)
     ***REMOVED***
 
-        <div class="row">
-            <div class="col-12 col-md-6"><strong> @AppState.SelectedExamInfo.ExamName </strong></div>
-            <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>
-            @*<div class="col-6 col-md-2">*@
-            @*@if (@questions.Questions.Any(question => question.UserAnswerId == 0))
-                ***REMOVED****@
-
-            <!--***REMOVED***-->
-            @*else
-                ***REMOVED***
-                    <button @onclick="Submit" class="btn-success floating-button"  >
-                        Nộp Bài
-                    </button>
-            ***REMOVED****@
-            @*</div>*@
-        </div>
-        @if (@questions.Questions.Any(question => question.UserAnswerId == 0))
-        ***REMOVED***
-            <button @onclick="Submit" class="btn btn-success floating-button">
+<div class="row">
+    <div class="col-12 col-md-6"><strong> @AppState.SelectedExamInfo.ExamName </strong></div>
+    <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>
+    <div class="col-6 col-md-2">
+    <button @onclick="Submit" class="btn btn-success floating-button">
+            Nộp Bài
+        </button>
+    </div>
+</div>
+       
+            @*<button @onclick="Submit" class="btn btn-success floating-button">
                 Nộp Bài
-            </button>***REMOVED***
-        else
-        ***REMOVED***
-            <button @onclick="Submit" class="btn btn-success floating-button" disabled>
-                Nộp Bài
-            </button>
-    ***REMOVED***
+            </button>*@
+        
 
         @for (var index = 0; index < questions.Questions.Count; index++)
         ***REMOVED***
@@ -117,10 +104,11 @@ else
 
 @code ***REMOVED***
 
-    [Parameter]
-    public int UserId ***REMOVED*** get; set; ***REMOVED***
-    [Parameter]
-    public int ExamId ***REMOVED*** get; set; ***REMOVED***
+        [Parameter]
+        public int UserId ***REMOVED*** get; set; ***REMOVED***
+        [Parameter]
+        public int ExamId ***REMOVED*** get; set; ***REMOVED***
+        [CascadingParameter] public IModalService Modal ***REMOVED*** get; set; ***REMOVED***
 
     private ClaimsPrincipal User;
 
@@ -140,6 +128,8 @@ else
     ***REMOVED***
 
 ***REMOVED***
+
+
     protected override async Task OnInitializedAsync()
     ***REMOVED***
         var authState = await AuthenticationStateProvider
@@ -190,6 +180,11 @@ else
 ***REMOVED***
     public async void Submit()
     ***REMOVED***
+        if(!await XacNhanNopBai())
+        ***REMOVED***
+            return;
+    ***REMOVED***
+
         timer.Stop();
         await CapNhatCauTraLoi();
         //await CapNhatDiem();
@@ -197,6 +192,33 @@ else
 
 ***REMOVED***
 
+    private List<string> GetThuTuCauHoiChuaTraLoi()
+    ***REMOVED***
+        List<string> unAnswerQuestionOrders = new List<string>();
+        for(int i=0; i< questions.Questions.Count; i++)
+        ***REMOVED***
+            if(questions.Questions[i].UserAnswerId == 0)
+            ***REMOVED***
+                unAnswerQuestionOrders.Add($"***REMOVED***i + 1***REMOVED***");
+        ***REMOVED***
+    ***REMOVED***
+        return unAnswerQuestionOrders;
+***REMOVED***
+
+
+    private async Task<bool> XacNhanNopBai()
+    ***REMOVED***
+        var listChuaTraLoi = GetThuTuCauHoiChuaTraLoi();
+        if(listChuaTraLoi.Count == 0)
+        ***REMOVED***
+            return await ShowConfirm("Bạn có chắc chắn muốn nộp bài ?");
+    ***REMOVED***
+        else
+        ***REMOVED***
+            String strCauChuaTraLoi = listChuaTraLoi.Aggregate( (current,next) => $"***REMOVED***current***REMOVED*** , ***REMOVED***next***REMOVED***").TrimStart(new char[] ***REMOVED*** ','***REMOVED***);
+            return await ShowConfirm($"Bạn chưa trả lời các câu: ***REMOVED***strCauChuaTraLoi***REMOVED***. Bạn có chắc chắn muốn nộp bài ?");
+    ***REMOVED***
+***REMOVED***
 
     private async Task CapNhatCauTraLoi()
     ***REMOVED***
@@ -274,6 +296,16 @@ else
         ***REMOVED***
             await InvokeAsync(StateHasChanged);
     ***REMOVED***
+***REMOVED***
+
+
+    async Task<bool> ShowConfirm(String message)
+    ***REMOVED***
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(ConfirmDialog.Message), message);
+        var confirmDialog = Modal.Show<ConfirmDialog>("Xác nhận nộp bài", parameters);
+        var result = await confirmDialog.Result;
+        return !result.Cancelled;
 ***REMOVED***
 
     public void Dispose()
