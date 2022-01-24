@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 using BlazorVNPTQuiz.Areas.Identity;
 using Microsoft.AspNetCore.HttpOverrides;
 using BlazorVNPTQuiz.Services;
+using Blazored.Modal;
 
 namespace BlazorVNPTQuiz
 {
@@ -59,6 +60,7 @@ namespace BlazorVNPTQuiz
             
             services.AddScoped<IRepository, MySqlRepository>();
             services.AddScoped<AppState>();
+            services.AddBlazoredModal();
            
 
 
