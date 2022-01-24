@@ -26,57 +26,66 @@ else
 ***REMOVED***
     @if (kieu == 0)
     ***REMOVED***
-        
-            <div class="row">
-                <div class="col-12 col-md-6"><strong> @AppState.SelectedExamInfo.ExamName </strong></div>
-                <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>
-                <div class="col-6 col-md-2">
-                    @if (@questions.Questions.Any(question => question.UserAnswerId == 0))
-                    ***REMOVED***
-                        <button @onclick="Submit" class="btn-block" style="border-radius:4px" disabled="true">
-                            Nộp Bài
-                        </button>
+
+        <div class="row">
+            <div class="col-12 col-md-6"><strong> @AppState.SelectedExamInfo.ExamName </strong></div>
+            <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>
+            @*<div class="col-6 col-md-2">*@
+            @*@if (@questions.Questions.Any(question => question.UserAnswerId == 0))
+                ***REMOVED****@
+
+            <!--***REMOVED***-->
+            @*else
                 ***REMOVED***
-                    else
-                    ***REMOVED***
-                        <button @onclick="Submit" class="btn-success" style="border-radius:4px" >
-                            Nộp Bài
-                        </button>
-                ***REMOVED***
-                </div>
-            </div>
-            
+                    <button @onclick="Submit" class="btn-success floating-button"  >
+                        Nộp Bài
+                    </button>
+            ***REMOVED****@
+            @*</div>*@
+        </div>
+        @if (@questions.Questions.Any(question => question.UserAnswerId == 0))
+        ***REMOVED***
+            <button @onclick="Submit" class="btn btn-success floating-button">
+                Nộp Bài
+            </button>***REMOVED***
+        else
+        ***REMOVED***
+            <button @onclick="Submit" class="btn btn-success floating-button" disabled>
+                Nộp Bài
+            </button>
+    ***REMOVED***
 
-            @for (var index = 0; index < questions.Questions.Count; index++)
-            ***REMOVED***
-                var question = questions.Questions[index];
-                <div class="card bg-light text-dark">
-                    
-                        <div class="card-body">
-                            <span class="card-title"><b>@(index+1). @question.QuestionText</b></span>
-                        <EditForm Model="question">
-                            <InputRadioGroup @bind-Value="question.UserAnswerId">
-                                @foreach (var answer in question.Answers)
+        @for (var index = 0; index < questions.Questions.Count; index++)
+        ***REMOVED***
+            var question = questions.Questions[index];
+            <div class="card bg-light text-dark">
+
+                <div class="card-body">
+                    <span class="card-title"><b>@(index+1). @question.QuestionText</b></span>
+                    <EditForm Model="question">
+                        <InputRadioGroup @bind-Value="question.UserAnswerId">
+                            @foreach (var answer in question.Answers)
+                                        ***REMOVED***
+
+
+                                @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
                                             ***REMOVED***
-
-
-                                    @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
-                                                ***REMOVED***
-                                        <label>
-                                            <InputRadio Value="answer.AnswerId" @onclick="OnAnswerClick" /> @answer.AnswerText
-                                        </label><br />
-
-                                            ***REMOVED***
+                                    <label>
+                                        <InputRadio Value="answer.AnswerId" @onclick="OnAnswerClick" /> @answer.AnswerText
+                                    </label><br />
 
                                         ***REMOVED***
-                            </InputRadioGroup>
-                        </EditForm>
-                    </div>
-                </div><br />
-                
 
-        ***REMOVED***
-     ***REMOVED***
+                                    ***REMOVED***
+                        </InputRadioGroup>
+                    </EditForm>
+                </div>
+            </div>
+            <br />
+
+
+    ***REMOVED***
+***REMOVED***
     else
     ***REMOVED***
         <div style="border:1px dashed blue; border-radius:12px">
@@ -146,7 +155,7 @@ else
 
         AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
 
-        if(AppState.SelectedExamInfo == null)
+        if (AppState.SelectedExamInfo == null)
         ***REMOVED***
             AppState.UpdateSelectedExam(this, await repository.LayThongTinBaiThi(ExamId));
     ***REMOVED***
