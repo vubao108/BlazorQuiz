@@ -1,15 +1,45 @@
-﻿<AuthorizeView>
+﻿@inject AppState AppState
+@implements IDisposable
+<AuthorizeView>
+
     <Authorized>
-       
-        <a href="Identity/Account/Manage">Xin chào, @context.User.Identity.Name!</a>
-        @*<form method="post" action="Identity/Account/LogOut">
+        <div >
+            @if (AppState.SelectedExamInfo != null) ***REMOVED*** 
+                <b>@AppState.SelectedExamInfo.ExamName</b>
+        ***REMOVED***
+
+            <a href="Identity/Account/Manage">Xin chào, @context.User.Identity.Name!</a>
+            @*<form method="post" action="Identity/Account/LogOut">
             <button type="submit" class="nav-link btn btn-link">Log out</button>
         </form>*@
-        @*<a href="Identity/Account/Logout">Đăng xuất</a>*@
+            @*<a href="Identity/Account/Logout">Đăng xuất</a>*@
+        </div>
     </Authorized>
     <NotAuthorized>
-        @*<a href="Identity/Account/Register">Đăng ký</a>*@
-        <a href="Identity/Account/Login">Đăng nhập</a>
-        @*<a href="login">Đăng nhập</a>*@
+        <div style="height:42px;">
+            @*<a href="Identity/Account/Register">Đăng ký</a>*@
+            <a href="Identity/Account/Login">Đăng nhập</a>
+            @*<a href="login">Đăng nhập</a>*@
+        </div>
     </NotAuthorized>
+    
 </AuthorizeView>
+
+@code***REMOVED***
+    void IDisposable.Dispose()
+    ***REMOVED***
+        AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
+***REMOVED***
+    private async Task AppState_StateChanged(ComponentBase Source, string Property)
+    ***REMOVED***
+        if (Source != this)
+        ***REMOVED***
+            // Inspect Property to determine if action needs to be taken.
+            await InvokeAsync(StateHasChanged);
+    ***REMOVED***
+***REMOVED***
+    protected override void OnInitialized()
+    ***REMOVED***
+        AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
+***REMOVED***
+***REMOVED***
