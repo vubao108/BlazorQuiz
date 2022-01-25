@@ -19,5 +19,9 @@ namespace BlazorVNPTQuiz.Repository
         Task<List<ExamInfo>> LayDanhSachBaiThi(int userId);
 
         Task<ExamInfo> LayThongTinBaiThi(int examId);
+
+        Task<ExamNotFinishedYet> LayBaiThiDangLam(int userId);
+
+
 ***REMOVED***
 ***REMOVED***
