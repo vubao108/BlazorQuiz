@@ -7,23 +7,42 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
-
+using Microsoft.AspNetCore.Components.Authorization;
 namespace BlazorVNPTQuiz.Services
 ***REMOVED***
     public class AppState : IDisposable
     ***REMOVED***
-        public AppState()
+        private readonly AuthenticationStateProvider authenticationStateProvider;
+        private readonly UserManager<IdentityUser> userManager;
+        public AppState(AuthenticationStateProvider authenticationStateProvider, UserManager<IdentityUser> userManager)
         ***REMOVED***
             StartTimer();
-           
 
+            this.authenticationStateProvider = authenticationStateProvider;
+            this.userManager = userManager;
+            CurrentIdentityUserId = GetUserId();
     ***REMOVED***
+
+        private async Task<int> GetUserId()
+        ***REMOVED***
+            var authState = await authenticationStateProvider.GetAuthenticationStateAsync();
+            if (authState.User.Identity.IsAuthenticated)
+            ***REMOVED***
+                var user = userManager.Users.FirstOrDefault(item=>item.UserName == authState.User.Identity.Name);
+                
+                Debug.Print($"AppState.InitialUserId() : ***REMOVED***user.Id***REMOVED***");
+                return Convert.ToInt32(user.Id);
+        ***REMOVED***
+            return 0;
+    ***REMOVED***
+
+
         private Timer timer;
         public event Action<ComponentBase, string> StateChanged;
 
         private void NotifyStateChanged(ComponentBase Source, string Property) => StateChanged?.Invoke(Source, Property);
 
-        public int  CurrentIdentityUserId ***REMOVED*** get; set; ***REMOVED***
+        public Task<int>  CurrentIdentityUserId ***REMOVED*** get; set; ***REMOVED***
         public ExamInfo SelectedExamInfo ***REMOVED***get;private set;***REMOVED***
         public int RemainSeconds ***REMOVED*** get; private set; ***REMOVED*** = 0;
 
