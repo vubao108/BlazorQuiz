@@ -146,7 +146,7 @@ else
             return;
     ***REMOVED***
 
-        AppState.CurrentIdentityUserId = UserId;
+        AppState.CurrentIdentityUserId = Task.FromResult(UserId);
 
         AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
 
