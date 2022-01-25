@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Timers;
+using System.Threading;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -66,18 +66,22 @@ namespace BlazorVNPTQuiz.Services
         public void StartTimer()
         ***REMOVED***
             Debug.Print("AppState.StartTimer()");
-            timer = new Timer(1000);
-            timer.Elapsed += OnTimedEvent;
-            timer.Enabled = true;
+            timer = new Timer((_) =>
+            ***REMOVED***
+                DecreaseTimer();
+                    
+                    
+              
+        ***REMOVED***, null, 0, 1000);
     ***REMOVED***
         void ReleaseTimer()
         ***REMOVED***
             
-            timer?.Stop();
+            
             
             timer?.Dispose();
     ***REMOVED***
-        private void OnTimedEvent(object sender, ElapsedEventArgs e)
+        private void DecreaseTimer()
         ***REMOVED***
             
             if (--RemainSeconds >= 0)
