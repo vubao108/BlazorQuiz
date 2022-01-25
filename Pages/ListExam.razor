@@ -6,6 +6,7 @@
 @inject AuthenticationStateProvider GetAuthenticationStateAsync
 @inject BlazorVNPTQuiz.Repository.IRepository repository
 @inject NavigationManager navManager;
+@inject AppState AppState;
 
 <AuthorizeView >
     <Authorized>
@@ -52,6 +53,8 @@
         ***REMOVED***
             CurrentUser = await userManager.FindByNameAsync(user.Identity.Name);
             examInfos = await repository.LayDanhSachBaiThi(Convert.ToInt32(CurrentUser.Id));
+            AppState.CurrentIdentityUserId = Convert.ToInt32(CurrentUser.Id);
+            
     ***REMOVED***
         else
         ***REMOVED***

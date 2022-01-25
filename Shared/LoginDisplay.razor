@@ -4,15 +4,17 @@
     <AuthorizeView>
 
         <Authorized>
-            <div>
+            <div class="col-9">
                 @if (AppState.SelectedExamInfo != null)
                 ***REMOVED***
-                    <b>@AppState.SelectedExamInfo.ExamName</b> 
+                <a href="exam/@AppState.CurrentIdentityUserId/@AppState.SelectedExamInfo.ExamId"><b>@AppState.SelectedExamInfo.ExamName</b></a>
+                <text> &nbsp; &nbsp; &nbsp;</text>
                     <span style="color:red"> @GetStringCountDown() </span>
 
 
             ***REMOVED***
-
+            </div>
+            <div class="col-2">
                 <a href="Identity/Account/Manage">Xin chào, @context.User.Identity.Name!</a>
                 @*<form method="post" action="Identity/Account/LogOut">
                         <button type="submit" class="nav-link btn btn-link">Log out</button>
@@ -21,7 +23,7 @@
             </div>
         </Authorized>
         <NotAuthorized>
-            <div style="height:42px;">
+            <div >
                 @*<a href="Identity/Account/Register">Đăng ký</a>*@
                 <a href="Identity/Account/Login">Đăng nhập</a>
                 @*<a href="login">Đăng nhập</a>*@
