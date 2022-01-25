@@ -146,6 +146,7 @@ else
             return;
         }
 
+        AppState.CurrentIdentityUserId = UserId;
 
         AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
 

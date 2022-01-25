@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using BlazorVNPTQuiz.Services;
 
 namespace BlazorVNPTQuiz.Areas.Identity.Pages.Account
 {
@@ -20,14 +21,16 @@ namespace BlazorVNPTQuiz.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly AppState _appState;
 
         public LoginModel(SignInManager<IdentityUser> signInManager, 
             ILogger<LoginModel> logger,
-            UserManager<IdentityUser> userManager)
+            UserManager<IdentityUser> userManager, AppState appState)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
+            _appState = appState;
         }
 
         [BindProperty]
@@ -88,7 +91,9 @@ namespace BlazorVNPTQuiz.Areas.Identity.Pages.Account
               
                 if (dbUser != null)
                 {
+
                      await _signInManager.SignInAsync(dbUser, Input.RememberMe);
+                    _appState.CurrentIdentityUserId = Convert.ToInt32(dbUser.Id);
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
