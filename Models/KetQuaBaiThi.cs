@@ -17,6 +17,16 @@ namespace BlazorVNPTQuiz.Models
         public int TryNum { get; set; }
     }
 
+    public class ExamNotFinishedYet { 
+        public int UserExamId { get; set; }
+        public ExamInfo CurrentExam { get; set; }
+        public int RemainSecond { get; set; }
+        public DateTime JoinTime { get; set; }
+        public int TryNum { get; set; }
+    
+    }
+
+
     public class ExamInfo
     {
         public int ExamId { get; set; }
