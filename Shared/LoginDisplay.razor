@@ -1,45 +1,63 @@
 ﻿@inject AppState AppState
 @implements IDisposable
-<AuthorizeView>
+@using System.Timers;
+    <AuthorizeView>
 
-    <Authorized>
-        <div >
-            @if (AppState.SelectedExamInfo != null) { 
-                <b>@AppState.SelectedExamInfo.ExamName</b>
-            }
+        <Authorized>
+            <div>
+                @if (AppState.SelectedExamInfo != null)
+                {
+                    <b>@AppState.SelectedExamInfo.ExamName</b> 
+                    <span style="color:red"> @GetStringCountDown() </span>
 
-            <a href="Identity/Account/Manage">Xin chào, @context.User.Identity.Name!</a>
-            @*<form method="post" action="Identity/Account/LogOut">
-            <button type="submit" class="nav-link btn btn-link">Log out</button>
-        </form>*@
-            @*<a href="Identity/Account/Logout">Đăng xuất</a>*@
-        </div>
-    </Authorized>
-    <NotAuthorized>
-        <div style="height:42px;">
-            @*<a href="Identity/Account/Register">Đăng ký</a>*@
-            <a href="Identity/Account/Login">Đăng nhập</a>
-            @*<a href="login">Đăng nhập</a>*@
-        </div>
-    </NotAuthorized>
-    
-</AuthorizeView>
 
-@code{
-    void IDisposable.Dispose()
-    {
-        AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
-    }
-    private async Task AppState_StateChanged(ComponentBase Source, string Property)
-    {
-        if (Source != this)
+                }
+
+                <a href="Identity/Account/Manage">Xin chào, @context.User.Identity.Name!</a>
+                @*<form method="post" action="Identity/Account/LogOut">
+                        <button type="submit" class="nav-link btn btn-link">Log out</button>
+                    </form>*@
+                @*<a href="Identity/Account/Logout">Đăng xuất</a>*@
+            </div>
+        </Authorized>
+        <NotAuthorized>
+            <div style="height:42px;">
+                @*<a href="Identity/Account/Register">Đăng ký</a>*@
+                <a href="Identity/Account/Login">Đăng nhập</a>
+                @*<a href="login">Đăng nhập</a>*@
+            </div>
+        </NotAuthorized>
+
+    </AuthorizeView>
+
+    @code{
+        
+
+        private async Task AppState_StateChanged(ComponentBase Source, string Property)
         {
-            // Inspect Property to determine if action needs to be taken.
-            await InvokeAsync(StateHasChanged);
+            if (Source != this)
+            {
+                // Inspect Property to determine if action needs to be taken.
+                await InvokeAsync(StateHasChanged);
+            }
+        }
+        protected override void OnInitialized()
+        {
+            AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
+        }
+
+        private string GetStringCountDown()
+        {
+
+            return $"{AppState.RemainSeconds / 60}:{AppState.RemainSeconds%60}";
+        }
+
+        
+        
+       
+        void IDisposable.Dispose()
+        {
+            AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
+
         }
     }
-    protected override void OnInitialized()
-    {
-        AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
-    }
-}
