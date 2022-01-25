@@ -27,15 +27,16 @@ else
     @if (kieu == 0)
     ***REMOVED***
 
-<div class="row">
-    <div class="col-11 col-md-6"><strong> @AppState.SelectedExamInfo.ExamName </strong></div>
-    <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>
-    <div class="col-6 col-md-2">
-    <button @onclick="Submit" class="btn btn-success floating-button">
-            Nộp Bài
-        </button>
-    </div>
+@*<div class="row">*@
+    @*<div class="col-11 col-md-6"><strong> @AppState.SelectedExamInfo.ExamName </strong></div>
+    <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>*@
+<div class="floating-button">
+    <span style="color:red">@RemainTime</span> <br />
+    <button @onclick="Submit" class="btn btn-success">
+        Nộp Bài
+    </button>
 </div>
+@*</div>*@
        
             @*<button @onclick="Submit" class="btn btn-success floating-button">
                 Nộp Bài
@@ -289,7 +290,9 @@ else
 ***REMOVED***
     public async void NavigateToResultPage()
     ***REMOVED***
+
         await CapNhatDiem();
+        AppState.UpdateSelectedExam(this, null);
         navigationManager.NavigateTo($"ExamResult/***REMOVED***questions.UserExamId***REMOVED***");
 ***REMOVED***
 
