@@ -108,11 +108,11 @@ else
 
 @code ***REMOVED***
 
-        [Parameter]
-        public int UserId ***REMOVED*** get; set; ***REMOVED***
-        [Parameter]
-        public int ExamId ***REMOVED*** get; set; ***REMOVED***
-        [CascadingParameter] public IModalService Modal ***REMOVED*** get; set; ***REMOVED***
+    [Parameter]
+    public int UserId ***REMOVED*** get; set; ***REMOVED***
+    [Parameter]
+    public int ExamId ***REMOVED*** get; set; ***REMOVED***
+    [CascadingParameter] public IModalService Modal ***REMOVED*** get; set; ***REMOVED***
 
     private ClaimsPrincipal User;
 
@@ -160,6 +160,7 @@ else
 
         CurrentDisplayQuestion = questions.Questions[CurrentIndex];
         RemainSecondToDoExam = questions.RemainSeCond;
+        AppState.UpdateRemainSeconds(this,RemainSecondToDoExam);
         RemainTime = $"***REMOVED***RemainSecondToDoExam / 60***REMOVED*** phút:***REMOVED***RemainSecondToDoExam % 60***REMOVED*** giây ";
         SyncInterval = Convert.ToInt32(configuration.GetSection("SyncSetting")["SecondInterval"]);
         StartCountdown();
@@ -316,6 +317,7 @@ else
 
     public void Dispose()
     ***REMOVED***
+        Debug.Print("Exam.Dispose()");
         AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
         timer?.Dispose();
 ***REMOVED***
