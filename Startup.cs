@@ -1,4 +1,4 @@
-using BlazorVNPTQuiz.Data;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
@@ -53,7 +53,7 @@ namespace BlazorVNPTQuiz
             });
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
-            services.AddSingleton<WeatherForecastService>();
+           
            
            
             
