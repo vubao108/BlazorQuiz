@@ -108,11 +108,11 @@ else
 
 @code {
 
-        [Parameter]
-        public int UserId { get; set; }
-        [Parameter]
-        public int ExamId { get; set; }
-        [CascadingParameter] public IModalService Modal { get; set; }
+    [Parameter]
+    public int UserId { get; set; }
+    [Parameter]
+    public int ExamId { get; set; }
+    [CascadingParameter] public IModalService Modal { get; set; }
 
     private ClaimsPrincipal User;
 
@@ -160,6 +160,7 @@ else
 
         CurrentDisplayQuestion = questions.Questions[CurrentIndex];
         RemainSecondToDoExam = questions.RemainSeCond;
+        AppState.UpdateRemainSeconds(this,RemainSecondToDoExam);
         RemainTime = $"{RemainSecondToDoExam / 60} phút:{RemainSecondToDoExam % 60} giây ";
         SyncInterval = Convert.ToInt32(configuration.GetSection("SyncSetting")["SecondInterval"]);
         StartCountdown();
@@ -316,6 +317,7 @@ else
 
     public void Dispose()
     {
+        Debug.Print("Exam.Dispose()");
         AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
         timer?.Dispose();
     }
