@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Identity;
 
 namespace BlazorVNPTQuiz.Services
 ***REMOVED***
@@ -22,9 +23,11 @@ namespace BlazorVNPTQuiz.Services
 
         private void NotifyStateChanged(ComponentBase Source, string Property) => StateChanged?.Invoke(Source, Property);
 
-        public UserInfo CurrentUset ***REMOVED*** get; private set; ***REMOVED***
+        public int  CurrentIdentityUserId ***REMOVED*** get; set; ***REMOVED***
         public ExamInfo SelectedExamInfo ***REMOVED***get;private set;***REMOVED***
         public int RemainSeconds ***REMOVED*** get; private set; ***REMOVED*** = 0;
+
+        
 
         public void UpdateSelectedExam(ComponentBase source, ExamInfo examInfo )
         ***REMOVED***
