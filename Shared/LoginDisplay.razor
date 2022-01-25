@@ -7,7 +7,7 @@
             <div class="col-9">
                 @if (AppState.SelectedExamInfo != null)
                 {
-                <a href="exam/@AppState.CurrentIdentityUserId/@AppState.SelectedExamInfo.ExamId"><b>@AppState.SelectedExamInfo.ExamName</b></a>
+                <a href="exam/@AppState.CurrentIdentityUserId.Result/@AppState.SelectedExamInfo.ExamId"><b>@AppState.SelectedExamInfo.ExamName</b></a>
                 <text> &nbsp; &nbsp; &nbsp;</text>
                     <span style="color:red"> @GetStringCountDown() </span>
 
