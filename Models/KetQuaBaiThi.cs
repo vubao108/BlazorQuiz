@@ -17,6 +17,16 @@ namespace BlazorVNPTQuiz.Models
         public int TryNum ***REMOVED*** get; set; ***REMOVED***
 ***REMOVED***
 
+    public class ExamNotFinishedYet ***REMOVED*** 
+        public int UserExamId ***REMOVED*** get; set; ***REMOVED***
+        public ExamInfo CurrentExam ***REMOVED*** get; set; ***REMOVED***
+        public int RemainSecond ***REMOVED*** get; set; ***REMOVED***
+        public DateTime JoinTime ***REMOVED*** get; set; ***REMOVED***
+        public int TryNum ***REMOVED*** get; set; ***REMOVED***
+    
+***REMOVED***
+
+
     public class ExamInfo
     ***REMOVED***
         public int ExamId ***REMOVED*** get; set; ***REMOVED***

@@ -207,6 +207,51 @@ namespace BlazorVNPTQuiz.Repository
 
     ***REMOVED***
 
+        public async Task<ExamNotFinishedYet> LayBaiThiDangLam(int userId)
+        ***REMOVED***
+            ExamNotFinishedYet examNotFinishedYet = new ExamNotFinishedYet();
+            
+           
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            ***REMOVED***
+                string sql = $"call proc_laybaithi_danglam***REMOVED***userId***REMOVED***";
+                using (var command = new MySqlCommand(sql, connection))
+                ***REMOVED***
+                    await connection.OpenAsync();
+                    using (var reader = await command.ExecuteReaderAsync())
+                    ***REMOVED***
+                        while (await reader.ReadAsync())
+                        ***REMOVED***
+                            examNotFinishedYet.UserExamId = reader.GetInt32("user_exam_id");
+                            if(examNotFinishedYet.UserExamId == 0)
+                            ***REMOVED***
+                                return examNotFinishedYet;
+                        ***REMOVED***
+                            examNotFinishedYet.CurrentExam = new ExamInfo()
+                            ***REMOVED***
+                                ExamId = reader.GetInt32("id"),
+                                ExamName = reader.GetString("name"),
+                                Duration = reader.GetInt32("duration"),
+                                NumOfQuestion = reader.GetInt32("num_of_question"),
+                                MaxTry = reader.GetInt32("max_try")
+
+                        ***REMOVED***;
+
+                            examNotFinishedYet.JoinTime = reader.GetDateTime("join_time");
+                            examNotFinishedYet.TryNum = reader.GetInt32("try_num");
+                            examNotFinishedYet.RemainSecond = reader.GetInt32("remain_second");
+
+
+                    ***REMOVED***
+
+                ***REMOVED***
+
+            ***REMOVED***
+        ***REMOVED***
+            return examNotFinishedYet;
+    ***REMOVED***
+
+
 
 ***REMOVED***
 ***REMOVED***
