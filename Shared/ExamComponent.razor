@@ -25,15 +25,14 @@
 
     private string GetClassCss()
     ***REMOVED***
-        if( AppState.SelectedExamNotFinishedInfo?.CurrentExam?.ExamId == ExamItem.ExamId)
+         if ((bool)AppState.JoinedExamIds?.Contains(ExamItem.ExamId))
         ***REMOVED***
-            return "bg-info text-white";
-    ***REMOVED***else if ((bool)AppState.JoinedExamIds?.Contains(ExamItem.ExamId))
-        ***REMOVED***
-            return "bg-success text-white";
+            return "backgroundJoined text-white";
     ***REMOVED***
         return "bg-light text-dark";
 ***REMOVED***
+
+    
 
     public void StartBaiThi()
     ***REMOVED***
@@ -51,6 +50,8 @@
             await InvokeAsync(StateHasChanged);
     ***REMOVED***
 ***REMOVED***
+
+
 
     protected override void OnInitialized()
     ***REMOVED***
