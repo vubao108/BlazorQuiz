@@ -210,43 +210,47 @@ namespace BlazorVNPTQuiz.Repository
         public async Task<ExamNotFinishedYet> LayBaiThiDangLam(int userId)
         {
             ExamNotFinishedYet examNotFinishedYet = new ExamNotFinishedYet();
-            
-           
-            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            try
             {
-                string sql = $"call proc_laybaithi_danglam{userId}";
-                using (var command = new MySqlCommand(sql, connection))
+                using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
                 {
-                    await connection.OpenAsync();
-                    using (var reader = await command.ExecuteReaderAsync())
+                    string sql = $"call proc_laybaithi_danglam({userId})";
+                    using (var command = new MySqlCommand(sql, connection))
                     {
-                        while (await reader.ReadAsync())
+                        await connection.OpenAsync();
+                        using (var reader = await command.ExecuteReaderAsync())
                         {
-                            examNotFinishedYet.UserExamId = reader.GetInt32("user_exam_id");
-                            if(examNotFinishedYet.UserExamId == 0)
+                            while (await reader.ReadAsync())
                             {
-                                return examNotFinishedYet;
+                                examNotFinishedYet.UserExamId = reader.GetInt32("user_exam_id");
+                                if (examNotFinishedYet.UserExamId == 0)
+                                {
+                                    return examNotFinishedYet;
+                                }
+                                examNotFinishedYet.CurrentExam = new ExamInfo()
+                                {
+                                    ExamId = reader.GetInt32("id"),
+                                    ExamName = reader.GetString("name"),
+                                    Duration = reader.GetInt32("duration"),
+                                    NumOfQuestion = reader.GetInt32("num_of_question"),
+                                    MaxTry = reader.GetInt32("max_try")
+
+                                };
+
+                                examNotFinishedYet.JoinTime = reader.GetDateTime("join_time");
+                                examNotFinishedYet.TryNum = reader.GetInt32("try_num");
+                                examNotFinishedYet.RemainSecond = reader.GetInt32("remain_second");
+
+
                             }
-                            examNotFinishedYet.CurrentExam = new ExamInfo()
-                            {
-                                ExamId = reader.GetInt32("id"),
-                                ExamName = reader.GetString("name"),
-                                Duration = reader.GetInt32("duration"),
-                                NumOfQuestion = reader.GetInt32("num_of_question"),
-                                MaxTry = reader.GetInt32("max_try")
-
-                            };
-
-                            examNotFinishedYet.JoinTime = reader.GetDateTime("join_time");
-                            examNotFinishedYet.TryNum = reader.GetInt32("try_num");
-                            examNotFinishedYet.RemainSecond = reader.GetInt32("remain_second");
-
 
                         }
 
                     }
-
                 }
+            }catch(Exception ex)
+            {
+                System.Diagnostics.Debug.Print(ex.StackTrace);
             }
             return examNotFinishedYet;
         }

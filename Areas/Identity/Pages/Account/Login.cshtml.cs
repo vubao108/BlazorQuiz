@@ -93,7 +93,7 @@ namespace BlazorVNPTQuiz.Areas.Identity.Pages.Account
                 {
 
                      await _signInManager.SignInAsync(dbUser, Input.RememberMe);
-                    _appState.CurrentIdentityUserId = Task.FromResult(Convert.ToInt32(dbUser.Id));
+                    _appState.CurrentIdentityUserId = Convert.ToInt32(dbUser.Id);
                     _logger.LogInformation("User logged in.");
                     return LocalRedirect(returnUrl);
                 }
