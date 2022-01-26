@@ -26,7 +26,7 @@
     public void StartBaiThi()
     {
         //string absulateUri = NavManager.ToBaseRelativePath();
-        AppState.UpdateSelectedExam(this, ExamItem);
+        //AppState.UpdateSelectedExam(this, ExamItem);
         Uri absUri = NavManager.ToAbsoluteUri($"exam/{UserId}/{ExamItem.ExamId}");//{ExamItem.ExamName}");
         NavManager.NavigateTo(absUri.ToString());
 

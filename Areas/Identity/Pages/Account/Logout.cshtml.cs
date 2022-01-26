@@ -32,7 +32,7 @@ namespace BlazorVNPTQuiz.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPost(string returnUrl = null)
         {
             await _signInManager.SignOutAsync();
-            appState.CurrentIdentityUserId = Task.FromResult(0);
+            appState.CurrentIdentityUserId = 0;
             _logger.LogInformation("User logged out.");
             if (returnUrl != null)
             {

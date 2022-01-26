@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlazorVNPTQuiz.Repository
 {
-    interface IRepository
+    public interface IRepository
     {
         Task<QuestionUserExam> LayDanhSachCauHoi(int user_id, int exam_id);
 
