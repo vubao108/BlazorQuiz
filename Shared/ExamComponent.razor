@@ -4,7 +4,7 @@
 @inject NavigationManager NavManager
 @inject AppState AppState;
 @implements IDisposable;
-<div class="card bg-light text-dark">
+<div class="card @GetClassCss()">
     <div class="card-header"><b>@ExamItem.ExamName</b></div>
     <div class="card-body">
         Số câu: @ExamItem.NumOfQuestion<br />
@@ -22,6 +22,18 @@
     public ExamInfo ExamItem { get; set; }
     [Parameter]
     public int UserId { get; set; }
+
+    private string GetClassCss()
+    {
+        if( AppState.SelectedExamNotFinishedInfo?.CurrentExam?.ExamId == ExamItem.ExamId)
+        {
+            return "bg-info text-white";
+        }else if ((bool)AppState.JoinedExamIds?.Contains(ExamItem.ExamId))
+        {
+            return "bg-success text-white";
+        }
+        return "bg-light text-dark";
+    }
 
     public void StartBaiThi()
     {

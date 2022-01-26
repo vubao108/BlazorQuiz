@@ -24,10 +24,10 @@
         {
             foreach (var exam in examInfos)
             {
-    <div>
-        <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))" /> 
+                <div>
+                    <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))" />
 
-    </div><br />
+                </div><br />
             }
 
         }
@@ -54,6 +54,7 @@
             CurrentUser = await userManager.FindByNameAsync(user.Identity.Name);
             examInfos = await repository.LayDanhSachBaiThi(Convert.ToInt32(CurrentUser.Id));
             AppState.CurrentIdentityUserId = Convert.ToInt32(CurrentUser.Id);
+            await AppState.GetJoinedExams();
             
         }
         else

@@ -4,10 +4,10 @@
     <AuthorizeView>
 
         <Authorized>
-            <div class="col-9">
-                @if (AppState.SelectedExamNotFinishedInfo != null)
+            <div class="col-9 float-left"  >
+                @if (AppState.SelectedExamNotFinishedInfo?.CurrentExam != null)
                 {
-                <a href="exam/@AppState.CurrentIdentityUserId/@AppState.SelectedExamNotFinishedInfo.CurrentExam.ExamId"><b>@AppState.SelectedExamNotFinishedInfo.CurrentExam.ExamName</b></a>
+                <a href="exam/@AppState.CurrentIdentityUserId/@AppState.SelectedExamNotFinishedInfo?.CurrentExam?.ExamId"><b>@AppState.SelectedExamNotFinishedInfo?.CurrentExam?.ExamName</b></a>
                 <text> &nbsp; &nbsp; &nbsp;</text>
                     <span style="color:red"> @GetStringCountDown() </span>
 
@@ -45,10 +45,14 @@
         }
         protected override void OnInitialized()
         {
-            AppState.InitializeState();
+           
             AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
             
             
+        }
+        protected override async Task OnInitializedAsync()
+        {
+           await  AppState.InitializeState();
         }
 
         private string GetStringCountDown()
