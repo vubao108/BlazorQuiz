@@ -5,9 +5,9 @@
 
         <Authorized>
             <div class="col-9">
-                @if (AppState.SelectedExamInfo != null)
+                @if (AppState.SelectedExamNotFinishedInfo != null)
                 ***REMOVED***
-                <a href="exam/@AppState.CurrentIdentityUserId.Result/@AppState.SelectedExamInfo.ExamId"><b>@AppState.SelectedExamInfo.ExamName</b></a>
+                <a href="exam/@AppState.CurrentIdentityUserId/@AppState.SelectedExamNotFinishedInfo.CurrentExam.ExamId"><b>@AppState.SelectedExamNotFinishedInfo.CurrentExam.ExamName</b></a>
                 <text> &nbsp; &nbsp; &nbsp;</text>
                     <span style="color:red"> @GetStringCountDown() </span>
 
@@ -45,7 +45,10 @@
     ***REMOVED***
         protected override void OnInitialized()
         ***REMOVED***
+            AppState.InitializeState();
             AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
+            
+            
     ***REMOVED***
 
         private string GetStringCountDown()

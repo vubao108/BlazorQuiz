@@ -146,18 +146,26 @@ else
             return;
     ***REMOVED***
 
-        AppState.CurrentIdentityUserId = Task.FromResult(UserId);
+        AppState.CurrentIdentityUserId = UserId;
 
         AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
-
-        if (AppState.SelectedExamInfo == null)
-        ***REMOVED***
-            AppState.UpdateSelectedExam(this, await repository.LayThongTinBaiThi(ExamId));
-    ***REMOVED***
 
         questions = await repository.LayDanhSachCauHoi(UserId, ExamId);
         if (questions.UserExamId == 0)
             return;
+
+        if (AppState.SelectedExamNotFinishedInfo == null || AppState.SelectedExamNotFinishedInfo.UserExamId == 0)
+        ***REMOVED***
+            ExamInfo examInfo = await repository.LayThongTinBaiThi(ExamId);
+            ExamNotFinishedYet examNotFinishedYet = new ExamNotFinishedYet()
+            ***REMOVED***
+                UserExamId = questions.UserExamId, CurrentExam = examInfo
+              , RemainSecond = questions.RemainSeCond, TryNum = questions.TryNum
+        ***REMOVED***;
+            AppState.UpdateSelectedExam(this, examNotFinishedYet);
+    ***REMOVED***
+
+
 
         CurrentDisplayQuestion = questions.Questions[CurrentIndex];
         RemainSecondToDoExam = questions.RemainSeCond;
