@@ -47,7 +47,7 @@ namespace BlazorVNPTQuiz.Models
 
     public class QuestionDAO
     {
-        public bool IsSyncUserAnswer { get; set; }
+        public bool IsSyncUserAnswer { get; set; } 
         public int ExamQuestionId { get; set; }
         public int QuestionId { get; set; }
         public string QuestionText { get; set; }
