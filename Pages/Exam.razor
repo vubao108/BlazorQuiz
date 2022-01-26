@@ -60,7 +60,7 @@ else
                                 @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
                                             {
                                     <label>
-                                        <InputRadio Value="answer.AnswerId" @onclick="OnAnswerClick" /> @answer.AnswerText
+                                        <InputRadio Value="answer.AnswerId" @onclick="()=>OnAnswerClick(question)" /> @answer.AnswerText
                                     </label><br />
 
                                             }
@@ -77,33 +77,7 @@ else
     </div>
 </div>
     }
-    else
-    {
-        <div style="border:1px dashed blue; border-radius:12px">
-            <h5> @(CurrentIndex + 1). @CurrentDisplayQuestion.QuestionText </h5>
-
-
-            <EditForm Model="CurrentDisplayQuestion">
-
-                <InputRadioGroup @bind-Value="CurrentDisplayQuestion.UserAnswerId">
-                    @foreach (var answer in CurrentDisplayQuestion.Answers)
-                            {
-
-
-                        @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
-                                {
-                            <InputRadio Value="answer.AnswerId" @onclick="OnAnswerClick" /> @answer.AnswerText <br />
-                                }
-
-                            }
-                </InputRadioGroup>
-
-            </EditForm>
-        </div>
-        <button @onclick="MovePrev" class="btn-primary">Trước</button>
-        <button @onclick="MoveNext" class="btn-primary">Tiếp</button>
-
-    }
+    
 }
 
 @code {
@@ -128,8 +102,9 @@ else
     int RemainSecondToDoExam;
     Timer timer;
 
-    private async void OnAnswerClick()
+    private async void OnAnswerClick(QuestionDAO questionDAO)
     {
+        questionDAO.IsSyncUserAnswer = false;
         await CapNhatCauTraLoi();
     }
 
