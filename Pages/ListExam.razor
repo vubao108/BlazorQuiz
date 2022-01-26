@@ -53,7 +53,7 @@
         ***REMOVED***
             CurrentUser = await userManager.FindByNameAsync(user.Identity.Name);
             examInfos = await repository.LayDanhSachBaiThi(Convert.ToInt32(CurrentUser.Id));
-            AppState.CurrentIdentityUserId = Task.FromResult(Convert.ToInt32(CurrentUser.Id));
+            AppState.CurrentIdentityUserId = Convert.ToInt32(CurrentUser.Id);
             
     ***REMOVED***
         else
