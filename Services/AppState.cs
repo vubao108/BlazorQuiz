@@ -16,6 +16,7 @@ namespace BlazorVNPTQuiz.Services
         private readonly AuthenticationStateProvider authenticationStateProvider;
         private readonly UserManager<IdentityUser> userManager;
         private readonly IRepository repository;
+        
         public AppState(AuthenticationStateProvider authenticationStateProvider
             , UserManager<IdentityUser> userManager, IRepository repository)
         ***REMOVED***
@@ -32,6 +33,7 @@ namespace BlazorVNPTQuiz.Services
         ***REMOVED***
             await GetUserId();
             await GetCurrentExam();
+            await GetJoinedExams();
     ***REMOVED***
 
         private async Task  GetCurrentExam()
@@ -64,6 +66,8 @@ namespace BlazorVNPTQuiz.Services
     ***REMOVED***
 
 
+
+
         private Timer timer;
         public event Action<ComponentBase, string> StateChanged;
 
@@ -72,6 +76,13 @@ namespace BlazorVNPTQuiz.Services
         public int  CurrentIdentityUserId ***REMOVED*** get; set; ***REMOVED***
         public ExamNotFinishedYet SelectedExamNotFinishedInfo ***REMOVED***get;private set;***REMOVED***
         public int RemainSeconds ***REMOVED*** get; private set; ***REMOVED*** = 0;
+        public List<int> JoinedExamIds ***REMOVED*** get; private set; ***REMOVED***
+
+        public async Task GetJoinedExams()
+        ***REMOVED***
+            JoinedExamIds = await repository.LayIdBaithiDaThamGia(CurrentIdentityUserId);
+            NotifyStateChanged(null,"JoinedExamIds");
+    ***REMOVED***
 
         
 
