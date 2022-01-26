@@ -30,12 +30,12 @@ else
 @*<div class="row">*@
     @*<div class="col-11 col-md-6"><strong> @AppState.SelectedExamInfo.ExamName </strong></div>
     <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>*@
-<div class="floating-button">
-    <span style="color:red">@RemainTime</span> <br />
-    <button @onclick="Submit" class="btn btn-success">
+@*<div class="floating-button">*@
+    @*<span style="color:red">@RemainTime</span> <br />*@
+    <button @onclick="Submit" class="btn btn-success floating-button">
         Nộp Bài
     </button>
-</div>
+@*</div>*@
 @*</div>*@
        
             @*<button @onclick="Submit" class="btn btn-success floating-button">
@@ -128,9 +128,9 @@ else
     int RemainSecondToDoExam;
     Timer timer;
 
-    private void OnAnswerClick()
+    private async void OnAnswerClick()
     ***REMOVED***
-
+        await CapNhatCauTraLoi();
 ***REMOVED***
 
 
@@ -154,16 +154,15 @@ else
         if (questions.UserExamId == 0)
             return;
 
-        if (AppState.SelectedExamNotFinishedInfo == null || AppState.SelectedExamNotFinishedInfo.UserExamId == 0)
+        
+        ExamInfo examInfo = await repository.LayThongTinBaiThi(ExamId);
+        ExamNotFinishedYet examNotFinishedYet = new ExamNotFinishedYet()
         ***REMOVED***
-            ExamInfo examInfo = await repository.LayThongTinBaiThi(ExamId);
-            ExamNotFinishedYet examNotFinishedYet = new ExamNotFinishedYet()
-            ***REMOVED***
-                UserExamId = questions.UserExamId, CurrentExam = examInfo
-              , RemainSecond = questions.RemainSeCond, TryNum = questions.TryNum
-        ***REMOVED***;
-            AppState.UpdateSelectedExam(this, examNotFinishedYet);
-    ***REMOVED***
+            UserExamId = questions.UserExamId, CurrentExam = examInfo
+            , RemainSecond = questions.RemainSeCond, TryNum = questions.TryNum
+    ***REMOVED***;
+        AppState.UpdateSelectedExam(this, examNotFinishedYet);
+        
 
 
 
@@ -271,20 +270,21 @@ else
     ***REMOVED***
         if (RemainSecondToDoExam > 0)
         ***REMOVED***
-            CountToSync++;
-            RemainSecondToDoExam--;
-            RemainTime = $"***REMOVED***RemainSecondToDoExam / 60***REMOVED*** phút:***REMOVED***RemainSecondToDoExam % 60***REMOVED*** giây ";
-            // Note that the following line is necessary because otherwise
-            // Blazor would not recognize the state change and not refresh the UI
-            InvokeAsync(() =>
-            ***REMOVED***
+            //CountToSync++;
+            //RemainSecondToDoExam--;
+            //RemainTime = $"***REMOVED***RemainSecondToDoExam / 60***REMOVED*** phút:***REMOVED***RemainSecondToDoExam % 60***REMOVED*** giây ";
+            //// Note that the following line is necessary because otherwise
+            //// Blazor would not recognize the state change and not refresh the UI
+            //InvokeAsync(() =>
+            //***REMOVED***
 
-                StateHasChanged();
-        ***REMOVED***);
-            if (CountToSync % 10 == 0)
-            ***REMOVED***
-                CapNhatCauTraLoi();
-        ***REMOVED***
+            //    StateHasChanged();
+            //***REMOVED***);
+            //if (CountToSync % 10 == 0)
+            //***REMOVED***
+            //    CapNhatCauTraLoi();
+            //***REMOVED***
+            RemainSecondToDoExam--;
 
     ***REMOVED***
         else

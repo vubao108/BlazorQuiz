@@ -256,6 +256,32 @@ namespace BlazorVNPTQuiz.Repository
     ***REMOVED***
 
 
+        public async Task<List<int>> LayIdBaithiDaThamGia(int userId)
+        ***REMOVED***
+            List<int> listExamIds = new List<int>();
+            try
+            ***REMOVED***
+                using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+                ***REMOVED***
+                    string sql = $"select exam_id from user_exam where user_id = ***REMOVED***userId***REMOVED*** )";
+                    using (var command = new MySqlCommand(sql, connection))
+                    ***REMOVED***
+                        await connection.OpenAsync();
+                        using var reader = await command.ExecuteReaderAsync();
+                        while (await reader.ReadAsync())
+                        ***REMOVED***
+                            listExamIds.Add(reader.GetInt32("exam_id"));
+                    ***REMOVED***
+                ***REMOVED***
+            ***REMOVED***
+        ***REMOVED***
+            catch (Exception ex)
+            ***REMOVED***
+                System.Diagnostics.Debug.Print(ex.StackTrace);
+        ***REMOVED***
+            return listExamIds;
+    ***REMOVED***
+
 
 ***REMOVED***
 ***REMOVED***
