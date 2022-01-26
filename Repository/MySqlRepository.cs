@@ -263,7 +263,7 @@ namespace BlazorVNPTQuiz.Repository
             ***REMOVED***
                 using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
                 ***REMOVED***
-                    string sql = $"select exam_id from user_exam where user_id = ***REMOVED***userId***REMOVED*** )";
+                    string sql = $"select exam_id from user_exam where user_id = ***REMOVED***userId***REMOVED***";
                     using (var command = new MySqlCommand(sql, connection))
                     ***REMOVED***
                         await connection.OpenAsync();
