@@ -4,7 +4,7 @@
     <AuthorizeView>
 
         <Authorized>
-            <div class="col-9 float-left"  >
+            <div class="col-8 col-md-8"  >
                 @if (AppState.SelectedExamNotFinishedInfo?.CurrentExam != null)
                 {
                 <a href="exam/@AppState.CurrentIdentityUserId/@AppState.SelectedExamNotFinishedInfo?.CurrentExam?.ExamId"><b>@AppState.SelectedExamNotFinishedInfo?.CurrentExam?.ExamName</b></a>
@@ -14,12 +14,10 @@
 
                 }
             </div>
-            <div class="col-2">
+            <div class="col-4 col-md-4">
                 <a href="Identity/Account/Manage">Xin chào, @context.User.Identity.Name!</a>
-                @*<form method="post" action="Identity/Account/LogOut">
-                        <button type="submit" class="nav-link btn btn-link">Log out</button>
-                    </form>*@
-                @*<a href="Identity/Account/Logout">Đăng xuất</a>*@
+               
+                <a href="Identity/Account/Logout">Đăng xuất</a>
             </div>
         </Authorized>
         <NotAuthorized>
