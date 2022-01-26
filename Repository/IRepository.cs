@@ -22,6 +22,8 @@ namespace BlazorVNPTQuiz.Repository
 
         Task<ExamNotFinishedYet> LayBaiThiDangLam(int userId);
 
+        Task<List<int>> LayIdBaithiDaThamGia(int userId);
+
 
     }
 }
