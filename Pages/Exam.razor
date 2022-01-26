@@ -60,7 +60,7 @@ else
                                 @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
                                             ***REMOVED***
                                     <label>
-                                        <InputRadio Value="answer.AnswerId" @onclick="()=>OnAnswerClick(question)" /> @answer.AnswerText
+                                        <InputRadio Value="answer.AnswerId" @onclick="()=>OnAnswerClick(question, answer.AnswerId)" /> @answer.AnswerText
                                     </label><br />
 
                                         ***REMOVED***
@@ -102,9 +102,10 @@ else
     int RemainSecondToDoExam;
     Timer timer;
 
-    private async void OnAnswerClick(QuestionDAO questionDAO)
+    private async void OnAnswerClick(QuestionDAO selectQuestion, int answerId)
     ***REMOVED***
-        questionDAO.IsSyncUserAnswer = false;
+        selectQuestion.UserAnswerId = answerId;
+        selectQuestion.IsSyncUserAnswer = false;
         await CapNhatCauTraLoi();
 ***REMOVED***
 
@@ -129,7 +130,7 @@ else
         if (questions.UserExamId == 0)
             return;
 
-        
+
         ExamInfo examInfo = await repository.LayThongTinBaiThi(ExamId);
         ExamNotFinishedYet examNotFinishedYet = new ExamNotFinishedYet()
         ***REMOVED***
@@ -137,7 +138,7 @@ else
             , RemainSecond = questions.RemainSeCond, TryNum = questions.TryNum
     ***REMOVED***;
         AppState.UpdateSelectedExam(this, examNotFinishedYet);
-        
+
 
 
 
@@ -224,6 +225,7 @@ else
                 //_logger.LogInformation($"update ExamQuestionId : ***REMOVED***question.ExamQuestionId***REMOVED***, UserAnswerId:***REMOVED***question.UserAnswerId***REMOVED***");
         ***REMOVED***
     ***REMOVED***
+       
 
 ***REMOVED***
 
