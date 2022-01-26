@@ -25,15 +25,14 @@
 
     private string GetClassCss()
     {
-        if( AppState.SelectedExamNotFinishedInfo?.CurrentExam?.ExamId == ExamItem.ExamId)
+         if ((bool)AppState.JoinedExamIds?.Contains(ExamItem.ExamId))
         {
-            return "bg-info text-white";
-        }else if ((bool)AppState.JoinedExamIds?.Contains(ExamItem.ExamId))
-        {
-            return "bg-success text-white";
+            return "backgroundJoined text-white";
         }
         return "bg-light text-dark";
     }
+
+    
 
     public void StartBaiThi()
     {
@@ -51,6 +50,8 @@
             await InvokeAsync(StateHasChanged);
         }
     }
+
+
 
     protected override void OnInitialized()
     {
