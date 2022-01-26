@@ -47,7 +47,7 @@ namespace BlazorVNPTQuiz.Models
 
     public class QuestionDAO
     ***REMOVED***
-        public bool IsSyncUserAnswer ***REMOVED*** get; set; ***REMOVED***
+        public bool IsSyncUserAnswer ***REMOVED*** get; set; ***REMOVED*** 
         public int ExamQuestionId ***REMOVED*** get; set; ***REMOVED***
         public int QuestionId ***REMOVED*** get; set; ***REMOVED***
         public string QuestionText ***REMOVED*** get; set; ***REMOVED***
