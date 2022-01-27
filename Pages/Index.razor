@@ -1,5 +1,5 @@
 ﻿@page "/"
-
+@inject ILogger<Index> logger
 <h1>Hà Tĩnh VNPT Quiz</h1>
 
 Chào mừng bạn đến với Hà Tĩnh VNPT Quiz
@@ -7,5 +7,6 @@ Chào mừng bạn đến với Hà Tĩnh VNPT Quiz
 @*<SurveyPrompt Title="How is Blazor working for you?" />*@
 
 @***REMOVED*** 
-    Log.Information("log from seilog");
+    
+    logger.LogInformation("log from log4net");
 ***REMOVED***
