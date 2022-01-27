@@ -104,8 +104,7 @@ else
 
     private async void OnAnswerClick(QuestionDAO selectQuestion, int answerId)
     {
-        selectQuestion.UserAnswerId = answerId;
-        selectQuestion.IsSyncUserAnswer = false;
+        await SyncCauTraLoiDaChon(selectQuestion, answerId);
         await CapNhatCauTraLoi();
     }
 
@@ -214,21 +213,23 @@ else
 
     private async Task CapNhatCauTraLoi()
     {
-        //if (CurrentDisplayQuestion.UserAnswerId > 0)
-        //{
 
-        //    await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentDisplayQuestion.UserAnswerId);
-        //}
         foreach (var question in questions.Questions)
         {
             if (!question.IsSyncUserAnswer && question.UserAnswerId > 0)
             {
-                await repository.CapNhatCauTraLoi(question.ExamQuestionId, question.UserAnswerId);
-                question.IsSyncUserAnswer = true;
+                await SyncCauTraLoiDaChon(question, question.UserAnswerId);                
                 //_logger.LogInformation($"update ExamQuestionId : {question.ExamQuestionId}, UserAnswerId:{question.UserAnswerId}");
             }
         }
-       
+
+
+    }
+
+    private async Task SyncCauTraLoiDaChon(QuestionDAO question, int UserAnswerId)
+    {
+        await repository.SyncCauTraLoi(question.ExamQuestionId, UserAnswerId);
+        question.IsSyncUserAnswer = true;
 
     }
 
