@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
 using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
+using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace BlazorVNPTQuiz.Repository
 ***REMOVED***
@@ -14,10 +16,11 @@ namespace BlazorVNPTQuiz.Repository
     ***REMOVED***
 
         private IConfiguration configuration;
-       
-        public MySqlRepository(IConfiguration configuration)
+        private ILogger<MySqlRepository> logger;
+        public MySqlRepository(IConfiguration configuration,ILogger<MySqlRepository> logger)
         ***REMOVED***
             this.configuration = configuration;
+            this.logger = logger;
 
     ***REMOVED***
 
@@ -84,6 +87,7 @@ namespace BlazorVNPTQuiz.Repository
         ***REMOVED***
             stopwatch.Stop();
             Debug.Print($"LayDanhSachCauHoi(***REMOVED***user_id***REMOVED***,***REMOVED***exam_id***REMOVED***) took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED***");
+            logger.LogInformation($"LayDanhSachCauHoi(***REMOVED***user_id***REMOVED***,***REMOVED***exam_id***REMOVED***) took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED***");
             return questionExam;
 
     ***REMOVED***
@@ -258,7 +262,9 @@ namespace BlazorVNPTQuiz.Repository
             ***REMOVED***
                 stopwatch.Stop();
                 Debug.Print($"LayBaiThiDangLam(***REMOVED***userId***REMOVED***) took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED***");
-        ***REMOVED***catch(Exception ex)
+                logger.LogInformation($"LayBaiThiDangLam(***REMOVED***userId***REMOVED***) took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED***");
+        ***REMOVED***
+            catch(Exception ex)
             ***REMOVED***
                 System.Diagnostics.Debug.Print(ex.StackTrace);
         ***REMOVED***
@@ -287,7 +293,7 @@ namespace BlazorVNPTQuiz.Repository
                 ***REMOVED***
             ***REMOVED***
                 stopwatch.Stop();
-                Debug.Print($"LayIdBaithiDaThamGia(***REMOVED***userId***REMOVED***) took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED***");
+                logger.LogInformation($"LayIdBaithiDaThamGia(***REMOVED***userId***REMOVED***) took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED***");
         ***REMOVED***
             catch (Exception ex)
             ***REMOVED***
