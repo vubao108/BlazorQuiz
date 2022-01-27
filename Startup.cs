@@ -20,6 +20,8 @@ using BlazorVNPTQuiz.Areas.Identity;
 using Microsoft.AspNetCore.HttpOverrides;
 using BlazorVNPTQuiz.Services;
 using Blazored.Modal;
+using log4net;
+using Microsoft.Extensions.Logging;
 
 namespace BlazorVNPTQuiz
 ***REMOVED***
@@ -67,9 +69,11 @@ namespace BlazorVNPTQuiz
     ***REMOVED***
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         ***REMOVED***
-            
+            //var loggingOptions = this.Configuration.GetSection("Log4NetCore")
+            //                                   .Get<Log4NetProviderOptions>();
+            //loggerFactory.AddLog4Net("Log.config");
             if (env.IsDevelopment())
             ***REMOVED***
                 app.UseDeveloperExceptionPage();

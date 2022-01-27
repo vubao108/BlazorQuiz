@@ -18,21 +18,22 @@ namespace BlazorVNPTQuiz
             var configuration = new ConfigurationBuilder()
            .SetBasePath(Directory.GetCurrentDirectory())
            .AddJsonFile("appsettings.json")
-        //   .AddJsonFile($"appsettings.***REMOVED***Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"***REMOVED***.json", true)
+              .AddJsonFile($"appsettings.***REMOVED***Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"***REMOVED***.json", true)
            .Build();
-           
-             Log.Logger = new LoggerConfiguration()
-            .ReadFrom.Configuration(configuration)
-            .CreateLogger();
+
+            Log.Logger = new LoggerConfiguration()
+           .ReadFrom.Configuration(configuration)
+           .CreateLogger();
             CreateHostBuilder(args).Build().Run();
     ***REMOVED***
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args).UseSerilog()
-             
+
+
                 .ConfigureWebHostDefaults(webBuilder =>
                 ***REMOVED***
-                   
+
                     webBuilder.UseStartup<Startup>();
             ***REMOVED***);
 ***REMOVED***
