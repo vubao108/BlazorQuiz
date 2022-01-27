@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
 using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
 
 namespace BlazorVNPTQuiz.Repository
 {
@@ -13,9 +14,11 @@ namespace BlazorVNPTQuiz.Repository
     {
 
         private IConfiguration configuration;
+       
         public MySqlRepository(IConfiguration configuration)
         {
             this.configuration = configuration;
+
         }
 
         public async Task CapNhatCauTraLoi(int questionExamId, int userAnswerId)
@@ -36,7 +39,8 @@ namespace BlazorVNPTQuiz.Repository
         {
             QuestionUserExam questionExam = new QuestionUserExam() { UserId = user_id, ExamID = exam_id };
             questionExam.Questions = new List<QuestionDAO>();
-
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
             {
                 using (var command = new MySqlCommand($"call proc_get_question_exam_v2({exam_id},{user_id},1,' ',' ')", connection))
@@ -78,6 +82,8 @@ namespace BlazorVNPTQuiz.Repository
                     }
                 }
             }
+            stopwatch.Stop();
+            Debug.Print($"LayDanhSachCauHoi({user_id},{exam_id}) took {stopwatch.ElapsedMilliseconds}");
             return questionExam;
 
         }
@@ -212,6 +218,8 @@ namespace BlazorVNPTQuiz.Repository
             ExamNotFinishedYet examNotFinishedYet = new ExamNotFinishedYet();
             try
             {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
                 using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
                 {
                     string sql = $"call proc_laybaithi_danglam({userId})";
@@ -248,6 +256,8 @@ namespace BlazorVNPTQuiz.Repository
 
                     }
                 }
+                stopwatch.Stop();
+                Debug.Print($"LayBaiThiDangLam({userId}) took {stopwatch.ElapsedMilliseconds}");
             }catch(Exception ex)
             {
                 System.Diagnostics.Debug.Print(ex.StackTrace);
@@ -261,6 +271,8 @@ namespace BlazorVNPTQuiz.Repository
             List<int> listExamIds = new List<int>();
             try
             {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
                 using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
                 {
                     string sql = $"select exam_id from user_exam where user_id = {userId}";
@@ -274,10 +286,12 @@ namespace BlazorVNPTQuiz.Repository
                         }
                     }
                 }
+                stopwatch.Stop();
+                Debug.Print($"LayIdBaithiDaThamGia({userId}) took {stopwatch.ElapsedMilliseconds}");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print(ex.StackTrace);
+               Debug.Print(ex.StackTrace);
             }
             return listExamIds;
         }
