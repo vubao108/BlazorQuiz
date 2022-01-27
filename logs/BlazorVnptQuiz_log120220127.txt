@@ -1,0 +1,169 @@
+2022-01-27 17:15:01.378 +07:00 [INF] User profile is available. Using 'C:\Users\vuth1\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-01-27 17:15:01.930 +07:00 [INF] Now listening on: http://localhost:5000
+2022-01-27 17:15:01.945 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-27 17:15:01.946 +07:00 [INF] Hosting environment: Development
+2022-01-27 17:15:01.949 +07:00 [INF] Content root path: F:\Code\00_Product\BlazorVNPTQuiz\BlazorVNPTQuiz
+2022-01-27 17:15:04.355 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/ - -
+2022-01-27 17:15:05.212 +07:00 [INF] Entity Framework Core 5.0.13 initialized 'ApplicationDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: MaxPoolSize=128 ServerVersion 5.7.31-mysql 
+2022-01-27 17:15:05.539 +07:00 [INF] Executed DbCommand (42ms) [Parameters=[@__p_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`Id` = @__p_0
+LIMIT 1
+2022-01-27 17:15:05.677 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__user_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ClaimType`, `a`.`ClaimValue`, `a`.`UserId`
+FROM `AspNetUserClaims` AS `a`
+WHERE `a`.`UserId` = @__user_Id_0
+2022-01-27 17:15:05.711 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a0`.`Name`
+FROM `AspNetUserRoles` AS `a`
+INNER JOIN `AspNetRoles` AS `a0` ON `a`.`RoleId` = `a0`.`Id`
+WHERE `a`.`UserId` = @__userId_0
+2022-01-27 17:15:05.727 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ConcurrencyStamp`, `a`.`Name`, `a`.`NormalizedName`
+FROM `AspNetRoles` AS `a`
+WHERE `a`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2022-01-27 17:15:05.745 +07:00 [INF] Executed DbCommand (2ms) [Parameters=[@__role_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`ClaimType`, `a`.`ClaimValue`
+FROM `AspNetRoleClaims` AS `a`
+WHERE `a`.`RoleId` = @__role_Id_0
+2022-01-27 17:15:05.753 +07:00 [INF] Executing endpoint '/_Host'
+2022-01-27 17:15:05.774 +07:00 [INF] Route matched with ***REMOVED***page = "/_Host", area = ""***REMOVED***. Executing page /_Host
+2022-01-27 17:15:05.786 +07:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-01-27 17:15:05.789 +07:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-01-27 17:15:05.878 +07:00 [INF] Executed page /_Host in 97.8281ms
+2022-01-27 17:15:05.880 +07:00 [INF] Executed endpoint '/_Host'
+2022-01-27 17:15:05.902 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/BlazorVNPTQuiz.styles.css - -
+2022-01-27 17:15:05.902 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/css/site.css - -
+2022-01-27 17:15:05.906 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored-modal.css - -
+2022-01-27 17:15:05.908 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/_framework/blazor.server.js - -
+2022-01-27 17:15:05.924 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored.modal.js - -
+2022-01-27 17:15:05.924 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/ - - - 200 - text/html;+charset=utf-8 1558.8416ms
+2022-01-27 17:15:05.927 +07:00 [INF] The file /css/site.css was not modified
+2022-01-27 17:15:05.927 +07:00 [INF] The file /BlazorVNPTQuiz.styles.css was not modified
+2022-01-27 17:15:05.927 +07:00 [INF] The file /_content/Blazored.Modal/blazored-modal.css was not modified
+2022-01-27 17:15:05.927 +07:00 [INF] The file /_framework/blazor.server.js was not modified
+2022-01-27 17:15:05.940 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored-modal.css - - - 304 - text/css 33.9037ms
+2022-01-27 17:15:05.938 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/css/site.css - - - 304 - text/css 36.1382ms
+2022-01-27 17:15:05.945 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/css/bootstrap/bootstrap.min.css - -
+2022-01-27 17:15:05.944 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/_framework/blazor.server.js - - - 304 - application/javascript 36.0775ms
+2022-01-27 17:15:05.938 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/BlazorVNPTQuiz.styles.css - - - 304 - text/css 36.4113ms
+2022-01-27 17:15:05.951 +07:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2022-01-27 17:15:05.927 +07:00 [INF] The file /_content/Blazored.Modal/blazored.modal.js was not modified
+2022-01-27 17:15:05.954 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/css/bootstrap/bootstrap.min.css - - - 304 - text/css 8.9101ms
+2022-01-27 17:15:05.955 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored.modal.js - - - 304 - application/javascript 31.3721ms
+2022-01-27 17:15:05.990 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/css/open-iconic-bootstrap.min.css - -
+2022-01-27 17:15:05.993 +07:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2022-01-27 17:15:05.994 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/css/open-iconic-bootstrap.min.css - - - 304 - text/css 4.0520ms
+2022-01-27 17:15:06.014 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2022-01-27 17:15:06.019 +07:00 [INF] Executing endpoint '/_blazor/negotiate'
+2022-01-27 17:15:06.039 +07:00 [INF] Executed endpoint '/_blazor/negotiate'
+2022-01-27 17:15:06.041 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 27.4520ms
+2022-01-27 17:15:06.088 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/_blazor?id=R86c9kh82VyaavKFCit_-g - -
+2022-01-27 17:15:06.100 +07:00 [INF] Executing endpoint '/_blazor'
+2022-01-27 17:15:06.259 +07:00 [INF] Entity Framework Core 5.0.13 initialized 'ApplicationDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: MaxPoolSize=128 ServerVersion 5.7.31-mysql 
+2022-01-27 17:15:06.280 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__authState_User_Identity_Name_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`UserName` = @__authState_User_Identity_Name_0
+LIMIT 1
+2022-01-27 17:15:06.310 +07:00 [INF] Authorization was successful.
+2022-01-27 17:15:06.313 +07:00 [INF] Authorization was successful.
+2022-01-27 17:15:06.314 +07:00 [INF] log from log4net
+2022-01-27 17:15:06.337 +07:00 [INF] Authorization was successful.
+2022-01-27 17:15:06.338 +07:00 [INF] Authorization was successful.
+2022-01-27 17:15:06.354 +07:00 [INF] LayIdBaithiDaThamGia(1) took 11
+2022-01-27 17:15:06.355 +07:00 [INF] Authorization was successful.
+2022-01-27 17:15:06.356 +07:00 [INF] Authorization was successful.
+2022-01-27 17:15:06.363 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/fonts/open-iconic.woff - -
+2022-01-27 17:15:06.365 +07:00 [INF] The file /css/open-iconic/font/fonts/open-iconic.woff was not modified
+2022-01-27 17:15:06.368 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/fonts/open-iconic.woff - - - 304 - application/font-woff 4.4177ms
+2022-01-27 17:15:20.163 +07:00 [INF] Authorization was successful.
+2022-01-27 17:15:20.194 +07:00 [INF] Authorization was successful.
+2022-01-27 17:15:20.196 +07:00 [INF] Executed DbCommand (6ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`NormalizedUserName` = @__normalizedUserName_0
+LIMIT 1
+2022-01-27 17:15:20.226 +07:00 [INF] LayIdBaithiDaThamGia(1) took 4
+2022-01-27 17:15:20.228 +07:00 [INF] Authorization was successful.
+2022-01-27 17:15:20.236 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:04.024 +07:00 [INF] LayDanhSachCauHoi(1,74) took 49
+2022-01-27 17:16:04.027 +07:00 [INF] OnInitializedAsync().LayDanhSachCauHoi(1,74) took 55 ms 
+2022-01-27 17:16:04.039 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:04.052 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:04.243 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:05.246 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:06.244 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:07.246 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:08.254 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:09.247 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:10.245 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:11.255 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:12.239 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:13.247 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:14.252 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:15.236 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:16.239 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:16.809 +07:00 [INF] SynCauTraLoi: update exam_question_official set answer_id = 27788 where id = 606 took 20
+2022-01-27 17:16:17.245 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:18.241 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:19.246 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:19.428 +07:00 [INF] SynCauTraLoi: update exam_question_official set answer_id = 27775 where id = 607 took 4
+2022-01-27 17:16:20.253 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:21.178 +07:00 [INF] SynCauTraLoi: update exam_question_official set answer_id = 27818 where id = 611 took 5
+2022-01-27 17:16:21.247 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:22.249 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:23.243 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:24.253 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:25.250 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:26.241 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:27.242 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:28.241 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:29.245 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:30.250 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:31.256 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:32.246 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:33.250 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:34.242 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:35.243 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:36.250 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:37.250 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:38.247 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:39.248 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:40.244 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:41.242 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:42.248 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:43.251 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:44.240 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:45.249 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:46.243 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:47.251 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:48.246 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:49.252 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:50.241 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:51.246 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:52.246 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:53.241 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:54.245 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:54.547 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:54.562 +07:00 [INF] Executed DbCommand (3ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`NormalizedUserName` = @__normalizedUserName_0
+LIMIT 1
+2022-01-27 17:16:54.563 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:54.591 +07:00 [INF] LayIdBaithiDaThamGia(1) took 5
+2022-01-27 17:16:54.592 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:54.597 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:55.256 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:56.241 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:57.247 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:58.252 +07:00 [INF] Authorization was successful.
+2022-01-27 17:16:59.247 +07:00 [INF] Authorization was successful.
+2022-01-27 17:17:00.255 +07:00 [INF] Authorization was successful.
+2022-01-27 17:17:00.553 +07:00 [INF] LayDanhSachCauHoi(1,74) took 13
+2022-01-27 17:17:00.554 +07:00 [INF] OnInitializedAsync().LayDanhSachCauHoi(1,74) took 16 ms 
+2022-01-27 17:17:00.561 +07:00 [INF] Authorization was successful.
+2022-01-27 17:17:00.563 +07:00 [INF] Authorization was successful.
