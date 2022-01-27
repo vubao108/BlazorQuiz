@@ -28,17 +28,20 @@ namespace BlazorVNPTQuiz.Repository
         {
             string sql = $"update exam_question_official set answer_id = {userAnswerId} where id = {questionExamId}";
             Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
+            
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
             {
                 
                 using (var command = new MySqlCommand(sql, connection))
                 {
+                    stopwatch.Start();
                     await connection.OpenAsync();
                     await command.ExecuteNonQueryAsync();
+                    stopwatch.Stop();
                 }
             }
-            stopwatch.Stop();
+            
+            Debug.Print($"SynCauTraLoi: {sql} took {stopwatch.ElapsedMilliseconds}");
             logger.LogInformation($"SynCauTraLoi: {sql} took {stopwatch.ElapsedMilliseconds}");
         }
        
