@@ -12,7 +12,7 @@
 @inject IConfiguration configuration;
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject AppState AppState;
-
+@inject ILogger<Exam> _logger;
 
 @if (questions == null)
 {
@@ -125,8 +125,11 @@ else
         AppState.CurrentIdentityUserId = UserId;
 
         AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
-
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
         questions = await repository.LayDanhSachCauHoi(UserId, ExamId);
+        stopwatch.Stop();
+        _logger.LogInformation($"OnInitializedAsync().LayDanhSachCauHoi({UserId},{ExamId}) took {stopwatch.ElapsedMilliseconds} ms ");
         if (questions.UserExamId == 0)
             return;
 

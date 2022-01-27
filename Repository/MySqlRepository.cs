@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
 using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
+using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace BlazorVNPTQuiz.Repository
 {
@@ -14,10 +16,11 @@ namespace BlazorVNPTQuiz.Repository
     {
 
         private IConfiguration configuration;
-       
-        public MySqlRepository(IConfiguration configuration)
+        private ILogger<MySqlRepository> logger;
+        public MySqlRepository(IConfiguration configuration,ILogger<MySqlRepository> logger)
         {
             this.configuration = configuration;
+            this.logger = logger;
 
         }
 
@@ -84,6 +87,7 @@ namespace BlazorVNPTQuiz.Repository
             }
             stopwatch.Stop();
             Debug.Print($"LayDanhSachCauHoi({user_id},{exam_id}) took {stopwatch.ElapsedMilliseconds}");
+            logger.LogInformation($"LayDanhSachCauHoi({user_id},{exam_id}) took {stopwatch.ElapsedMilliseconds}");
             return questionExam;
 
         }
@@ -258,7 +262,9 @@ namespace BlazorVNPTQuiz.Repository
                 }
                 stopwatch.Stop();
                 Debug.Print($"LayBaiThiDangLam({userId}) took {stopwatch.ElapsedMilliseconds}");
-            }catch(Exception ex)
+                logger.LogInformation($"LayBaiThiDangLam({userId}) took {stopwatch.ElapsedMilliseconds}");
+            }
+            catch(Exception ex)
             {
                 System.Diagnostics.Debug.Print(ex.StackTrace);
             }
@@ -287,7 +293,7 @@ namespace BlazorVNPTQuiz.Repository
                     }
                 }
                 stopwatch.Stop();
-                Debug.Print($"LayIdBaithiDaThamGia({userId}) took {stopwatch.ElapsedMilliseconds}");
+                logger.LogInformation($"LayIdBaithiDaThamGia({userId}) took {stopwatch.ElapsedMilliseconds}");
             }
             catch (Exception ex)
             {
