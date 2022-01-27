@@ -24,17 +24,22 @@ namespace BlazorVNPTQuiz.Repository
 
         }
 
-        public async Task CapNhatCauTraLoi(int questionExamId, int userAnswerId)
+        public async Task SyncCauTraLoi(int questionExamId, int userAnswerId)
         {
-
+            string sql = $"update exam_question_official set answer_id = {userAnswerId} where id = {questionExamId}";
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
             {
-                using (var command = new MySqlCommand($"update exam_question_official set answer_id = {userAnswerId} where id = {questionExamId}", connection))
+                
+                using (var command = new MySqlCommand(sql, connection))
                 {
                     await connection.OpenAsync();
                     await command.ExecuteNonQueryAsync();
                 }
             }
+            stopwatch.Stop();
+            logger.LogInformation($"SynCauTraLoi: {sql} took {stopwatch.ElapsedMilliseconds}");
         }
        
 
