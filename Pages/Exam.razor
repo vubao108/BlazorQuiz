@@ -104,8 +104,7 @@ else
 
     private async void OnAnswerClick(QuestionDAO selectQuestion, int answerId)
     ***REMOVED***
-        selectQuestion.UserAnswerId = answerId;
-        selectQuestion.IsSyncUserAnswer = false;
+        await SyncCauTraLoiDaChon(selectQuestion, answerId);
         await CapNhatCauTraLoi();
 ***REMOVED***
 
@@ -214,21 +213,23 @@ else
 
     private async Task CapNhatCauTraLoi()
     ***REMOVED***
-        //if (CurrentDisplayQuestion.UserAnswerId > 0)
-        //***REMOVED***
 
-        //    await repository.CapNhatCauTraLoi(CurrentDisplayQuestion.ExamQuestionId, CurrentDisplayQuestion.UserAnswerId);
-        //***REMOVED***
         foreach (var question in questions.Questions)
         ***REMOVED***
             if (!question.IsSyncUserAnswer && question.UserAnswerId > 0)
             ***REMOVED***
-                await repository.CapNhatCauTraLoi(question.ExamQuestionId, question.UserAnswerId);
-                question.IsSyncUserAnswer = true;
+                await SyncCauTraLoiDaChon(question, question.UserAnswerId);                
                 //_logger.LogInformation($"update ExamQuestionId : ***REMOVED***question.ExamQuestionId***REMOVED***, UserAnswerId:***REMOVED***question.UserAnswerId***REMOVED***");
         ***REMOVED***
     ***REMOVED***
-       
+
+
+***REMOVED***
+
+    private async Task SyncCauTraLoiDaChon(QuestionDAO question, int UserAnswerId)
+    ***REMOVED***
+        await repository.SyncCauTraLoi(question.ExamQuestionId, UserAnswerId);
+        question.IsSyncUserAnswer = true;
 
 ***REMOVED***
 
