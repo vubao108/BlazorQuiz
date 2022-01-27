@@ -1,0 +1,517 @@
+2022-01-27 11:11:40.646 +07:00 [DBG] Hosting starting
+2022-01-27 11:11:40.838 +07:00 [INF] User profile is available. Using 'C:\Users\vuth1\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-01-27 11:11:40.871 +07:00 [DBG] Reading data from file 'C:\Users\vuth1\AppData\Local\ASP.NET\DataProtection-Keys\key-24f6d1dc-4e81-461c-9c55-d3ddc1af669e.xml'.
+2022-01-27 11:11:40.874 +07:00 [DBG] Reading data from file 'C:\Users\vuth1\AppData\Local\ASP.NET\DataProtection-Keys\key-7a317cc9-a8ac-4a15-b716-c4f0cb3eeec7.xml'.
+2022-01-27 11:11:40.875 +07:00 [DBG] Reading data from file 'C:\Users\vuth1\AppData\Local\ASP.NET\DataProtection-Keys\key-994ca992-7852-4003-bf4c-6bb6e1c96565.xml'.
+2022-01-27 11:11:40.877 +07:00 [DBG] Reading data from file 'C:\Users\vuth1\AppData\Local\ASP.NET\DataProtection-Keys\key-e0ffc7f2-fce9-497e-985f-a58993fae81f.xml'.
+2022-01-27 11:11:40.879 +07:00 [DBG] Reading data from file 'C:\Users\vuth1\AppData\Local\ASP.NET\DataProtection-Keys\key-f003a090-a445-43bc-b200-8e57f62a0d56.xml'.
+2022-01-27 11:11:40.886 +07:00 [DBG] Found key {24f6d1dc-4e81-461c-9c55-d3ddc1af669e}.
+2022-01-27 11:11:40.893 +07:00 [DBG] Found key {7a317cc9-a8ac-4a15-b716-c4f0cb3eeec7}.
+2022-01-27 11:11:40.895 +07:00 [DBG] Found key {994ca992-7852-4003-bf4c-6bb6e1c96565}.
+2022-01-27 11:11:40.895 +07:00 [DBG] Found key {e0ffc7f2-fce9-497e-985f-a58993fae81f}.
+2022-01-27 11:11:40.897 +07:00 [DBG] Found key {f003a090-a445-43bc-b200-8e57f62a0d56}.
+2022-01-27 11:11:40.907 +07:00 [DBG] Considering key {994ca992-7852-4003-bf4c-6bb6e1c96565} with expiration date 2022-04-07 12:24:25Z as default key.
+2022-01-27 11:11:40.919 +07:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.XmlEncryption.DpapiXmlDecryptor, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-01-27 11:11:40.922 +07:00 [DBG] Decrypting secret element using Windows DPAPI.
+2022-01-27 11:11:40.924 +07:00 [DBG] Forwarded activator type request from Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60 to Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel.AuthenticatedEncryptorDescriptorDeserializer, Microsoft.AspNetCore.DataProtection, Culture=neutral, PublicKeyToken=adb9793829ddae60
+2022-01-27 11:11:40.930 +07:00 [DBG] Opening CNG algorithm 'AES' from provider 'null' with chaining mode CBC.
+2022-01-27 11:11:40.935 +07:00 [DBG] Opening CNG algorithm 'SHA256' from provider 'null' with HMAC.
+2022-01-27 11:11:40.939 +07:00 [DBG] Using key {994ca992-7852-4003-bf4c-6bb6e1c96565} as the default key.
+2022-01-27 11:11:40.949 +07:00 [DBG] Key ring with default key {994ca992-7852-4003-bf4c-6bb6e1c96565} was loaded during application startup.
+2022-01-27 11:11:41.018 +07:00 [DBG] Registered SignalR Protocol: json, implemented by Microsoft.AspNetCore.SignalR.Protocol.JsonHubProtocol.
+2022-01-27 11:11:41.019 +07:00 [DBG] Registered SignalR Protocol: blazorpack, implemented by Microsoft.AspNetCore.Components.Server.BlazorPack.BlazorPackHubProtocol.
+2022-01-27 11:11:41.577 +07:00 [INF] Now listening on: http://localhost:5000
+2022-01-27 11:11:41.578 +07:00 [DBG] Loaded hosting startup assembly BlazorVNPTQuiz
+2022-01-27 11:11:41.595 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-01-27 11:11:41.596 +07:00 [INF] Hosting environment: Development
+2022-01-27 11:11:41.597 +07:00 [INF] Content root path: F:\Code\00_Product\BlazorVNPTQuiz\BlazorVNPTQuiz
+2022-01-27 11:11:41.598 +07:00 [DBG] Hosting started
+2022-01-27 11:11:42.085 +07:00 [DBG] Connection id "0HMF19CFRO1P2" received FIN.
+2022-01-27 11:11:42.085 +07:00 [DBG] Connection id "0HMF19CFRO1P3" received FIN.
+2022-01-27 11:11:42.101 +07:00 [DBG] Connection id "0HMF19CFRO1P3" accepted.
+2022-01-27 11:11:42.101 +07:00 [DBG] Connection id "0HMF19CFRO1P2" accepted.
+2022-01-27 11:11:42.107 +07:00 [DBG] Connection id "0HMF19CFRO1P3" started.
+2022-01-27 11:11:42.107 +07:00 [DBG] Connection id "0HMF19CFRO1P2" started.
+2022-01-27 11:11:42.121 +07:00 [DBG] Connection id "0HMF19CFRO1P2" sending FIN because: "The client closed the connection."
+2022-01-27 11:11:42.121 +07:00 [DBG] Connection id "0HMF19CFRO1P3" sending FIN because: "The client closed the connection."
+2022-01-27 11:11:42.125 +07:00 [DBG] Connection id "0HMF19CFRO1P2" disconnecting.
+2022-01-27 11:11:42.125 +07:00 [DBG] Connection id "0HMF19CFRO1P3" disconnecting.
+2022-01-27 11:11:42.130 +07:00 [DBG] Connection id "0HMF19CFRO1P2" stopped.
+2022-01-27 11:11:42.130 +07:00 [DBG] Connection id "0HMF19CFRO1P3" stopped.
+2022-01-27 11:11:44.540 +07:00 [DBG] Connection id "0HMF19CFRO1P4" accepted.
+2022-01-27 11:11:44.548 +07:00 [DBG] Connection id "0HMF19CFRO1P4" started.
+2022-01-27 11:11:44.549 +07:00 [DBG] Connection id "0HMF19CFRO1P5" accepted.
+2022-01-27 11:11:44.568 +07:00 [DBG] Connection id "0HMF19CFRO1P5" started.
+2022-01-27 11:11:44.650 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/ - -
+2022-01-27 11:11:44.654 +07:00 [DBG] Wildcard detected, all requests with hosts will be allowed.
+2022-01-27 11:11:44.661 +07:00 [DBG] The request path / does not match a supported file type
+2022-01-27 11:11:44.674 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Login.cshtml'.
+2022-01-27 11:11:44.677 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Logout.cshtml'.
+2022-01-27 11:11:44.679 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml'.
+2022-01-27 11:11:44.686 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml'.
+2022-01-27 11:11:44.689 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml'.
+2022-01-27 11:11:44.695 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Register.cshtml'.
+2022-01-27 11:11:44.703 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/_ViewImports.cshtml'.
+2022-01-27 11:11:44.706 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml'.
+2022-01-27 11:11:44.710 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/_ViewImports.cshtml'.
+2022-01-27 11:11:44.717 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/_ViewStart.cshtml'.
+2022-01-27 11:11:44.720 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Pages/Error.cshtml'.
+2022-01-27 11:11:44.722 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Pages/Shared/_Layout.cshtml'.
+2022-01-27 11:11:44.724 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Pages/Shared/_LoginPartial.cshtml'.
+2022-01-27 11:11:44.727 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Pages/Shared/_ValidationScriptsPartial.cshtml'.
+2022-01-27 11:11:44.730 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Pages/_Host.cshtml'.
+2022-01-27 11:11:44.734 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Pages/_ViewImports.cshtml'.
+2022-01-27 11:11:44.737 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Pages/_ViewStart.cshtml'.
+2022-01-27 11:11:44.740 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/AccessDenied.cshtml'.
+2022-01-27 11:11:44.743 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/ConfirmEmail.cshtml'.
+2022-01-27 11:11:44.746 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/ConfirmEmailChange.cshtml'.
+2022-01-27 11:11:44.752 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/ExternalLogin.cshtml'.
+2022-01-27 11:11:44.754 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/ForgotPassword.cshtml'.
+2022-01-27 11:11:44.757 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/ForgotPasswordConfirmation.cshtml'.
+2022-01-27 11:11:44.760 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Lockout.cshtml'.
+2022-01-27 11:11:44.763 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Login.cshtml'.
+2022-01-27 11:11:44.764 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/LoginWith2fa.cshtml'.
+2022-01-27 11:11:44.766 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/LoginWithRecoveryCode.cshtml'.
+2022-01-27 11:11:44.769 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Logout.cshtml'.
+2022-01-27 11:11:44.771 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml'.
+2022-01-27 11:11:44.775 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/DeletePersonalData.cshtml'.
+2022-01-27 11:11:44.778 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/Disable2fa.cshtml'.
+2022-01-27 11:11:44.781 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/DownloadPersonalData.cshtml'.
+2022-01-27 11:11:44.783 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/Email.cshtml'.
+2022-01-27 11:11:44.786 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/EnableAuthenticator.cshtml'.
+2022-01-27 11:11:44.789 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/ExternalLogins.cshtml'.
+2022-01-27 11:11:44.793 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/GenerateRecoveryCodes.cshtml'.
+2022-01-27 11:11:44.796 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/Index.cshtml'.
+2022-01-27 11:11:44.799 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml'.
+2022-01-27 11:11:44.801 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/ResetAuthenticator.cshtml'.
+2022-01-27 11:11:44.804 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/SetPassword.cshtml'.
+2022-01-27 11:11:44.807 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/ShowRecoveryCodes.cshtml'.
+2022-01-27 11:11:44.812 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/TwoFactorAuthentication.cshtml'.
+2022-01-27 11:11:44.814 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/_Layout.cshtml'.
+2022-01-27 11:11:44.817 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml'.
+2022-01-27 11:11:44.820 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/_StatusMessage.cshtml'.
+2022-01-27 11:11:44.823 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml'.
+2022-01-27 11:11:44.826 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Manage/_ViewStart.cshtml'.
+2022-01-27 11:11:44.829 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/Register.cshtml'.
+2022-01-27 11:11:44.832 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/RegisterConfirmation.cshtml'.
+2022-01-27 11:11:44.835 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/ResendEmailConfirmation.cshtml'.
+2022-01-27 11:11:44.838 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/ResetPassword.cshtml'.
+2022-01-27 11:11:44.841 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/ResetPasswordConfirmation.cshtml'.
+2022-01-27 11:11:44.845 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/_StatusMessage.cshtml'.
+2022-01-27 11:11:44.846 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Account/_ViewImports.cshtml'.
+2022-01-27 11:11:44.850 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/Error.cshtml'.
+2022-01-27 11:11:44.852 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/_Layout.cshtml'.
+2022-01-27 11:11:44.855 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml'.
+2022-01-27 11:11:44.858 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/_ViewImports.cshtml'.
+2022-01-27 11:11:44.860 +07:00 [DBG] Initializing Razor view compiler with compiled view: '/Areas/Identity/Pages/_ViewStart.cshtml'.
+2022-01-27 11:11:44.882 +07:00 [DBG] 2 candidate(s) found for the request path '/'
+2022-01-27 11:11:44.887 +07:00 [DBG] Endpoint 'Page: /_Host' with route pattern '' is valid for the request path '/'
+2022-01-27 11:11:44.889 +07:00 [DBG] Endpoint 'Fallback {*path:nonfile}' with route pattern '{*path:nonfile}' is valid for the request path '/'
+2022-01-27 11:11:44.942 +07:00 [DBG] Request matched endpoint '/_Host'
+2022-01-27 11:11:45.226 +07:00 [DBG] An 'IServiceProvider' was created for internal use by Entity Framework.
+2022-01-27 11:11:45.602 +07:00 [DBG] The index {'UserId'} was not created on entity type 'IdentityUserRole<string>' as the properties are already covered by the index {'UserId', 'RoleId'}.
+2022-01-27 11:11:45.605 +07:00 [DBG] The index {'UserId'} was not created on entity type 'IdentityUserToken<string>' as the properties are already covered by the index {'UserId', 'LoginProvider', 'Name'}.
+2022-01-27 11:11:45.792 +07:00 [INF] Entity Framework Core 5.0.13 initialized 'ApplicationDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: MaxPoolSize=128 ServerVersion 5.7.31-mysql 
+2022-01-27 11:11:45.855 +07:00 [DBG] Compiling query expression: 
+'DbSet<IdentityUser>()
+    .FirstOrDefault(e => EF.Property<string>(e, "Id") == __p_0)'
+2022-01-27 11:11:46.001 +07:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<IdentityUser>(
+    asyncEnumerable: new SingleQueryingEnumerable<IdentityUser>(
+        (RelationalQueryContext)queryContext, 
+        RelationalCommandCache.SelectExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: IdentityUser.Id (string) Required PK AfterSave:Throw, 0], [Property: IdentityUser.AccessFailedCount (int) Required, 1], [Property: IdentityUser.ConcurrencyStamp (string) Concurrency, 2], [Property: IdentityUser.Email (string) MaxLength(256), 3], [Property: IdentityUser.EmailConfirmed (bool) Required, 4], [Property: IdentityUser.LockoutEnabled (bool) Required, 5], [Property: IdentityUser.LockoutEnd (Nullable<DateTimeOffset>), 6], [Property: IdentityUser.NormalizedEmail (string) Index MaxLength(256), 7], [Property: IdentityUser.NormalizedUserName (string) Index MaxLength(256), 8], [Property: IdentityUser.PasswordHash (string), 9], [Property: IdentityUser.PhoneNumber (string), 10], [Property: IdentityUser.PhoneNumberConfirmed (bool) Required, 11], [Property: IdentityUser.SecurityStamp (string), 12], [Property: IdentityUser.TwoFactorEnabled (bool) Required, 13], [Property: IdentityUser.UserName (string) MaxLength(256), 14], }
+            SELECT TOP(1) a.Id, a.AccessFailedCount, a.ConcurrencyStamp, a.Email, a.EmailConfirmed, a.LockoutEnabled, a.LockoutEnd, a.NormalizedEmail, a.NormalizedUserName, a.PasswordHash, a.PhoneNumber, a.PhoneNumberConfirmed, a.SecurityStamp, a.TwoFactorEnabled, a.UserName
+            FROM AspNetUsers AS a
+            WHERE a.Id == @__p_0), 
+        Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, IdentityUser>, 
+        BlazorVNPTQuiz.Repository.DataContext.ApplicationDbContext, 
+        False, 
+        False
+    ), 
+    cancellationToken: queryContext.CancellationToken)'
+2022-01-27 11:11:46.034 +07:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2022-01-27 11:11:46.042 +07:00 [DBG] Created DbCommand for 'ExecuteReader' (5ms).
+2022-01-27 11:11:46.061 +07:00 [DBG] Opening connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.109 +07:00 [DBG] Opened connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.118 +07:00 [DBG] Executing DbCommand [Parameters=[@__p_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`Id` = @__p_0
+LIMIT 1
+2022-01-27 11:11:46.183 +07:00 [INF] Executed DbCommand (66ms) [Parameters=[@__p_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`Id` = @__p_0
+LIMIT 1
+2022-01-27 11:11:46.216 +07:00 [DBG] Context 'ApplicationDbContext' started tracking 'IdentityUser' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2022-01-27 11:11:46.264 +07:00 [DBG] A data reader was disposed.
+2022-01-27 11:11:46.268 +07:00 [DBG] Closing connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.270 +07:00 [DBG] Closed connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.285 +07:00 [DBG] Compiling query expression: 
+'DbSet<IdentityUserClaim<string>>()
+    .Where(uc => uc.UserId.Equals(__user_Id_0))
+    .Select(c => c.ToClaim())'
+2022-01-27 11:11:46.321 +07:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<Claim>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.SelectExpression(
+        Projection Mapping:
+        SELECT a.Id, a.ClaimType, a.ClaimValue, a.UserId
+        FROM AspNetUserClaims AS a
+        WHERE a.UserId == @__user_Id_0), 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Claim>, 
+    BlazorVNPTQuiz.Repository.DataContext.ApplicationDbContext, 
+    False, 
+    False
+)'
+2022-01-27 11:11:46.324 +07:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2022-01-27 11:11:46.325 +07:00 [DBG] Created DbCommand for 'ExecuteReader' (0ms).
+2022-01-27 11:11:46.326 +07:00 [DBG] Opening connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.333 +07:00 [DBG] Opened connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.335 +07:00 [DBG] Executing DbCommand [Parameters=[@__user_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ClaimType`, `a`.`ClaimValue`, `a`.`UserId`
+FROM `AspNetUserClaims` AS `a`
+WHERE `a`.`UserId` = @__user_Id_0
+2022-01-27 11:11:46.343 +07:00 [INF] Executed DbCommand (8ms) [Parameters=[@__user_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ClaimType`, `a`.`ClaimValue`, `a`.`UserId`
+FROM `AspNetUserClaims` AS `a`
+WHERE `a`.`UserId` = @__user_Id_0
+2022-01-27 11:11:46.346 +07:00 [DBG] A data reader was disposed.
+2022-01-27 11:11:46.347 +07:00 [DBG] Closing connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.349 +07:00 [DBG] Closed connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.359 +07:00 [DBG] Compiling query expression: 
+'DbSet<IdentityUserRole<string>>()
+    .Join(
+        inner: DbSet<IdentityRole>(), 
+        outerKeySelector: userRole => userRole.RoleId, 
+        innerKeySelector: role => role.Id, 
+        resultSelector: (userRole, role) => new { 
+            userRole = userRole, 
+            role = role
+         })
+    .Where(<>h__TransparentIdentifier0 => <>h__TransparentIdentifier0.userRole.UserId.Equals(__userId_0))
+    .Select(<>h__TransparentIdentifier0 => <>h__TransparentIdentifier0.role.Name)'
+2022-01-27 11:11:46.376 +07:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<string>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.SelectExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> 0
+        SELECT a0.Name
+        FROM AspNetUserRoles AS a
+        INNER JOIN AspNetRoles AS a0 ON a.RoleId == a0.Id
+        WHERE a.UserId == @__userId_0), 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, string>, 
+    BlazorVNPTQuiz.Repository.DataContext.ApplicationDbContext, 
+    False, 
+    False
+)'
+2022-01-27 11:11:46.379 +07:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2022-01-27 11:11:46.381 +07:00 [DBG] Created DbCommand for 'ExecuteReader' (1ms).
+2022-01-27 11:11:46.383 +07:00 [DBG] Opening connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.386 +07:00 [DBG] Opened connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.388 +07:00 [DBG] Executing DbCommand [Parameters=[@__userId_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a0`.`Name`
+FROM `AspNetUserRoles` AS `a`
+INNER JOIN `AspNetRoles` AS `a0` ON `a`.`RoleId` = `a0`.`Id`
+WHERE `a`.`UserId` = @__userId_0
+2022-01-27 11:11:46.392 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a0`.`Name`
+FROM `AspNetUserRoles` AS `a`
+INNER JOIN `AspNetRoles` AS `a0` ON `a`.`RoleId` = `a0`.`Id`
+WHERE `a`.`UserId` = @__userId_0
+2022-01-27 11:11:46.395 +07:00 [DBG] A data reader was disposed.
+2022-01-27 11:11:46.396 +07:00 [DBG] Closing connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.397 +07:00 [DBG] Closed connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.401 +07:00 [DBG] Compiling query expression: 
+'DbSet<IdentityRole>()
+    .FirstOrDefault(r => r.NormalizedName == __normalizedName_0)'
+2022-01-27 11:11:46.407 +07:00 [DBG] Generated query execution expression: 
+'queryContext => ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync<IdentityRole>(
+    asyncEnumerable: new SingleQueryingEnumerable<IdentityRole>(
+        (RelationalQueryContext)queryContext, 
+        RelationalCommandCache.SelectExpression(
+            Projection Mapping:
+                EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: IdentityRole.Id (string) Required PK AfterSave:Throw, 0], [Property: IdentityRole.ConcurrencyStamp (string) Concurrency, 1], [Property: IdentityRole.Name (string) MaxLength(256), 2], [Property: IdentityRole.NormalizedName (string) Index MaxLength(256), 3], }
+            SELECT TOP(1) a.Id, a.ConcurrencyStamp, a.Name, a.NormalizedName
+            FROM AspNetRoles AS a
+            WHERE a.NormalizedName == @__normalizedName_0), 
+        Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, IdentityRole>, 
+        BlazorVNPTQuiz.Repository.DataContext.ApplicationDbContext, 
+        False, 
+        False
+    ), 
+    cancellationToken: queryContext.CancellationToken)'
+2022-01-27 11:11:46.414 +07:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2022-01-27 11:11:46.416 +07:00 [DBG] Created DbCommand for 'ExecuteReader' (2ms).
+2022-01-27 11:11:46.418 +07:00 [DBG] Opening connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.422 +07:00 [DBG] Opened connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.423 +07:00 [DBG] Executing DbCommand [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ConcurrencyStamp`, `a`.`Name`, `a`.`NormalizedName`
+FROM `AspNetRoles` AS `a`
+WHERE `a`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2022-01-27 11:11:46.427 +07:00 [INF] Executed DbCommand (4ms) [Parameters=[@__normalizedName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`ConcurrencyStamp`, `a`.`Name`, `a`.`NormalizedName`
+FROM `AspNetRoles` AS `a`
+WHERE `a`.`NormalizedName` = @__normalizedName_0
+LIMIT 1
+2022-01-27 11:11:46.432 +07:00 [DBG] Context 'ApplicationDbContext' started tracking 'IdentityRole' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2022-01-27 11:11:46.440 +07:00 [DBG] A data reader was disposed.
+2022-01-27 11:11:46.441 +07:00 [DBG] Closing connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.443 +07:00 [DBG] Closed connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.447 +07:00 [DBG] Compiling query expression: 
+'DbSet<IdentityRoleClaim<string>>()
+    .Where(rc => rc.RoleId.Equals(__role_Id_0))
+    .Select(c => new Claim(
+        c.ClaimType, 
+        c.ClaimValue
+    ))'
+2022-01-27 11:11:46.451 +07:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<Claim>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.SelectExpression(
+        Projection Mapping:
+        SELECT a.ClaimType, a.ClaimValue
+        FROM AspNetRoleClaims AS a
+        WHERE a.RoleId == @__role_Id_0), 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Claim>, 
+    BlazorVNPTQuiz.Repository.DataContext.ApplicationDbContext, 
+    False, 
+    False
+)'
+2022-01-27 11:11:46.453 +07:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2022-01-27 11:11:46.454 +07:00 [DBG] Created DbCommand for 'ExecuteReader' (1ms).
+2022-01-27 11:11:46.455 +07:00 [DBG] Opening connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.466 +07:00 [DBG] Opened connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.467 +07:00 [DBG] Executing DbCommand [Parameters=[@__role_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`ClaimType`, `a`.`ClaimValue`
+FROM `AspNetRoleClaims` AS `a`
+WHERE `a`.`RoleId` = @__role_Id_0
+2022-01-27 11:11:46.474 +07:00 [INF] Executed DbCommand (7ms) [Parameters=[@__role_Id_0='?' (Size = 255)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`ClaimType`, `a`.`ClaimValue`
+FROM `AspNetRoleClaims` AS `a`
+WHERE `a`.`RoleId` = @__role_Id_0
+2022-01-27 11:11:46.476 +07:00 [DBG] A data reader was disposed.
+2022-01-27 11:11:46.477 +07:00 [DBG] Closing connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.485 +07:00 [DBG] Closed connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:46.491 +07:00 [DBG] AuthenticationScheme: Identity.Application was successfully authenticated.
+2022-01-27 11:11:46.495 +07:00 [INF] Executing endpoint '/_Host'
+2022-01-27 11:11:46.501 +07:00 [DBG] Registered model binder providers, in the following order: ["Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BinderTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ServicesModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.BodyModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.HeaderModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FloatingPointTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.EnumTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DateTimeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.SimpleTypeModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CancellationTokenModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ByteArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormFileModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.FormCollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.KeyValuePairModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.DictionaryModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ArrayModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.CollectionModelBinderProvider","Microsoft.AspNetCore.Mvc.ModelBinding.Binders.ComplexObjectModelBinderProvider"]
+2022-01-27 11:11:46.529 +07:00 [INF] Route matched with {page = "/_Host", area = ""}. Executing page /_Host
+2022-01-27 11:11:46.532 +07:00 [DBG] Execution plan of authorization filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.AutoValidateAntiforgeryTokenAuthorizationFilter"]
+2022-01-27 11:11:46.533 +07:00 [DBG] Execution plan of resource filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.SaveTempDataFilter"]
+2022-01-27 11:11:46.535 +07:00 [DBG] Execution plan of action filters (in the following order): ["Microsoft.AspNetCore.Mvc.ModelBinding.UnsupportedContentTypeFilter (Order: -3000)"]
+2022-01-27 11:11:46.538 +07:00 [DBG] Execution plan of exception filters (in the following order): ["None"]
+2022-01-27 11:11:46.539 +07:00 [DBG] Execution plan of result filters (in the following order): ["Microsoft.AspNetCore.Mvc.ViewFeatures.Filters.SaveTempDataFilter"]
+2022-01-27 11:11:46.542 +07:00 [DBG] Executing page factory for page BlazorVNPTQuiz.Pages.Pages__Host (BlazorVNPTQuiz.Views)
+2022-01-27 11:11:46.548 +07:00 [DBG] Executed page factory for page BlazorVNPTQuiz.Pages.Pages__Host (BlazorVNPTQuiz.Views)
+2022-01-27 11:11:46.555 +07:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-01-27 11:11:46.556 +07:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-01-27 11:11:46.646 +07:00 [INF] Executed page /_Host in 101.6056ms
+2022-01-27 11:11:46.649 +07:00 [INF] Executed endpoint '/_Host'
+2022-01-27 11:11:46.652 +07:00 [DBG] Connection id "0HMF19CFRO1P4" completed keep alive response.
+2022-01-27 11:11:46.667 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/css/site.css - -
+2022-01-27 11:11:46.668 +07:00 [DBG] Connection id "0HMF19CFRO1P6" accepted.
+2022-01-27 11:11:46.670 +07:00 [DBG] Connection id "0HMF19CFRO1P6" started.
+2022-01-27 11:11:46.673 +07:00 [DBG] Connection id "0HMF19CFRO1P7" accepted.
+2022-01-27 11:11:46.674 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/BlazorVNPTQuiz.styles.css - -
+2022-01-27 11:11:46.675 +07:00 [DBG] Connection id "0HMF19CFRO1P7" started.
+2022-01-27 11:11:46.676 +07:00 [DBG] Connection id "0HMF19CFRO1P8" accepted.
+2022-01-27 11:11:46.675 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/ - - - 200 - text/html;+charset=utf-8 2031.5655ms
+2022-01-27 11:11:46.686 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored-modal.css - -
+2022-01-27 11:11:46.690 +07:00 [DBG] Connection id "0HMF19CFRO1P9" accepted.
+2022-01-27 11:11:46.689 +07:00 [DBG] Connection id "0HMF19CFRO1P8" started.
+2022-01-27 11:11:46.694 +07:00 [INF] The file /BlazorVNPTQuiz.styles.css was not modified
+2022-01-27 11:11:46.696 +07:00 [INF] The file /_content/Blazored.Modal/blazored-modal.css was not modified
+2022-01-27 11:11:46.694 +07:00 [INF] The file /css/site.css was not modified
+2022-01-27 11:11:46.699 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/_framework/blazor.server.js - -
+2022-01-27 11:11:46.698 +07:00 [DBG] Connection id "0HMF19CFRO1P9" started.
+2022-01-27 11:11:46.710 +07:00 [DBG] Handled. Status code: 304 File: /BlazorVNPTQuiz.styles.css
+2022-01-27 11:11:46.710 +07:00 [DBG] Handled. Status code: 304 File: /_content/Blazored.Modal/blazored-modal.css
+2022-01-27 11:11:46.715 +07:00 [DBG] Connection id "0HMF19CFRO1P6" completed keep alive response.
+2022-01-27 11:11:46.711 +07:00 [DBG] Handled. Status code: 304 File: /css/site.css
+2022-01-27 11:11:46.712 +07:00 [INF] The file /_framework/blazor.server.js was not modified
+2022-01-27 11:11:46.711 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/css/bootstrap/bootstrap.min.css - -
+2022-01-27 11:11:46.714 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored.modal.js - -
+2022-01-27 11:11:46.720 +07:00 [DBG] Connection id "0HMF19CFRO1P7" completed keep alive response.
+2022-01-27 11:11:46.723 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/BlazorVNPTQuiz.styles.css - - - 304 - text/css 48.8861ms
+2022-01-27 11:11:46.724 +07:00 [DBG] Connection id "0HMF19CFRO1P5" completed keep alive response.
+2022-01-27 11:11:46.728 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored-modal.css - - - 304 - text/css 41.9908ms
+2022-01-27 11:11:46.725 +07:00 [DBG] Handled. Status code: 304 File: /_framework/blazor.server.js
+2022-01-27 11:11:46.733 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/css/site.css - - - 304 - text/css 65.9195ms
+2022-01-27 11:11:46.726 +07:00 [INF] The file /css/bootstrap/bootstrap.min.css was not modified
+2022-01-27 11:11:46.727 +07:00 [INF] The file /_content/Blazored.Modal/blazored.modal.js was not modified
+2022-01-27 11:11:46.735 +07:00 [DBG] Connection id "0HMF19CFRO1P8" completed keep alive response.
+2022-01-27 11:11:46.737 +07:00 [DBG] Handled. Status code: 304 File: /css/bootstrap/bootstrap.min.css
+2022-01-27 11:11:46.739 +07:00 [DBG] Handled. Status code: 304 File: /_content/Blazored.Modal/blazored.modal.js
+2022-01-27 11:11:46.740 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/_framework/blazor.server.js - - - 304 - application/javascript 41.7723ms
+2022-01-27 11:11:46.742 +07:00 [DBG] Connection id "0HMF19CFRO1P4" completed keep alive response.
+2022-01-27 11:11:46.743 +07:00 [DBG] Connection id "0HMF19CFRO1P9" completed keep alive response.
+2022-01-27 11:11:46.746 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/css/bootstrap/bootstrap.min.css - - - 304 - text/css 35.3160ms
+2022-01-27 11:11:46.747 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored.modal.js - - - 304 - application/javascript 33.2958ms
+2022-01-27 11:11:46.772 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/css/open-iconic-bootstrap.min.css - -
+2022-01-27 11:11:46.773 +07:00 [INF] The file /css/open-iconic/font/css/open-iconic-bootstrap.min.css was not modified
+2022-01-27 11:11:46.774 +07:00 [DBG] Handled. Status code: 304 File: /css/open-iconic/font/css/open-iconic-bootstrap.min.css
+2022-01-27 11:11:46.775 +07:00 [DBG] Connection id "0HMF19CFRO1P9" completed keep alive response.
+2022-01-27 11:11:46.776 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/css/open-iconic-bootstrap.min.css - - - 304 - text/css 3.9504ms
+2022-01-27 11:11:46.793 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5000/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2022-01-27 11:11:46.795 +07:00 [DBG] POST requests are not supported
+2022-01-27 11:11:46.797 +07:00 [DBG] 2 candidate(s) found for the request path '/_blazor/negotiate'
+2022-01-27 11:11:46.798 +07:00 [DBG] Endpoint '/_blazor/negotiate' with route pattern '/_blazor/negotiate' is valid for the request path '/_blazor/negotiate'
+2022-01-27 11:11:46.800 +07:00 [DBG] Endpoint 'Fallback {*path:nonfile}' with route pattern '{*path:nonfile}' is valid for the request path '/_blazor/negotiate'
+2022-01-27 11:11:46.802 +07:00 [DBG] Request matched endpoint '/_blazor/negotiate'
+2022-01-27 11:11:46.804 +07:00 [DBG] AuthenticationScheme: Identity.Application was successfully authenticated.
+2022-01-27 11:11:46.810 +07:00 [INF] Executing endpoint '/_blazor/negotiate'
+2022-01-27 11:11:46.814 +07:00 [DBG] New connection VWsV2iDAr-ZOHbp55IBs1Q created.
+2022-01-27 11:11:46.832 +07:00 [DBG] Sending negotiation response.
+2022-01-27 11:11:46.833 +07:00 [INF] Executed endpoint '/_blazor/negotiate'
+2022-01-27 11:11:46.835 +07:00 [DBG] Connection id "0HMF19CFRO1P9" completed keep alive response.
+2022-01-27 11:11:46.836 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5000/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 43.2972ms
+2022-01-27 11:11:46.874 +07:00 [DBG] Connection id "0HMF19CFRO1PA" accepted.
+2022-01-27 11:11:46.877 +07:00 [DBG] Connection id "0HMF19CFRO1PA" started.
+2022-01-27 11:11:46.879 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/_blazor?id=3AIrYCgxbv33rxdO3XgpQQ - -
+2022-01-27 11:11:46.879 +07:00 [DBG] The request path /_blazor does not match a supported file type
+2022-01-27 11:11:46.881 +07:00 [DBG] 2 candidate(s) found for the request path '/_blazor'
+2022-01-27 11:11:46.882 +07:00 [DBG] Endpoint '/_blazor' with route pattern '/_blazor' is valid for the request path '/_blazor'
+2022-01-27 11:11:46.884 +07:00 [DBG] Endpoint 'Fallback {*path:nonfile}' with route pattern '{*path:nonfile}' is valid for the request path '/_blazor'
+2022-01-27 11:11:46.885 +07:00 [DBG] Request matched endpoint '/_blazor'
+2022-01-27 11:11:46.897 +07:00 [DBG] AuthenticationScheme: Identity.Application was successfully authenticated.
+2022-01-27 11:11:46.898 +07:00 [INF] Executing endpoint '/_blazor'
+2022-01-27 11:11:46.903 +07:00 [DBG] Establishing new connection.
+2022-01-27 11:11:46.907 +07:00 [DBG] OnConnectedAsync started.
+2022-01-27 11:11:46.910 +07:00 [DBG] Socket opened using Sub-Protocol: 'null'.
+2022-01-27 11:11:46.928 +07:00 [DBG] Found protocol implementation for requested protocol: blazorpack.
+2022-01-27 11:11:46.930 +07:00 [DBG] Completed connection handshake. Using HubProtocol 'blazorpack'.
+2022-01-27 11:11:46.945 +07:00 [DBG] Received hub invocation: InvocationMessage { InvocationId: "0", Target: "StartCircuit", Arguments: [ http://localhost:5000/, http://localhost:5000/, [{"type":"server","sequence":0,"descriptor":"CfDJ8JKpTJlSeANAv0xrtuHJZWWYu7O24JkAwaHrIFJbA0+qpOldWly6w0aVwqXXq+sduqZp6D9SJYYRALRjbCCC8yaTt9NY5pFKzH198Ty2vsKXtS+wQK6y4mTpwRcVpnVE5hPgR3PMhd/XXdM9D7+dscjrz7piADXC9KcXCUERD2V0z+wqPqLah+WdDW0LHcjQcJkeWsAhXRGv4NfYbHuQUTNENY2Us8glGQYsp3ZbOUbLPwMDvARnx5s/ZGcafTp/3j1/56uoix9vibmcY7Q5DH+PtvY6gyH14GyvPM6u/lOusFe1xlPMkfREfbDImFkU6tt/uH9MwzVzx7lmywm9sgdMl3216dC8a7BgJErwvPef"}] ], StreamIds: [  ] }.
+2022-01-27 11:11:46.995 +07:00 [DBG] Created circuit iHCHpqCTCUx6kHSuYOA2uipY-0PfmGwzZWgNDx86eYw for connection VWsV2iDAr-ZOHbp55IBs1Q
+2022-01-27 11:11:47.001 +07:00 [DBG] Circuit initialization started.
+2022-01-27 11:11:47.006 +07:00 [DBG] Opening circuit with id 'iHCHpqCTCUx6kHSuYOA2uipY-0PfmGwzZWgNDx86eYw'.
+2022-01-27 11:11:47.011 +07:00 [DBG] Circuit id 'iHCHpqCTCUx6kHSuYOA2uipY-0PfmGwzZWgNDx86eYw' connected using connection 'VWsV2iDAr-ZOHbp55IBs1Q'.
+2022-01-27 11:11:47.019 +07:00 [DBG] Initializing root component 0 (BlazorVNPTQuiz.App)
+2022-01-27 11:11:47.026 +07:00 [DBG] Rendering component 0 of type BlazorVNPTQuiz.App
+2022-01-27 11:11:47.034 +07:00 [DBG] Initializing component 1 (Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState) as child of BlazorVNPTQuiz.App (BlazorVNPTQuiz.App)
+2022-01-27 11:11:47.038 +07:00 [DBG] Rendering component 1 of type Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState
+2022-01-27 11:11:47.041 +07:00 [DBG] Initializing component 2 (Microsoft.AspNetCore.Components.CascadingValue`1[System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Components.Authorization.AuthenticationState]]) as child of Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState (Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState)
+2022-01-27 11:11:47.043 +07:00 [DBG] Rendering component 2 of type Microsoft.AspNetCore.Components.CascadingValue`1[System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Components.Authorization.AuthenticationState]]
+2022-01-27 11:11:47.045 +07:00 [DBG] Initializing component 3 (Blazored.Modal.CascadingBlazoredModal) as child of Microsoft.AspNetCore.Components.CascadingValue`1[System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Components.Authorization.AuthenticationState]] (Microsoft.AspNetCore.Components.CascadingValue`1[System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Components.Authorization.AuthenticationState]])
+2022-01-27 11:11:47.047 +07:00 [DBG] Rendering component 3 of type Blazored.Modal.CascadingBlazoredModal
+2022-01-27 11:11:47.049 +07:00 [DBG] Initializing component 4 (Microsoft.AspNetCore.Components.CascadingValue`1[Blazored.Modal.Services.IModalService]) as child of Blazored.Modal.CascadingBlazoredModal (Blazored.Modal.CascadingBlazoredModal)
+2022-01-27 11:11:47.050 +07:00 [DBG] Rendering component 4 of type Microsoft.AspNetCore.Components.CascadingValue`1[Blazored.Modal.Services.IModalService]
+2022-01-27 11:11:47.054 +07:00 [DBG] Initializing component 5 (Blazored.Modal.BlazoredModal) as child of Microsoft.AspNetCore.Components.CascadingValue`1[Blazored.Modal.Services.IModalService] (Microsoft.AspNetCore.Components.CascadingValue`1[Blazored.Modal.Services.IModalService])
+2022-01-27 11:11:47.062 +07:00 [DBG] Initializing component 6 (Microsoft.AspNetCore.Components.Routing.Router) as child of Microsoft.AspNetCore.Components.CascadingValue`1[Blazored.Modal.Services.IModalService] (Microsoft.AspNetCore.Components.CascadingValue`1[Blazored.Modal.Services.IModalService])
+2022-01-27 11:11:47.074 +07:00 [DBG] Navigating to component BlazorVNPTQuiz.Pages.Index in response to path '' with base URI 'http://localhost:5000/'
+2022-01-27 11:11:47.076 +07:00 [DBG] Navigating to component BlazorVNPTQuiz.Pages.Index in response to path '' with base URI 'http://localhost:5000/'
+2022-01-27 11:11:47.078 +07:00 [DBG] Rendering component 5 of type Blazored.Modal.BlazoredModal
+2022-01-27 11:11:47.079 +07:00 [DBG] Initializing component 7 (Microsoft.AspNetCore.Components.CascadingValue`1[Blazored.Modal.BlazoredModal]) as child of Blazored.Modal.BlazoredModal (Blazored.Modal.BlazoredModal)
+2022-01-27 11:11:47.081 +07:00 [DBG] Rendering component 6 of type Microsoft.AspNetCore.Components.Routing.Router
+2022-01-27 11:11:47.082 +07:00 [DBG] Initializing component 8 (Microsoft.AspNetCore.Components.RouteView) as child of Microsoft.AspNetCore.Components.Routing.Router (Microsoft.AspNetCore.Components.Routing.Router)
+2022-01-27 11:11:47.084 +07:00 [DBG] Rendering component 6 of type Microsoft.AspNetCore.Components.Routing.Router
+2022-01-27 11:11:47.085 +07:00 [DBG] Rendering component 7 of type Microsoft.AspNetCore.Components.CascadingValue`1[Blazored.Modal.BlazoredModal]
+2022-01-27 11:11:47.088 +07:00 [DBG] Initializing component 9 (Microsoft.AspNetCore.Components.CascadingValue`1[Blazored.Modal.ModalOptions]) as child of Microsoft.AspNetCore.Components.CascadingValue`1[Blazored.Modal.BlazoredModal] (Microsoft.AspNetCore.Components.CascadingValue`1[Blazored.Modal.BlazoredModal])
+2022-01-27 11:11:47.091 +07:00 [DBG] Rendering component 8 of type Microsoft.AspNetCore.Components.RouteView
+2022-01-27 11:11:47.092 +07:00 [DBG] Initializing component 10 (Microsoft.AspNetCore.Components.LayoutView) as child of Microsoft.AspNetCore.Components.RouteView (Microsoft.AspNetCore.Components.RouteView)
+2022-01-27 11:11:47.094 +07:00 [DBG] Rendering component 8 of type Microsoft.AspNetCore.Components.RouteView
+2022-01-27 11:11:47.095 +07:00 [DBG] Rendering component 9 of type Microsoft.AspNetCore.Components.CascadingValue`1[Blazored.Modal.ModalOptions]
+2022-01-27 11:11:47.097 +07:00 [DBG] Rendering component 10 of type Microsoft.AspNetCore.Components.LayoutView
+2022-01-27 11:11:47.098 +07:00 [DBG] Initializing component 11 (BlazorVNPTQuiz.Shared.MainLayout) as child of Microsoft.AspNetCore.Components.LayoutView (Microsoft.AspNetCore.Components.LayoutView)
+2022-01-27 11:11:47.100 +07:00 [DBG] Rendering component 10 of type Microsoft.AspNetCore.Components.LayoutView
+2022-01-27 11:11:47.101 +07:00 [DBG] Rendering component 11 of type BlazorVNPTQuiz.Shared.MainLayout
+2022-01-27 11:11:47.103 +07:00 [DBG] Initializing component 12 (BlazorVNPTQuiz.Shared.NavMenu) as child of BlazorVNPTQuiz.Shared.MainLayout (BlazorVNPTQuiz.Shared.MainLayout)
+2022-01-27 11:11:47.109 +07:00 [DBG] Initializing component 13 (BlazorVNPTQuiz.Shared.LoginDisplay) as child of BlazorVNPTQuiz.Shared.MainLayout (BlazorVNPTQuiz.Shared.MainLayout)
+2022-01-27 11:11:47.133 +07:00 [INF] Entity Framework Core 5.0.13 initialized 'ApplicationDbContext' using provider 'Pomelo.EntityFrameworkCore.MySql' with options: MaxPoolSize=128 ServerVersion 5.7.31-mysql 
+2022-01-27 11:11:47.138 +07:00 [DBG] Compiling query expression: 
+'DbSet<IdentityUser>()
+    .FirstOrDefault(item => item.UserName == __authState_User_Identity_Name_0)'
+2022-01-27 11:11:47.142 +07:00 [DBG] Generated query execution expression: 
+'queryContext => new SingleQueryingEnumerable<IdentityUser>(
+    (RelationalQueryContext)queryContext, 
+    RelationalCommandCache.SelectExpression(
+        Projection Mapping:
+            EmptyProjectionMember -> Dictionary<IProperty, int> { [Property: IdentityUser.Id (string) Required PK AfterSave:Throw, 0], [Property: IdentityUser.AccessFailedCount (int) Required, 1], [Property: IdentityUser.ConcurrencyStamp (string) Concurrency, 2], [Property: IdentityUser.Email (string) MaxLength(256), 3], [Property: IdentityUser.EmailConfirmed (bool) Required, 4], [Property: IdentityUser.LockoutEnabled (bool) Required, 5], [Property: IdentityUser.LockoutEnd (Nullable<DateTimeOffset>), 6], [Property: IdentityUser.NormalizedEmail (string) Index MaxLength(256), 7], [Property: IdentityUser.NormalizedUserName (string) Index MaxLength(256), 8], [Property: IdentityUser.PasswordHash (string), 9], [Property: IdentityUser.PhoneNumber (string), 10], [Property: IdentityUser.PhoneNumberConfirmed (bool) Required, 11], [Property: IdentityUser.SecurityStamp (string), 12], [Property: IdentityUser.TwoFactorEnabled (bool) Required, 13], [Property: IdentityUser.UserName (string) MaxLength(256), 14], }
+        SELECT TOP(1) a.Id, a.AccessFailedCount, a.ConcurrencyStamp, a.Email, a.EmailConfirmed, a.LockoutEnabled, a.LockoutEnd, a.NormalizedEmail, a.NormalizedUserName, a.PasswordHash, a.PhoneNumber, a.PhoneNumberConfirmed, a.SecurityStamp, a.TwoFactorEnabled, a.UserName
+        FROM AspNetUsers AS a
+        WHERE a.UserName == @__authState_User_Identity_Name_0), 
+    Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, IdentityUser>, 
+    BlazorVNPTQuiz.Repository.DataContext.ApplicationDbContext, 
+    False, 
+    False
+)
+    .SingleOrDefault()'
+2022-01-27 11:11:47.147 +07:00 [DBG] Creating DbCommand for 'ExecuteReader'.
+2022-01-27 11:11:47.149 +07:00 [DBG] Created DbCommand for 'ExecuteReader' (1ms).
+2022-01-27 11:11:47.151 +07:00 [DBG] Opening connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:47.155 +07:00 [DBG] Opened connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:47.157 +07:00 [DBG] Executing DbCommand [Parameters=[@__authState_User_Identity_Name_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`UserName` = @__authState_User_Identity_Name_0
+LIMIT 1
+2022-01-27 11:11:47.162 +07:00 [INF] Executed DbCommand (5ms) [Parameters=[@__authState_User_Identity_Name_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`UserName` = @__authState_User_Identity_Name_0
+LIMIT 1
+2022-01-27 11:11:47.167 +07:00 [DBG] Context 'ApplicationDbContext' started tracking 'IdentityUser' entity. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see key values.
+2022-01-27 11:11:47.169 +07:00 [DBG] A data reader was disposed.
+2022-01-27 11:11:47.170 +07:00 [DBG] Closing connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:47.172 +07:00 [DBG] Closed connection to database 'onthinangluc' on server '113.160.178.20'.
+2022-01-27 11:11:47.183 +07:00 [DBG] Initializing component 14 (BlazorVNPTQuiz.Pages.Index) as child of BlazorVNPTQuiz.Shared.MainLayout (BlazorVNPTQuiz.Shared.MainLayout)
+2022-01-27 11:11:47.185 +07:00 [DBG] Rendering component 12 of type BlazorVNPTQuiz.Shared.NavMenu
+2022-01-27 11:11:47.189 +07:00 [DBG] Initializing component 15 (Microsoft.AspNetCore.Components.Routing.NavLink) as child of BlazorVNPTQuiz.Shared.NavMenu (BlazorVNPTQuiz.Shared.NavMenu)
+2022-01-27 11:11:47.192 +07:00 [DBG] Initializing component 16 (Microsoft.AspNetCore.Components.Authorization.AuthorizeView) as child of BlazorVNPTQuiz.Shared.NavMenu (BlazorVNPTQuiz.Shared.NavMenu)
+2022-01-27 11:11:47.197 +07:00 [INF] Authorization was successful.
+2022-01-27 11:11:47.199 +07:00 [DBG] Rendering component 13 of type BlazorVNPTQuiz.Shared.LoginDisplay
+2022-01-27 11:11:47.201 +07:00 [DBG] Initializing component 17 (Microsoft.AspNetCore.Components.Authorization.AuthorizeView) as child of BlazorVNPTQuiz.Shared.LoginDisplay (BlazorVNPTQuiz.Shared.LoginDisplay)
+2022-01-27 11:11:47.203 +07:00 [INF] Authorization was successful.
+2022-01-27 11:11:47.203 +07:00 [DBG] Rendering component 14 of type BlazorVNPTQuiz.Pages.Index
+2022-01-27 11:11:47.207 +07:00 [INF] log from seilog
+2022-01-27 11:11:47.208 +07:00 [DBG] Rendering component 15 of type Microsoft.AspNetCore.Components.Routing.NavLink
+2022-01-27 11:11:47.209 +07:00 [DBG] Rendering component 16 of type Microsoft.AspNetCore.Components.Authorization.AuthorizeView
+2022-01-27 11:11:47.211 +07:00 [DBG] Initializing component 18 (Microsoft.AspNetCore.Components.Routing.NavLink) as child of Microsoft.AspNetCore.Components.Authorization.AuthorizeView (Microsoft.AspNetCore.Components.Authorization.AuthorizeView)
+2022-01-27 11:11:47.212 +07:00 [DBG] Rendering component 17 of type Microsoft.AspNetCore.Components.Authorization.AuthorizeView
+2022-01-27 11:11:47.214 +07:00 [DBG] Rendering component 18 of type Microsoft.AspNetCore.Components.Routing.NavLink
+2022-01-27 11:11:47.222 +07:00 [DBG] Sending render batch 2 of size 4946 bytes to client VWsV2iDAr-ZOHbp55IBs1Q.
+2022-01-27 11:11:47.239 +07:00 [DBG] Created circuit 'iHCHpqCTCUx6kHSuYOA2uipY-0PfmGwzZWgNDx86eYw' with secret '(redacted)' for 'VWsV2iDAr-ZOHbp55IBs1Q'
+2022-01-27 11:11:47.239 +07:00 [DBG] Rendering component 13 of type BlazorVNPTQuiz.Shared.LoginDisplay
+2022-01-27 11:11:47.246 +07:00 [DBG] Received hub invocation: InvocationMessage { InvocationId: "", Target: "OnRenderCompleted", Arguments: [ 2,  ], StreamIds: [  ] }.
+2022-01-27 11:11:47.249 +07:00 [INF] Authorization was successful.
+2022-01-27 11:11:47.253 +07:00 [DBG] Rendering component 17 of type Microsoft.AspNetCore.Components.Authorization.AuthorizeView
+2022-01-27 11:11:47.255 +07:00 [DBG] Received confirmation for batch 2
+2022-01-27 11:11:47.256 +07:00 [DBG] Sending render batch 3 of size 60 bytes to client VWsV2iDAr-ZOHbp55IBs1Q.
+2022-01-27 11:11:47.262 +07:00 [DBG] Rendering component 13 of type BlazorVNPTQuiz.Shared.LoginDisplay
+2022-01-27 11:11:47.264 +07:00 [DBG] Completing batch 2 without error in 42.7329ms.
+2022-01-27 11:11:47.264 +07:00 [INF] Authorization was successful.
+2022-01-27 11:11:47.268 +07:00 [DBG] Rendering component 17 of type Microsoft.AspNetCore.Components.Authorization.AuthorizeView
+2022-01-27 11:11:47.270 +07:00 [DBG] Received hub invocation: InvocationMessage { InvocationId: "", Target: "OnRenderCompleted", Arguments: [ 3,  ], StreamIds: [  ] }.
+2022-01-27 11:11:47.271 +07:00 [DBG] Sending render batch 4 of size 60 bytes to client VWsV2iDAr-ZOHbp55IBs1Q.
+2022-01-27 11:11:47.271 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/fonts/open-iconic.woff - -
+2022-01-27 11:11:47.276 +07:00 [DBG] Received confirmation for batch 3
+2022-01-27 11:11:47.283 +07:00 [INF] The file /css/open-iconic/font/fonts/open-iconic.woff was not modified
+2022-01-27 11:11:47.286 +07:00 [DBG] Completing batch 3 without error in 29.1124ms.
+2022-01-27 11:11:47.288 +07:00 [DBG] Handled. Status code: 304 File: /css/open-iconic/font/fonts/open-iconic.woff
+2022-01-27 11:11:47.290 +07:00 [DBG] Received hub invocation: InvocationMessage { InvocationId: "", Target: "OnRenderCompleted", Arguments: [ 4,  ], StreamIds: [  ] }.
+2022-01-27 11:11:47.292 +07:00 [DBG] Begin invoke JS interop '2': 'Blazor._internal.navigationManager.enableNavigationInterception'
+2022-01-27 11:11:47.294 +07:00 [DBG] Connection id "0HMF19CFRO1P9" completed keep alive response.
+2022-01-27 11:11:47.296 +07:00 [DBG] Received confirmation for batch 4
+2022-01-27 11:11:47.301 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/fonts/open-iconic.woff - - - 304 - application/font-woff 30.5475ms
+2022-01-27 11:11:47.304 +07:00 [DBG] Completing batch 4 without error in 33.1716ms.
+2022-01-27 11:11:47.310 +07:00 [DBG] Rendering component 13 of type BlazorVNPTQuiz.Shared.LoginDisplay
+2022-01-27 11:11:47.314 +07:00 [DBG] Received hub invocation: InvocationMessage { InvocationId: "", Target: "EndInvokeJSFromDotNet", Arguments: [ 2, True, [2,true,null] ], StreamIds: [  ] }.
+2022-01-27 11:11:47.316 +07:00 [INF] Authorization was successful.
+2022-01-27 11:11:47.321 +07:00 [DBG] Rendering component 17 of type Microsoft.AspNetCore.Components.Authorization.AuthorizeView
+2022-01-27 11:11:47.324 +07:00 [DBG] Sending render batch 5 of size 60 bytes to client VWsV2iDAr-ZOHbp55IBs1Q.
+2022-01-27 11:11:47.328 +07:00 [DBG] Rendering component 13 of type BlazorVNPTQuiz.Shared.LoginDisplay
+2022-01-27 11:11:47.328 +07:00 [DBG] Received hub invocation: InvocationMessage { InvocationId: "", Target: "OnRenderCompleted", Arguments: [ 5,  ], StreamIds: [  ] }.
+2022-01-27 11:11:47.329 +07:00 [INF] Authorization was successful.
+2022-01-27 11:11:47.332 +07:00 [DBG] Received confirmation for batch 5
+2022-01-27 11:11:47.333 +07:00 [DBG] Rendering component 17 of type Microsoft.AspNetCore.Components.Authorization.AuthorizeView
+2022-01-27 11:11:47.335 +07:00 [DBG] Completing batch 5 without error in 10.5985ms.
+2022-01-27 11:11:47.339 +07:00 [DBG] Sending render batch 6 of size 60 bytes to client VWsV2iDAr-ZOHbp55IBs1Q.
+2022-01-27 11:11:47.345 +07:00 [DBG] Received hub invocation: InvocationMessage { InvocationId: "", Target: "OnRenderCompleted", Arguments: [ 6,  ], StreamIds: [  ] }.
+2022-01-27 11:11:47.346 +07:00 [DBG] Circuit initialization succeeded.
+2022-01-27 11:11:47.348 +07:00 [DBG] Received confirmation for batch 6
+2022-01-27 11:11:47.349 +07:00 [DBG] The JS interop call with callback id '2' succeeded.
+2022-01-27 11:11:47.350 +07:00 [DBG] Completing batch 6 without error in 10.9728ms.
