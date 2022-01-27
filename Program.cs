@@ -18,7 +18,7 @@ namespace BlazorVNPTQuiz
             var configuration = new ConfigurationBuilder()
            .SetBasePath(Directory.GetCurrentDirectory())
            .AddJsonFile("appsettings.json")
-           .AddJsonFile($"appsettings.***REMOVED***Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"***REMOVED***.json", true)
+        //   .AddJsonFile($"appsettings.***REMOVED***Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"***REMOVED***.json", true)
            .Build();
            
              Log.Logger = new LoggerConfiguration()
