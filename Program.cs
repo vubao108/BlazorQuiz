@@ -20,11 +20,7 @@ namespace BlazorVNPTQuiz
            .AddJsonFile("appsettings.json")
            .AddJsonFile($"appsettings.***REMOVED***Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"***REMOVED***.json", true)
            .Build();
-            //Log.Logger = new LoggerConfiguration()
-            //    .MinimumLevel.Debug()
-            //    .WriteTo.Console()
-            //    .WriteTo.File("logs/myapp.txt", rollingInterval: RollingInterval.Day)
-            //    .CreateLogger();
+           
              Log.Logger = new LoggerConfiguration()
             .ReadFrom.Configuration(configuration)
             .CreateLogger();
