@@ -1,0 +1,100 @@
+2022-01-27T17:53:16.0994378+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:17.0812342+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:18.0845766+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:19.0808286+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:20.0896948+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:21.0949306+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:22.1002467+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:23.0925421+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:24.0987656+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:25.0952358+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:26.0854300+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:27.1052436+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:28.0934973+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:29.0981416+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:30.0855686+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:31.1073638+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:32.1018535+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:33.1045272+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:34.0877909+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:35.0961705+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:36.0946183+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:37.0984699+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:38.0928238+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:39.0858991+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:40.0985180+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:41.0945041+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:42.0886100+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:43.0986372+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:44.0904237+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:45.0991934+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:46.0871421+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:47.0981467+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:48.0918744+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:49.0854337+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:50.1066934+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:51.0944040+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:52.0900720+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:53.0948660+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:54.0996827+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:55.0923554+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:53:56.0999973+07:00 [INF] (Microsoft.AspNetCore.Authorization.DefaultAuthorizationService) Authorization was successful.
+2022-01-27T17:54:28.0569526+07:00 [INF] (Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager) User profile is available. Using '"C:\Users\vuth1\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-01-27T17:54:28.6769410+07:00 [INF] (Microsoft.Hosting.Lifetime) Now listening on: "http://localhost:5000"
+2022-01-27T17:54:28.6885046+07:00 [INF] (Microsoft.Hosting.Lifetime) Application started. Press Ctrl+C to shut down.
+2022-01-27T17:54:28.6892930+07:00 [INF] (Microsoft.Hosting.Lifetime) Hosting environment: "Development"
+2022-01-27T17:54:28.6902178+07:00 [INF] (Microsoft.Hosting.Lifetime) Content root path: "F:\Code\00_Product\BlazorVNPTQuiz\BlazorVNPTQuiz"
+2022-01-27T17:54:30.9973143+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/ - -
+2022-01-27T17:54:31.4707663+07:00 [INF] (Microsoft.AspNetCore.Routing.EndpointMiddleware) Executing endpoint '"/_Host"'
+2022-01-27T17:54:31.5042366+07:00 [INF] (Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker) Route matched with "{page = \"/_Host\", area = \"\"}". Executing page "/_Host"
+2022-01-27T17:54:31.5187644+07:00 [INF] (Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker) Executing an implicit handler method - ModelState is Valid
+2022-01-27T17:54:31.5211867+07:00 [INF] (Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker) Executed an implicit handler method, returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2022-01-27T17:54:31.6300456+07:00 [INF] (Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker) Executed page "/_Host" in 119.7066ms
+2022-01-27T17:54:31.6396139+07:00 [INF] (Microsoft.AspNetCore.Routing.EndpointMiddleware) Executed endpoint '"/_Host"'
+2022-01-27T17:54:31.6641087+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/ - - - 200 - text/html;+charset=utf-8 670.1388ms
+2022-01-27T17:54:31.6742139+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/BlazorVNPTQuiz.styles.css - -
+2022-01-27T17:54:31.6754039+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/css/site.css - -
+2022-01-27T17:54:31.6955416+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored.modal.js - -
+2022-01-27T17:54:31.6957373+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/_framework/blazor.server.js - -
+2022-01-27T17:54:31.6958035+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored-modal.css - -
+2022-01-27T17:54:31.7363694+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/BlazorVNPTQuiz.styles.css" was not modified
+2022-01-27T17:54:31.7363694+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/_content/Blazored.Modal/blazored.modal.js" was not modified
+2022-01-27T17:54:31.7364733+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/_content/Blazored.Modal/blazored-modal.css" was not modified
+2022-01-27T17:54:31.7364883+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/css/site.css" was not modified
+2022-01-27T17:54:31.7364971+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/_framework/blazor.server.js" was not modified
+2022-01-27T17:54:31.7366239+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/css/bootstrap/bootstrap.min.css - -
+2022-01-27T17:54:31.7407406+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/BlazorVNPTQuiz.styles.css - - - 304 - text/css 66.4928ms
+2022-01-27T17:54:31.7407406+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored.modal.js - - - 304 - application/javascript 45.2409ms
+2022-01-27T17:54:31.7414410+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored-modal.css - - - 304 - text/css 45.5853ms
+2022-01-27T17:54:31.7443806+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/css/bootstrap/bootstrap.min.css" was not modified
+2022-01-27T17:54:31.7434403+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/_framework/blazor.server.js - - - 304 - application/javascript 47.9602ms
+2022-01-27T17:54:31.7424122+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/css/site.css - - - 304 - text/css 67.0149ms
+2022-01-27T17:54:31.7559053+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/css/bootstrap/bootstrap.min.css - - - 304 - text/css 19.2606ms
+2022-01-27T17:54:31.7979996+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/css/open-iconic-bootstrap.min.css - -
+2022-01-27T17:54:31.7991307+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/css/open-iconic/font/css/open-iconic-bootstrap.min.css" was not modified
+2022-01-27T17:54:31.8000517+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/css/open-iconic-bootstrap.min.css - - - 304 - text/css 2.0482ms
+2022-01-27T17:54:31.8243474+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 POST http://localhost:5000/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2022-01-27T17:54:31.8325430+07:00 [INF] (Microsoft.AspNetCore.Routing.EndpointMiddleware) Executing endpoint '"/_blazor/negotiate"'
+2022-01-27T17:54:31.8531786+07:00 [INF] (Microsoft.AspNetCore.Routing.EndpointMiddleware) Executed endpoint '"/_blazor/negotiate"'
+2022-01-27T17:54:31.8608315+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 POST http://localhost:5000/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 36.3204ms
+2022-01-27T17:54:31.8961307+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/_blazor?id=OCClhaqz1CGBBBnIASo0bw - -
+2022-01-27T17:54:31.9170080+07:00 [INF] (Microsoft.AspNetCore.Routing.EndpointMiddleware) Executing endpoint '"/_blazor"'
+2022-01-27T17:54:32.6857650+07:00 [INF] (Microsoft.EntityFrameworkCore.Infrastructure) Entity Framework Core "5.0.13" initialized '"ApplicationDbContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "MaxPoolSize=128 ServerVersion 5.7.31-mysql "
+2022-01-27T17:54:32.9994168+07:00 [INF] (Microsoft.EntityFrameworkCore.Database.Command) Executed DbCommand ("44"ms) [Parameters=["@__authState_User_Identity_Name_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`UserName` = @__authState_User_Identity_Name_0
+LIMIT 1"
+2022-01-27T17:54:33.1070376+07:00 [INF] (BlazorVNPTQuiz.Pages.Index) log from seriLog
+2022-01-27T17:54:33.1483128+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) LayBaiThiDangLam(1) took 62
+2022-01-27T17:54:33.1629635+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/fonts/open-iconic.woff - -
+2022-01-27T17:54:33.1649080+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/css/open-iconic/font/fonts/open-iconic.woff" was not modified
+2022-01-27T17:54:33.1667547+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/fonts/open-iconic.woff - - - 304 - application/font-woff 3.8965ms
+2022-01-27T17:54:33.1687479+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) LayIdBaithiDaThamGia(1) took 15
+2022-01-27T17:54:36.8511911+07:00 [INF] (Microsoft.EntityFrameworkCore.Database.Command) Executed DbCommand ("6"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`NormalizedUserName` = @__normalizedUserName_0
+LIMIT 1"
+2022-01-27T17:54:36.8866156+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) LayIdBaithiDaThamGia(1) took 4
+2022-01-27T17:54:53.1306618+07:00 [INF] (BlazorVNPTQuiz.Pages.Index) log from seriLog

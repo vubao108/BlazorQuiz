@@ -1,0 +1,30 @@
+2022-01-27T17:54:53.6993556+07:00 [INF] (Microsoft.EntityFrameworkCore.Database.Command) Executed DbCommand ("3"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`NormalizedUserName` = @__normalizedUserName_0
+LIMIT 1"
+2022-01-27T17:54:53.7314681+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) LayIdBaithiDaThamGia(1) took 11
+2022-01-27T17:55:08.6607617+07:00 [INF] (BlazorVNPTQuiz.Pages.Index) log from seriLog
+2022-01-27T17:55:10.0488931+07:00 [INF] (Microsoft.EntityFrameworkCore.Database.Command) Executed DbCommand ("3"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`NormalizedUserName` = @__normalizedUserName_0
+LIMIT 1"
+2022-01-27T17:55:10.0690767+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) LayIdBaithiDaThamGia(1) took 6
+2022-01-27T17:55:39.6747507+07:00 [INF] (BlazorVNPTQuiz.Pages.Index) log from seriLog
+2022-01-27T17:55:41.7828538+07:00 [INF] (Microsoft.EntityFrameworkCore.Database.Command) Executed DbCommand ("3"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`NormalizedUserName` = @__normalizedUserName_0
+LIMIT 1"
+2022-01-27T17:55:41.7974580+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) LayIdBaithiDaThamGia(1) took 4
+2022-01-27T17:55:54.6495968+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) LayDanhSachCauHoi(1,74) took 24
+2022-01-27T17:55:54.6518088+07:00 [INF] (BlazorVNPTQuiz.Pages.Exam) OnInitializedAsync().LayDanhSachCauHoi(1,74) took 30 ms 
+2022-01-27T17:55:57.6915177+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27759 where id = 673 took 15
+2022-01-27T17:55:57.6983918+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27784 where id = 672 took 3
+2022-01-27T17:56:01.3361442+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27755 where id = 674 took 12
+2022-01-27T17:56:05.3749985+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27773 where id = 675 took 11
+2022-01-27T17:56:06.7190330+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27798 where id = 679 took 6
+2022-01-27T17:56:10.1015896+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27824 where id = 680 took 6
+2022-01-27T17:56:12.3535693+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27814 where id = 681 took 4
+2022-01-27T17:56:13.6380273+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27817 where id = 681 took 5
