@@ -21,7 +21,7 @@
                 <a href="Identity/Account/Manage">Xin chào, @context.User.Identity.Name!</a>
 
                 <a href="Identity/Account/Logout">Đăng xuất</a>
-                @if (AppState.RemainSeconds > 0)
+                @if(AppState.SelectedExamNotFinishedInfo?.CurrentExam != null && AppState.RemainSeconds > 0)
                 ***REMOVED***
                     <span style="color:red; margin-left:24px"> @GetStringCountDown() </span>
             ***REMOVED***

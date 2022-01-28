@@ -12,4 +12,14 @@ div***REMOVED***
     right: 0;
     border-radius: 4px;
     z-index: 10;
-***REMOVED*** 
+***REMOVED***
+
+.hidden-clock ***REMOVED***
+    display: normal;
+***REMOVED***
+
+@media (min-width: 641x) ***REMOVED***
+    .hidden-clock ***REMOVED***
+        display: none;
+***REMOVED***
+***REMOVED***

@@ -27,57 +27,63 @@ else
     @if (kieu == 0)
     ***REMOVED***
 
-@*<div class="row">*@
-    @*<div class="col-11 col-md-6"><strong> @AppState.SelectedExamInfo.ExamName </strong></div>
-    <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>*@
-@*<div class="floating-button">*@
-    @*<span style="color:red">@RemainTime</span> <br />*@
-    <button @onclick="Submit" class="btn btn-success floating-button">
-        Nộp Bài
-    </button>
-@*</div>*@
-@*</div>*@
-       
-            @*<button @onclick="Submit" class="btn btn-success floating-button">
+        @*<div class="row">*@
+        @*<div class="col-11 col-md-6"><strong> @AppState.SelectedExamInfo.ExamName </strong></div>
+            <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>*@
+        @*<div class="floating-button">
+                @if (AppState.RemainSeconds > 0)
+                ***REMOVED***
+                <span style="color:red" class="hidden-clock">@RemainTime</span> <br />
+            ***REMOVED***
+                <button @onclick="Submit" class="btn btn-success">
+                    Nộp Bài
+                </button>
+            </div>*@
+        <button @onclick="Submit" class="btn btn-success floating-button">
+            Nộp Bài
+        </button>
+        @*</div>*@
+
+        @*<button @onclick="Submit" class="btn btn-success floating-button">
                 Nộp Bài
             </button>*@
-        
-<div class="row">
-    <div class="col-11 col-md-10">
-        @for (var index = 0; index < questions.Questions.Count; index++)
-        ***REMOVED***
-            var question = questions.Questions[index];
-            <div class="card bg-light text-dark">
 
-                <div class="card-body">
-                    <span class="card-title"><b>@(index+1). @question.QuestionText</b></span>
-                    <EditForm Model="question">
-                        <InputRadioGroup @bind-Value="question.UserAnswerId">
-                            @foreach (var answer in question.Answers)
-                                        ***REMOVED***
+        <div class="row">
+            <div class="col-11 col-md-10">
+                @for (var index = 0; index < questions.Questions.Count; index++)
+                ***REMOVED***
+                    var question = questions.Questions[index];
+                    <div class="card bg-light text-dark">
+
+                        <div class="card-body">
+                            <span class="card-title"><b>@(index+1). @question.QuestionText</b></span>
+                            <EditForm Model="question">
+                                <InputRadioGroup @bind-Value="question.UserAnswerId">
+                                    @foreach (var answer in question.Answers)
+                                                ***REMOVED***
 
 
-                                @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
+                                        @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
+                                                    ***REMOVED***
+                                            <label>
+                                                <InputRadio Value="answer.AnswerId" @onclick="()=>OnAnswerClick(question, answer.AnswerId)" /> @answer.AnswerText
+                                            </label><br />
+
+                                                ***REMOVED***
+
                                             ***REMOVED***
-                                    <label>
-                                        <InputRadio Value="answer.AnswerId" @onclick="()=>OnAnswerClick(question, answer.AnswerId)" /> @answer.AnswerText
-                                    </label><br />
+                                </InputRadioGroup>
+                            </EditForm>
+                        </div>
+                    </div>
+                    <br />
 
-                                        ***REMOVED***
 
-                                    ***REMOVED***
-                        </InputRadioGroup>
-                    </EditForm>
-                </div>
+            ***REMOVED***
             </div>
-            <br />
-
-
-    ***REMOVED***
-    </div>
-</div>
+        </div>
 ***REMOVED***
-    
+
 ***REMOVED***
 
 @code ***REMOVED***
@@ -136,8 +142,11 @@ else
         ExamInfo examInfo = await repository.LayThongTinBaiThi(ExamId);
         ExamNotFinishedYet examNotFinishedYet = new ExamNotFinishedYet()
         ***REMOVED***
-            UserExamId = questions.UserExamId, CurrentExam = examInfo
-            , RemainSecond = questions.RemainSeCond, TryNum = questions.TryNum
+            UserExamId = questions.UserExamId,
+            CurrentExam = examInfo
+            ,
+            RemainSecond = questions.RemainSeCond,
+            TryNum = questions.TryNum
     ***REMOVED***;
         AppState.UpdateSelectedExam(this, examNotFinishedYet);
 
@@ -146,7 +155,7 @@ else
 
         CurrentDisplayQuestion = questions.Questions[CurrentIndex];
         RemainSecondToDoExam = questions.RemainSeCond;
-        AppState.UpdateRemainSeconds(this,RemainSecondToDoExam);
+        AppState.UpdateRemainSeconds(this, RemainSecondToDoExam);
         RemainTime = $"***REMOVED***RemainSecondToDoExam / 60***REMOVED*** phút:***REMOVED***RemainSecondToDoExam % 60***REMOVED*** giây ";
         SyncInterval = Convert.ToInt32(configuration.GetSection("SyncSetting")["SecondInterval"]);
         StartCountdown();
@@ -171,7 +180,7 @@ else
 ***REMOVED***
     public async void Submit()
     ***REMOVED***
-        if(!await XacNhanNopBai())
+        if (!await XacNhanNopBai())
         ***REMOVED***
             return;
     ***REMOVED***
@@ -186,9 +195,9 @@ else
     private List<string> GetThuTuCauHoiChuaTraLoi()
     ***REMOVED***
         List<string> unAnswerQuestionOrders = new List<string>();
-        for(int i=0; i< questions.Questions.Count; i++)
+        for (int i = 0; i < questions.Questions.Count; i++)
         ***REMOVED***
-            if(questions.Questions[i].UserAnswerId == 0)
+            if (questions.Questions[i].UserAnswerId == 0)
             ***REMOVED***
                 unAnswerQuestionOrders.Add($"***REMOVED***i + 1***REMOVED***");
         ***REMOVED***
@@ -200,13 +209,13 @@ else
     private async Task<bool> XacNhanNopBai()
     ***REMOVED***
         var listChuaTraLoi = GetThuTuCauHoiChuaTraLoi();
-        if(listChuaTraLoi.Count == 0)
+        if (listChuaTraLoi.Count == 0)
         ***REMOVED***
             return await ShowConfirm("Bạn có chắc chắn muốn nộp bài ?");
     ***REMOVED***
         else
         ***REMOVED***
-            String strCauChuaTraLoi = listChuaTraLoi.Aggregate( (current,next) => $"***REMOVED***current***REMOVED*** , ***REMOVED***next***REMOVED***").TrimStart(new char[] ***REMOVED*** ','***REMOVED***);
+            String strCauChuaTraLoi = listChuaTraLoi.Aggregate((current, next) => $"***REMOVED***current***REMOVED*** , ***REMOVED***next***REMOVED***").TrimStart(new char[] ***REMOVED*** ',' ***REMOVED***);
             return await ShowConfirm($"Bạn chưa trả lời các câu: ***REMOVED***strCauChuaTraLoi***REMOVED***. Bạn có chắc chắn muốn nộp bài ?");
     ***REMOVED***
 ***REMOVED***
@@ -218,7 +227,7 @@ else
         ***REMOVED***
             if (!question.IsSyncUserAnswer && question.UserAnswerId > 0)
             ***REMOVED***
-                await SyncCauTraLoiDaChon(question, question.UserAnswerId);                
+                await SyncCauTraLoiDaChon(question, question.UserAnswerId);
                 //_logger.LogInformation($"update ExamQuestionId : ***REMOVED***question.ExamQuestionId***REMOVED***, UserAnswerId:***REMOVED***question.UserAnswerId***REMOVED***");
         ***REMOVED***
     ***REMOVED***
