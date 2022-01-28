@@ -4,22 +4,27 @@
     <AuthorizeView>
 
         <Authorized>
-            <div class="col-8 col-md-8"  >
+            <div class="col-12 col-md-7"  style="align-items:flex-start; padding-left:2px">
                 @if (AppState.SelectedExamNotFinishedInfo?.CurrentExam != null && AppState.RemainSeconds > 0 )
                 {
                 <a href="exam/@AppState.CurrentIdentityUserId/@AppState.SelectedExamNotFinishedInfo?.CurrentExam?.ExamId"><b>@AppState.SelectedExamNotFinishedInfo?.CurrentExam?.ExamName</b></a>
-                <text> &nbsp; &nbsp; &nbsp;</text>
+                @*<text> &nbsp; &nbsp; &nbsp;</text>*@
                    
-                     <span style="color:red"> @GetStringCountDown() </span>
+                     @*<span style="color:red"> @GetStringCountDown() </span>*@
                     
 
 
                     }
             </div>
-            <div class="col-4 col-md-4">
+            <div class="col-12 col-md-5" style="z-index:2; padding-left:2px">
+
                 <a href="Identity/Account/Manage">Xin chào, @context.User.Identity.Name!</a>
-               
+
                 <a href="Identity/Account/Logout">Đăng xuất</a>
+                @if (AppState.RemainSeconds > 0)
+                {
+                    <span style="color:red; margin-left:24px"> @GetStringCountDown() </span>
+                }
             </div>
         </Authorized>
         <NotAuthorized>
