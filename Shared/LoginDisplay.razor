@@ -5,14 +5,16 @@
 
         <Authorized>
             <div class="col-8 col-md-8"  >
-                @if (AppState.SelectedExamNotFinishedInfo?.CurrentExam != null)
+                @if (AppState.SelectedExamNotFinishedInfo?.CurrentExam != null && AppState.RemainSeconds > 0 )
                 {
                 <a href="exam/@AppState.CurrentIdentityUserId/@AppState.SelectedExamNotFinishedInfo?.CurrentExam?.ExamId"><b>@AppState.SelectedExamNotFinishedInfo?.CurrentExam?.ExamName</b></a>
                 <text> &nbsp; &nbsp; &nbsp;</text>
-                    <span style="color:red"> @GetStringCountDown() </span>
+                   
+                     <span style="color:red"> @GetStringCountDown() </span>
+                    
 
 
-                }
+                    }
             </div>
             <div class="col-4 col-md-4">
                 <a href="Identity/Account/Manage">Xin chào, @context.User.Identity.Name!</a>
