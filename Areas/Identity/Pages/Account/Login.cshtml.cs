@@ -94,7 +94,7 @@ namespace BlazorVNPTQuiz.Areas.Identity.Pages.Account
 
                      await _signInManager.SignInAsync(dbUser, Input.RememberMe);
                     _appState.CurrentIdentityUserId = Convert.ToInt32(dbUser.Id);
-                    _logger.LogInformation($"User logged in: {dbUser.UserName} userId= {dbUser.Id}");
+                    _logger.LogInformation($"User logged in: {dbUser.UserName} userId= {_appState.CurrentIdentityUserId}");
                     return LocalRedirect(returnUrl);
                 }
                 //if (result.RequiresTwoFactor)
