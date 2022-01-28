@@ -42,7 +42,7 @@ namespace BlazorVNPTQuiz.Repository
         ***REMOVED***
             stopwatch.Stop();
             Debug.Print($"SynCauTraLoi: questionExamId***REMOVED***questionExamId***REMOVED*** userAnswerId:***REMOVED***userAnswerId***REMOVED*** took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED***");
-            logger.LogInformation("SynCauTraLoi: questionExamId=***REMOVED***questionExamId***REMOVED*** userAnswerId=***REMOVED***userAnswerId***REMOVED*** took ***REMOVED***s***REMOVED*** ms", questionExamId, userAnswerId,stopwatch.ElapsedMilliseconds);
+            logger.LogInformation("SynCauTraLoi: questionExamId=***REMOVED***questionExamId***REMOVED*** userAnswerId=***REMOVED***userAnswerId***REMOVED*** took ***REMOVED***stopwatch***REMOVED*** ms", questionExamId, userAnswerId,stopwatch.ElapsedMilliseconds);
     ***REMOVED***
        
 
@@ -102,6 +102,8 @@ namespace BlazorVNPTQuiz.Repository
 
         public async Task CapNhatDiem(int userExamId, int numOfRight, decimal score)
         ***REMOVED***
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
             ***REMOVED***
                 using (var command = new MySqlCommand($"update user_exam set state = 1, num_of_right = ***REMOVED***numOfRight***REMOVED***, score = ***REMOVED***score***REMOVED***, finished_time = '***REMOVED***DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")***REMOVED***' where id = ***REMOVED***userExamId***REMOVED***", connection))
@@ -110,10 +112,14 @@ namespace BlazorVNPTQuiz.Repository
                     await command.ExecuteNonQueryAsync();
             ***REMOVED***
         ***REMOVED***
+            stopwatch.Stop();
+            logger.LogInformation("CapNhatDiem(userExamId=***REMOVED***userExamId***REMOVED***, numOfRight=***REMOVED***numOfRight***REMOVED***, score=***REMOVED***score***REMOVED***) took ***REMOVED***runtime***REMOVED*** ", userExamId, numOfRight, score, stopwatch.ElapsedMilliseconds);
     ***REMOVED***
 
         public async Task<KetQuaBaiThi> LayBaoCaoDiem(int userExamId)
         ***REMOVED***
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             KetQuaBaiThi ketQuaBaiThi = new KetQuaBaiThi();
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
             ***REMOVED***
@@ -153,11 +159,15 @@ namespace BlazorVNPTQuiz.Repository
                 ***REMOVED***
             ***REMOVED***
         ***REMOVED***
+            stopwatch.Stop();
+            logger.LogInformation("LauBaoCaoDiem(userExamId=***REMOVED***userExamId***REMOVED***) took ***REMOVED***runtime***REMOVED***", userExamId, stopwatch.ElapsedMilliseconds);
             return ketQuaBaiThi;
     ***REMOVED***
 
         public async Task<List<ExamInfo>> LayDanhSachBaiThi(int userId)
         ***REMOVED***
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             List<ExamInfo> examInfos = new List<ExamInfo>();
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
             ***REMOVED***
@@ -186,6 +196,8 @@ namespace BlazorVNPTQuiz.Repository
 
             ***REMOVED***
         ***REMOVED***
+            stopwatch.Stop();
+            logger.LogInformation("LayDanhSachBaiThi(userId=***REMOVED***userId***REMOVED***) took ***REMOVED***runtime***REMOVED***", userId, stopwatch.ElapsedMilliseconds);
 
             return examInfos;
     ***REMOVED***
