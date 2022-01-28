@@ -28,3 +28,98 @@ LIMIT 1"
 2022-01-27T17:56:10.1015896+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27824 where id = 680 took 6
 2022-01-27T17:56:12.3535693+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27814 where id = 681 took 4
 2022-01-27T17:56:13.6380273+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27817 where id = 681 took 5
+2022-01-27T18:04:18.1429329+07:00 [INF] (Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager) User profile is available. Using '"C:\Users\vuth1\AppData\Local\ASP.NET\DataProtection-Keys"' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-01-27T18:04:18.7152303+07:00 [INF] (Microsoft.Hosting.Lifetime) Now listening on: "http://localhost:5000"
+2022-01-27T18:04:18.7287467+07:00 [INF] (Microsoft.Hosting.Lifetime) Application started. Press Ctrl+C to shut down.
+2022-01-27T18:04:18.7296564+07:00 [INF] (Microsoft.Hosting.Lifetime) Hosting environment: "Development"
+2022-01-27T18:04:18.7306925+07:00 [INF] (Microsoft.Hosting.Lifetime) Content root path: "F:\Code\00_Product\BlazorVNPTQuiz\BlazorVNPTQuiz"
+2022-01-27T18:04:21.6810532+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/ - -
+2022-01-27T18:04:22.1651783+07:00 [INF] (Microsoft.AspNetCore.Routing.EndpointMiddleware) Executing endpoint '"/_Host"'
+2022-01-27T18:04:22.1923300+07:00 [INF] (Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker) Route matched with "***REMOVED***page = \"/_Host\", area = \"\"***REMOVED***". Executing page "/_Host"
+2022-01-27T18:04:22.2100096+07:00 [INF] (Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker) Executing an implicit handler method - ModelState is Valid
+2022-01-27T18:04:22.2134992+07:00 [INF] (Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker) Executed an implicit handler method, returned result "Microsoft.AspNetCore.Mvc.RazorPages.PageResult".
+2022-01-27T18:04:22.3246888+07:00 [INF] (Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker) Executed page "/_Host" in 124.8329ms
+2022-01-27T18:04:22.3284864+07:00 [INF] (Microsoft.AspNetCore.Routing.EndpointMiddleware) Executed endpoint '"/_Host"'
+2022-01-27T18:04:22.3448265+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/ - - - 200 - text/html;+charset=utf-8 670.9673ms
+2022-01-27T18:04:22.3742075+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/css/site.css - -
+2022-01-27T18:04:22.3752247+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/_framework/blazor.server.js - -
+2022-01-27T18:04:22.3747642+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored-modal.css - -
+2022-01-27T18:04:22.3769399+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored.modal.js - -
+2022-01-27T18:04:22.3743800+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/BlazorVNPTQuiz.styles.css - -
+2022-01-27T18:04:22.3820609+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/css/bootstrap/bootstrap.min.css - -
+2022-01-27T18:04:22.3970201+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/_framework/blazor.server.js" was not modified
+2022-01-27T18:04:22.3970201+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/_content/Blazored.Modal/blazored.modal.js" was not modified
+2022-01-27T18:04:22.3970330+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/css/site.css" was not modified
+2022-01-27T18:04:22.4004498+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/_framework/blazor.server.js - - - 304 - application/javascript 25.2490ms
+2022-01-27T18:04:22.3970634+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/_content/Blazored.Modal/blazored-modal.css" was not modified
+2022-01-27T18:04:22.4006935+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored.modal.js - - - 304 - application/javascript 24.2109ms
+2022-01-27T18:04:22.4101371+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/css/site.css - - - 304 - text/css 36.0796ms
+2022-01-27T18:04:22.4136749+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/_content/Blazored.Modal/blazored-modal.css - - - 304 - text/css 39.0104ms
+2022-01-27T18:04:22.3970826+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/BlazorVNPTQuiz.styles.css" was not modified
+2022-01-27T18:04:22.3970211+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/css/bootstrap/bootstrap.min.css" was not modified
+2022-01-27T18:04:22.4196567+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/BlazorVNPTQuiz.styles.css - - - 304 - text/css 45.2117ms
+2022-01-27T18:04:22.4220868+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/css/bootstrap/bootstrap.min.css - - - 304 - text/css 40.0312ms
+2022-01-27T18:04:22.4723249+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/css/open-iconic-bootstrap.min.css - -
+2022-01-27T18:04:22.4831580+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/css/open-iconic/font/css/open-iconic-bootstrap.min.css" was not modified
+2022-01-27T18:04:22.4856695+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/css/open-iconic-bootstrap.min.css - - - 304 - text/css 13.3380ms
+2022-01-27T18:04:22.5152493+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 POST http://localhost:5000/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0
+2022-01-27T18:04:22.5196982+07:00 [INF] (Microsoft.AspNetCore.Routing.EndpointMiddleware) Executing endpoint '"/_blazor/negotiate"'
+2022-01-27T18:04:22.5416374+07:00 [INF] (Microsoft.AspNetCore.Routing.EndpointMiddleware) Executed endpoint '"/_blazor/negotiate"'
+2022-01-27T18:04:22.5436511+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 POST http://localhost:5000/_blazor/negotiate?negotiateVersion=1 text/plain;charset=UTF-8 0 - 200 316 application/json 28.3721ms
+2022-01-27T18:04:22.6045142+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/_blazor?id=vqCcR1kjYPq6CobYbu8GfQ - -
+2022-01-27T18:04:22.6232327+07:00 [INF] (Microsoft.AspNetCore.Routing.EndpointMiddleware) Executing endpoint '"/_blazor"'
+2022-01-27T18:04:23.3216472+07:00 [INF] (Microsoft.EntityFrameworkCore.Infrastructure) Entity Framework Core "5.0.13" initialized '"ApplicationDbContext"' using provider '"Pomelo.EntityFrameworkCore.MySql"' with options: "MaxPoolSize=128 ServerVersion 5.7.31-mysql "
+2022-01-27T18:04:23.6208575+07:00 [INF] (Microsoft.EntityFrameworkCore.Database.Command) Executed DbCommand ("41"ms) [Parameters=["@__authState_User_Identity_Name_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`UserName` = @__authState_User_Identity_Name_0
+LIMIT 1"
+2022-01-27T18:04:23.7392366+07:00 [INF] (BlazorVNPTQuiz.Pages.Index) log from seriLog
+2022-01-27T18:04:23.7876841+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) LayIdBaithiDaThamGia(1) took 16
+2022-01-27T18:04:23.8052273+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request starting HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/fonts/open-iconic.woff - -
+2022-01-27T18:04:23.8075120+07:00 [INF] (Microsoft.AspNetCore.StaticFiles.StaticFileMiddleware) The file "/css/open-iconic/font/fonts/open-iconic.woff" was not modified
+2022-01-27T18:04:23.8106054+07:00 [INF] (Microsoft.AspNetCore.Hosting.Diagnostics) Request finished HTTP/1.1 GET http://localhost:5000/css/open-iconic/font/fonts/open-iconic.woff - - - 304 - application/font-woff 5.6486ms
+2022-01-27T18:04:27.3045179+07:00 [INF] (Microsoft.EntityFrameworkCore.Database.Command) Executed DbCommand ("6"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`NormalizedUserName` = @__normalizedUserName_0
+LIMIT 1"
+2022-01-27T18:04:27.3284312+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) LayIdBaithiDaThamGia(1) took 4
+2022-01-27T18:04:46.8928546+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) LayDanhSachCauHoi(1,75) took 47
+2022-01-27T18:04:46.8956003+07:00 [INF] (BlazorVNPTQuiz.Pages.Exam) OnInitializedAsync().LayDanhSachCauHoi(1,75) took 53 ms 
+2022-01-27T18:05:05.5412451+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27786 where id = 702 took 15
+2022-01-27T18:05:06.6171829+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 26895 where id = 701 took 4
+2022-01-27T18:05:08.2413041+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27718 where id = 703 took 4
+2022-01-27T18:05:09.6331429+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27855 where id = 704 took 8
+2022-01-27T18:05:13.7491458+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27662 where id = 705 took 13
+2022-01-27T18:06:26.1705696+07:00 [INF] (Microsoft.EntityFrameworkCore.Database.Command) Executed DbCommand ("3"ms) [Parameters=["@__normalizedUserName_0='?' (Size = 256)"], CommandType='Text', CommandTimeout='30']"
+""SELECT `a`.`Id`, `a`.`AccessFailedCount`, `a`.`ConcurrencyStamp`, `a`.`Email`, `a`.`EmailConfirmed`, `a`.`LockoutEnabled`, `a`.`LockoutEnd`, `a`.`NormalizedEmail`, `a`.`NormalizedUserName`, `a`.`PasswordHash`, `a`.`PhoneNumber`, `a`.`PhoneNumberConfirmed`, `a`.`SecurityStamp`, `a`.`TwoFactorEnabled`, `a`.`UserName`
+FROM `AspNetUsers` AS `a`
+WHERE `a`.`NormalizedUserName` = @__normalizedUserName_0
+LIMIT 1"
+2022-01-27T18:06:26.1860312+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) LayIdBaithiDaThamGia(1) took 4
+2022-01-27T18:06:36.8109093+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) LayDanhSachCauHoi(1,74) took 19
+2022-01-27T18:06:36.8151265+07:00 [INF] (BlazorVNPTQuiz.Pages.Exam) OnInitializedAsync().LayDanhSachCauHoi(1,74) took 27 ms 
+2022-01-27T18:06:40.5757915+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27759 where id = 709 took 11
+2022-01-27T18:06:42.6203402+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27807 where id = 713 took 5
+2022-01-27T18:06:48.4661250+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27815 where id = 715 took 4
+2022-01-27T18:06:50.2679580+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27811 where id = 714 took 6
+2022-01-27T18:06:57.9873889+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27803 where id = 716 took 15
+2022-01-27T18:06:59.2343693+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27823 where id = 717 took 13
+2022-01-27T18:07:04.0194982+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27798 where id = 718 took 5
+2022-01-27T18:07:07.0764649+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27818 where id = 719 took 5
+2022-01-27T18:07:08.6196689+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27795 where id = 720 took 4
+2022-01-27T18:07:10.2064076+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27718 where id = 721 took 4
+2022-01-27T18:07:18.0572423+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27791 where id = 722 took 7
+2022-01-27T18:07:19.5767002+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27853 where id = 728 took 4
+2022-01-27T18:07:20.7177726+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27847 where id = 729 took 5
+2022-01-27T18:07:24.6695424+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27854 where id = 730 took 5
+2022-01-27T18:07:26.9416656+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27843 where id = 731 took 5
+2022-01-27T18:07:28.9416942+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27835 where id = 732 took 4
+2022-01-27T18:07:30.7535942+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27836 where id = 732 took 17
+2022-01-27T18:07:32.0184764+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27839 where id = 733 took 5
+2022-01-27T18:07:35.5895350+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27768 where id = 706 took 4
+2022-01-27T18:07:39.4386306+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27770 where id = 707 took 5
+2022-01-27T18:07:40.9412351+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27782 where id = 708 took 5
+2022-01-27T18:07:45.6830920+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27806 where id = 713 took 4
+2022-01-27T18:07:57.5175328+07:00 [INF] (BlazorVNPTQuiz.Repository.MySqlRepository) SynCauTraLoi: update exam_question_official set answer_id = 27766 where id = 706 took 14
