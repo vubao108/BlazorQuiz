@@ -24,7 +24,17 @@ namespace BlazorVNPTQuiz
             Log.Logger = new LoggerConfiguration()
            .ReadFrom.Configuration(configuration)
            .CreateLogger();
-            CreateHostBuilder(args).Build().Run();
+            try
+            ***REMOVED***
+                CreateHostBuilder(args).Build().Run();
+        ***REMOVED***catch(Exception ex)
+            ***REMOVED***
+                Log.Fatal(ex, "host terminated unexpectedly");
+        ***REMOVED***
+            finally
+            ***REMOVED***
+                Log.CloseAndFlush();
+        ***REMOVED***
     ***REMOVED***
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

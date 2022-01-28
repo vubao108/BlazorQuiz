@@ -42,7 +42,7 @@ namespace BlazorVNPTQuiz.Repository
         ***REMOVED***
             stopwatch.Stop();
             Debug.Print($"SynCauTraLoi: questionExamId***REMOVED***questionExamId***REMOVED*** userAnswerId:***REMOVED***userAnswerId***REMOVED*** took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED***");
-            logger.LogInformation($"SynCauTraLoi: ***REMOVED***sql***REMOVED*** took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED***");
+            logger.LogInformation("SynCauTraLoi: ***REMOVED***questionExamId***REMOVED*** ***REMOVED***userAnswerId***REMOVED*** took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED*** ms",questionExamId, userAnswerId);
     ***REMOVED***
        
 
