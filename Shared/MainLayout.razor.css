@@ -33,7 +33,7 @@
 
 @media (max-width: 640.98px) ***REMOVED***
     .top-row:not(.auth) ***REMOVED***
-        display: normal;
+        display: none;
         
 ***REMOVED***
 
