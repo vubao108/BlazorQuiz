@@ -1,9 +1,15 @@
 ﻿@page "/chude-donvi"
+@using Syncfusion.Blazor.DropDowns
+
 
 <div class="container">
     <div class="row">
         <div class="col-5">
             <h4>Đơn vị</h4>
+            <SfComboBox TItem="Donvi" TValue="int" DataSource="Donvis">
+                <ComboBoxFieldSettings Value="Id" Text="Name"></ComboBoxFieldSettings>
+            </SfComboBox>
+            
         </div>
         <div class="col-2">
 
@@ -18,5 +24,8 @@
 
 
 @code {
-    
+    public List<Donvi> Donvis = new List<Donvi> { 
+    new Donvi(){Id=1, Name="TTCNTT"}, new Donvi(){Id=2, Name="TTDH"}
+    };
+
 }
