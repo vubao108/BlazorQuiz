@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("***REMOVED***9A19103F-16F7-4668-BE54-9A1E7A4F7556***REMOVED***") = "BlazorVNPTQuiz", "BlazorVNPTQuiz.csproj", "***REMOVED***471DFB86-9558-4A47-BAD8-477617CB415B***REMOVED***"
 EndProject
+Project("***REMOVED***9A19103F-16F7-4668-BE54-9A1E7A4F7556***REMOVED***") = "TestDatabase", "..\TestDatabase\TestDatabase.csproj", "***REMOVED***BB332E26-BC62-4C23-857F-1B11E91D4815***REMOVED***"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		***REMOVED***471DFB86-9558-4A47-BAD8-477617CB415B***REMOVED***.Debug|Any CPU.Build.0 = Debug|Any CPU
 		***REMOVED***471DFB86-9558-4A47-BAD8-477617CB415B***REMOVED***.Release|Any CPU.ActiveCfg = Release|Any CPU
 		***REMOVED***471DFB86-9558-4A47-BAD8-477617CB415B***REMOVED***.Release|Any CPU.Build.0 = Release|Any CPU
+		***REMOVED***BB332E26-BC62-4C23-857F-1B11E91D4815***REMOVED***.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		***REMOVED***BB332E26-BC62-4C23-857F-1B11E91D4815***REMOVED***.Debug|Any CPU.Build.0 = Debug|Any CPU
+		***REMOVED***BB332E26-BC62-4C23-857F-1B11E91D4815***REMOVED***.Release|Any CPU.ActiveCfg = Release|Any CPU
+		***REMOVED***BB332E26-BC62-4C23-857F-1B11E91D4815***REMOVED***.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
