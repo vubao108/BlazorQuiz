@@ -22,6 +22,7 @@ using BlazorVNPTQuiz.Services;
 using Blazored.Modal;
 using log4net;
 using Microsoft.Extensions.Logging;
+using Syncfusion.Blazor;
 
 namespace BlazorVNPTQuiz
 ***REMOVED***
@@ -54,6 +55,8 @@ namespace BlazorVNPTQuiz
                     ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
         ***REMOVED***);
             services.AddServerSideBlazor();
+            services.AddSyncfusionBlazor(options => ***REMOVED*** options.IgnoreScriptIsolation = true; ***REMOVED***);
+
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
            
            
