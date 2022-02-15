@@ -9,5 +9,7 @@ namespace BlazorVNPTQuiz.Models
     ***REMOVED***
         public int Id ***REMOVED*** get; set; ***REMOVED***
         public string Name ***REMOVED*** get; set; ***REMOVED***
+
+        public bool IsSelected ***REMOVED*** get; set; ***REMOVED***
 ***REMOVED***
 ***REMOVED***
