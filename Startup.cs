@@ -55,8 +55,8 @@ namespace BlazorVNPTQuiz
                     ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
         ***REMOVED***);
             services.AddServerSideBlazor();
-            services.AddSyncfusionBlazor(options => ***REMOVED*** options.IgnoreScriptIsolation = true; ***REMOVED***);
-
+            // services.AddSyncfusionBlazor(options => ***REMOVED*** options.IgnoreScriptIsolation = true; ***REMOVED***);
+            services.AddSyncfusionBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
            
            
@@ -74,6 +74,7 @@ namespace BlazorVNPTQuiz
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         ***REMOVED***
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTgxNTUyQDMxMzkyZTM0MmUzMG0rakNONTBmUXJPQXR3c29rUWhEWmg5UkdPaEVzU01GSkx5ZUtrZmxiSUE9");
             //var loggingOptions = this.Configuration.GetSection("Log4NetCore")
             //                                   .Get<Log4NetProviderOptions>();
             //loggerFactory.AddLog4Net("Log.config");
