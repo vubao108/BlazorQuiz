@@ -21,9 +21,22 @@ namespace BlazorVNPTQuiz.Repository
 
     ***REMOVED***
 
-        void IRepositoryOntap.GanChuDeChoDonVi(int donvi_id, List<Category> categories)
+        public async Task  GanChuDeChoDonVi(int donvi_id, List<Category> categories)
         ***REMOVED***
-            throw new NotImplementedException();
+            string sql_update = $"delete from donvi_tag where donvi_id = ***REMOVED***donvi_id***REMOVED*** ;";
+            foreach(Category category in categories)
+            ***REMOVED***
+                sql_update += $" insert into donvi_tag(donvi_id, tag_id) values(***REMOVED***donvi_id***REMOVED***, ***REMOVED***category.Id***REMOVED***); ";
+        ***REMOVED***
+
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            ***REMOVED***
+                using (var command = new MySqlCommand(sql_update, connection))
+                ***REMOVED***
+                    await connection.OpenAsync();
+                    await command.ExecuteNonQueryAsync();
+            ***REMOVED***
+        ***REMOVED***
     ***REMOVED***
 
         void IRepositoryOntap.GenerateDulieuOnTap(int donvi_id)
@@ -33,11 +46,11 @@ namespace BlazorVNPTQuiz.Repository
 
         public async Task<List<Category>> LayDanhSachChuDeTheoDonVi(int donvi_id)
         ***REMOVED***
-            string sql_query = @"select SELECT a.tag_id , a.tag_name, b.donvi_id,
+            string sql_query = @"SELECT a.tag_id , a.tag_name, b.donvi_id,
                 CASE WHEN b.donvi_id IS  NULL THEN 0 ELSE 1 END isSelected 
                 FROM tags a
                 LEFT JOIN donvi_tag b ON a.tag_id = b.tag_id AND b.donvi_id = " 
-                + $"***REMOVED***donvi_id***REMOVED***";
+                + $"***REMOVED***donvi_id***REMOVED***  order by isSelected desc, tag_name";
             List<Category> categories = new List<Category>();
  
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
@@ -61,7 +74,7 @@ namespace BlazorVNPTQuiz.Repository
 
         public async Task<List<Donvi>> LayDanhSachDonVi(int user_id)
         ***REMOVED***
-            string sql_query = $"SELECT b.donvi_id, b.ten_dv FROM user_donvi a, donvi b WHERE a.donvi_id = b.id AND a.user_id = ***REMOVED***user_id***REMOVED*** ";
+            string sql_query = $"SELECT a.donvi_id, b.ten_dv FROM user_donvi a, donvi b WHERE a.donvi_id = b.id AND a.user_id = ***REMOVED***user_id***REMOVED*** ";
             List<Donvi> donvis = new List<Donvi>();
 
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
