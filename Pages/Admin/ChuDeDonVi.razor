@@ -1,5 +1,6 @@
 ﻿@page "/chude-donvi"
-
+@inject IRepositoryOntap repositoryOntap;
+@inject AppState appState;
 
 
     <div class="container main-height">
@@ -12,7 +13,11 @@
             <div class="col-12 col-md-6">
                 <h4>Đơn vị</h4>
                 <SfComboBox DataSource="@Donvis" TValue="int" TItem="Donvi" Placeholder="Chọn đơn vị"
-                            PopupHeight="400px"  AllowCustom=false >
+                            PopupHeight="300px"  AllowCustom=false
+                            @bind-Value="@CurrentDonViId"
+                           
+                            >
+                    <ComboBoxEvents TItem="Donvi" TValue="int" ValueChange="ValueDonViIdChangedHandler" ></ComboBoxEvents>
                     <ComboBoxFieldSettings Value="Id" Text="Name"></ComboBoxFieldSettings>
                     
                 </SfComboBox>
@@ -40,30 +45,37 @@
 
 
     @code ***REMOVED***
-        List<Donvi> Donvis  = new List<Donvi>() ***REMOVED***
-         new Donvi()***REMOVED***Id=1, Name="TTCNTT"***REMOVED***, new Donvi()***REMOVED***Id=2, Name="TTDH"***REMOVED***
+        public int CurrentDonViId ***REMOVED*** get; set; ***REMOVED***
+        List<Donvi> Donvis;
 
-     ***REMOVED***;
+        List<Category> Categories;
 
-        List<Category> Categories = new List<Category>()
+        protected override async Task OnInitializedAsync()
         ***REMOVED***
-            new Category***REMOVED***Id=1, Name="CD1"***REMOVED***, new Category***REMOVED***Id=2, Name="CD2"***REMOVED***
-            ,new Category***REMOVED***Id=3, Name="CD3"***REMOVED***, new Category***REMOVED***Id=4, Name="CD4"***REMOVED***
-            ,new Category***REMOVED***Id=5, Name="CD1"***REMOVED***, new Category***REMOVED***Id=6, Name="CD2"***REMOVED***
-            ,new Category***REMOVED***Id=7, Name="CD1"***REMOVED***, new Category***REMOVED***Id=8, Name="CD2"***REMOVED***
-            ,new Category***REMOVED***Id=9, Name="CD1"***REMOVED***, new Category***REMOVED***Id=10, Name="CD2"***REMOVED***
-            ,new Category***REMOVED***Id=11, Name="CD1"***REMOVED***, new Category***REMOVED***Id=12, Name="CD2"***REMOVED***
-            ,new Category***REMOVED***Id=13, Name="CD1"***REMOVED***, new Category***REMOVED***Id=14, Name="CD2"***REMOVED***
-            ,new Category***REMOVED***Id=15, Name="CD1"***REMOVED***, new Category***REMOVED***Id=16, Name="CD2"***REMOVED***
-            ,new Category***REMOVED***Id=17, Name="CD1"***REMOVED***, new Category***REMOVED***Id=18, Name="CD2"***REMOVED***
-            ,new Category***REMOVED***Id=19, Name="CD1"***REMOVED***, new Category***REMOVED***Id=20, Name="CD2"***REMOVED***
-    ***REMOVED***;
 
+            Donvis = await repositoryOntap.LayDanhSachDonVi(appState.CurrentIdentityUserId);
 
-
-        private void onSaveClick(Microsoft.AspNetCore.Components.Web.MouseEventArgs args)
+            if (Donvis != null && Donvis.Count > 0)
+            ***REMOVED***
+                CurrentDonViId = Donvis[0].Id;
+                Categories = await repositoryOntap.LayDanhSachChuDeTheoDonVi(CurrentDonViId);
         ***REMOVED***
-            Debug.WriteLine("onSaveClick");
+
+            await base.OnInitializedAsync();
+
+    ***REMOVED***
+
+        private  async void ValueDonViIdChangedHandler(Syncfusion.Blazor.DropDowns.ChangeEventArgs<int, Donvi> args)
+        ***REMOVED***
+            Debug.WriteLine($"ValueDonViIdChangedHandler ***REMOVED***CurrentDonViId***REMOVED*** ");
+            Categories = await repositoryOntap.LayDanhSachChuDeTheoDonVi(CurrentDonViId);
+            StateHasChanged();
+    ***REMOVED***
+
+        private async void onSaveClick(Microsoft.AspNetCore.Components.Web.MouseEventArgs args)
+        ***REMOVED***
+            Debug.WriteLine($"onSaveClick CurrentDonVi = ***REMOVED***CurrentDonViId***REMOVED***");
+            await repositoryOntap.GanChuDeChoDonVi(CurrentDonViId, Categories.Where(item => item.IsSelected).ToList());
 
     ***REMOVED***
 
