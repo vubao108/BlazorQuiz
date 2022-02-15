@@ -1,31 +1,48 @@
 ﻿@page "/chude-donvi"
-@using Syncfusion.Blazor.DropDowns
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-5">
-            <h4>Đơn vị</h4>
-            <SfComboBox TItem="Donvi" TValue="int" DataSource="Donvis">
-                <ComboBoxFieldSettings Value="Id" Text="Name"></ComboBoxFieldSettings>
-            </SfComboBox>
-            
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4>Đơn vị</h4>
+                <SfComboBox DataSource="@Donvis" TValue="int" TItem="Donvi" Placeholder="Chọn đơn vị"
+                            PopupHeight="400px" PopupWidth="300px">
+                    <ComboBoxFieldSettings Value="Id" Text="Name"></ComboBoxFieldSettings>
+                    
+                </SfComboBox>
+
+            </div>
+           
+
         </div>
-        <div class="col-2">
+        <div class="row">
+            <div class="col">
+                <h4>Chủ đề</h4>
+                <SfListView DataSource="@Categories" ShowCheckBox="true">
+                    <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected"></ListViewFieldSettings>
 
-        </div>
-        <div class="col-5">
+                </SfListView>
+            </div>
 
         </div>
 
     </div>
 
-</div>
+
+    @code {
+        List<Donvi> Donvis  = new List<Donvi>() {
+         new Donvi(){Id=1, Name="TTCNTT"}, new Donvi(){Id=2, Name="TTDH"}
+
+         };
+
+        List<Category> Categories = new List<Category>()
+        {
+            new Category{Id=1, Name="CD1"}, new Category{Id=2, Name="CD2"}
+        };
 
 
-@code {
-    public List<Donvi> Donvis = new List<Donvi> { 
-    new Donvi(){Id=1, Name="TTCNTT"}, new Donvi(){Id=2, Name="TTDH"}
-    };
 
-}
+       
+
+    }
