@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BlazorVNPTQuiz.Repository
 {
-    public class MySqlRepository : IRepository
+    public class MySqlRepository : IRepositoryExam
     {
 
         private IConfiguration configuration;

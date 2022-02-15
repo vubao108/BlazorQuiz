@@ -15,10 +15,10 @@ namespace BlazorVNPTQuiz.Services
     {
         private readonly AuthenticationStateProvider authenticationStateProvider;
         private readonly UserManager<IdentityUser> userManager;
-        private readonly IRepository repository;
+        private readonly IRepositoryExam repository;
         
         public AppState(AuthenticationStateProvider authenticationStateProvider
-            , UserManager<IdentityUser> userManager, IRepository repository)
+            , UserManager<IdentityUser> userManager, IRepositoryExam repository)
         {
             
 
