@@ -1,0 +1,20 @@
+﻿body {
+}
+
+
+.toolbar{
+    background-color:ghostwhite;
+    margin-bottom:16px;
+    margin-top:-16px;
+    margin-left:8px;
+}
+
+.list-height{
+    max-height:70vh;
+    overflow:auto
+
+}
+
+.main-height{
+    max-height:100vh
+}
