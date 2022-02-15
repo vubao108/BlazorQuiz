@@ -3,45 +3,53 @@
 @inject AppState appState;
 
 
-    <div class="container main-height">
-        <div class="row toolbar">
-           
-            <SfButton @onclick="onSaveClick" CssClass="e-info">Ghi Lại</SfButton>
+<div class="container main-height">
+    <div class="row toolbar">
 
-        </div>
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <h4>Đơn vị</h4>
-                <SfComboBox DataSource="@Donvis" TValue="int" TItem="Donvi" Placeholder="Chọn đơn vị"
-                            PopupHeight="300px"  AllowCustom=false
-                            @bind-Value="@CurrentDonViId"
-                           
-                            >
-                    <ComboBoxEvents TItem="Donvi" TValue="int" ValueChange="ValueDonViIdChangedHandler" ></ComboBoxEvents>
-                    <ComboBoxFieldSettings Value="Id" Text="Name"></ComboBoxFieldSettings>
-                    
-                </SfComboBox>
-
-            </div>
-           
-
-        </div>
-        <div class="row list-height" >
-            <div class="col-6">
-                <h4>Chủ đề</h4>
-                <SfListView DataSource="@Categories" ShowCheckBox="true" >
-                    <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected"></ListViewFieldSettings>
-
-                </SfListView>
-            </div>
-            <div class="col-6" >
-                
-            </div>
-                 
-
-        </div>
+        <SfButton @onclick="onSaveClick" CssClass="e-info">Ghi Lại</SfButton>
 
     </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <h4>Đơn vị</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6">
+
+            <SfComboBox DataSource="@Donvis" TValue="int" TItem="Donvi" Placeholder="Chọn đơn vị"
+                        PopupHeight="300px" AllowCustom=false
+                        @bind-Value="@CurrentDonViId">
+                <ComboBoxEvents TItem="Donvi" TValue="int" ValueChange="ValueDonViIdChangedHandler"></ComboBoxEvents>
+                <ComboBoxFieldSettings Value="Id" Text="Name"></ComboBoxFieldSettings>
+
+            </SfComboBox>
+
+        </div>
+
+
+    </div>
+    <div class="row title-category" >
+        <div class="col-md-6">
+            <h4>Chủ đề</h4>
+        </div>
+    </div>
+    <div class="row list-category">
+        <div class="col-6">
+           
+            <SfListView DataSource="@Categories" ShowCheckBox="true">
+                <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected"></ListViewFieldSettings>
+
+            </SfListView>
+        </div>
+        <div class="col-6">
+
+        </div>
+
+
+    </div>
+
+</div>
 
 
     @code {
@@ -65,7 +73,7 @@
 
         }
 
-        private  async void ValueDonViIdChangedHandler(Syncfusion.Blazor.DropDowns.ChangeEventArgs<int, Donvi> args)
+        private async void ValueDonViIdChangedHandler(Syncfusion.Blazor.DropDowns.ChangeEventArgs<int, Donvi> args)
         {
             Debug.WriteLine($"ValueDonViIdChangedHandler {CurrentDonViId} ");
             Categories = await repositoryOntap.LayDanhSachChuDeTheoDonVi(CurrentDonViId);
