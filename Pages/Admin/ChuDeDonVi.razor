@@ -1,12 +1,15 @@
 ﻿@page "/chude-donvi"
 @inject IRepositoryOntap repositoryOntap;
 @inject AppState appState;
+@inject IHttpClientFactory ClientFactory
+
 
 
 <div class="container main-height">
     <div class="row toolbar">
 
         <SfButton @onclick="onSaveClick" CssClass="e-info">Ghi Lại</SfButton>
+        <SfButton @onclick="onGenerateMobileData" CssClass="e-info margin-button">Tạo Dữ Liệu Ôn Tập trên Mobile</SfButton>
 
     </div>
     <div class="row">
@@ -29,14 +32,14 @@
 
 
     </div>
-    <div class="row title-category" >
+    <div class="row title-category">
         <div class="col-md-6">
             <h4>Chủ đề</h4>
         </div>
     </div>
     <div class="row list-category">
         <div class="col-6">
-           
+
             <SfListView DataSource="@Categories" ShowCheckBox="true">
                 <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected"></ListViewFieldSettings>
 
@@ -51,43 +54,74 @@
 
 </div>
 
+<style>
+    .margin-button {
+        margin-left: 16px;
+    }
+</style>
 
-    @code {
-        public int CurrentDonViId { get; set; }
-        List<Donvi> Donvis;
 
-        List<Category> Categories;
+@code {
+    public int CurrentDonViId { get; set; }
+    List<Donvi> Donvis;
 
-        protected override async Task OnInitializedAsync()
+    List<Category> Categories;
+
+    [CascadingParameter] public IModalService Modal { get; set; }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        Donvis = await repositoryOntap.LayDanhSachDonVi(appState.CurrentIdentityUserId);
+
+        if (Donvis != null && Donvis.Count > 0)
         {
-
-            Donvis = await repositoryOntap.LayDanhSachDonVi(appState.CurrentIdentityUserId);
-
-            if (Donvis != null && Donvis.Count > 0)
-            {
-                CurrentDonViId = Donvis[0].Id;
-                Categories = await repositoryOntap.LayDanhSachChuDeTheoDonVi(CurrentDonViId);
-            }
-
-            await base.OnInitializedAsync();
-
-        }
-
-        private async void ValueDonViIdChangedHandler(Syncfusion.Blazor.DropDowns.ChangeEventArgs<int, Donvi> args)
-        {
-            Debug.WriteLine($"ValueDonViIdChangedHandler {CurrentDonViId} ");
+            CurrentDonViId = Donvis[0].Id;
             Categories = await repositoryOntap.LayDanhSachChuDeTheoDonVi(CurrentDonViId);
-            StateHasChanged();
         }
 
-        private async void onSaveClick(Microsoft.AspNetCore.Components.Web.MouseEventArgs args)
-        {
-            Debug.WriteLine($"onSaveClick CurrentDonVi = {CurrentDonViId}");
-            await repositoryOntap.GanChuDeChoDonVi(CurrentDonViId, Categories.Where(item => item.IsSelected).ToList());
-
-        }
-
-
-
+        await base.OnInitializedAsync();
 
     }
+
+    private async void ValueDonViIdChangedHandler(Syncfusion.Blazor.DropDowns.ChangeEventArgs<int, Donvi> args)
+    {
+        Debug.WriteLine($"ValueDonViIdChangedHandler {CurrentDonViId} ");
+        Categories = await repositoryOntap.LayDanhSachChuDeTheoDonVi(CurrentDonViId);
+        StateHasChanged();
+    }
+
+    private async void onSaveClick(Microsoft.AspNetCore.Components.Web.MouseEventArgs args)
+    {
+        Debug.WriteLine($"onSaveClick CurrentDonVi = {CurrentDonViId}");
+        await repositoryOntap.GanChuDeChoDonVi(CurrentDonViId, Categories.Where(item => item.IsSelected).ToList());
+        Categories = await repositoryOntap.LayDanhSachChuDeTheoDonVi(CurrentDonViId);
+        StateHasChanged();
+    }
+
+    private async void onGenerateMobileData(MouseEventArgs args)
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get, $"http://113.160.178.20/flaskdemo/generate_ontap_data?donvi_id={CurrentDonViId}");
+        var client = ClientFactory.CreateClient();
+        var response = await client.SendAsync(request);
+        if (response.IsSuccessStatusCode)
+        {
+            Debug.WriteLine("Da tao du lieu thanh cong");
+            HienThiThongBao("Đã tạo dữ liệu ôn tập cho mobile thành công");
+
+        }
+    }
+
+    private void HienThiThongBao(string thongbao)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(ConfirmDialog.Message), thongbao);
+        var confirmDialog = Modal.Show<ConfirmDialog>("Thông báo", parameters);
+        
+    }
+
+
+
+
+}
