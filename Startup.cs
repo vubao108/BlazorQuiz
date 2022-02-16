@@ -67,7 +67,7 @@ namespace BlazorVNPTQuiz
             services.AddScoped<IRepositoryOntap, MySqlRepositoryOntap>();
             services.AddScoped<AppState>();
             services.AddBlazoredModal();
-           
+            services.AddHttpClient();
 
 
         }
