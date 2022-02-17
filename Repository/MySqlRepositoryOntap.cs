@@ -123,5 +123,30 @@ namespace BlazorVNPTQuiz.Repository
 
             return categories;
         }
+
+        public async Task<List<QuestionLevel>> LayDanhSachMucDoCauHoi()
+        {
+            string sql_query = @"select id,level from question_level  ";
+              
+            List<QuestionLevel> levels = new List<QuestionLevel>();
+
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                using (var command = new MySqlCommand(sql_query, connection))
+                {
+                    await connection.OpenAsync();
+                    using var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        int level_id = reader.GetInt32("id");
+                        String level = reader.GetString("level");
+
+                        levels.Add(new QuestionLevel() { Id = level_id, Level = level });
+                    }
+                 }
+             }
+
+            return levels;
+        }
     }
 }
