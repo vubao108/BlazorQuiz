@@ -17,5 +17,7 @@ namespace BlazorVNPTQuiz.Repository
         public void GenerateDulieuOnTap(int donvi_id);
 
         public Task<List<Category>> LayDanhSachChuDeTheoNguoiDung(int user_id);
+
+        public Task<List<QuestionLevel>> LayDanhSachMucDoCauHoi();
     }
 }
