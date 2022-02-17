@@ -1,0 +1,67 @@
+﻿@page "/ontap"
+@inject IRepositoryOntap repository;
+@inject AppState appState;
+
+ <button class="btn btn-primary" @onclick="ontapClick">
+                Bắt đầu ôn tập
+ </button>
+<div class="container">
+   
+    <div class="row">
+        <div class="col-6">
+            <h5>Mức độ</h5>
+            <SfDropDownList TValue="int" TItem="QuestionLevel" DataSource="@levels" @bind-Value="@CurrentLevelId"
+                            >
+                <DropDownListFieldSettings Value="Id" Text="Level"></DropDownListFieldSettings>
+
+            </SfDropDownList>
+        </div>
+        <div class="col6">
+            <h5>Số câu</h5>
+            <Syncfusion.Blazor.Inputs.SfNumericTextBox @bind-Value="@numOfQuestion">
+
+            </Syncfusion.Blazor.Inputs.SfNumericTextBox>
+
+        </div>
+    </div>
+    <div class="row list-category">
+        <div class="col-6">
+
+            <SfListView DataSource="@Categories" ShowCheckBox="true">
+                <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected"></ListViewFieldSettings>
+
+            </SfListView>
+        </div>
+        <div class="col-6">
+
+        </div>
+
+
+    </div>
+
+</div>
+
+@code ***REMOVED***
+    public int CurrentLevelId ***REMOVED***get;set;***REMOVED***
+    public int numOfQuestion ***REMOVED*** get; set; ***REMOVED***
+
+    List<QuestionLevel> levels = new List<QuestionLevel>()
+    ***REMOVED***
+        new QuestionLevel()***REMOVED*** Id = 0, Level="Tất cả"***REMOVED***
+***REMOVED***;
+    List<Category> Categories;
+
+    [CascadingParameter] public IModalService Modal ***REMOVED*** get; set; ***REMOVED***
+
+    protected override async Task OnInitializedAsync()
+    ***REMOVED***
+        Categories = await repository.LayDanhSachChuDeTheoNguoiDung(appState.CurrentIdentityUserId);
+        await  base.OnInitializedAsync();
+***REMOVED***
+
+    void ontapClick()
+    ***REMOVED***
+        Debug.WriteLine($"level = ***REMOVED***CurrentLevelId***REMOVED*** numOfQuestion =***REMOVED***numOfQuestion***REMOVED***");
+***REMOVED***
+
+***REMOVED***
