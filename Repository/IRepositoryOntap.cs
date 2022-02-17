@@ -15,5 +15,7 @@ namespace BlazorVNPTQuiz.Repository
         public Task GanChuDeChoDonVi(int donvi_id, List<Category> categories);
 
         public void GenerateDulieuOnTap(int donvi_id);
+
+        public Task<List<Category>> LayDanhSachChuDeTheoNguoiDung(int user_id);
 ***REMOVED***
 ***REMOVED***

@@ -95,5 +95,33 @@ namespace BlazorVNPTQuiz.Repository
 
             return donvis;
     ***REMOVED***
+
+        public async Task<List<Category>> LayDanhSachChuDeTheoNguoiDung(int user_id)
+        ***REMOVED***
+            string sql_query = @"SELECT a.tag_id , a.tag_name, b.donvi_id,
+                0 isSelected
+                FROM tags a
+                , donvi_tag b, users c where a.tag_id = b.tag_id AND b.donvi_id = c.donvi_id and c.id = "
+                + $"***REMOVED***user_id***REMOVED***  order by  tag_name";
+            List<Category> categories = new List<Category>();
+
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            ***REMOVED***
+                using (var command = new MySqlCommand(sql_query, connection))
+                ***REMOVED***
+                    await connection.OpenAsync();
+                    using var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    ***REMOVED***
+                        int tag_id = reader.GetInt32("tag_id");
+                        String tag_name = reader.GetString("tag_name");
+                        bool IsSelected = reader.GetInt32("isSelected") == 1;
+                        categories.Add(new Category() ***REMOVED*** Id = tag_id, Name = tag_name, IsSelected = IsSelected ***REMOVED***);
+                ***REMOVED***
+            ***REMOVED***
+        ***REMOVED***
+
+            return categories;
+    ***REMOVED***
 ***REMOVED***
 ***REMOVED***
