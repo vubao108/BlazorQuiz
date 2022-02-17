@@ -123,5 +123,30 @@ namespace BlazorVNPTQuiz.Repository
 
             return categories;
     ***REMOVED***
+
+        public async Task<List<QuestionLevel>> LayDanhSachMucDoCauHoi()
+        ***REMOVED***
+            string sql_query = @"select id,level from question_level  ";
+              
+            List<QuestionLevel> levels = new List<QuestionLevel>();
+
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            ***REMOVED***
+                using (var command = new MySqlCommand(sql_query, connection))
+                ***REMOVED***
+                    await connection.OpenAsync();
+                    using var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    ***REMOVED***
+                        int level_id = reader.GetInt32("id");
+                        String level = reader.GetString("level");
+
+                        levels.Add(new QuestionLevel() ***REMOVED*** Id = level_id, Level = level ***REMOVED***);
+                ***REMOVED***
+             ***REMOVED***
+         ***REMOVED***
+
+            return levels;
+    ***REMOVED***
 ***REMOVED***
 ***REMOVED***
