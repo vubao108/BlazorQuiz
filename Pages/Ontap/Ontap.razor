@@ -1,0 +1,67 @@
+﻿@page "/ontap"
+@inject IRepositoryOntap repository;
+@inject AppState appState;
+
+ <button class="btn btn-primary" @onclick="ontapClick">
+                Bắt đầu ôn tập
+ </button>
+<div class="container">
+   
+    <div class="row">
+        <div class="col-6">
+            <h5>Mức độ</h5>
+            <SfDropDownList TValue="int" TItem="QuestionLevel" DataSource="@levels" @bind-Value="@CurrentLevelId"
+                            >
+                <DropDownListFieldSettings Value="Id" Text="Level"></DropDownListFieldSettings>
+
+            </SfDropDownList>
+        </div>
+        <div class="col6">
+            <h5>Số câu</h5>
+            <Syncfusion.Blazor.Inputs.SfNumericTextBox @bind-Value="@numOfQuestion">
+
+            </Syncfusion.Blazor.Inputs.SfNumericTextBox>
+
+        </div>
+    </div>
+    <div class="row list-category">
+        <div class="col-6">
+
+            <SfListView DataSource="@Categories" ShowCheckBox="true">
+                <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected"></ListViewFieldSettings>
+
+            </SfListView>
+        </div>
+        <div class="col-6">
+
+        </div>
+
+
+    </div>
+
+</div>
+
+@code {
+    public int CurrentLevelId {get;set;}
+    public int numOfQuestion { get; set; }
+
+    List<QuestionLevel> levels = new List<QuestionLevel>()
+    {
+        new QuestionLevel(){ Id = 0, Level="Tất cả"}
+    };
+    List<Category> Categories;
+
+    [CascadingParameter] public IModalService Modal { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Categories = await repository.LayDanhSachChuDeTheoNguoiDung(appState.CurrentIdentityUserId);
+        await  base.OnInitializedAsync();
+    }
+
+    void ontapClick()
+    {
+        Debug.WriteLine($"level = {CurrentLevelId} numOfQuestion ={numOfQuestion}");
+    }
+
+}
