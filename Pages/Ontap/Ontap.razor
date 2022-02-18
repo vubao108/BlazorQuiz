@@ -2,7 +2,13 @@
 @inject IRepositoryOntap repository
 @inject AppState appState
 
-@if (questionOnTaps?.Count() > 0) {
+@if(questionOnTaps?.Count() == 0)
+{
+    <p>
+        Không có câu hỏi nào để ôn tập, hãy chọn lại các tiêu chí như mức độ và loại câu hỏi.
+    </p>
+}
+@if (questionOnTaps?.Count() > 0 && !IsFinished) {
         
     <div class="container">
         
@@ -75,6 +81,11 @@
         </div>
 
     </div>
+}
+@if(IsFinished)
+{
+    <p> Đã xong phiên ôn tập</p>
+    <b>Tỉ lệ đúng: @Score / @(CurrentQuestionIndex+1)</b>
 }
 <style>
     .answer {
@@ -150,6 +161,7 @@
     bool IsAnswerMode { get; set; }
 
     private int Score;
+    private bool IsFinished;
 
     protected override async Task OnInitializedAsync()
     {
@@ -190,7 +202,7 @@
         NextQuestion();
     }
 
-    
+
 
     private void NextQuestion()
     {
@@ -198,12 +210,13 @@
         {
             IsAnswerMode = false;
             CurrentUserAnswerIdSelect = "0";
-            StateHasChanged();
+            
         }
         else
         {
-            // navigate to ketqua
+            IsFinished = true;
         }
+        StateHasChanged();
 
 
     }
