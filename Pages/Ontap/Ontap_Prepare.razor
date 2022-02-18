@@ -17,13 +17,13 @@
 
             </SfDropDownList>
         </div>
-        <div class="col6">
+        @*<div class="col6">
             <h5>Số câu</h5>
             <Syncfusion.Blazor.Inputs.SfNumericTextBox @bind-Value="@numOfQuestion">
 
             </Syncfusion.Blazor.Inputs.SfNumericTextBox>
 
-        </div>
+        </div>*@
     </div>
     <div class="row list-category">
         <div class="col-6">
@@ -44,11 +44,12 @@
 
 @code ***REMOVED***
     public int CurrentLevelId ***REMOVED***get;set;***REMOVED***
-    public int numOfQuestion ***REMOVED*** get; set; ***REMOVED***
+    public int numOfQuestion ***REMOVED*** get; set; ***REMOVED*** = 10000;
 
     List<QuestionLevel> levels = new List<QuestionLevel>()
     ***REMOVED***
         new QuestionLevel()***REMOVED*** Id = 0, Level="Tất cả mức độ"***REMOVED***,
+        new QuestionLevel()***REMOVED*** Id = 4, Level="Mới (Chưa ôn lần nào)"***REMOVED***,
         new QuestionLevel()***REMOVED*** Id = 3, Level="Khó"***REMOVED***,
         new QuestionLevel()***REMOVED*** Id = 2, Level="Bình thường",***REMOVED***,
         new QuestionLevel()***REMOVED*** Id = 1, Level="Dễ"***REMOVED***
