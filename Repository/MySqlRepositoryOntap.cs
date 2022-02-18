@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using MySqlConnector;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -126,6 +127,7 @@ namespace BlazorVNPTQuiz.Repository
 
         public async Task<List<QuestionLevel>> LayDanhSachMucDoCauHoi()
         ***REMOVED***
+           
             string sql_query = @"select id,level from question_level  ";
               
             List<QuestionLevel> levels = new List<QuestionLevel>();
@@ -145,12 +147,15 @@ namespace BlazorVNPTQuiz.Repository
                 ***REMOVED***
              ***REMOVED***
          ***REMOVED***
+           
 
             return levels;
     ***REMOVED***
 
         public async Task<List<QuestionOnTap>> LayDanhSachCauHoiOnTapTheoMucDo(int user_id, string tag_ids, int level_id, int limit)
         ***REMOVED***
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             //string tag_ids_str = String.Join(',', tag_ids.ToArray());
             string sql_query = $" call  proc_lay_cauhoi_ontap_web(***REMOVED***user_id***REMOVED***,'***REMOVED***tag_ids***REMOVED***', ***REMOVED***level_id***REMOVED***, ***REMOVED***limit***REMOVED***)";
 
@@ -199,6 +204,8 @@ namespace BlazorVNPTQuiz.Repository
                 ***REMOVED***
             ***REMOVED***
         ***REMOVED***
+            stopwatch.Stop();
+            logger.LogInformation($"LayDanhSachCauHoiOnTapTheoMucDo(user_id=***REMOVED***user_id***REMOVED***,tags=***REMOVED***tag_ids***REMOVED***,level_id=***REMOVED***level_id***REMOVED***) took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED*** ms");
 
             return questionOnTaps;
     ***REMOVED***
