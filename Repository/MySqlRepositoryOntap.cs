@@ -148,5 +148,55 @@ namespace BlazorVNPTQuiz.Repository
 
             return levels;
         }
+
+        public async Task<List<QuestionOnTap>> LayDanhSachCauHoiOnTapTheoMucDo(int user_id, List<int> tag_ids, int level_id)
+        {
+            string tag_ids_str = String.Join(',', tag_ids.ToArray());
+            string sql_query = $" call  proc_lay_cauhoi_ontap_web({user_id},'{tag_ids_str}', {level_id})";
+
+            List<QuestionOnTap> questionOnTaps = new List<QuestionOnTap>();
+
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                using (var command = new MySqlCommand(sql_query, connection))
+                {
+                    await connection.OpenAsync();
+                    using var reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        AnswerDAO answerDAO = new AnswerDAO()
+                        {
+                            AnswerId = reader.GetInt32("answer_id"),
+                            AnswerText = reader.GetString("answer_text"),
+                            IsCorrect = reader.GetInt32("state") == 1
+                        };
+                        QuestionOnTap questionOnTap = new QuestionOnTap()
+                        {
+                            Id = reader.GetInt32("id"),
+                            QuestionId = reader.GetInt32("question_id"),
+                            QuestionText = reader.GetString("question_text"),
+                            IsMultipleChoice = reader.GetInt32("is_multiple_choice") == 1,
+                            TagId = reader.GetInt32("tag_id"),
+                            LevelId = reader.GetInt32("level_id"),
+                            UserId = user_id
+                        };
+                        QuestionOnTap currentQuestionOntap = questionOnTaps.FirstOrDefault(item => item.QuestionId == questionOnTap.QuestionId);
+                        if(currentQuestionOntap == null)
+                        {
+                            questionOnTap.Answers = new List<AnswerDAO> { answerDAO };
+                            questionOnTaps.Add(questionOnTap);
+                        }
+                        else
+                        {
+                            questionOnTap.Answers.Add(answerDAO);
+                        }
+                        
+                    }
+                }
+            }
+
+            return questionOnTaps;
+        }
+
     }
 }

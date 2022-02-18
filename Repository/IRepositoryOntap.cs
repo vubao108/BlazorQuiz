@@ -19,5 +19,8 @@ namespace BlazorVNPTQuiz.Repository
         public Task<List<Category>> LayDanhSachChuDeTheoNguoiDung(int user_id);
 
         public Task<List<QuestionLevel>> LayDanhSachMucDoCauHoi();
+
+
+        public Task<List<QuestionOnTap>> LayDanhSachCauHoiOnTapTheoMucDo(int user_id, List<int> tag_id, int level_id);
     }
 }
