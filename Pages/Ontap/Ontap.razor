@@ -61,6 +61,18 @@
             }
            
         </div>
+        <div class="row">
+           @* <div class="col-4">
+                
+                Đã làm: @(CurrentQuestionIndex+1)/@questionOnTaps.Count() câu
+            </div>*@
+            <div class="col-4"></div>
+            <div class="col-4 text-summary">
+                
+                <b>Tỉ lệ đúng: @Score / @(CurrentQuestionIndex+1)</b>
+            </div>
+            <div class="col-4"></div>
+        </div>
 
     </div>
 }
@@ -115,6 +127,10 @@
     border-radius: 4px;
     z-index: 10;
     }
+    
+    .text-summary{
+     text-align: center;
+    }
 
 </style>
 @code {
@@ -133,6 +149,8 @@
 
     bool IsAnswerMode { get; set; }
 
+    private int Score;
+
     protected override async Task OnInitializedAsync()
     {
         questionOnTaps = await repository.LayDanhSachCauHoiOnTapTheoMucDo(appState.CurrentIdentityUserId, TagIds, LevelId, limit);
@@ -142,6 +160,12 @@
     void onDapAnClick()
     {
         IsAnswerMode = true;
+        if(CurrentUserAnswerIdSelect == questionOnTaps[CurrentQuestionIndex].Answers
+            .FirstOrDefault(item=>item.IsCorrect).AnswerId.ToString()
+        )
+        {
+            Score++;
+        }
         StateHasChanged();
     }
 
