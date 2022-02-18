@@ -206,11 +206,12 @@
 
     private void NextQuestion()
     {
-        if(++CurrentQuestionIndex <= questionOnTaps.Count())
+        if(CurrentQuestionIndex < questionOnTaps.Count() -1 )
         {
             IsAnswerMode = false;
             CurrentUserAnswerIdSelect = "0";
-            
+            CurrentQuestionIndex++;
+
         }
         else
         {
