@@ -3,6 +3,7 @@
 @inject AppState appState
 
 @if (questionOnTaps?.Count() > 0) ***REMOVED***
+        
     <div class="container">
         
         <div class="row">
@@ -10,7 +11,7 @@
                 
                 <div class="card bg-light text-dark">
                     <div class="card-header">
-                        <b> @(CurrentQuestionIndex+1) . @questionOnTaps[CurrentQuestionIndex].QuestionText
+                        <b> @(CurrentQuestionIndex+1)/@questionOnTaps.Count() . @questionOnTaps[CurrentQuestionIndex].QuestionText
                    </b>
                     </div>
                     <div class="card-body scroll-answer">
@@ -21,10 +22,10 @@
                     ***REMOVED***
                         <SfRadioButton Label="@answerDAO.AnswerText" Name="Options" Value="@answerDAO.AnswerId.ToString()"
                         @bind-Checked="CurrentUserAnswerIdSelect" 
-                        CssClass="@(IsAnswerMode ? answerDAO.IsCorrect ? "right-answer": "" : ""  )"
+                        CssClass="@(IsAnswerMode ? answerDAO.IsCorrect ? "e-info btn-block right-answer": "e-info btn-block" : "e-info btn-block"  )"
                         >
 
-                        </SfRadioButton> <br />
+                        </SfRadioButton> <br /><br />
                 ***REMOVED***
             ***REMOVED***
                 else
@@ -49,13 +50,13 @@
         ***REMOVED***else***REMOVED***
             
                 <div class="col-4">
-                        <button class="btn btn-primary" @onclick="onEasyClick"> Dễ </button>
+                        <button class="btn btn-primary btn-block" @onclick="onEasyClick"> Dễ </button>
                 </div>
                 <div class="col-4">
-                    <button  class="btn btn-primary" @onclick="onNormalClick" >Bình thường </button>
+                    <button  class="btn btn-info btn-block" @onclick="onNormalClick" >Bình thường </button>
                 </div class="col-4">
                 <div class="col-4">
-                    <button  class="btn btn-primary" @onclick="onHardClick">Khó </button>
+                    <button  class="btn btn-danger btn-block" @onclick="onHardClick">Khó </button>
                 </div>
         ***REMOVED***
            
@@ -64,6 +65,9 @@
     </div>
 ***REMOVED***
 <style>
+    .answer ***REMOVED***
+        font-size:14px !important
+***REMOVED***
     .right-answer***REMOVED***
         background-color:yellow
 ***REMOVED***
@@ -73,6 +77,43 @@
     .scroll-answer***REMOVED***
         max-height:70vh;
         overflow-y:auto;
+***REMOVED***
+     .e-radio-wrapper.e-info .e-radio:checked + label::after ***REMOVED*** /* csslint allow: adjoining-classes */
+        background-color: #2196f3;
+        color: #2196f3;
+       
+***REMOVED***
+    .e-radio-wrapper.e-info .e-radio:checked:focus + label::after,
+    .e-radio-wrapper.e-info .e-radio:checked + label:hover::after ***REMOVED*** /* csslint allow: adjoining-classes */
+        background-color: #0b7dda;
+***REMOVED***
+
+    .e-radio-wrapper.e-info .e-radio:checked + label::before ***REMOVED***
+        border-color: #2196f3;
+        background-color: #fff;
+        
+***REMOVED***
+
+    .e-radio-wrapper.e-info .e-radio:checked:focus + label::before,
+    .e-radio-wrapper.e-info .e-radio:checked + label:hover::before ***REMOVED***
+        border-color: #0b7dda;
+       
+        
+***REMOVED***
+
+    .e-radio-wrapper.e-info .e-radio + label:hover::before ***REMOVED***
+        border-color: #b1afaf;
+***REMOVED***
+    .e-radio+label .e-label ***REMOVED***
+         font-size:16px;
+        
+***REMOVED***
+    .floating-button ***REMOVED***
+    position: fixed;
+    bottom: 50%;
+    right: 0;
+    border-radius: 4px;
+    z-index: 10;
 ***REMOVED***
 
 </style>
@@ -100,30 +141,32 @@
 
     void onDapAnClick()
     ***REMOVED***
-       
+        IsAnswerMode = true;
         StateHasChanged();
 ***REMOVED***
 
-    void onEasyClick()
+    async void onEasyClick()
     ***REMOVED***
+        await repository.UpdateDanhGiaCauhoiOnTap(questionOnTaps[CurrentQuestionIndex].Id, (int)Level.Easy);
         NextQuestion();
 
 ***REMOVED***
 
-    void onNormalClick()
+    async void onNormalClick()
     ***REMOVED***
+        await repository.UpdateDanhGiaCauhoiOnTap(questionOnTaps[CurrentQuestionIndex].Id, (int)Level.Normal);
+
         NextQuestion();
 ***REMOVED***
 
-    void onHardClick()
+    async void onHardClick()
     ***REMOVED***
+        await repository.UpdateDanhGiaCauhoiOnTap(questionOnTaps[CurrentQuestionIndex].Id, (int)Level.Hard);
+
         NextQuestion();
 ***REMOVED***
 
-    void userCheckChanged()
-    ***REMOVED***
-        
-***REMOVED***
+    
 
     private void NextQuestion()
     ***REMOVED***

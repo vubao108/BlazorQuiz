@@ -169,7 +169,12 @@ namespace BlazorVNPTQuiz.Repository
                             AnswerId = reader.GetInt32("answer_id"),
                             AnswerText = reader.GetString("answer_text"),
                             IsCorrect = reader.GetInt32("state") == 1
+
                     ***REMOVED***;
+                        if (String.IsNullOrWhiteSpace(answerDAO.AnswerText))
+                        ***REMOVED***
+                            continue;
+                    ***REMOVED***
                         QuestionOnTap questionOnTap = new QuestionOnTap()
                         ***REMOVED***
                             Id = reader.GetInt32("id"),
@@ -200,7 +205,7 @@ namespace BlazorVNPTQuiz.Repository
 
         public async Task UpdateDanhGiaCauhoiOnTap(int id, int level_id)
         ***REMOVED***
-            string sql_update = $"update  user_question set leve_id = ***REMOVED***level_id***REMOVED***  where id = ***REMOVED***id***REMOVED***;";
+            string sql_update = $"update  user_question set level_id = ***REMOVED***level_id***REMOVED***, update_time = sysdate()  where id = ***REMOVED***id***REMOVED***;";
            
 
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
