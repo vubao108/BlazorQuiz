@@ -22,5 +22,8 @@ namespace BlazorVNPTQuiz.Repository
 
 
         public Task<List<QuestionOnTap>> LayDanhSachCauHoiOnTapTheoMucDo(int user_id, string tag_ids, int level_id, int limit);
+
+        public Task UpdateDanhGiaCauhoiOnTap(int id, int level_id);
+    
     }
 }

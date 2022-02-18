@@ -198,5 +198,20 @@ namespace BlazorVNPTQuiz.Repository
             return questionOnTaps;
         }
 
+        public async Task UpdateDanhGiaCauhoiOnTap(int id, int level_id)
+        {
+            string sql_update = $"update  user_question set leve_id = {level_id}  where id = {id};";
+           
+
+            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            {
+                using (var command = new MySqlCommand(sql_update, connection))
+                {
+                    await connection.OpenAsync();
+                    await command.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
     }
 }
