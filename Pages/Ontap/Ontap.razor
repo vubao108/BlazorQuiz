@@ -1,67 +1,154 @@
-﻿@page "/ontap"
-@inject IRepositoryOntap repository;
-@inject AppState appState;
+﻿@page "/ontap/{LevelId:int}/{TagIds}/{limit:int}"
+@inject IRepositoryOntap repository
+@inject AppState appState
 
- <button class="btn btn-primary" @onclick="ontapClick">
-                Bắt đầu ôn tập
- </button>
-<div class="container">
-   
-    <div class="row">
-        <div class="col-6">
-            <h5>Mức độ</h5>
-            <SfDropDownList TValue="int" TItem="QuestionLevel" DataSource="@levels" @bind-Value="@CurrentLevelId"
-                            >
-                <DropDownListFieldSettings Value="Id" Text="Level"></DropDownListFieldSettings>
+@if (questionOnTaps?.Count() > 0) {
+    <div class="container">
+        
+        <div class="row">
+            <div class="col">
+                
+                <div class="card bg-light text-dark">
+                    <div class="card-header">
+                        <b> @(CurrentQuestionIndex+1) . @questionOnTaps[CurrentQuestionIndex].QuestionText
+                   </b>
+                    </div>
+                    <div class="card-body scroll-answer">
+                  @* <span class="card-title">></span>*@
+                @if (!questionOnTaps[CurrentQuestionIndex].IsMultipleChoice)
+                {
+                    @foreach(AnswerDAO answerDAO in questionOnTaps[CurrentQuestionIndex].Answers)
+                    {
+                        <SfRadioButton Label="@answerDAO.AnswerText" Name="Options" Value="@answerDAO.AnswerId.ToString()"
+                        @bind-Checked="CurrentUserAnswerIdSelect" 
+                        CssClass="@(IsAnswerMode ? answerDAO.IsCorrect ? "right-answer": "" : ""  )"
+                        >
 
-            </SfDropDownList>
+                        </SfRadioButton> <br />
+                    }
+                }
+                else
+                {
+
+                }
+                </div>
+               @* <div class="card-footer">
+
+                </div>*@
+                </div>
+                
+            </div>
+
         </div>
-        <div class="col6">
-            <h5>Số câu</h5>
-            <Syncfusion.Blazor.Inputs.SfNumericTextBox @bind-Value="@numOfQuestion">
-
-            </Syncfusion.Blazor.Inputs.SfNumericTextBox>
-
+        <div class="row">
+            @if (!IsAnswerMode)
+            {
+                <div class="col-12">
+                    <button class="btn btn-primary btn-block" @onclick="onDapAnClick">Đáp án</button>
+                </div>
+            }else{
+            
+                <div class="col-4">
+                        <button class="btn btn-primary" @onclick="onEasyClick"> Dễ </button>
+                </div>
+                <div class="col-4">
+                    <button  class="btn btn-primary" @onclick="onNormalClick" >Bình thường </button>
+                </div class="col-4">
+                <div class="col-4">
+                    <button  class="btn btn-primary" @onclick="onHardClick">Khó </button>
+                </div>
+            }
+           
         </div>
+
     </div>
-    <div class="row list-category">
-        <div class="col-6">
+}
+<style>
+    .right-answer{
+        background-color:yellow
+    }
+    .answer-button{
+        
+    }
+    .scroll-answer{
+        max-height:70vh;
+        overflow-y:auto;
+    }
 
-            <SfListView DataSource="@Categories" ShowCheckBox="true">
-                <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected"></ListViewFieldSettings>
-
-            </SfListView>
-        </div>
-        <div class="col-6">
-
-        </div>
-
-
-    </div>
-
-</div>
-
+</style>
 @code {
-    public int CurrentLevelId {get;set;}
-    public int numOfQuestion { get; set; }
+    List<QuestionOnTap> questionOnTaps;
+    public int CurrentQuestionIndex { get; set; }
+    private string CurrentUserAnswerIdSelect;
 
-    List<QuestionLevel> levels = new List<QuestionLevel>()
-    {
-        new QuestionLevel(){ Id = 0, Level="Tất cả"}
-    };
-    List<Category> Categories;
+    [Parameter]
+    public string TagIds { get; set; }
+    [Parameter]
+    public int LevelId { get; set; }
+    [Parameter]
+    public int limit { get; set; }
 
-    [CascadingParameter] public IModalService Modal { get; set; }
+    String RightAnswerCSS{ get; set; }
+
+    bool IsAnswerMode { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        Categories = await repository.LayDanhSachChuDeTheoNguoiDung(appState.CurrentIdentityUserId);
-        await  base.OnInitializedAsync();
+        questionOnTaps = await repository.LayDanhSachCauHoiOnTapTheoMucDo(appState.CurrentIdentityUserId, TagIds, LevelId, limit);
+        await base.OnInitializedAsync();
     }
 
-    void ontapClick()
+    void onDapAnClick()
     {
-        Debug.WriteLine($"level = {CurrentLevelId} numOfQuestion ={numOfQuestion}");
+       
+        StateHasChanged();
     }
 
+    void onEasyClick()
+    {
+        NextQuestion();
+
+    }
+
+    void onNormalClick()
+    {
+        NextQuestion();
+    }
+
+    void onHardClick()
+    {
+        NextQuestion();
+    }
+
+    void userCheckChanged()
+    {
+        
+    }
+
+    private void NextQuestion()
+    {
+        if(++CurrentQuestionIndex <= questionOnTaps.Count())
+        {
+            IsAnswerMode = false;
+            CurrentUserAnswerIdSelect = "0";
+            StateHasChanged();
+        }
+        else
+        {
+            // navigate to ketqua
+        }
+
+
+    }
+
+    
+
+    //public string GetCSSClass()
+    //{
+    //    if (IsAnswerMode)
+    //    {
+    //        if(questionOnTaps[CurrentQuestionIndex].Answers.)
+    //    }
+    //    return "";
+    //}
 }
