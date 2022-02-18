@@ -13,6 +13,6 @@ namespace BlazorVNPTQuiz.Models
 
     public enum Level
     ***REMOVED***
-        All, Easy, Normal, Hard
+        All, Easy, Normal, Hard, New
 ***REMOVED***
 ***REMOVED***
