@@ -10,4 +10,9 @@ namespace BlazorVNPTQuiz.Models
         public int Id;
         public string Level;
     }
+
+    public enum Level
+    {
+        All, Easy, Normal, Hard
+    }
 }
