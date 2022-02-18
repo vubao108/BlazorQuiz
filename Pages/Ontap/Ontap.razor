@@ -2,7 +2,13 @@
 @inject IRepositoryOntap repository
 @inject AppState appState
 
-@if (questionOnTaps?.Count() > 0) ***REMOVED***
+@if(questionOnTaps?.Count() == 0)
+***REMOVED***
+    <p>
+        Không có câu hỏi nào để ôn tập, hãy chọn lại các tiêu chí như mức độ và loại câu hỏi.
+    </p>
+***REMOVED***
+@if (questionOnTaps?.Count() > 0 && !IsFinished) ***REMOVED***
         
     <div class="container">
         
@@ -75,6 +81,11 @@
         </div>
 
     </div>
+***REMOVED***
+@if(IsFinished)
+***REMOVED***
+    <p> Đã xong phiên ôn tập</p>
+    <b>Tỉ lệ đúng: @Score / @(CurrentQuestionIndex+1)</b>
 ***REMOVED***
 <style>
     .answer ***REMOVED***
@@ -150,6 +161,7 @@
     bool IsAnswerMode ***REMOVED*** get; set; ***REMOVED***
 
     private int Score;
+    private bool IsFinished;
 
     protected override async Task OnInitializedAsync()
     ***REMOVED***
@@ -190,7 +202,7 @@
         NextQuestion();
 ***REMOVED***
 
-    
+
 
     private void NextQuestion()
     ***REMOVED***
@@ -198,12 +210,13 @@
         ***REMOVED***
             IsAnswerMode = false;
             CurrentUserAnswerIdSelect = "0";
-            StateHasChanged();
+            
     ***REMOVED***
         else
         ***REMOVED***
-            // navigate to ketqua
+            IsFinished = true;
     ***REMOVED***
+        StateHasChanged();
 
 
 ***REMOVED***
