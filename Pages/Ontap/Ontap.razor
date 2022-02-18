@@ -55,13 +55,13 @@
                 </div>
         ***REMOVED***else***REMOVED***
             
-                <div class="col-4">
+                <div class="col-3">
                         <button class="btn btn-primary btn-block" @onclick="onEasyClick"> Dễ </button>
                 </div>
-                <div class="col-4">
+                <div class="col-6">
                     <button  class="btn btn-info btn-block" @onclick="onNormalClick" >Bình thường </button>
-                </div class="col-4">
-                <div class="col-4">
+                </div >
+                <div class="col-3">
                     <button  class="btn btn-danger btn-block" @onclick="onHardClick">Khó </button>
                 </div>
         ***REMOVED***
@@ -72,12 +72,12 @@
                 
                 Đã làm: @(CurrentQuestionIndex+1)/@questionOnTaps.Count() câu
             </div>*@
-            <div class="col-4"></div>
-            <div class="col-4 text-summary">
+            <div class="col-2"></div>
+            <div class="col-8 text-summary">
                 
                 <b>Tỉ lệ đúng: @Score / @(CurrentQuestionIndex+1)</b>
             </div>
-            <div class="col-4"></div>
+            <div class="col-2"></div>
         </div>
 
     </div>

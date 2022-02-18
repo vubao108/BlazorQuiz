@@ -7,7 +7,7 @@
 <div class="container">
     
     <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <h5>Mức độ</h5>
             <SfDropDownList TValue="int" TItem="QuestionLevel" DataSource="@levels" @bind-Value="@CurrentLevelId"
                             >
@@ -24,21 +24,19 @@
         </div>*@
     </div>
     <div class="row list-category">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
 
             <SfListView DataSource="@Categories" ShowCheckBox="true">
                 <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected"></ListViewFieldSettings>
 
             </SfListView>
         </div>
-        <div class="col-6">
-
-        </div>
+        
 
 
     </div>
     <div class="row">
-      <div class="col-6">
+      <div class="col-12 col-md-6">
       <button class="btn btn-primary btn-block" @onclick="ontapClick">
                 Bắt đầu ôn tập
      </button>
