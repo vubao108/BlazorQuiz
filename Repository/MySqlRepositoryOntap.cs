@@ -149,10 +149,10 @@ namespace BlazorVNPTQuiz.Repository
             return levels;
     ***REMOVED***
 
-        public async Task<List<QuestionOnTap>> LayDanhSachCauHoiOnTapTheoMucDo(int user_id, List<int> tag_ids, int level_id)
+        public async Task<List<QuestionOnTap>> LayDanhSachCauHoiOnTapTheoMucDo(int user_id, string tag_ids, int level_id, int limit)
         ***REMOVED***
-            string tag_ids_str = String.Join(',', tag_ids.ToArray());
-            string sql_query = $" call  proc_lay_cauhoi_ontap_web(***REMOVED***user_id***REMOVED***,'***REMOVED***tag_ids_str***REMOVED***', ***REMOVED***level_id***REMOVED***)";
+            //string tag_ids_str = String.Join(',', tag_ids.ToArray());
+            string sql_query = $" call  proc_lay_cauhoi_ontap_web(***REMOVED***user_id***REMOVED***,'***REMOVED***tag_ids***REMOVED***', ***REMOVED***level_id***REMOVED***, ***REMOVED***limit***REMOVED***)";
 
             List<QuestionOnTap> questionOnTaps = new List<QuestionOnTap>();
 
@@ -188,7 +188,7 @@ namespace BlazorVNPTQuiz.Repository
                     ***REMOVED***
                         else
                         ***REMOVED***
-                            questionOnTap.Answers.Add(answerDAO);
+                            currentQuestionOntap.Answers.Add(answerDAO);
                     ***REMOVED***
                         
                 ***REMOVED***

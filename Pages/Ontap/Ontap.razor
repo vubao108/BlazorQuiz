@@ -1,67 +1,154 @@
-﻿@page "/ontap"
-@inject IRepositoryOntap repository;
-@inject AppState appState;
+﻿@page "/ontap/***REMOVED***LevelId:int***REMOVED***/***REMOVED***TagIds***REMOVED***/***REMOVED***limit:int***REMOVED***"
+@inject IRepositoryOntap repository
+@inject AppState appState
 
- <button class="btn btn-primary" @onclick="ontapClick">
-                Bắt đầu ôn tập
- </button>
-<div class="container">
-   
-    <div class="row">
-        <div class="col-6">
-            <h5>Mức độ</h5>
-            <SfDropDownList TValue="int" TItem="QuestionLevel" DataSource="@levels" @bind-Value="@CurrentLevelId"
-                            >
-                <DropDownListFieldSettings Value="Id" Text="Level"></DropDownListFieldSettings>
+@if (questionOnTaps?.Count() > 0) ***REMOVED***
+    <div class="container">
+        
+        <div class="row">
+            <div class="col">
+                
+                <div class="card bg-light text-dark">
+                    <div class="card-header">
+                        <b> @(CurrentQuestionIndex+1) . @questionOnTaps[CurrentQuestionIndex].QuestionText
+                   </b>
+                    </div>
+                    <div class="card-body scroll-answer">
+                  @* <span class="card-title">></span>*@
+                @if (!questionOnTaps[CurrentQuestionIndex].IsMultipleChoice)
+                ***REMOVED***
+                    @foreach(AnswerDAO answerDAO in questionOnTaps[CurrentQuestionIndex].Answers)
+                    ***REMOVED***
+                        <SfRadioButton Label="@answerDAO.AnswerText" Name="Options" Value="@answerDAO.AnswerId.ToString()"
+                        @bind-Checked="CurrentUserAnswerIdSelect" 
+                        CssClass="@(IsAnswerMode ? answerDAO.IsCorrect ? "right-answer": "" : ""  )"
+                        >
 
-            </SfDropDownList>
+                        </SfRadioButton> <br />
+                ***REMOVED***
+            ***REMOVED***
+                else
+                ***REMOVED***
+
+            ***REMOVED***
+                </div>
+               @* <div class="card-footer">
+
+                </div>*@
+                </div>
+                
+            </div>
+
         </div>
-        <div class="col6">
-            <h5>Số câu</h5>
-            <Syncfusion.Blazor.Inputs.SfNumericTextBox @bind-Value="@numOfQuestion">
-
-            </Syncfusion.Blazor.Inputs.SfNumericTextBox>
-
+        <div class="row">
+            @if (!IsAnswerMode)
+            ***REMOVED***
+                <div class="col-12">
+                    <button class="btn btn-primary btn-block" @onclick="onDapAnClick">Đáp án</button>
+                </div>
+        ***REMOVED***else***REMOVED***
+            
+                <div class="col-4">
+                        <button class="btn btn-primary" @onclick="onEasyClick"> Dễ </button>
+                </div>
+                <div class="col-4">
+                    <button  class="btn btn-primary" @onclick="onNormalClick" >Bình thường </button>
+                </div class="col-4">
+                <div class="col-4">
+                    <button  class="btn btn-primary" @onclick="onHardClick">Khó </button>
+                </div>
+        ***REMOVED***
+           
         </div>
+
     </div>
-    <div class="row list-category">
-        <div class="col-6">
+***REMOVED***
+<style>
+    .right-answer***REMOVED***
+        background-color:yellow
+***REMOVED***
+    .answer-button***REMOVED***
+        
+***REMOVED***
+    .scroll-answer***REMOVED***
+        max-height:70vh;
+        overflow-y:auto;
+***REMOVED***
 
-            <SfListView DataSource="@Categories" ShowCheckBox="true">
-                <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected"></ListViewFieldSettings>
-
-            </SfListView>
-        </div>
-        <div class="col-6">
-
-        </div>
-
-
-    </div>
-
-</div>
-
+</style>
 @code ***REMOVED***
-    public int CurrentLevelId ***REMOVED***get;set;***REMOVED***
-    public int numOfQuestion ***REMOVED*** get; set; ***REMOVED***
+    List<QuestionOnTap> questionOnTaps;
+    public int CurrentQuestionIndex ***REMOVED*** get; set; ***REMOVED***
+    private string CurrentUserAnswerIdSelect;
 
-    List<QuestionLevel> levels = new List<QuestionLevel>()
-    ***REMOVED***
-        new QuestionLevel()***REMOVED*** Id = 0, Level="Tất cả"***REMOVED***
-***REMOVED***;
-    List<Category> Categories;
+    [Parameter]
+    public string TagIds ***REMOVED*** get; set; ***REMOVED***
+    [Parameter]
+    public int LevelId ***REMOVED*** get; set; ***REMOVED***
+    [Parameter]
+    public int limit ***REMOVED*** get; set; ***REMOVED***
 
-    [CascadingParameter] public IModalService Modal ***REMOVED*** get; set; ***REMOVED***
+    String RightAnswerCSS***REMOVED*** get; set; ***REMOVED***
+
+    bool IsAnswerMode ***REMOVED*** get; set; ***REMOVED***
 
     protected override async Task OnInitializedAsync()
     ***REMOVED***
-        Categories = await repository.LayDanhSachChuDeTheoNguoiDung(appState.CurrentIdentityUserId);
-        await  base.OnInitializedAsync();
+        questionOnTaps = await repository.LayDanhSachCauHoiOnTapTheoMucDo(appState.CurrentIdentityUserId, TagIds, LevelId, limit);
+        await base.OnInitializedAsync();
 ***REMOVED***
 
-    void ontapClick()
+    void onDapAnClick()
     ***REMOVED***
-        Debug.WriteLine($"level = ***REMOVED***CurrentLevelId***REMOVED*** numOfQuestion =***REMOVED***numOfQuestion***REMOVED***");
+       
+        StateHasChanged();
 ***REMOVED***
 
+    void onEasyClick()
+    ***REMOVED***
+        NextQuestion();
+
+***REMOVED***
+
+    void onNormalClick()
+    ***REMOVED***
+        NextQuestion();
+***REMOVED***
+
+    void onHardClick()
+    ***REMOVED***
+        NextQuestion();
+***REMOVED***
+
+    void userCheckChanged()
+    ***REMOVED***
+        
+***REMOVED***
+
+    private void NextQuestion()
+    ***REMOVED***
+        if(++CurrentQuestionIndex <= questionOnTaps.Count())
+        ***REMOVED***
+            IsAnswerMode = false;
+            CurrentUserAnswerIdSelect = "0";
+            StateHasChanged();
+    ***REMOVED***
+        else
+        ***REMOVED***
+            // navigate to ketqua
+    ***REMOVED***
+
+
+***REMOVED***
+
+    
+
+    //public string GetCSSClass()
+    //***REMOVED***
+    //    if (IsAnswerMode)
+    //    ***REMOVED***
+    //        if(questionOnTaps[CurrentQuestionIndex].Answers.)
+    //***REMOVED***
+    //    return "";
+    //***REMOVED***
 ***REMOVED***
