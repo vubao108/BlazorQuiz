@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using MySqlConnector;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -126,6 +127,7 @@ namespace BlazorVNPTQuiz.Repository
 
         public async Task<List<QuestionLevel>> LayDanhSachMucDoCauHoi()
         {
+           
             string sql_query = @"select id,level from question_level  ";
               
             List<QuestionLevel> levels = new List<QuestionLevel>();
@@ -145,12 +147,15 @@ namespace BlazorVNPTQuiz.Repository
                     }
                  }
              }
+           
 
             return levels;
         }
 
         public async Task<List<QuestionOnTap>> LayDanhSachCauHoiOnTapTheoMucDo(int user_id, string tag_ids, int level_id, int limit)
         {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             //string tag_ids_str = String.Join(',', tag_ids.ToArray());
             string sql_query = $" call  proc_lay_cauhoi_ontap_web({user_id},'{tag_ids}', {level_id}, {limit})";
 
@@ -199,6 +204,8 @@ namespace BlazorVNPTQuiz.Repository
                     }
                 }
             }
+            stopwatch.Stop();
+            logger.LogInformation($"LayDanhSachCauHoiOnTapTheoMucDo(user_id={user_id},tags={tag_ids},level_id={level_id}) took {stopwatch.ElapsedMilliseconds} ms");
 
             return questionOnTaps;
         }
