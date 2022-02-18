@@ -206,11 +206,12 @@
 
     private void NextQuestion()
     ***REMOVED***
-        if(++CurrentQuestionIndex <= questionOnTaps.Count())
+        if(CurrentQuestionIndex < questionOnTaps.Count() -1 )
         ***REMOVED***
             IsAnswerMode = false;
             CurrentUserAnswerIdSelect = "0";
-            
+            CurrentQuestionIndex++;
+
     ***REMOVED***
         else
         ***REMOVED***
