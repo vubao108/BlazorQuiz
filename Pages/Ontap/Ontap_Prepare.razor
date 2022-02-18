@@ -3,11 +3,9 @@
 @inject AppState appState;
 @inject NavigationManager navigation;
 
- <button class="btn btn-primary" @onclick="ontapClick">
-                Bắt đầu ôn tập
- </button>
+
 <div class="container">
-   
+    
     <div class="row">
         <div class="col-6">
             <h5>Mức độ</h5>
@@ -39,7 +37,14 @@
 
 
     </div>
-
+    <div class="row">
+      <div class="col-6">
+      <button class="btn btn-primary btn-block" @onclick="ontapClick">
+                Bắt đầu ôn tập
+     </button>
+     </div>
+    </div>
+    
 </div>
 
 @code {
