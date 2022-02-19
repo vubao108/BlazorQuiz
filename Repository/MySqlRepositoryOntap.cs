@@ -212,6 +212,8 @@ namespace BlazorVNPTQuiz.Repository
 
         public async Task UpdateDanhGiaCauhoiOnTap(int id, int level_id)
         ***REMOVED***
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
             string sql_update = $"update  user_question set level_id = ***REMOVED***level_id***REMOVED***, update_time = sysdate()  where id = ***REMOVED***id***REMOVED***;";
            
 
@@ -223,6 +225,9 @@ namespace BlazorVNPTQuiz.Repository
                     await command.ExecuteNonQueryAsync();
             ***REMOVED***
         ***REMOVED***
+            stopwatch.Stop();
+            logger.LogInformation($"UpdateDanhGiaCauhoiOnTap(id=***REMOVED***id***REMOVED***,level_id=***REMOVED***level_id***REMOVED***) took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED*** ms");
+
     ***REMOVED***
 
 ***REMOVED***
