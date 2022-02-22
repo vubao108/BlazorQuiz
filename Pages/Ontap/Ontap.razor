@@ -173,12 +173,12 @@
     ***REMOVED***
         IsAnswerMode = true;
         if(CurrentUserAnswerIdSelect == questionOnTaps[CurrentQuestionIndex].Answers
-            .FirstOrDefault(item=>item.IsCorrect).AnswerId.ToString()
+            .FirstOrDefault(item=>item.IsCorrect)?.AnswerId.ToString()
         )
         ***REMOVED***
             Score++;
     ***REMOVED***
-        StateHasChanged();
+        //StateHasChanged();
 ***REMOVED***
 
     async void onEasyClick()
