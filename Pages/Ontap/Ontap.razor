@@ -173,12 +173,12 @@
     {
         IsAnswerMode = true;
         if(CurrentUserAnswerIdSelect == questionOnTaps[CurrentQuestionIndex].Answers
-            .FirstOrDefault(item=>item.IsCorrect).AnswerId.ToString()
+            .FirstOrDefault(item=>item.IsCorrect)?.AnswerId.ToString()
         )
         {
             Score++;
         }
-        StateHasChanged();
+        //StateHasChanged();
     }
 
     async void onEasyClick()
