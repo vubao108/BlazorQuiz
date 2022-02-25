@@ -36,7 +36,15 @@
             ***REMOVED***
                 else
                 ***REMOVED***
+                    @foreach(AnswerDAO answerDAO in questionOnTaps[CurrentQuestionIndex].Answers)
+                    ***REMOVED***
+                        <SfCheckBox Label="@answerDAO.AnswerText" Name="Options" Value="@answerDAO.AnswerId.ToString()"
+                        @bind-Checked="answerDAO.IsUserSelected" 
+                        CssClass="@(IsAnswerMode ? answerDAO.IsCorrect ? "e-info btn-block right-answer": "e-info btn-block" : "e-info btn-block"  )"
+                        >
 
+                        </SfCheckBox> <br /><br />
+                ***REMOVED***
             ***REMOVED***
                 </div>
                @* <div class="card-footer">
