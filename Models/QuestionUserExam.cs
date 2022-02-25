@@ -78,5 +78,8 @@ namespace BlazorVNPTQuiz.Models
         public int AnswerId { get; set; }
         public String AnswerText { get; set; }
         public bool IsCorrect { get; set; }
+        public bool IsUserSelected { get; set; }
+
+
     }
 }
