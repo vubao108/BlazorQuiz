@@ -13,7 +13,7 @@
     <div class="container">
         
         <div class="row">
-            <div class="col">
+            <div class="col @(IsAnswerMode ? UserResultCss: "")">
                 
                 <div class="card bg-light text-dark">
                     <div class="card-header">
@@ -96,6 +96,12 @@
     <b>Tỉ lệ đúng: @Score / @(CurrentQuestionIndex+1)</b>
 ***REMOVED***
 <style>
+    .user-answer-correct***REMOVED***
+        background-color:blue
+***REMOVED***
+    .user-answer-false***REMOVED***
+        background-color:red
+***REMOVED***
     .answer ***REMOVED***
         font-size:14px !important
 ***REMOVED***
@@ -166,6 +172,8 @@
 
     String RightAnswerCSS***REMOVED*** get; set; ***REMOVED***
 
+    String UserResultCss***REMOVED*** get; set; ***REMOVED***
+
     bool IsAnswerMode ***REMOVED*** get; set; ***REMOVED***
 
     private int Score;
@@ -180,13 +188,43 @@
     void onDapAnClick()
     ***REMOVED***
         IsAnswerMode = true;
-        if(CurrentUserAnswerIdSelect == questionOnTaps[CurrentQuestionIndex].Answers
-            .FirstOrDefault(item=>item.IsCorrect)?.AnswerId.ToString()
-        )
+        //if(CurrentUserAnswerIdSelect == questionOnTaps[CurrentQuestionIndex].Answers
+        //    .FirstOrDefault(item=>item.IsCorrect)?.AnswerId.ToString()
+        //)
+        //***REMOVED***
+        //    Score++;
+        //***REMOVED***
+        //StateHasChanged();
+        if (CheckTraLoiDung())
         ***REMOVED***
+            UserResultCss = "user-answer-correct";
             Score++;
     ***REMOVED***
-        //StateHasChanged();
+        else
+        ***REMOVED***
+            UserResultCss = "user-answer-false";
+    ***REMOVED***
+***REMOVED***
+
+    private bool CheckTraLoiDung()
+    ***REMOVED***
+        if (questionOnTaps[CurrentQuestionIndex].IsMultipleChoice)
+        ***REMOVED***
+
+
+
+            var listUserChoose = questionOnTaps[CurrentQuestionIndex].Answers.Where(item => item.IsUserSelected).Select(item => item.AnswerId).ToList();
+            var listRightAnswer = questionOnTaps[CurrentQuestionIndex].Answers.Where(item => item.IsCorrect).Select(item => item.AnswerId).ToList();
+            return listUserChoose?.Count() > 0 && listUserChoose.Count() == listRightAnswer?.Count()
+                && listUserChoose.All(item => listRightAnswer.Contains(item));
+    ***REMOVED***
+        else
+        ***REMOVED***
+            return CurrentUserAnswerIdSelect == questionOnTaps[CurrentQuestionIndex].Answers
+            .FirstOrDefault(item => item.IsCorrect)?.AnswerId.ToString();
+    ***REMOVED***
+
+
 ***REMOVED***
 
     async void onEasyClick()
