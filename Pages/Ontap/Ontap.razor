@@ -36,7 +36,15 @@
                 }
                 else
                 {
+                    @foreach(AnswerDAO answerDAO in questionOnTaps[CurrentQuestionIndex].Answers)
+                    {
+                        <SfCheckBox Label="@answerDAO.AnswerText" Name="Options" Value="@answerDAO.AnswerId.ToString()"
+                        @bind-Checked="answerDAO.IsUserSelected" 
+                        CssClass="@(IsAnswerMode ? answerDAO.IsCorrect ? "e-info btn-block right-answer": "e-info btn-block" : "e-info btn-block"  )"
+                        >
 
+                        </SfCheckBox> <br /><br />
+                    }
                 }
                 </div>
                @* <div class="card-footer">
