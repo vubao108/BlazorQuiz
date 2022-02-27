@@ -11,5 +11,13 @@ namespace BlazorVNPTQuiz.Models
         public string Name ***REMOVED*** get; set; ***REMOVED***
 
         public bool IsSelected ***REMOVED*** get; set; ***REMOVED***
+
+        public List<CategoryLevelState> LevelStates ***REMOVED***get;set;***REMOVED***
+***REMOVED***
+
+    public class CategoryLevelState
+    ***REMOVED***
+        public int LevelId;
+        public int NumOfQuestion;
 ***REMOVED***
 ***REMOVED***
