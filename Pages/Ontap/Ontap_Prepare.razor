@@ -5,15 +5,34 @@
 
 
 <div class="container">
-    
+    @*<div class="row">
+        <div class="col-4 "/>
+            <div class="col-4 ">
+                <button class="btn btn-primary btn-block" @onclick="ontapClick">
+                    Bắt đầu ôn tập
+                </button>
+            </div>
+        </div>*@
+
     <div class="row">
+       
         <div class="col-12 col-md-6">
-            <h5>Mức độ</h5>
+           
             <SfDropDownList TValue="int" TItem="QuestionLevel" DataSource="@levels" @bind-Value="@CurrentLevelId"
+                            
                             >
-                <DropDownListFieldSettings Value="Id" Text="Level"></DropDownListFieldSettings>
+                <DropDownListFieldSettings Value="Id" Text="Level"
+                                           
+                                           ></DropDownListFieldSettings>
 
             </SfDropDownList>
+        </div>
+        <div class="col-12 col-md-6">
+            
+                <button class="btn btn-primary btn-block" @onclick="ontapClick">
+                    Bắt đầu ôn tập
+                </button>
+            
         </div>
         @*<div class="col6">
             <h5>Số câu</h5>
@@ -23,40 +42,35 @@
 
         </div>*@
     </div>
-    <div class="row list-category">
-        <div class="col-12">
+        <div class="row list-category">
+            <div class="col-12">
+                
+                        <SfListView DataSource="@Categories" ShowCheckBox="true" CssClass="e-list-template">
+                            <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected">
+                            </ListViewFieldSettings>
+                            <ListViewTemplates TValue="Category">
+                                <Template>
+                                    @{
+                                        Category item = context as Category;
+                                        <div class="e-list-wrapper e-list-multi-line ">
 
-            <SfListView DataSource="@Categories" ShowCheckBox="true" CssClass="e-list-template">
-                <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected">
-                </ListViewFieldSettings>
-                <ListViewTemplates TValue="Category">
-                    <Template>
-                        @{
-                            Category item = context as Category;
-                            <div class="e-list-wrapper e-list-multi-line ">
-                                
-                                <span class="e-list-item-header">@item.Id</span>
-                                <span class="e-list-content">@item.Name</span>
-                            </div>
-                        }
-                    </Template>
-                </ListViewTemplates>
+                                            <span class="e-list-item-header">@item.Id</span>
+                                            <span class="e-list-content">@item.Name</span>
+                                        </div>
+                                    }
+                                </Template>
+                            </ListViewTemplates>
 
-            </SfListView>
+                        </SfListView>
+                    
+            </div>
+
+
+
         </div>
-        
 
 
     </div>
-    <div class="row">
-      <div class="col-12 col-md-6">
-      <button class="btn btn-primary btn-block" @onclick="ontapClick">
-                Bắt đầu ôn tập
-     </button>
-     </div>
-    </div>
-    
-</div>
 
 @code {
     public int CurrentLevelId {get;set;}
@@ -89,3 +103,55 @@
     }
 
 }
+
+<style>
+    .flex {
+        display: flex;
+    }
+
+    .flex__center {
+        justify-content: center;
+    }
+
+    .vertical__center {
+        align-items: center;
+    }
+
+    .vertical {
+        flex-direction: column;
+    }
+
+    .flex__1 {
+        flex: 1;
+    }
+
+    .flex__2 {
+        flex: 2;
+    }
+
+    .flex__3 {
+        flex: 3;
+    }
+
+    .flex__4 {
+        flex: 4;
+    }
+
+    .bold {
+        font-weight: 500;
+    }
+
+    .margin {
+        margin: 10px;
+        width: 350px;
+    }
+
+    .small__font {
+        font-size: 13px;
+        margin: 2px 0;
+    }
+    .list-category{
+        max-height:80vh;
+        overflow-y:auto;
+    }
+</style>
