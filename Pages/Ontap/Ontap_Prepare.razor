@@ -16,16 +16,20 @@
 
     <div class="row">
        
-        <div class="col-12 col-md-6">
+        <div class="col-8 col-md-4">
            
             <SfDropDownList TValue="int" TItem="QuestionLevel" DataSource="@levels" @bind-Value="@CurrentLevelId"
-                           
-                            >
-                <DropDownListFieldSettings Value="Id" Text="Level"
-                                           
-                                           ></DropDownListFieldSettings>
+                            @onselectionchange="GetSlectedQuestions">
+                <DropDownListFieldSettings Value="Id" Text="Level"></DropDownListFieldSettings>
+                <DropDownListEvents TItem="QuestionLevel" TValue="int" ValueChange="GetSlectedQuestions"></DropDownListEvents>
 
             </SfDropDownList>
+        </div>
+        <div class="col-4 col-md-2">
+            <label>
+                @SelectedQuestions câu
+
+            </label>
         </div>
         <div class="col-12 col-md-6">
             
@@ -45,26 +49,35 @@
         <div class="row list-category">
             <div class="col-12">
                 
-                        <SfListView DataSource="@Categories" ShowCheckBox="true" CssClass="e-list-template">
-                            <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected">
-                            </ListViewFieldSettings>
-                            <ListViewTemplates TValue="Category">
-                                <Template>
-                                    @***REMOVED***
-                                        Category item = context as Category;
-                                        <div class="e-list-wrapper e-list-multi-line ">
+                <SfListView DataSource="@Categories" ShowCheckBox="true" CssClass="e-list-template"
+                            
+                            >
+                    <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected"
+                                           
+                                           >
+                    </ListViewFieldSettings>
+                    <ListViewEvents TValue="Category"
+                        
+                      >
 
-                                            <span class="e-list-item-header">@item.Name</span>
-                                            <span class="e-list-content">
-                                                Mới: @GetLevelCategoryNum(item, 4) ; <span style="background-color:yellow">Khó: @GetLevelCategoryNum(item, 3);</span>  Bình thường: @GetLevelCategoryNum(item, 2); Dễ: @GetLevelCategoryNum(item, 1); Tổng: @item.LevelStates.Sum(item=>item.NumOfQuestion);
+                    </ListViewEvents>
+                    <ListViewTemplates TValue="Category">
+                        <Template>
+                            @***REMOVED***
+                                Category item = context as Category;
+                                <div class="e-list-wrapper e-list-multi-line " @onclick="GetSlectedQuestions">
 
-                                            </span>
-                                        </div>
-                                ***REMOVED***
-                                </Template>
-                            </ListViewTemplates>
+                                    <span class="e-list-item-header">@item.Name</span>
+                                    <span class="e-list-content">
+                                        Mới: @GetLevelCategoryNum(item, 4) ; <span style="background-color:yellow">Khó: @GetLevelCategoryNum(item, 3);</span>  Bình thường: @GetLevelCategoryNum(item, 2); Dễ: @GetLevelCategoryNum(item, 1); Tổng: @item.LevelStates.Sum(item => item.NumOfQuestion);
 
-                        </SfListView>
+                                    </span>
+                                </div>
+                        ***REMOVED***
+                        </Template>
+                    </ListViewTemplates>
+
+                </SfListView>
                     
             </div>
 
@@ -76,8 +89,9 @@
     </div>
 
 @code ***REMOVED***
-    public int CurrentLevelId ***REMOVED***get;set;***REMOVED***
+    public int CurrentLevelId ***REMOVED*** get; set; ***REMOVED***
     public int numOfQuestion ***REMOVED*** get; set; ***REMOVED*** = 10000;
+    public int SelectedQuestions ***REMOVED*** get; set; ***REMOVED***
 
     List<QuestionLevel> levels = new List<QuestionLevel>()
     ***REMOVED***
@@ -95,13 +109,13 @@
     protected override async Task OnInitializedAsync()
     ***REMOVED***
         Categories = await repository.LayDanhSachChuDeTheoNguoiDung(appState.CurrentIdentityUserId);
-        await  base.OnInitializedAsync();
+        await base.OnInitializedAsync();
 ***REMOVED***
 
     void ontapClick()
     ***REMOVED***
         Debug.WriteLine($"level = ***REMOVED***CurrentLevelId***REMOVED*** numOfQuestion =***REMOVED***numOfQuestion***REMOVED***");
-        string tags = String.Join(",",Categories.Where(item => item.IsSelected).Select(item => item.Id).ToArray());
+        string tags = String.Join(",", Categories.Where(item => item.IsSelected).Select(item => item.Id).ToArray());
         navigation.NavigateTo($"ontap/***REMOVED***CurrentLevelId***REMOVED***/***REMOVED***tags***REMOVED***/***REMOVED***numOfQuestion***REMOVED***");
 ***REMOVED***
 
@@ -110,11 +124,23 @@
         var item = category.LevelStates.FirstOrDefault(level_item => level_item.LevelId == level_id);
         return item != null ? item.NumOfQuestion : 0;
 ***REMOVED***
+    void CategoryIsSelectedChanged(ClickEventArgs<Category> args) ***REMOVED***
+        GetSlectedQuestions();
+***REMOVED***
 
-    void OnLevelChanged()
-        ***REMOVED***
-
+    void GetSlectedQuestions()
     ***REMOVED***
+        if (Categories != null && Categories.Any(item => item.IsSelected))
+        ***REMOVED***
+              SelectedQuestions = Categories.Where(item => item.IsSelected).Sum(item => item.LevelStates.Where(item => CurrentLevelId == 0 || item.LevelId == CurrentLevelId)
+                  .Sum(item => item.NumOfQuestion));
+    ***REMOVED***
+        else
+        ***REMOVED***
+             SelectedQuestions =  0;
+    ***REMOVED***
+***REMOVED***
+
 
 ***REMOVED***
 
