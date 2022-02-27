@@ -24,10 +24,23 @@
         </div>*@
     </div>
     <div class="row list-category">
-        <div class="col-12 col-md-6">
+        <div class="col-12">
 
-            <SfListView DataSource="@Categories" ShowCheckBox="true">
-                <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected"></ListViewFieldSettings>
+            <SfListView DataSource="@Categories" ShowCheckBox="true" CssClass="e-list-template">
+                <ListViewFieldSettings TValue="Category" Id="Id" Text="Name" IsChecked="IsSelected">
+                </ListViewFieldSettings>
+                <ListViewTemplates TValue="Category">
+                    <Template>
+                        @***REMOVED***
+                            Category item = context as Category;
+                            <div class="e-list-wrapper e-list-multi-line ">
+                                
+                                <span class="e-list-item-header">@item.Id</span>
+                                <span class="e-list-content">@item.Name</span>
+                            </div>
+                    ***REMOVED***
+                    </Template>
+                </ListViewTemplates>
 
             </SfListView>
         </div>
