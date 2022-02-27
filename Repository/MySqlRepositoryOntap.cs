@@ -99,11 +99,10 @@ namespace BlazorVNPTQuiz.Repository
 
         public async Task<List<Category>> LayDanhSachChuDeTheoNguoiDung(int user_id)
         ***REMOVED***
-            string sql_query = @"SELECT a.tag_id , a.tag_name, b.donvi_id,
-                0 isSelected
-                FROM tags a
-                , donvi_tag b, users c where a.tag_id = b.tag_id AND b.donvi_id = c.donvi_id and c.id = "
-                + $"***REMOVED***user_id***REMOVED***  order by  tag_name";
+            string sql_query = @"SELECT a.tag_id, tag_name, level_id, level_name , count(1) as num_of_question
+                                from user_question a, tags b , question_level c " +
+                              $"  where user_id = ***REMOVED***user_id***REMOVED*** and a.tag_id = b.tag_id  and a.level_id = c.id " +
+                                   " group by a.tag_id, tag_name, level_id";
             List<Category> categories = new List<Category>();
 
             using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
@@ -116,8 +115,36 @@ namespace BlazorVNPTQuiz.Repository
                     ***REMOVED***
                         int tag_id = reader.GetInt32("tag_id");
                         String tag_name = reader.GetString("tag_name");
-                        bool IsSelected = reader.GetInt32("isSelected") == 1;
-                        categories.Add(new Category() ***REMOVED*** Id = tag_id, Name = tag_name, IsSelected = IsSelected ***REMOVED***);
+                        String level_name = reader.GetString("level_name");
+                        int level_id = reader.GetInt32("level_id");
+                        int num_of_question = reader.GetInt32("num_of_question");
+                        bool IsSelected = false;
+                        var category = categories.FirstOrDefault(item => item.Id == tag_id);
+                        var categoryState = new CategoryLevelState()
+                        ***REMOVED***
+                            LevelId = level_id,
+                            LevelName = level_name,
+                            NumOfQuestion = num_of_question
+                    ***REMOVED***;
+                        if (category == null)
+                        ***REMOVED***
+                            categories.Add(new Category()
+                            ***REMOVED***
+                                Id = tag_id,
+                                Name = tag_name,
+                                IsSelected = IsSelected,
+                                LevelStates = new List<CategoryLevelState>() ***REMOVED***
+                                    categoryState
+
+                            ***REMOVED***
+                        ***REMOVED***);
+
+                    ***REMOVED***
+                        else
+                        ***REMOVED***
+                            category.LevelStates.Add(categoryState);
+                    ***REMOVED***
+                       
                 ***REMOVED***
             ***REMOVED***
         ***REMOVED***

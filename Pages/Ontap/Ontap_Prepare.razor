@@ -19,7 +19,7 @@
         <div class="col-12 col-md-6">
            
             <SfDropDownList TValue="int" TItem="QuestionLevel" DataSource="@levels" @bind-Value="@CurrentLevelId"
-                            
+                           
                             >
                 <DropDownListFieldSettings Value="Id" Text="Level"
                                            
@@ -54,8 +54,11 @@
                                         Category item = context as Category;
                                         <div class="e-list-wrapper e-list-multi-line ">
 
-                                            <span class="e-list-item-header">@item.Id</span>
-                                            <span class="e-list-content">@item.Name</span>
+                                            <span class="e-list-item-header">@item.Name</span>
+                                            <span class="e-list-content">
+                                                Mới: @GetLevelCategoryNum(item, 4) ; <span style="background-color:yellow">Khó: @GetLevelCategoryNum(item, 3);</span>  Bình thường: @GetLevelCategoryNum(item, 2); Dễ: @GetLevelCategoryNum(item, 1); Tổng: @item.LevelStates.Sum(item=>item.NumOfQuestion);
+
+                                            </span>
                                         </div>
                                 ***REMOVED***
                                 </Template>
@@ -101,6 +104,17 @@
         string tags = String.Join(",",Categories.Where(item => item.IsSelected).Select(item => item.Id).ToArray());
         navigation.NavigateTo($"ontap/***REMOVED***CurrentLevelId***REMOVED***/***REMOVED***tags***REMOVED***/***REMOVED***numOfQuestion***REMOVED***");
 ***REMOVED***
+
+    int GetLevelCategoryNum(Category category, int level_id)
+    ***REMOVED***
+        var item = category.LevelStates.FirstOrDefault(level_item => level_item.LevelId == level_id);
+        return item != null ? item.NumOfQuestion : 0;
+***REMOVED***
+
+    void OnLevelChanged()
+        ***REMOVED***
+
+    ***REMOVED***
 
 ***REMOVED***
 
