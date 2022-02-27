@@ -18,6 +18,7 @@ namespace BlazorVNPTQuiz.Models
     public class CategoryLevelState
     {
         public int LevelId;
+        public string LevelName;
         public int NumOfQuestion;
     }
 }
