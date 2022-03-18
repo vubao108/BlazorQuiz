@@ -239,21 +239,34 @@ namespace BlazorVNPTQuiz.Repository
 
         public async Task UpdateDanhGiaCauhoiOnTap(int id, int level_id)
         {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            string sql_update = $"update  user_question set level_id = {level_id}, update_time = sysdate()  where id = {id};";
-           
-
-            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
+            Stopwatch stopwatch = null;
+            try
             {
-                using (var command = new MySqlCommand(sql_update, connection))
+                 stopwatch = new Stopwatch();
+
+                stopwatch.Start();
+                string sql_update = $"update  user_question set level_id = {level_id}, update_time = sysdate()  where id = {id};";
+
+
+                using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
                 {
-                    await connection.OpenAsync();
-                    await command.ExecuteNonQueryAsync();
+                    using (var command = new MySqlCommand(sql_update, connection))
+                    {
+                        await connection.OpenAsync();
+                        await command.ExecuteNonQueryAsync();
+                    }
                 }
+                
+                
+            }catch(Exception ex)
+            {
+                logger.LogError(ex.StackTrace);
             }
-            stopwatch.Stop();
-            logger.LogInformation($"UpdateDanhGiaCauhoiOnTap(id={id},level_id={level_id}) took {stopwatch.ElapsedMilliseconds} ms");
+            finally
+            {
+                stopwatch?.Stop();
+                logger.LogInformation($"UpdateDanhGiaCauhoiOnTap(id={id},level_id={level_id}) took {stopwatch?.ElapsedMilliseconds} ms");
+            }
 
         }
 
