@@ -129,7 +129,8 @@
         Debug.WriteLine($"level = ***REMOVED***CurrentLevelId***REMOVED*** numOfQuestion =***REMOVED***numOfQuestion***REMOVED***");
         if (IsQuickReview)
         ***REMOVED***
-
+            string tags = String.Join(",", Categories.Where(item => item.IsSelected).Select(item => item.Id).ToArray());
+            navigation.NavigateTo($"ontap-nhanh/***REMOVED***CurrentLevelId***REMOVED***/***REMOVED***tags***REMOVED***/***REMOVED***numOfQuestion***REMOVED***");
     ***REMOVED***
         else
         ***REMOVED***

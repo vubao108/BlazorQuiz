@@ -239,21 +239,34 @@ namespace BlazorVNPTQuiz.Repository
 
         public async Task UpdateDanhGiaCauhoiOnTap(int id, int level_id)
         ***REMOVED***
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            string sql_update = $"update  user_question set level_id = ***REMOVED***level_id***REMOVED***, update_time = sysdate()  where id = ***REMOVED***id***REMOVED***;";
-           
+            Stopwatch stopwatch = null;
+            try
+            ***REMOVED***
+                 stopwatch = new Stopwatch();
 
-            using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
-            ***REMOVED***
-                using (var command = new MySqlCommand(sql_update, connection))
+                stopwatch.Start();
+                string sql_update = $"update  user_question set level_id = ***REMOVED***level_id***REMOVED***, update_time = sysdate()  where id = ***REMOVED***id***REMOVED***;";
+
+
+                using (var connection = new MySqlConnection(configuration.GetConnectionString("DefaultConnection")))
                 ***REMOVED***
-                    await connection.OpenAsync();
-                    await command.ExecuteNonQueryAsync();
+                    using (var command = new MySqlCommand(sql_update, connection))
+                    ***REMOVED***
+                        await connection.OpenAsync();
+                        await command.ExecuteNonQueryAsync();
+                ***REMOVED***
             ***REMOVED***
+                
+                
+        ***REMOVED***catch(Exception ex)
+            ***REMOVED***
+                logger.LogError(ex.StackTrace);
         ***REMOVED***
-            stopwatch.Stop();
-            logger.LogInformation($"UpdateDanhGiaCauhoiOnTap(id=***REMOVED***id***REMOVED***,level_id=***REMOVED***level_id***REMOVED***) took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED*** ms");
+            finally
+            ***REMOVED***
+                stopwatch?.Stop();
+                logger.LogInformation($"UpdateDanhGiaCauhoiOnTap(id=***REMOVED***id***REMOVED***,level_id=***REMOVED***level_id***REMOVED***) took ***REMOVED***stopwatch?.ElapsedMilliseconds***REMOVED*** ms");
+        ***REMOVED***
 
     ***REMOVED***
 
