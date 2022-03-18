@@ -1,0 +1,345 @@
+﻿@page "/ontap-nhanh/{LevelId:int}/{TagIds}/{limit:int}"
+@inject IRepositoryOntap repository
+@inject AppState appState
+
+@if(questionQuickReviews?.Count() == 0)
+{
+    <p>
+        Không có câu hỏi nào để ôn tập, hãy chọn lại các tiêu chí như mức độ và loại câu hỏi.
+    </p>
+}
+@if(questionQuickReviews?.Count()>0){
+     <div class="floating-score">
+                
+                    Đã làm: @DoneCount/@questionQuickReviews.Count() câu<br>
+               
+                
+                    <b>Tỉ lệ đúng: @Score / @DoneCount</b>
+     </div>
+     <div class="container">
+    
+    @foreach(var questionQuickReview in questionQuickReviews) {
+        
+        
+       
+           @* <div class="row">
+                <div class="col-4">
+                
+                    Đã làm: @(CurrentQuestionIndex+1)/@questionOnTaps.Count() câu
+                </div>
+                <div class="col-2"></div>
+                <div class="col-8 text-summary">
+                
+                    <b>Tỉ lệ đúng: @Score / @(CurrentQuestionIndex+1)</b>
+                </div>
+                <div class="col-2"></div>
+            </div>*@
+        
+            <div class="row">
+                <div class="col-11 col-md-10 @(questionQuickReview.IsAnswerMode ? UserResultCss: "")">
+                
+                    <div class="card bg-light text-dark">
+                        <div class="card-header">
+                            <b> @(questionQuickReview.STT)/@questionQuickReviews.Count() . @questionQuickReview.questionOnTap.QuestionText
+                       </b>
+                        </div>
+                        <div class="card-body scroll-answer">
+                      @* <span class="card-title">></span>*@
+                    @if (!questionQuickReview.questionOnTap.IsMultipleChoice)
+                    {
+                        @foreach(AnswerDAO answerDAO in questionQuickReview.questionOnTap.Answers)
+                        {
+                            <SfRadioButton Label="@answerDAO.AnswerText" Name="@(questionQuickReview.STT.ToString())" Value="@answerDAO.AnswerId.ToString()"
+                            @bind-Checked="CurrentUserAnswerIdSelect" 
+                            @onclick="()=>onAnswerChoiced(answerDAO.AnswerId, questionQuickReview)"
+                            CssClass="@(questionQuickReview.IsAnswerMode ? answerDAO.IsCorrect ? "e-info btn-block right-answer": "e-info btn-block" : "e-info btn-block"  )"
+                            Disabled=@(questionQuickReview.IsAnswerMode)
+                            >
+
+                            </SfRadioButton> <br /><br />
+                        }
+                    }
+                    else
+                    {
+                        @foreach(AnswerDAO answerDAO in questionQuickReview.questionOnTap.Answers)
+                        {
+                            <SfCheckBox Label="@answerDAO.AnswerText" Name="@(questionQuickReview.STT.ToString())" Value="@answerDAO.AnswerId.ToString()"
+                            @bind-Checked="answerDAO.IsUserSelected" 
+                            CssClass="@(questionQuickReview.IsAnswerMode ? answerDAO.IsCorrect ? "e-info btn-block right-answer": "e-info btn-block" : "e-info btn-block"  )"
+                            Disabled=@(questionQuickReview.IsAnswerMode)
+                            >
+
+                            </SfCheckBox> <br /><br />
+                        }
+                    }
+                    </div>
+                   @* <div class="card-footer">
+
+                    </div>*@
+                    </div>
+                
+                </div>
+
+            </div>
+            <div class="row answer-button">
+                @if (!questionQuickReview.IsAnswerMode)
+                {
+                    <div class="col-11 col-md-10">
+                        <button class="btn btn-primary btn-block" @onclick="()=>onDapAnClick(questionQuickReview)">Đáp án</button>
+                    </div>
+                }else{
+            
+                    <div class="col-3 col-md-3">
+                            <button class="btn @(questionQuickReview.levelId==1 ? "btn-danger" : "btn-primary")  btn-block" @onclick="()=>onEasyClick(questionQuickReview)"> Dễ </button>
+                    </div>
+                    <div class="col-5 col-md-4">
+                        <button  class="btn @(questionQuickReview.levelId==2 ? "btn-danger" : "btn-primary") btn-block" @onclick="()=>onNormalClick(questionQuickReview)" >Bình thường </button>
+                    </div >
+                    <div class="col-3 col-md-3">
+                        <button  class="btn @(questionQuickReview.levelId==3 ? "btn-danger" : "btn-primary") btn-block" @onclick="()=>onHardClick(questionQuickReview)">Khó </button>
+                    </div>
+                }
+           
+            </div>
+        
+
+        
+    }
+    </div>
+   @* @if(IsFinished)
+    {
+        <p> Đã xong phiên ôn tập</p>
+        <b>Tỉ lệ đúng: @Score / @(CurrentQuestionIndex+1)</b>
+    }*@
+}
+<style>
+    .floating-score {
+    position: fixed;
+    bottom: 50%;
+    right: 0;
+    border-radius: 4px;
+    z-index: 10;
+    }
+    .user-answer-correct{
+        background-color:blue
+    }
+    .user-answer-false{
+        background-color:red
+    }
+    .answer {
+        font-size:14px !important
+    }
+    .right-answer{
+        background-color:yellow
+    }
+    .answer-button{
+        margin-bottom:16px;
+    }
+    .scroll-answer{
+        max-height:70vh;
+        overflow-y:auto;
+    }
+     .e-radio-wrapper.e-info .e-radio:checked + label::after { /* csslint allow: adjoining-classes */
+        background-color: #2196f3;
+        color: #2196f3;
+       
+    }
+    .e-radio-wrapper.e-info .e-radio:checked:focus + label::after,
+    .e-radio-wrapper.e-info .e-radio:checked + label:hover::after { /* csslint allow: adjoining-classes */
+        background-color: #0b7dda;
+    }
+
+    .e-radio-wrapper.e-info .e-radio:checked + label::before {
+        border-color: #2196f3;
+        background-color: #fff;
+        
+    }
+
+    .e-radio-wrapper.e-info .e-radio:checked:focus + label::before,
+    .e-radio-wrapper.e-info .e-radio:checked + label:hover::before {
+        border-color: #0b7dda;
+       
+        
+    }
+
+    .e-radio-wrapper.e-info .e-radio + label:hover::before {
+        border-color: #b1afaf;
+    }
+    .e-radio+label .e-label {
+         font-size:16px;
+        
+    }
+    .floating-button {
+    position: fixed;
+    bottom: 50%;
+    right: 0;
+    border-radius: 4px;
+    z-index: 10;
+    }
+    
+    .text-summary{
+     text-align: center;
+    }
+
+</style>
+@code {
+    List<QuestionOnTap> questionOnTaps;
+    List<QuestionQuickReview> questionQuickReviews;
+    public int CurrentQuestionIndex { get; set; }
+    private string CurrentUserAnswerIdSelect;
+
+    [Parameter]
+    public string TagIds { get; set; }
+    [Parameter]
+    public int LevelId { get; set; }
+    [Parameter]
+    public int limit { get; set; }
+
+    String RightAnswerCSS{ get; set; }
+
+    String UserResultCss{ get; set; }
+
+    bool IsAnswerMode { get; set; }
+
+    private int Score;
+    private int DoneCount;
+    private bool IsFinished;
+    class QuestionQuickReview
+    {
+        public QuestionOnTap questionOnTap{ get; set; }
+        public bool IsAnswerMode { get; set; }
+        public int STT { get; set; }
+        public int levelId { get; set; }
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        questionOnTaps = await repository.LayDanhSachCauHoiOnTapTheoMucDo(appState.CurrentIdentityUserId, TagIds, LevelId, limit);
+        if(questionOnTaps.Count() > 0)
+        {
+            questionQuickReviews = new List<QuestionQuickReview>(questionOnTaps.Count());
+            int stt = 0;
+            foreach (var question in questionOnTaps) {
+                questionQuickReviews.Add(new QuestionQuickReview()
+                {questionOnTap = question, IsAnswerMode = false, STT = ++stt});
+
+            }
+        }
+
+        await base.OnInitializedAsync();
+    }
+    void onAnswerChoiced(int answerId, QuestionQuickReview questionQuickReview)
+    {
+        foreach(var answer in questionQuickReview.questionOnTap.Answers)
+        {
+            if(answer.AnswerId == answerId)
+            {
+                answer.IsUserSelected = true;
+            }
+            else
+            {
+                answer.IsUserSelected = false;
+            }
+        }
+    }
+    void onDapAnClick(QuestionQuickReview questionQuickReview)
+    {
+        questionQuickReview.IsAnswerMode = true;
+        DoneCount++;
+        //if(CurrentUserAnswerIdSelect == questionOnTaps[CurrentQuestionIndex].Answers
+        //    .FirstOrDefault(item=>item.IsCorrect)?.AnswerId.ToString()
+        //)
+        //{
+        //    Score++;
+        //}
+        //StateHasChanged();
+        if (CheckTraLoiDung(questionQuickReview))
+        {
+            UserResultCss = "user-answer-correct";
+            Score++;
+        }
+        else
+        {
+            UserResultCss = "user-answer-false";
+        }
+        CurrentUserAnswerIdSelect = "0";
+    }
+
+    private bool CheckTraLoiDung(QuestionQuickReview questionQuickReview)
+    {
+        //if (questionQuickReview.questionOnTap.IsMultipleChoice)
+        //{
+
+
+
+        var listUserChoose = questionQuickReview.questionOnTap.Answers.Where(item => item.IsUserSelected).Select(item => item.AnswerId).ToList();
+        var listRightAnswer = questionQuickReview.questionOnTap.Answers.Where(item => item.IsCorrect).Select(item => item.AnswerId).ToList();
+        return listUserChoose?.Count() > 0 && listUserChoose.Count() == listRightAnswer?.Count()
+            && listUserChoose.All(item => listRightAnswer.Contains(item));
+        //}
+        //else
+        //{
+        //    return CurrentUserAnswerIdSelect == questionQuickReview.questionOnTap.Answers
+        //    .FirstOrDefault(item => item.IsCorrect)?.AnswerId.ToString();
+        //}
+
+
+    }
+
+    async void onEasyClick(QuestionQuickReview question)
+    {
+        await repository.UpdateDanhGiaCauhoiOnTap(question.questionOnTap.Id, (int)Level.Easy);
+        question.levelId = 1;
+        StateHasChanged();
+        //NextQuestion();
+
+    }
+
+    async void onNormalClick(QuestionQuickReview question)
+    {
+        await repository.UpdateDanhGiaCauhoiOnTap(question.questionOnTap.Id, (int)Level.Normal);
+        question.levelId = 2;
+        StateHasChanged();
+        //NextQuestion();
+    }
+
+    async void onHardClick(QuestionQuickReview question)
+    {
+        await repository.UpdateDanhGiaCauhoiOnTap(question.questionOnTap.Id, (int)Level.Hard);
+        question.levelId = 3;
+        StateHasChanged();
+        //NextQuestion();
+    }
+
+
+
+    //private void NextQuestion()
+    //{
+    //    if(CurrentQuestionIndex < questionOnTaps.Count() -1 )
+    //    {
+    //        IsAnswerMode = false;
+    //        CurrentUserAnswerIdSelect = "0";
+    //        CurrentQuestionIndex++;
+
+    //    }
+    //    else
+    //    {
+    //        IsFinished = true;
+    //    }
+    //    StateHasChanged();
+
+
+    //}
+
+    
+
+    //public string GetCSSClass()
+    //{
+    //    if (IsAnswerMode)
+    //    {
+    //        if(questionOnTaps[CurrentQuestionIndex].Answers.)
+    //    }
+    //    return "";
+    //}
+}
