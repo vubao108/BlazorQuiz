@@ -31,13 +31,7 @@
 
             </label>
         </div>
-        <div class="col-12 col-md-6">
-            
-                <button class="btn btn-primary btn-block" @onclick="ontapClick">
-                    Bắt đầu ôn tập
-                </button>
-            
-        </div>
+       
         @*<div class="col6">
             <h5>Số câu</h5>
             <Syncfusion.Blazor.Inputs.SfNumericTextBox @bind-Value="@numOfQuestion">
@@ -45,6 +39,22 @@
             </Syncfusion.Blazor.Inputs.SfNumericTextBox>
 
         </div>*@
+    </div>
+    <div class="row">
+        <div class="col-4 col-md-2">
+             <SfCheckBox Label="Quick Review" @bind-Checked="IsQuickReview"> 
+
+               </SfCheckBox>
+        </div>
+         <div class="col-8 col-md-4">
+              
+            
+                <button class="btn btn-primary btn-block" @onclick="ontapClick">
+                    Bắt đầu ôn tập
+                </button>
+            
+        </div>
+
     </div>
         <div class="row list-category">
             <div class="col-12">
@@ -92,6 +102,8 @@
     public int CurrentLevelId ***REMOVED*** get; set; ***REMOVED***
     public int numOfQuestion ***REMOVED*** get; set; ***REMOVED*** = 10000;
     public int SelectedQuestions ***REMOVED*** get; set; ***REMOVED***
+    public bool IsQuickReview ***REMOVED*** get; set; ***REMOVED***
+
 
     List<QuestionLevel> levels = new List<QuestionLevel>()
     ***REMOVED***
@@ -115,8 +127,16 @@
     void ontapClick()
     ***REMOVED***
         Debug.WriteLine($"level = ***REMOVED***CurrentLevelId***REMOVED*** numOfQuestion =***REMOVED***numOfQuestion***REMOVED***");
-        string tags = String.Join(",", Categories.Where(item => item.IsSelected).Select(item => item.Id).ToArray());
-        navigation.NavigateTo($"ontap/***REMOVED***CurrentLevelId***REMOVED***/***REMOVED***tags***REMOVED***/***REMOVED***numOfQuestion***REMOVED***");
+        if (IsQuickReview)
+        ***REMOVED***
+
+    ***REMOVED***
+        else
+        ***REMOVED***
+            
+            string tags = String.Join(",", Categories.Where(item => item.IsSelected).Select(item => item.Id).ToArray());
+            navigation.NavigateTo($"ontap/***REMOVED***CurrentLevelId***REMOVED***/***REMOVED***tags***REMOVED***/***REMOVED***numOfQuestion***REMOVED***");
+    ***REMOVED***
 ***REMOVED***
 
     int GetLevelCategoryNum(Category category, int level_id)
