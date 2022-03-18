@@ -11,10 +11,10 @@
 @if(questionQuickReviews?.Count()>0)***REMOVED***
      <div class="floating-score">
                 
-                    Đã làm: @DoneCount/@questionQuickReviews.Count() câu<br>
+                    Làm:@DoneCount/@questionQuickReviews.Count()<br>
                
                 
-                    <b>Tỉ lệ đúng: @Score / @DoneCount</b>
+                    <b>Đúng:@Score/@DoneCount</b>
      </div>
      <div class="container">
     
@@ -36,7 +36,7 @@
             </div>*@
         
             <div class="row">
-                <div class="col-11 col-md-10 @(questionQuickReview.IsAnswerMode ? UserResultCss: "")">
+                <div class="col-11 col-md-10 @(questionQuickReview.IsAnswerMode ? questionQuickReview.UserResultCss: "")">
                 
                     <div class="card bg-light text-dark">
                         <div class="card-header">
@@ -93,7 +93,7 @@
                             <button class="btn @(questionQuickReview.levelId==1 ? "btn-danger" : "btn-primary")  btn-block" @onclick="()=>onEasyClick(questionQuickReview)"> Dễ </button>
                     </div>
                     <div class="col-5 col-md-4">
-                        <button  class="btn @(questionQuickReview.levelId==2 ? "btn-danger" : "btn-primary") btn-block" @onclick="()=>onNormalClick(questionQuickReview)" >Bình thường </button>
+                        <button  class="btn @(questionQuickReview.levelId==2 ? "btn-danger" : "btn-primary") btn-block" @onclick="()=>onNormalClick(questionQuickReview)" >Thường </button>
                     </div >
                     <div class="col-3 col-md-3">
                         <button  class="btn @(questionQuickReview.levelId==3 ? "btn-danger" : "btn-primary") btn-block" @onclick="()=>onHardClick(questionQuickReview)">Khó </button>
@@ -136,8 +136,8 @@
         margin-bottom:16px;
 ***REMOVED***
     .scroll-answer***REMOVED***
-        max-height:70vh;
-        overflow-y:auto;
+        @*max-height:70vh;
+        overflow-y:auto;*@
 ***REMOVED***
      .e-radio-wrapper.e-info .e-radio:checked + label::after ***REMOVED*** /* csslint allow: adjoining-classes */
         background-color: #2196f3;
@@ -210,6 +210,7 @@
         public bool IsAnswerMode ***REMOVED*** get; set; ***REMOVED***
         public int STT ***REMOVED*** get; set; ***REMOVED***
         public int levelId ***REMOVED*** get; set; ***REMOVED***
+        public string UserResultCss***REMOVED*** get; set; ***REMOVED***
 
 ***REMOVED***
 
@@ -256,12 +257,12 @@
         //StateHasChanged();
         if (CheckTraLoiDung(questionQuickReview))
         ***REMOVED***
-            UserResultCss = "user-answer-correct";
+            questionQuickReview.UserResultCss = "user-answer-correct";
             Score++;
     ***REMOVED***
         else
         ***REMOVED***
-            UserResultCss = "user-answer-false";
+            questionQuickReview.UserResultCss = "user-answer-false";
     ***REMOVED***
         CurrentUserAnswerIdSelect = "0";
 ***REMOVED***
