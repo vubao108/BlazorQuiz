@@ -1,4 +1,4 @@
-# BlazorVNPTQuiz
+# BlazorQuiz
 Blazor web app to manage and organise a quiz exam <br>
 Front End: Blazor <br>
 Backend: ASP.Net Core 6.0 , MySQL , Ubuntu 16.10
