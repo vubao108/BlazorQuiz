@@ -44,18 +44,18 @@ Adding an icon from an SVG sprite is a little different than what you're used to
 Sizing icons only needs basic CSS. All the icons are in a square format, so just set the `<svg>` tag with equal width and height dimensions.
 
 ```
-.icon ***REMOVED***
+.icon {
   width: 16px;
   height: 16px;
-***REMOVED***
+}
 ```
 
 Coloring icons is even easier. All you need to do is set the `fill` rule on the `<use>` tag.
 
 ```
-.icon-account-login ***REMOVED***
+.icon-account-login {
   fill: #f00;
-***REMOVED***
+}
 ```
 
 To learn more about SVG Sprites, read [Chris Coyier's guide](http://css-tricks.com/svg-sprites-use-better-icon-fonts/).
@@ -65,7 +65,7 @@ To learn more about SVG Sprites, read [Chris Coyier's guide](http://css-tricks.c
 
 ##### …with Bootstrap
 
-You can find our Bootstrap stylesheets in `font/css/open-iconic-bootstrap.***REMOVED***css, less, scss, styl***REMOVED***`
+You can find our Bootstrap stylesheets in `font/css/open-iconic-bootstrap.{css, less, scss, styl}`
 
 
 ```
@@ -79,7 +79,7 @@ You can find our Bootstrap stylesheets in `font/css/open-iconic-bootstrap.***REM
 
 ##### …with Foundation
 
-You can find our Foundation stylesheets in `font/css/open-iconic-foundation.***REMOVED***css, less, scss, styl***REMOVED***`
+You can find our Foundation stylesheets in `font/css/open-iconic-foundation.{css, less, scss, styl}`
 
 ```
 <link href="/open-iconic/font/css/open-iconic-foundation.css" rel="stylesheet">
@@ -92,7 +92,7 @@ You can find our Foundation stylesheets in `font/css/open-iconic-foundation.***R
 
 ##### …on its own
 
-You can find our default stylesheets in `font/css/open-iconic.***REMOVED***css, less, scss, styl***REMOVED***`
+You can find our default stylesheets in `font/css/open-iconic.{css, less, scss, styl}`
 
 ```
 <link href="/open-iconic/font/css/open-iconic.css" rel="stylesheet">

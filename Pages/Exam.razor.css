@@ -1,25 +1,25 @@
-﻿body ***REMOVED***
-***REMOVED***
+﻿body {
+}
 
-div***REMOVED***
+div{
     border:1px;
 
-***REMOVED***
+}
 
-.floating-button ***REMOVED***
+.floating-button {
     position: fixed;
     bottom: 50%;
     right: 0;
     border-radius: 4px;
     z-index: 10;
-***REMOVED***
+}
 
-.hidden-clock ***REMOVED***
+.hidden-clock {
     display: normal;
-***REMOVED***
+}
 
-@media (min-width: 641x) ***REMOVED***
-    .hidden-clock ***REMOVED***
+@media (min-width: 641x) {
+    .hidden-clock {
         display: none;
-***REMOVED***
-***REMOVED***
+    }
+}

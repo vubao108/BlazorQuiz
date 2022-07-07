@@ -17,50 +17,50 @@
 
 
 </div>
-@code ***REMOVED***
+@code {
     [Parameter]
-    public ExamInfo ExamItem ***REMOVED*** get; set; ***REMOVED***
+    public ExamInfo ExamItem { get; set; }
     [Parameter]
-    public int UserId ***REMOVED*** get; set; ***REMOVED***
+    public int UserId { get; set; }
 
     private string GetClassCss()
-    ***REMOVED***
+    {
          if ((bool)AppState.JoinedExamIds?.Contains(ExamItem.ExamId))
-        ***REMOVED***
+        {
             return "backgroundJoined text-white";
-    ***REMOVED***
+        }
         return "bg-light text-dark";
-***REMOVED***
+    }
 
     
 
     public void StartBaiThi()
-    ***REMOVED***
+    {
         //string absulateUri = NavManager.ToBaseRelativePath();
         //AppState.UpdateSelectedExam(this, ExamItem);
-        Uri absUri = NavManager.ToAbsoluteUri($"exam/***REMOVED***UserId***REMOVED***/***REMOVED***ExamItem.ExamId***REMOVED***");//***REMOVED***ExamItem.ExamName***REMOVED***");
+        Uri absUri = NavManager.ToAbsoluteUri($"exam/{UserId}/{ExamItem.ExamId}");//{ExamItem.ExamName}");
         NavManager.NavigateTo(absUri.ToString());
 
-***REMOVED***
+    }
 
     private async Task AppState_StateChanged(ComponentBase Source, string Property)
-    ***REMOVED***
+    {
         if (Source != this)
-        ***REMOVED***
+        {
             await InvokeAsync(StateHasChanged);
-    ***REMOVED***
-***REMOVED***
+        }
+    }
 
 
 
     protected override void OnInitialized()
-    ***REMOVED***
+    {
         AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
-***REMOVED***
+    }
 
     void IDisposable.Dispose()
-    ***REMOVED***
+    {
         AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
-***REMOVED***
+    }
 
-***REMOVED***
+}

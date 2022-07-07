@@ -10,41 +10,41 @@ using Serilog;
 using System.IO;
 
 namespace BlazorVNPTQuiz
-***REMOVED***
+{
     public class Program
-    ***REMOVED***
+    {
         public static void Main(string[] args)
-        ***REMOVED***
+        {
             var configuration = new ConfigurationBuilder()
            .SetBasePath(Directory.GetCurrentDirectory())
            .AddJsonFile("appsettings.json")
-              .AddJsonFile($"appsettings.***REMOVED***Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"***REMOVED***.json", true)
+              .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", true)
            .Build();
 
             Log.Logger = new LoggerConfiguration()
            .ReadFrom.Configuration(configuration)
            .CreateLogger();
             try
-            ***REMOVED***
+            {
                 CreateHostBuilder(args).Build().Run();
-        ***REMOVED***catch(Exception ex)
-            ***REMOVED***
+            }catch(Exception ex)
+            {
                 Log.Fatal(ex, "host terminated unexpectedly");
-        ***REMOVED***
+            }
             finally
-            ***REMOVED***
+            {
                 Log.CloseAndFlush();
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args).UseSerilog()
 
 
                 .ConfigureWebHostDefaults(webBuilder =>
-                ***REMOVED***
+                {
 
                     webBuilder.UseStartup<Startup>();
-            ***REMOVED***);
-***REMOVED***
-***REMOVED***
+                });
+    }
+}

@@ -1,14 +1,14 @@
-﻿@page "/ontap-nhanh/***REMOVED***LevelId:int***REMOVED***/***REMOVED***TagIds***REMOVED***/***REMOVED***limit:int***REMOVED***"
+﻿@page "/ontap-nhanh/{LevelId:int}/{TagIds}/{limit:int}"
 @inject IRepositoryOntap repository
 @inject AppState appState
 
 @if(questionQuickReviews?.Count() == 0)
-***REMOVED***
+{
     <p>
         Không có câu hỏi nào để ôn tập, hãy chọn lại các tiêu chí như mức độ và loại câu hỏi.
     </p>
-***REMOVED***
-@if(questionQuickReviews?.Count()>0)***REMOVED***
+}
+@if(questionQuickReviews?.Count()>0){
      <div class="floating-score">
                 
                     Làm:@DoneCount/@questionQuickReviews.Count()<br>
@@ -18,7 +18,7 @@
      </div>
      <div class="container">
     
-    @foreach(var questionQuickReview in questionQuickReviews) ***REMOVED***
+    @foreach(var questionQuickReview in questionQuickReviews) {
         
         
        
@@ -46,9 +46,9 @@
                         <div class="card-body scroll-answer">
                       @* <span class="card-title">></span>*@
                     @if (!questionQuickReview.questionOnTap.IsMultipleChoice)
-                    ***REMOVED***
+                    {
                         @foreach(AnswerDAO answerDAO in questionQuickReview.questionOnTap.Answers)
-                        ***REMOVED***
+                        {
                             <SfRadioButton Label="@answerDAO.AnswerText" Name="@(questionQuickReview.STT.ToString())" Value="@answerDAO.AnswerId.ToString()"
                             @bind-Checked="CurrentUserAnswerIdSelect" 
                             @onclick="()=>onAnswerChoiced(answerDAO.AnswerId, questionQuickReview)"
@@ -57,12 +57,12 @@
                             >
 
                             </SfRadioButton> <br /><br />
-                    ***REMOVED***
-                ***REMOVED***
+                        }
+                    }
                     else
-                    ***REMOVED***
+                    {
                         @foreach(AnswerDAO answerDAO in questionQuickReview.questionOnTap.Answers)
-                        ***REMOVED***
+                        {
                             <SfCheckBox Label="@answerDAO.AnswerText" Name="@(questionQuickReview.STT.ToString())" Value="@answerDAO.AnswerId.ToString()"
                             @bind-Checked="answerDAO.IsUserSelected" 
                             CssClass="@(questionQuickReview.IsAnswerMode ? answerDAO.IsCorrect ? "e-info btn-block right-answer": "e-info btn-block" : "e-info btn-block"  )"
@@ -70,8 +70,8 @@
                             >
 
                             </SfCheckBox> <br /><br />
-                    ***REMOVED***
-                ***REMOVED***
+                        }
+                    }
                     </div>
                    @* <div class="card-footer">
 
@@ -83,11 +83,11 @@
             </div>
             <div class="row answer-button">
                 @if (!questionQuickReview.IsAnswerMode)
-                ***REMOVED***
+                {
                     <div class="col-11 col-md-10">
                         <button class="btn btn-primary btn-block" @onclick="()=>onDapAnClick(questionQuickReview)">Đáp án</button>
                     </div>
-            ***REMOVED***else***REMOVED***
+                }else{
             
                     <div class="col-3 col-md-3">
                             <button class="btn @(questionQuickReview.levelId==1 ? "btn-danger" : "btn-primary")  btn-block" @onclick="()=>onEasyClick(questionQuickReview)"> Dễ </button>
@@ -98,179 +98,179 @@
                     <div class="col-3 col-md-3">
                         <button  class="btn @(questionQuickReview.levelId==3 ? "btn-danger" : "btn-primary") btn-block" @onclick="()=>onHardClick(questionQuickReview)">Khó </button>
                     </div>
-            ***REMOVED***
+                }
            
             </div>
         
 
         
-***REMOVED***
+    }
     </div>
    @* @if(IsFinished)
-    ***REMOVED***
+    {
         <p> Đã xong phiên ôn tập</p>
         <b>Tỉ lệ đúng: @Score / @(CurrentQuestionIndex+1)</b>
-***REMOVED****@
-***REMOVED***
+    }*@
+}
 <style>
-    .floating-score ***REMOVED***
+    .floating-score {
     position: fixed;
     bottom: 50%;
     right: 0;
     border-radius: 4px;
     z-index: 10;
-***REMOVED***
-    .user-answer-correct***REMOVED***
+    }
+    .user-answer-correct{
         background-color:blue
-***REMOVED***
-    .user-answer-false***REMOVED***
+    }
+    .user-answer-false{
         background-color:red
-***REMOVED***
-    .answer ***REMOVED***
+    }
+    .answer {
         font-size:14px !important
-***REMOVED***
-    .right-answer***REMOVED***
+    }
+    .right-answer{
         background-color:yellow
-***REMOVED***
-    .answer-button***REMOVED***
+    }
+    .answer-button{
         margin-bottom:16px;
-***REMOVED***
-    .scroll-answer***REMOVED***
+    }
+    .scroll-answer{
         @*max-height:70vh;
         overflow-y:auto;*@
-***REMOVED***
-     .e-radio-wrapper.e-info .e-radio:checked + label::after ***REMOVED*** /* csslint allow: adjoining-classes */
+    }
+     .e-radio-wrapper.e-info .e-radio:checked + label::after { /* csslint allow: adjoining-classes */
         background-color: #2196f3;
         color: #2196f3;
        
-***REMOVED***
+    }
     .e-radio-wrapper.e-info .e-radio:checked:focus + label::after,
-    .e-radio-wrapper.e-info .e-radio:checked + label:hover::after ***REMOVED*** /* csslint allow: adjoining-classes */
+    .e-radio-wrapper.e-info .e-radio:checked + label:hover::after { /* csslint allow: adjoining-classes */
         background-color: #0b7dda;
-***REMOVED***
+    }
 
-    .e-radio-wrapper.e-info .e-radio:checked + label::before ***REMOVED***
+    .e-radio-wrapper.e-info .e-radio:checked + label::before {
         border-color: #2196f3;
         background-color: #fff;
         
-***REMOVED***
+    }
 
     .e-radio-wrapper.e-info .e-radio:checked:focus + label::before,
-    .e-radio-wrapper.e-info .e-radio:checked + label:hover::before ***REMOVED***
+    .e-radio-wrapper.e-info .e-radio:checked + label:hover::before {
         border-color: #0b7dda;
        
         
-***REMOVED***
+    }
 
-    .e-radio-wrapper.e-info .e-radio + label:hover::before ***REMOVED***
+    .e-radio-wrapper.e-info .e-radio + label:hover::before {
         border-color: #b1afaf;
-***REMOVED***
-    .e-radio+label .e-label ***REMOVED***
+    }
+    .e-radio+label .e-label {
          font-size:16px;
         
-***REMOVED***
-    .floating-button ***REMOVED***
+    }
+    .floating-button {
     position: fixed;
     bottom: 50%;
     right: 0;
     border-radius: 4px;
     z-index: 10;
-***REMOVED***
+    }
     
-    .text-summary***REMOVED***
+    .text-summary{
      text-align: center;
-***REMOVED***
+    }
 
 </style>
-@code ***REMOVED***
+@code {
     List<QuestionOnTap> questionOnTaps;
     List<QuestionQuickReview> questionQuickReviews;
-    public int CurrentQuestionIndex ***REMOVED*** get; set; ***REMOVED***
+    public int CurrentQuestionIndex { get; set; }
     private string CurrentUserAnswerIdSelect;
 
     [Parameter]
-    public string TagIds ***REMOVED*** get; set; ***REMOVED***
+    public string TagIds { get; set; }
     [Parameter]
-    public int LevelId ***REMOVED*** get; set; ***REMOVED***
+    public int LevelId { get; set; }
     [Parameter]
-    public int limit ***REMOVED*** get; set; ***REMOVED***
+    public int limit { get; set; }
 
-    String RightAnswerCSS***REMOVED*** get; set; ***REMOVED***
+    String RightAnswerCSS{ get; set; }
 
-    String UserResultCss***REMOVED*** get; set; ***REMOVED***
+    String UserResultCss{ get; set; }
 
-    bool IsAnswerMode ***REMOVED*** get; set; ***REMOVED***
+    bool IsAnswerMode { get; set; }
 
     private int Score;
     private int DoneCount;
     private bool IsFinished;
     class QuestionQuickReview
-    ***REMOVED***
-        public QuestionOnTap questionOnTap***REMOVED*** get; set; ***REMOVED***
-        public bool IsAnswerMode ***REMOVED*** get; set; ***REMOVED***
-        public int STT ***REMOVED*** get; set; ***REMOVED***
-        public int levelId ***REMOVED*** get; set; ***REMOVED***
-        public string UserResultCss***REMOVED*** get; set; ***REMOVED***
+    {
+        public QuestionOnTap questionOnTap{ get; set; }
+        public bool IsAnswerMode { get; set; }
+        public int STT { get; set; }
+        public int levelId { get; set; }
+        public string UserResultCss{ get; set; }
 
-***REMOVED***
+    }
 
     protected override async Task OnInitializedAsync()
-    ***REMOVED***
+    {
         questionOnTaps = await repository.LayDanhSachCauHoiOnTapTheoMucDo(appState.CurrentIdentityUserId, TagIds, LevelId, limit);
         if(questionOnTaps.Count() > 0)
-        ***REMOVED***
+        {
             questionQuickReviews = new List<QuestionQuickReview>(questionOnTaps.Count());
             int stt = 0;
-            foreach (var question in questionOnTaps) ***REMOVED***
+            foreach (var question in questionOnTaps) {
                 questionQuickReviews.Add(new QuestionQuickReview()
-                ***REMOVED***questionOnTap = question, IsAnswerMode = false, STT = ++stt***REMOVED***);
+                {questionOnTap = question, IsAnswerMode = false, STT = ++stt});
 
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
 
         await base.OnInitializedAsync();
-***REMOVED***
+    }
     void onAnswerChoiced(int answerId, QuestionQuickReview questionQuickReview)
-    ***REMOVED***
+    {
         foreach(var answer in questionQuickReview.questionOnTap.Answers)
-        ***REMOVED***
+        {
             if(answer.AnswerId == answerId)
-            ***REMOVED***
+            {
                 answer.IsUserSelected = true;
-        ***REMOVED***
+            }
             else
-            ***REMOVED***
+            {
                 answer.IsUserSelected = false;
-        ***REMOVED***
-    ***REMOVED***
-***REMOVED***
+            }
+        }
+    }
     void onDapAnClick(QuestionQuickReview questionQuickReview)
-    ***REMOVED***
+    {
         questionQuickReview.IsAnswerMode = true;
         DoneCount++;
         //if(CurrentUserAnswerIdSelect == questionOnTaps[CurrentQuestionIndex].Answers
         //    .FirstOrDefault(item=>item.IsCorrect)?.AnswerId.ToString()
         //)
-        //***REMOVED***
+        //{
         //    Score++;
-        //***REMOVED***
+        //}
         //StateHasChanged();
         if (CheckTraLoiDung(questionQuickReview))
-        ***REMOVED***
+        {
             questionQuickReview.UserResultCss = "user-answer-correct";
             Score++;
-    ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             questionQuickReview.UserResultCss = "user-answer-false";
-    ***REMOVED***
+        }
         CurrentUserAnswerIdSelect = "0";
-***REMOVED***
+    }
 
     private bool CheckTraLoiDung(QuestionQuickReview questionQuickReview)
-    ***REMOVED***
+    {
         //if (questionQuickReview.questionOnTap.IsMultipleChoice)
-        //***REMOVED***
+        //{
 
 
 
@@ -278,69 +278,69 @@
         var listRightAnswer = questionQuickReview.questionOnTap.Answers.Where(item => item.IsCorrect).Select(item => item.AnswerId).ToList();
         return listUserChoose?.Count() > 0 && listUserChoose.Count() == listRightAnswer?.Count()
             && listUserChoose.All(item => listRightAnswer.Contains(item));
-        //***REMOVED***
+        //}
         //else
-        //***REMOVED***
+        //{
         //    return CurrentUserAnswerIdSelect == questionQuickReview.questionOnTap.Answers
         //    .FirstOrDefault(item => item.IsCorrect)?.AnswerId.ToString();
-        //***REMOVED***
+        //}
 
 
-***REMOVED***
+    }
 
     async void onEasyClick(QuestionQuickReview question)
-    ***REMOVED***
+    {
         await repository.UpdateDanhGiaCauhoiOnTap(question.questionOnTap.Id, (int)Level.Easy);
         question.levelId = 1;
         StateHasChanged();
         //NextQuestion();
 
-***REMOVED***
+    }
 
     async void onNormalClick(QuestionQuickReview question)
-    ***REMOVED***
+    {
         await repository.UpdateDanhGiaCauhoiOnTap(question.questionOnTap.Id, (int)Level.Normal);
         question.levelId = 2;
         StateHasChanged();
         //NextQuestion();
-***REMOVED***
+    }
 
     async void onHardClick(QuestionQuickReview question)
-    ***REMOVED***
+    {
         await repository.UpdateDanhGiaCauhoiOnTap(question.questionOnTap.Id, (int)Level.Hard);
         question.levelId = 3;
         StateHasChanged();
         //NextQuestion();
-***REMOVED***
+    }
 
 
 
     //private void NextQuestion()
-    //***REMOVED***
+    //{
     //    if(CurrentQuestionIndex < questionOnTaps.Count() -1 )
-    //    ***REMOVED***
+    //    {
     //        IsAnswerMode = false;
     //        CurrentUserAnswerIdSelect = "0";
     //        CurrentQuestionIndex++;
 
-    //***REMOVED***
+    //    }
     //    else
-    //    ***REMOVED***
+    //    {
     //        IsFinished = true;
-    //***REMOVED***
+    //    }
     //    StateHasChanged();
 
 
-    //***REMOVED***
+    //}
 
     
 
     //public string GetCSSClass()
-    //***REMOVED***
+    //{
     //    if (IsAnswerMode)
-    //    ***REMOVED***
+    //    {
     //        if(questionOnTaps[CurrentQuestionIndex].Answers.)
-    //***REMOVED***
+    //    }
     //    return "";
-    //***REMOVED***
-***REMOVED***
+    //}
+}

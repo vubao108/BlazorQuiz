@@ -4,21 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace BlazorVNPTQuiz.Models
-***REMOVED***
+{
     public class Category
-    ***REMOVED***
-        public int Id ***REMOVED*** get; set; ***REMOVED***
-        public string Name ***REMOVED*** get; set; ***REMOVED***
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
 
-        public bool IsSelected ***REMOVED*** get; set; ***REMOVED***
+        public bool IsSelected { get; set; }
 
-        public List<CategoryLevelState> LevelStates ***REMOVED***get;set;***REMOVED***
-***REMOVED***
+        public List<CategoryLevelState> LevelStates {get;set;}
+    }
 
     public class CategoryLevelState
-    ***REMOVED***
+    {
         public int LevelId;
         public string LevelName;
         public int NumOfQuestion;
-***REMOVED***
-***REMOVED***
+    }
+}

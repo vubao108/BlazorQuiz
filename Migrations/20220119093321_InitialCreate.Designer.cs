@@ -7,20 +7,20 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BlazorVNPTQuiz.Migrations
-***REMOVED***
+{
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20220119093321_InitialCreate")]
     partial class InitialCreate
-    ***REMOVED***
+    {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
-        ***REMOVED***
+        {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.13");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
-                ***REMOVED***
+                {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
@@ -43,10 +43,10 @@ namespace BlazorVNPTQuiz.Migrations
                         .HasDatabaseName("RoleNameIndex");
 
                     b.ToTable("AspNetRoles");
-            ***REMOVED***);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                ***REMOVED***
+                {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
@@ -66,10 +66,10 @@ namespace BlazorVNPTQuiz.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetRoleClaims");
-            ***REMOVED***);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                ***REMOVED***
+                {
                     b.Property<string>("Id")
                         .HasColumnType("varchar(255)");
 
@@ -130,10 +130,10 @@ namespace BlazorVNPTQuiz.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
-            ***REMOVED***);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                ***REMOVED***
+                {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
@@ -153,10 +153,10 @@ namespace BlazorVNPTQuiz.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("AspNetUserClaims");
-            ***REMOVED***);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                ***REMOVED***
+                {
                     b.Property<string>("LoginProvider")
                         .HasMaxLength(128)
                         .HasColumnType("varchar(128)");
@@ -177,10 +177,10 @@ namespace BlazorVNPTQuiz.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("AspNetUserLogins");
-            ***REMOVED***);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                ***REMOVED***
+                {
                     b.Property<string>("UserId")
                         .HasColumnType("varchar(255)");
 
@@ -192,10 +192,10 @@ namespace BlazorVNPTQuiz.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
-            ***REMOVED***);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                ***REMOVED***
+                {
                     b.Property<string>("UserId")
                         .HasColumnType("varchar(255)");
 
@@ -213,37 +213,37 @@ namespace BlazorVNPTQuiz.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-            ***REMOVED***);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                ***REMOVED***
+                {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-            ***REMOVED***);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                ***REMOVED***
+                {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-            ***REMOVED***);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                ***REMOVED***
+                {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-            ***REMOVED***);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                ***REMOVED***
+                {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
@@ -255,17 +255,17 @@ namespace BlazorVNPTQuiz.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-            ***REMOVED***);
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                ***REMOVED***
+                {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-            ***REMOVED***);
+                });
 #pragma warning restore 612, 618
-    ***REMOVED***
-***REMOVED***
-***REMOVED***
+        }
+    }
+}

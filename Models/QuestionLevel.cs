@@ -4,15 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace BlazorVNPTQuiz.Models
-***REMOVED***
+{
     public class QuestionLevel
-    ***REMOVED***
+    {
         public int Id;
         public string Level;
-***REMOVED***
+    }
 
     public enum Level
-    ***REMOVED***
+    {
         All, Easy, Normal, Hard, New
-***REMOVED***
-***REMOVED***
+    }
+}

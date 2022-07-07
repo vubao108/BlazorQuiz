@@ -4,14 +4,14 @@ using System.Collections.Generic;
 #nullable disable
 
 namespace BlazorVNPTQuiz.Repository.Entity
-***REMOVED***
+{
     public partial class ExamQuestionOfficial
-    ***REMOVED***
-        public long Id ***REMOVED*** get; set; ***REMOVED***
-        public long? ExamId ***REMOVED*** get; set; ***REMOVED***
-        public int? TryNum ***REMOVED*** get; set; ***REMOVED***
-        public long? UserId ***REMOVED*** get; set; ***REMOVED***
-        public long? QuestionId ***REMOVED*** get; set; ***REMOVED***
-        public long? AnswerId ***REMOVED*** get; set; ***REMOVED***
-***REMOVED***
-***REMOVED***
+    {
+        public long Id { get; set; }
+        public long? ExamId { get; set; }
+        public int? TryNum { get; set; }
+        public long? UserId { get; set; }
+        public long? QuestionId { get; set; }
+        public long? AnswerId { get; set; }
+    }
+}

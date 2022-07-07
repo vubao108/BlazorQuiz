@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BlazorVNPTQuiz.Areas.Identity.Pages.Account.Manage
-***REMOVED***
+{
     public static class ManageNavPages
-    ***REMOVED***
+    {
         public static string Index => "Index";
 
         public static string Email => "Email";
@@ -41,10 +41,10 @@ namespace BlazorVNPTQuiz.Areas.Identity.Pages.Account.Manage
         public static string TwoFactorAuthenticationNavClass(ViewContext viewContext) => PageNavClass(viewContext, TwoFactorAuthentication);
 
         private static string PageNavClass(ViewContext viewContext, string page)
-        ***REMOVED***
+        {
             var activePage = viewContext.ViewData["ActivePage"] as string
                 ?? System.IO.Path.GetFileNameWithoutExtension(viewContext.ActionDescriptor.DisplayName);
             return string.Equals(activePage, page, StringComparison.OrdinalIgnoreCase) ? "active" : null;
-    ***REMOVED***
-***REMOVED***
-***REMOVED***
+        }
+    }
+}

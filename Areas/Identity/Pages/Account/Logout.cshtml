@@ -1,21 +1,21 @@
 ﻿@page
 @model LogoutModel
-@***REMOVED***
+@{
     ViewData["Title"] = "Bạn có thực sự muốn đăng xuất ?";
-***REMOVED***
+}
 
 <header>
     <h1>@ViewData["Title"]</h1>
-    @***REMOVED***
+    @{
         if (User.Identity.IsAuthenticated)
-        ***REMOVED***
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new ***REMOVED*** area = "" ***REMOVED***)" method="post">
+        {
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
                 <button type="submit" class="nav-link btn btn-danger text-warning">Click vào đây để đăng xuất</button>
             </form>
-    ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             <p>Bạn đã đăng xuất thành công.</p>
-    ***REMOVED***
-***REMOVED***
+        }
+    }
 </header>

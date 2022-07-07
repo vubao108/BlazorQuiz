@@ -13,24 +13,24 @@
         <h3>Danh sách bài thi</h3>
 
         @if (examInfos == null)
-        ***REMOVED***
+        {
             <b>Đang tải bài thi ....</b>
-    ***REMOVED***
+        }
         else if (examInfos.Count == 0)
-        ***REMOVED***
+        {
             <h4>Không có bài thi nào !</h4>
-    ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             foreach (var exam in examInfos)
-            ***REMOVED***
+            {
                 <div>
                     <ExamComponent ExamItem="exam" UserId="@(Convert.ToInt32(CurrentUser?.Id))" />
 
                 </div><br />
-        ***REMOVED***
+            }
 
-    ***REMOVED***
+        }
     </Authorized>
     <NotAuthorized>
         <h3>
@@ -41,35 +41,35 @@
     </NotAuthorized>
 </AuthorizeView>
 
-@code ***REMOVED***
-    public IdentityUser CurrentUser ***REMOVED*** get; set; ***REMOVED***
-    public List<ExamInfo> examInfos ***REMOVED*** get; set; ***REMOVED***
+@code {
+    public IdentityUser CurrentUser { get; set; }
+    public List<ExamInfo> examInfos { get; set; }
 
     protected override async Task OnInitializedAsync()
-    ***REMOVED***
+    {
         var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
         var user = authstate.User;
         if (user.Identity.IsAuthenticated)
-        ***REMOVED***
+        {
             CurrentUser = await userManager.FindByNameAsync(user.Identity.Name);
             examInfos = await repository.LayDanhSachBaiThi(Convert.ToInt32(CurrentUser.Id));
             AppState.CurrentIdentityUserId = Convert.ToInt32(CurrentUser.Id);
             await AppState.GetJoinedExams();
             
-    ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             var returnUrl = navManager.ToBaseRelativePath(navManager.Uri);
-            if (string.IsNullOrWhiteSpace(returnUrl))***REMOVED***
+            if (string.IsNullOrWhiteSpace(returnUrl)){
                 navManager.NavigateTo("Identity/Account/Login", true);
-        ***REMOVED***
+            }
             else
-            ***REMOVED***
-                navManager.NavigateTo($"Identity/Account/Login?returnUrl=~/***REMOVED***returnUrl***REMOVED***", true);
-        ***REMOVED***
+            {
+                navManager.NavigateTo($"Identity/Account/Login?returnUrl=~/{returnUrl}", true);
+            }
             //navManager.NavigateTo("Identity/Account/Login?returnUrl=~/listexam");
 
-    ***REMOVED***
-***REMOVED***
+        }
+    }
 
-***REMOVED***
+}

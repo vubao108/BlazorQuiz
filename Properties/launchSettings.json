@@ -1,30 +1,30 @@
-***REMOVED***
-  "iisSettings": ***REMOVED***
-***REMOVED***
-***REMOVED***
-    "iisExpress": ***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
-  "profiles": ***REMOVED***
-    "IIS Express": ***REMOVED***
-***REMOVED***
-***REMOVED***
-      "environmentVariables": ***REMOVED***
-***REMOVED***
-  ***REMOVED***
-***REMOVED***,
-    "BlazorVNPTQuiz": ***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:5329",
+      "sslPort": 44306
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "BlazorVNPTQuiz": {
+      "commandName": "Project",
+      "dotnetRunMessages": "true",
+      "launchBrowser": true,
      
-***REMOVED***
-***REMOVED***
-      "environmentVariables": ***REMOVED***
-***REMOVED***
-  ***REMOVED***
-***REMOVED***
-***REMOVED***
-***REMOVED***
+      "applicationUrl": "http://localhost:5000",
+      //"applicationUrl": "https://app.vnpt.hatinh.vn/quiz",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
