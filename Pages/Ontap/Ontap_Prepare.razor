@@ -73,7 +73,7 @@
                     </ListViewEvents>
                     <ListViewTemplates TValue="Category">
                         <Template>
-                            @***REMOVED***
+                            @{
                                 Category item = context as Category;
                                 <div class="e-list-wrapper e-list-multi-line " @onclick="GetSlectedQuestions">
 
@@ -83,7 +83,7 @@
 
                                     </span>
                                 </div>
-                        ***REMOVED***
+                            }
                         </Template>
                     </ListViewTemplates>
 
@@ -98,121 +98,121 @@
 
     </div>
 
-@code ***REMOVED***
-    public int CurrentLevelId ***REMOVED*** get; set; ***REMOVED***
-    public int numOfQuestion ***REMOVED*** get; set; ***REMOVED*** = 10000;
-    public int SelectedQuestions ***REMOVED*** get; set; ***REMOVED***
-    public bool IsQuickReview ***REMOVED*** get; set; ***REMOVED***
+@code {
+    public int CurrentLevelId { get; set; }
+    public int numOfQuestion { get; set; } = 10000;
+    public int SelectedQuestions { get; set; }
+    public bool IsQuickReview { get; set; }
 
 
     List<QuestionLevel> levels = new List<QuestionLevel>()
-    ***REMOVED***
-        new QuestionLevel()***REMOVED*** Id = 0, Level="Tất cả mức độ"***REMOVED***,
-        new QuestionLevel()***REMOVED*** Id = 4, Level="Mới (Chưa ôn lần nào)"***REMOVED***,
-        new QuestionLevel()***REMOVED*** Id = 3, Level="Khó"***REMOVED***,
-        new QuestionLevel()***REMOVED*** Id = 2, Level="Bình thường",***REMOVED***,
-        new QuestionLevel()***REMOVED*** Id = 1, Level="Dễ"***REMOVED***
+    {
+        new QuestionLevel(){ Id = 0, Level="Tất cả mức độ"},
+        new QuestionLevel(){ Id = 4, Level="Mới (Chưa ôn lần nào)"},
+        new QuestionLevel(){ Id = 3, Level="Khó"},
+        new QuestionLevel(){ Id = 2, Level="Bình thường",},
+        new QuestionLevel(){ Id = 1, Level="Dễ"}
 
-***REMOVED***;
+    };
     List<Category> Categories;
 
-    [CascadingParameter] public IModalService Modal ***REMOVED*** get; set; ***REMOVED***
+    [CascadingParameter] public IModalService Modal { get; set; }
 
     protected override async Task OnInitializedAsync()
-    ***REMOVED***
+    {
         Categories = await repository.LayDanhSachChuDeTheoNguoiDung(appState.CurrentIdentityUserId);
         await base.OnInitializedAsync();
-***REMOVED***
+    }
 
     void ontapClick()
-    ***REMOVED***
-        Debug.WriteLine($"level = ***REMOVED***CurrentLevelId***REMOVED*** numOfQuestion =***REMOVED***numOfQuestion***REMOVED***");
+    {
+        Debug.WriteLine($"level = {CurrentLevelId} numOfQuestion ={numOfQuestion}");
         if (IsQuickReview)
-        ***REMOVED***
+        {
             string tags = String.Join(",", Categories.Where(item => item.IsSelected).Select(item => item.Id).ToArray());
-            navigation.NavigateTo($"ontap-nhanh/***REMOVED***CurrentLevelId***REMOVED***/***REMOVED***tags***REMOVED***/***REMOVED***numOfQuestion***REMOVED***");
-    ***REMOVED***
+            navigation.NavigateTo($"ontap-nhanh/{CurrentLevelId}/{tags}/{numOfQuestion}");
+        }
         else
-        ***REMOVED***
+        {
             
             string tags = String.Join(",", Categories.Where(item => item.IsSelected).Select(item => item.Id).ToArray());
-            navigation.NavigateTo($"ontap/***REMOVED***CurrentLevelId***REMOVED***/***REMOVED***tags***REMOVED***/***REMOVED***numOfQuestion***REMOVED***");
-    ***REMOVED***
-***REMOVED***
+            navigation.NavigateTo($"ontap/{CurrentLevelId}/{tags}/{numOfQuestion}");
+        }
+    }
 
     int GetLevelCategoryNum(Category category, int level_id)
-    ***REMOVED***
+    {
         var item = category.LevelStates.FirstOrDefault(level_item => level_item.LevelId == level_id);
         return item != null ? item.NumOfQuestion : 0;
-***REMOVED***
-    void CategoryIsSelectedChanged(ClickEventArgs<Category> args) ***REMOVED***
+    }
+    void CategoryIsSelectedChanged(ClickEventArgs<Category> args) {
         GetSlectedQuestions();
-***REMOVED***
+    }
 
     void GetSlectedQuestions()
-    ***REMOVED***
+    {
         if (Categories != null && Categories.Any(item => item.IsSelected))
-        ***REMOVED***
+        {
               SelectedQuestions = Categories.Where(item => item.IsSelected).Sum(item => item.LevelStates.Where(item => CurrentLevelId == 0 || item.LevelId == CurrentLevelId)
                   .Sum(item => item.NumOfQuestion));
-    ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
              SelectedQuestions =  0;
-    ***REMOVED***
-***REMOVED***
+        }
+    }
 
 
-***REMOVED***
+}
 
 <style>
-    .flex ***REMOVED***
+    .flex {
         display: flex;
-***REMOVED***
+    }
 
-    .flex__center ***REMOVED***
+    .flex__center {
         justify-content: center;
-***REMOVED***
+    }
 
-    .vertical__center ***REMOVED***
+    .vertical__center {
         align-items: center;
-***REMOVED***
+    }
 
-    .vertical ***REMOVED***
+    .vertical {
         flex-direction: column;
-***REMOVED***
+    }
 
-    .flex__1 ***REMOVED***
+    .flex__1 {
         flex: 1;
-***REMOVED***
+    }
 
-    .flex__2 ***REMOVED***
+    .flex__2 {
         flex: 2;
-***REMOVED***
+    }
 
-    .flex__3 ***REMOVED***
+    .flex__3 {
         flex: 3;
-***REMOVED***
+    }
 
-    .flex__4 ***REMOVED***
+    .flex__4 {
         flex: 4;
-***REMOVED***
+    }
 
-    .bold ***REMOVED***
+    .bold {
         font-weight: 500;
-***REMOVED***
+    }
 
-    .margin ***REMOVED***
+    .margin {
         margin: 10px;
         width: 350px;
-***REMOVED***
+    }
 
-    .small__font ***REMOVED***
+    .small__font {
         font-size: 13px;
         margin: 2px 0;
-***REMOVED***
-    .list-category***REMOVED***
+    }
+    .list-category{
         max-height:80vh;
         overflow-y:auto;
-***REMOVED***
+    }
 </style>

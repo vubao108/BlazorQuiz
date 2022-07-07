@@ -4,44 +4,44 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace BlazorVNPTQuiz.Models
-***REMOVED***
+{
     public class KetQuaBaiThi
-    ***REMOVED***
-        public int UserExamId ***REMOVED*** get; set; ***REMOVED***
-        public UserInfo User ***REMOVED*** get; set; ***REMOVED***
-        public ExamInfo Exam ***REMOVED*** get; set; ***REMOVED***
-        public decimal Score ***REMOVED*** get; set; ***REMOVED***
-        public int NumOfRight ***REMOVED*** get; set; ***REMOVED***
-        public DateTime JoinTime ***REMOVED*** get; set; ***REMOVED***
-        public DateTime FinishTime ***REMOVED*** get; set; ***REMOVED***
-        public int TryNum ***REMOVED*** get; set; ***REMOVED***
-***REMOVED***
+    {
+        public int UserExamId { get; set; }
+        public UserInfo User { get; set; }
+        public ExamInfo Exam { get; set; }
+        public decimal Score { get; set; }
+        public int NumOfRight { get; set; }
+        public DateTime JoinTime { get; set; }
+        public DateTime FinishTime { get; set; }
+        public int TryNum { get; set; }
+    }
 
-    public class ExamNotFinishedYet ***REMOVED*** 
-        public int UserExamId ***REMOVED*** get; set; ***REMOVED***
-        public ExamInfo CurrentExam ***REMOVED*** get; set; ***REMOVED***
-        public int RemainSecond ***REMOVED*** get; set; ***REMOVED***
-        public DateTime JoinTime ***REMOVED*** get; set; ***REMOVED***
-        public int TryNum ***REMOVED*** get; set; ***REMOVED***
+    public class ExamNotFinishedYet { 
+        public int UserExamId { get; set; }
+        public ExamInfo CurrentExam { get; set; }
+        public int RemainSecond { get; set; }
+        public DateTime JoinTime { get; set; }
+        public int TryNum { get; set; }
     
-***REMOVED***
+    }
 
 
     public class ExamInfo
-    ***REMOVED***
-        public int ExamId ***REMOVED*** get; set; ***REMOVED***
-        public int MaxTry ***REMOVED*** get; set; ***REMOVED***
-        public string ExamName ***REMOVED*** get; set; ***REMOVED***
+    {
+        public int ExamId { get; set; }
+        public int MaxTry { get; set; }
+        public string ExamName { get; set; }
 
-        public int Duration ***REMOVED*** get; set; ***REMOVED***
-        public int NumOfQuestion ***REMOVED*** get; set; ***REMOVED***
-***REMOVED***
+        public int Duration { get; set; }
+        public int NumOfQuestion { get; set; }
+    }
 
     public class UserInfo
-    ***REMOVED***
+    {
         public int UserId;
         public string UserName;
         public string FullName;
         public string TenDonVi;
-***REMOVED***
-***REMOVED***
+    }
+}

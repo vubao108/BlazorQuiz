@@ -55,73 +55,73 @@
 </div>
 
 <style>
-    .margin-button ***REMOVED***
+    .margin-button {
         margin-left: 16px;
-***REMOVED***
+    }
 </style>
 
 
-@code ***REMOVED***
-    public int CurrentDonViId ***REMOVED*** get; set; ***REMOVED***
+@code {
+    public int CurrentDonViId { get; set; }
     List<Donvi> Donvis;
 
     List<Category> Categories;
 
-    [CascadingParameter] public IModalService Modal ***REMOVED*** get; set; ***REMOVED***
+    [CascadingParameter] public IModalService Modal { get; set; }
 
 
     protected override async Task OnInitializedAsync()
-    ***REMOVED***
+    {
 
         Donvis = await repositoryOntap.LayDanhSachDonVi(appState.CurrentIdentityUserId);
 
         if (Donvis != null && Donvis.Count > 0)
-        ***REMOVED***
+        {
             CurrentDonViId = Donvis[0].Id;
             Categories = await repositoryOntap.LayDanhSachChuDeTheoDonVi(CurrentDonViId);
-    ***REMOVED***
+        }
 
         await base.OnInitializedAsync();
 
-***REMOVED***
+    }
 
     private async void ValueDonViIdChangedHandler(Syncfusion.Blazor.DropDowns.ChangeEventArgs<int, Donvi> args)
-    ***REMOVED***
-        Debug.WriteLine($"ValueDonViIdChangedHandler ***REMOVED***CurrentDonViId***REMOVED*** ");
+    {
+        Debug.WriteLine($"ValueDonViIdChangedHandler {CurrentDonViId} ");
         Categories = await repositoryOntap.LayDanhSachChuDeTheoDonVi(CurrentDonViId);
         StateHasChanged();
-***REMOVED***
+    }
 
     private async void onSaveClick(Microsoft.AspNetCore.Components.Web.MouseEventArgs args)
-    ***REMOVED***
-        Debug.WriteLine($"onSaveClick CurrentDonVi = ***REMOVED***CurrentDonViId***REMOVED***");
+    {
+        Debug.WriteLine($"onSaveClick CurrentDonVi = {CurrentDonViId}");
         await repositoryOntap.GanChuDeChoDonVi(CurrentDonViId, Categories.Where(item => item.IsSelected).ToList());
         Categories = await repositoryOntap.LayDanhSachChuDeTheoDonVi(CurrentDonViId);
         StateHasChanged();
-***REMOVED***
+    }
 
     private async void onGenerateMobileData(MouseEventArgs args)
-    ***REMOVED***
-        var request = new HttpRequestMessage(HttpMethod.Get, $"http://113.160.178.20/flaskdemo/generate_ontap_data?donvi_id=***REMOVED***CurrentDonViId***REMOVED***");
+    {
+        var request = new HttpRequestMessage(HttpMethod.Get, $"http://113.160.178.20/flaskdemo/generate_ontap_data?donvi_id={CurrentDonViId}");
         var client = ClientFactory.CreateClient();
         var response = await client.SendAsync(request);
         if (response.IsSuccessStatusCode)
-        ***REMOVED***
+        {
             Debug.WriteLine("Da tao du lieu thanh cong");
             HienThiThongBao("Đã tạo dữ liệu ôn tập cho mobile thành công");
 
-    ***REMOVED***
-***REMOVED***
+        }
+    }
 
     private void HienThiThongBao(string thongbao)
-    ***REMOVED***
+    {
         var parameters = new ModalParameters();
         parameters.Add(nameof(ConfirmDialog.Message), thongbao);
         var confirmDialog = Modal.Show<ConfirmDialog>("Thông báo", parameters);
         
-***REMOVED***
+    }
 
 
 
 
-***REMOVED***
+}

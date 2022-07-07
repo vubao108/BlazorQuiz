@@ -6,7 +6,7 @@
         <Authorized>
             <div class="col-12 col-md-7"  style="align-items:flex-start; padding-left:2px">
                 @if (AppState.SelectedExamNotFinishedInfo?.CurrentExam != null && AppState.RemainSeconds > 0 )
-                ***REMOVED***
+                {
                 <a href="exam/@AppState.CurrentIdentityUserId/@AppState.SelectedExamNotFinishedInfo?.CurrentExam?.ExamId"><b>@AppState.SelectedExamNotFinishedInfo?.CurrentExam?.ExamName</b></a>
                 @*<text> &nbsp; &nbsp; &nbsp;</text>*@
                    
@@ -14,7 +14,7 @@
                     
 
 
-                ***REMOVED***
+                    }
             </div>
             <div class="col-12 col-md-5" style="z-index:2; padding-left:2px">
 
@@ -22,9 +22,9 @@
 
                 <a href="Identity/Account/Logout">Đăng xuất</a>
                 @if(AppState.SelectedExamNotFinishedInfo?.CurrentExam != null && AppState.RemainSeconds > 0)
-                ***REMOVED***
+                {
                     <span style="color:red; margin-left:24px"> @GetStringCountDown() </span>
-            ***REMOVED***
+                }
             </div>
         </Authorized>
         <NotAuthorized>
@@ -37,41 +37,41 @@
 
     </AuthorizeView>
 
-    @code***REMOVED***
+    @code{
         
 
         private async Task AppState_StateChanged(ComponentBase Source, string Property)
-        ***REMOVED***
+        {
             if (Source != this)
-            ***REMOVED***
+            {
                 // Inspect Property to determine if action needs to be taken.
                 await InvokeAsync(StateHasChanged);
-        ***REMOVED***
-    ***REMOVED***
+            }
+        }
         protected override void OnInitialized()
-        ***REMOVED***
+        {
            
             AppState.StateChanged += async (Source, Property) => await AppState_StateChanged(Source, Property);
             
             
-    ***REMOVED***
+        }
         protected override async Task OnInitializedAsync()
-        ***REMOVED***
+        {
            await  AppState.InitializeState();
-    ***REMOVED***
+        }
 
         private string GetStringCountDown()
-        ***REMOVED***
+        {
 
-            return $"***REMOVED***AppState.RemainSeconds / 60***REMOVED***:***REMOVED***AppState.RemainSeconds%60***REMOVED***";
-    ***REMOVED***
+            return $"{AppState.RemainSeconds / 60}:{AppState.RemainSeconds%60}";
+        }
 
         
         
        
         void IDisposable.Dispose()
-        ***REMOVED***
+        {
             AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
 
-    ***REMOVED***
-***REMOVED***
+        }
+    }

@@ -1,4 +1,4 @@
-﻿@page "/exam/***REMOVED***userid:int***REMOVED***/***REMOVED***examid:int***REMOVED***"
+﻿@page "/exam/{userid:int}/{examid:int}"
 @attribute [Authorize(Roles = "CanJoinExam")]
 @implements IDisposable
 @using BlazorVNPTQuiz.Models
@@ -15,26 +15,26 @@
 @inject ILogger<Exam> _logger;
 
 @if (questions == null)
-***REMOVED***
+{
 
 
     <h2>loading</h2>
-***REMOVED***
+}
 else if (questions.UserExamId == 0)
-***REMOVED*** <h4>Hết lượt thi hoặc bài thi bị khoá</h4> ***REMOVED***
+{ <h4>Hết lượt thi hoặc bài thi bị khoá</h4> }
 else
-***REMOVED***
+{
     @if (kieu == 0)
-    ***REMOVED***
+    {
 
         @*<div class="row">*@
         @*<div class="col-11 col-md-6"><strong> @AppState.SelectedExamInfo.ExamName </strong></div>
             <div class="col-6 col-md-4"> <span style="color:red">@RemainTime</span></div>*@
         @*<div class="floating-button">
                 @if (AppState.RemainSeconds > 0)
-                ***REMOVED***
+                {
                 <span style="color:red" class="hidden-clock">@RemainTime</span> <br />
-            ***REMOVED***
+                }
                 <button @onclick="Submit" class="btn btn-success">
                     Nộp Bài
                 </button>
@@ -51,7 +51,7 @@ else
         <div class="row">
             <div class="col-11 col-md-10">
                 @for (var index = 0; index < questions.Questions.Count; index++)
-                ***REMOVED***
+                {
                     var question = questions.Questions[index];
                     <div class="card bg-light text-dark">
 
@@ -60,18 +60,18 @@ else
                             <EditForm Model="question">
                                 <InputRadioGroup @bind-Value="question.UserAnswerId">
                                     @foreach (var answer in question.Answers)
-                                                ***REMOVED***
+                                                {
 
 
                                         @if (!string.IsNullOrEmpty(answer.AnswerText.Trim()))
-                                                    ***REMOVED***
+                                                    {
                                             <label>
                                                 <InputRadio Value="answer.AnswerId" @onclick="()=>OnAnswerClick(question, answer.AnswerId)" /> @answer.AnswerText
                                             </label><br />
 
-                                                ***REMOVED***
+                                                    }
 
-                                            ***REMOVED***
+                                                }
                                 </InputRadioGroup>
                             </EditForm>
                         </div>
@@ -79,20 +79,20 @@ else
                     <br />
 
 
-            ***REMOVED***
+                }
             </div>
         </div>
-***REMOVED***
+    }
 
-***REMOVED***
+}
 
-@code ***REMOVED***
+@code {
 
     [Parameter]
-    public int UserId ***REMOVED*** get; set; ***REMOVED***
+    public int UserId { get; set; }
     [Parameter]
-    public int ExamId ***REMOVED*** get; set; ***REMOVED***
-    [CascadingParameter] public IModalService Modal ***REMOVED*** get; set; ***REMOVED***
+    public int ExamId { get; set; }
+    [CascadingParameter] public IModalService Modal { get; set; }
 
     private ClaimsPrincipal User;
 
@@ -109,23 +109,23 @@ else
     Timer timer;
 
     private async void OnAnswerClick(QuestionDAO selectQuestion, int answerId)
-    ***REMOVED***
+    {
         await SyncCauTraLoiDaChon(selectQuestion, answerId);
         await CapNhatCauTraLoi();
-***REMOVED***
+    }
 
 
     protected override async Task OnInitializedAsync()
-    ***REMOVED***
+    {
         var authState = await AuthenticationStateProvider
            .GetAuthenticationStateAsync();
 
         User = authState.User;
         if (!User.Identity.IsAuthenticated)
-        ***REMOVED***
+        {
             navigationManager.NavigateTo("Account/Identity/Login", true);
             return;
-    ***REMOVED***
+        }
 
         AppState.CurrentIdentityUserId = UserId;
 
@@ -134,20 +134,20 @@ else
         stopwatch.Start();
         questions = await repository.LayDanhSachCauHoi(UserId, ExamId);
         stopwatch.Stop();
-        _logger.LogInformation($"OnInitializedAsync().LayDanhSachCauHoi(***REMOVED***UserId***REMOVED***,***REMOVED***ExamId***REMOVED***) took ***REMOVED***stopwatch.ElapsedMilliseconds***REMOVED*** ms ");
+        _logger.LogInformation($"OnInitializedAsync().LayDanhSachCauHoi({UserId},{ExamId}) took {stopwatch.ElapsedMilliseconds} ms ");
         if (questions.UserExamId == 0)
             return;
 
 
         ExamInfo examInfo = await repository.LayThongTinBaiThi(ExamId);
         ExamNotFinishedYet examNotFinishedYet = new ExamNotFinishedYet()
-        ***REMOVED***
+        {
             UserExamId = questions.UserExamId,
             CurrentExam = examInfo
             ,
             RemainSecond = questions.RemainSeCond,
             TryNum = questions.TryNum
-    ***REMOVED***;
+        };
         AppState.UpdateSelectedExam(this, examNotFinishedYet);
 
 
@@ -156,129 +156,129 @@ else
         CurrentDisplayQuestion = questions.Questions[CurrentIndex];
         RemainSecondToDoExam = questions.RemainSeCond;
         AppState.UpdateRemainSeconds(this, RemainSecondToDoExam);
-        RemainTime = $"***REMOVED***RemainSecondToDoExam / 60***REMOVED*** phút:***REMOVED***RemainSecondToDoExam % 60***REMOVED*** giây ";
+        RemainTime = $"{RemainSecondToDoExam / 60} phút:{RemainSecondToDoExam % 60} giây ";
         SyncInterval = Convert.ToInt32(configuration.GetSection("SyncSetting")["SecondInterval"]);
         StartCountdown();
 
-***REMOVED***
+    }
 
     public async void MoveNext()
-    ***REMOVED***
+    {
         await CapNhatCauTraLoi();
 
         CurrentIndex = (CurrentIndex + 1) % questions.Questions.Count;
         CurrentDisplayQuestion = questions.Questions[CurrentIndex];
 
-***REMOVED***
+    }
     public async void MovePrev()
-    ***REMOVED***
+    {
         await CapNhatCauTraLoi();
 
         CurrentIndex = (CurrentIndex - 1 + questions.Questions.Count) % questions.Questions.Count;
         CurrentDisplayQuestion = questions.Questions[CurrentIndex];
 
-***REMOVED***
+    }
     public async void Submit()
-    ***REMOVED***
+    {
         if (!await XacNhanNopBai())
-        ***REMOVED***
+        {
             return;
-    ***REMOVED***
+        }
 
         timer.Stop();
         await CapNhatCauTraLoi();
         //await CapNhatDiem();
         NavigateToResultPage();
 
-***REMOVED***
+    }
 
     private List<string> GetThuTuCauHoiChuaTraLoi()
-    ***REMOVED***
+    {
         List<string> unAnswerQuestionOrders = new List<string>();
         for (int i = 0; i < questions.Questions.Count; i++)
-        ***REMOVED***
+        {
             if (questions.Questions[i].UserAnswerId == 0)
-            ***REMOVED***
-                unAnswerQuestionOrders.Add($"***REMOVED***i + 1***REMOVED***");
-        ***REMOVED***
-    ***REMOVED***
+            {
+                unAnswerQuestionOrders.Add($"{i + 1}");
+            }
+        }
         return unAnswerQuestionOrders;
-***REMOVED***
+    }
 
 
     private async Task<bool> XacNhanNopBai()
-    ***REMOVED***
+    {
         var listChuaTraLoi = GetThuTuCauHoiChuaTraLoi();
         if (listChuaTraLoi.Count == 0)
-        ***REMOVED***
+        {
             return await ShowConfirm("Bạn có chắc chắn muốn nộp bài ?");
-    ***REMOVED***
+        }
         else
-        ***REMOVED***
-            String strCauChuaTraLoi = listChuaTraLoi.Aggregate((current, next) => $"***REMOVED***current***REMOVED*** , ***REMOVED***next***REMOVED***").TrimStart(new char[] ***REMOVED*** ',' ***REMOVED***);
-            return await ShowConfirm($"Bạn chưa trả lời các câu: ***REMOVED***strCauChuaTraLoi***REMOVED***. Bạn có chắc chắn muốn nộp bài ?");
-    ***REMOVED***
-***REMOVED***
+        {
+            String strCauChuaTraLoi = listChuaTraLoi.Aggregate((current, next) => $"{current} , {next}").TrimStart(new char[] { ',' });
+            return await ShowConfirm($"Bạn chưa trả lời các câu: {strCauChuaTraLoi}. Bạn có chắc chắn muốn nộp bài ?");
+        }
+    }
 
     private async Task CapNhatCauTraLoi()
-    ***REMOVED***
+    {
 
         foreach (var question in questions.Questions)
-        ***REMOVED***
+        {
             if (!question.IsSyncUserAnswer && question.UserAnswerId > 0)
-            ***REMOVED***
+            {
                 await SyncCauTraLoiDaChon(question, question.UserAnswerId);
-                //_logger.LogInformation($"update ExamQuestionId : ***REMOVED***question.ExamQuestionId***REMOVED***, UserAnswerId:***REMOVED***question.UserAnswerId***REMOVED***");
-        ***REMOVED***
-    ***REMOVED***
+                //_logger.LogInformation($"update ExamQuestionId : {question.ExamQuestionId}, UserAnswerId:{question.UserAnswerId}");
+            }
+        }
 
 
-***REMOVED***
+    }
 
     private async Task SyncCauTraLoiDaChon(QuestionDAO question, int UserAnswerId)
-    ***REMOVED***
+    {
         await repository.SyncCauTraLoi(question.ExamQuestionId, UserAnswerId);
         question.IsSyncUserAnswer = true;
 
-***REMOVED***
+    }
 
 
     private async Task CapNhatDiem()
-    ***REMOVED***
+    {
         (decimal score, int numOfRight) = questions.GetScore();
         await repository.CapNhatDiem(questions.UserExamId, numOfRight, score);
 
-***REMOVED***
+    }
     void StartCountdown()
-    ***REMOVED***
+    {
 
         timer = new Timer(1000);
         timer.Elapsed += OnTimedEvent;
         timer.Enabled = true;
-***REMOVED***
+    }
     private void OnTimedEvent(Object source, ElapsedEventArgs e)
-    ***REMOVED***
+    {
         if (RemainSecondToDoExam > 0)
-        ***REMOVED***
+        {
             //CountToSync++;
             //RemainSecondToDoExam--;
-            //RemainTime = $"***REMOVED***RemainSecondToDoExam / 60***REMOVED*** phút:***REMOVED***RemainSecondToDoExam % 60***REMOVED*** giây ";
+            //RemainTime = $"{RemainSecondToDoExam / 60} phút:{RemainSecondToDoExam % 60} giây ";
             //// Note that the following line is necessary because otherwise
             //// Blazor would not recognize the state change and not refresh the UI
             //InvokeAsync(() =>
-            //***REMOVED***
+            //{
 
             //    StateHasChanged();
-            //***REMOVED***);
+            //});
             //if (CountToSync % 10 == 0)
-            //***REMOVED***
+            //{
             //    CapNhatCauTraLoi();
-            //***REMOVED***
+            //}
             RemainSecondToDoExam--;
 
-    ***REMOVED***
+        }
         else
-        ***REMOVED***
+        {
             timer.Stop();
 
 
@@ -286,42 +286,42 @@ else
 
             NavigateToResultPage();
 
-    ***REMOVED***
-***REMOVED***
+        }
+    }
     public async void NavigateToResultPage()
-    ***REMOVED***
+    {
 
         await CapNhatDiem();
         AppState.UpdateSelectedExam(this, null);
-        navigationManager.NavigateTo($"ExamResult/***REMOVED***questions.UserExamId***REMOVED***");
-***REMOVED***
+        navigationManager.NavigateTo($"ExamResult/{questions.UserExamId}");
+    }
 
     private async Task AppState_StateChanged(ComponentBase Source, string Property)
-    ***REMOVED***
+    {
         if (Source != this)
-        ***REMOVED***
+        {
             await InvokeAsync(StateHasChanged);
-    ***REMOVED***
-***REMOVED***
+        }
+    }
 
 
     async Task<bool> ShowConfirm(String message)
-    ***REMOVED***
+    {
         var parameters = new ModalParameters();
         parameters.Add(nameof(ConfirmDialog.Message), message);
         var confirmDialog = Modal.Show<ConfirmDialog>("Xác nhận nộp bài", parameters);
         var result = await confirmDialog.Result;
         return !result.Cancelled;
-***REMOVED***
+    }
 
     public void Dispose()
-    ***REMOVED***
+    {
         Debug.Print("Exam.Dispose()");
         AppState.StateChanged -= async (Source, Property) => await AppState_StateChanged(Source, Property);
         timer?.Dispose();
-***REMOVED***
+    }
 
 
 
 
-***REMOVED***
+}

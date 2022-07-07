@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using BlazorVNPTQuiz.Models;
 
 namespace BlazorVNPTQuiz.Repository
-***REMOVED***
+{
     public interface IRepositoryOntap
-    ***REMOVED***
+    {
         public Task<List<Donvi>> LayDanhSachDonVi(int user_id);
 
         public Task<List<Category>> LayDanhSachChuDeTheoDonVi(int donvi_id);
@@ -25,5 +25,5 @@ namespace BlazorVNPTQuiz.Repository
 
         public Task UpdateDanhGiaCauhoiOnTap(int id, int level_id);
     
-***REMOVED***
-***REMOVED***
+    }
+}

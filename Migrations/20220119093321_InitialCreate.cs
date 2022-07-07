@@ -3,18 +3,18 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BlazorVNPTQuiz.Migrations
-***REMOVED***
+{
     public partial class InitialCreate : Migration
-    ***REMOVED***
+    {
         protected override void Up(MigrationBuilder migrationBuilder)
-        ***REMOVED***
+        {
             migrationBuilder.AlterDatabase()
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
-                ***REMOVED***
+                {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Name = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
@@ -23,17 +23,17 @@ namespace BlazorVNPTQuiz.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ConcurrencyStamp = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
-            ***REMOVED***,
+                },
                 constraints: table =>
-                ***REMOVED***
+                {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
-            ***REMOVED***)
+                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
-                ***REMOVED***
+                {
                     Id = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     UserName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
@@ -58,17 +58,17 @@ namespace BlazorVNPTQuiz.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(type: "datetime(6)", nullable: true),
                     LockoutEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     AccessFailedCount = table.Column<int>(type: "int", nullable: false)
-            ***REMOVED***,
+                },
                 constraints: table =>
-                ***REMOVED***
+                {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-            ***REMOVED***)
+                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
-                ***REMOVED***
+                {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     RoleId = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -77,9 +77,9 @@ namespace BlazorVNPTQuiz.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ClaimValue = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
-            ***REMOVED***,
+                },
                 constraints: table =>
-                ***REMOVED***
+                {
                     table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AspNetRoleClaims_AspNetRoles_RoleId",
@@ -87,13 +87,13 @@ namespace BlazorVNPTQuiz.Migrations
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-            ***REMOVED***)
+                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserClaims",
                 columns: table => new
-                ***REMOVED***
+                {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -102,9 +102,9 @@ namespace BlazorVNPTQuiz.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ClaimValue = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
-            ***REMOVED***,
+                },
                 constraints: table =>
-                ***REMOVED***
+                {
                     table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
                     table.ForeignKey(
                         name: "FK_AspNetUserClaims_AspNetUsers_UserId",
@@ -112,13 +112,13 @@ namespace BlazorVNPTQuiz.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-            ***REMOVED***)
+                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserLogins",
                 columns: table => new
-                ***REMOVED***
+                {
                     LoginProvider = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ProviderKey = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
@@ -127,31 +127,31 @@ namespace BlazorVNPTQuiz.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
-            ***REMOVED***,
+                },
                 constraints: table =>
-                ***REMOVED***
-                    table.PrimaryKey("PK_AspNetUserLogins", x => new ***REMOVED*** x.LoginProvider, x.ProviderKey ***REMOVED***);
+                {
+                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
                     table.ForeignKey(
                         name: "FK_AspNetUserLogins_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-            ***REMOVED***)
+                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserRoles",
                 columns: table => new
-                ***REMOVED***
+                {
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     RoleId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
-            ***REMOVED***,
+                },
                 constraints: table =>
-                ***REMOVED***
-                    table.PrimaryKey("PK_AspNetUserRoles", x => new ***REMOVED*** x.UserId, x.RoleId ***REMOVED***);
+                {
+                    table.PrimaryKey("PK_AspNetUserRoles", x => new { x.UserId, x.RoleId });
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetRoles_RoleId",
                         column: x => x.RoleId,
@@ -164,13 +164,13 @@ namespace BlazorVNPTQuiz.Migrations
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-            ***REMOVED***)
+                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
                 name: "AspNetUserTokens",
                 columns: table => new
-                ***REMOVED***
+                {
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     LoginProvider = table.Column<string>(type: "varchar(128)", maxLength: 128, nullable: false)
@@ -179,17 +179,17 @@ namespace BlazorVNPTQuiz.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Value = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4")
-            ***REMOVED***,
+                },
                 constraints: table =>
-                ***REMOVED***
-                    table.PrimaryKey("PK_AspNetUserTokens", x => new ***REMOVED*** x.UserId, x.LoginProvider, x.Name ***REMOVED***);
+                {
+                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
                     table.ForeignKey(
                         name: "FK_AspNetUserTokens_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-            ***REMOVED***)
+                })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateIndex(
@@ -228,10 +228,10 @@ namespace BlazorVNPTQuiz.Migrations
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
                 unique: true);
-    ***REMOVED***
+        }
 
         protected override void Down(MigrationBuilder migrationBuilder)
-        ***REMOVED***
+        {
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -252,6 +252,6 @@ namespace BlazorVNPTQuiz.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-    ***REMOVED***
-***REMOVED***
-***REMOVED***
+        }
+    }
+}

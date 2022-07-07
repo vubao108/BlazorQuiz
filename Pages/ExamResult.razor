@@ -1,15 +1,15 @@
 ﻿@using BlazorVNPTQuiz.Repository;
 @using BlazorVNPTQuiz.Models;
 @inject IRepositoryExam repository;
-@page "/ExamResult/***REMOVED***userExamId:int***REMOVED***"
+@page "/ExamResult/{userExamId:int}"
 
 @if (CurrentKetQuaBaiThi == null)
-***REMOVED***
+{
 
 <h3>Đang Tải Kết Quả</h3>
- ***REMOVED***
+ }
 else
-***REMOVED***
+{
 <div class="card bg-light text-dark">
     <div class="card-header"><b>@CurrentKetQuaBaiThi.Exam.ExamName </b></div>
     <div class="card-body">
@@ -24,17 +24,17 @@ else
     </div>
 </div>
     
-***REMOVED***
+}
 
-@code ***REMOVED***
+@code {
     [Parameter]
-    public int UserExamId ***REMOVED*** get; set; ***REMOVED***
+    public int UserExamId { get; set; }
 
-    public KetQuaBaiThi CurrentKetQuaBaiThi ***REMOVED*** get; set; ***REMOVED***
+    public KetQuaBaiThi CurrentKetQuaBaiThi { get; set; }
     public TimeSpan TimeToFinish;
     protected override async Task OnInitializedAsync()
-    ***REMOVED***
+    {
         CurrentKetQuaBaiThi = await repository.LayBaoCaoDiem(UserExamId);
         TimeToFinish = CurrentKetQuaBaiThi.FinishTime.Subtract(CurrentKetQuaBaiThi.JoinTime);
-***REMOVED***
-***REMOVED***
+    }
+}

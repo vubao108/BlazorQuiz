@@ -5,15 +5,15 @@
     <button @onclick="Cancel" class="btn btn-secondary">Cancel</button>
 </div>
 
-@code ***REMOVED***
+@code {
 
-    [CascadingParameter] BlazoredModalInstance BlazoredModal ***REMOVED*** get; set; ***REMOVED***
+    [CascadingParameter] BlazoredModalInstance BlazoredModal { get; set; }
 
     [Parameter]
-    public String Message***REMOVED*** get; set;***REMOVED***
+    public String Message{ get; set;}
     
 
     async Task Yes() => await BlazoredModal.CloseAsync(ModalResult.Ok(true));
     async Task Cancel() => await BlazoredModal.CancelAsync();
 
-***REMOVED***
+}

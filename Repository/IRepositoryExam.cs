@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace BlazorVNPTQuiz.Repository
-***REMOVED***
+{
     public interface IRepositoryExam
-    ***REMOVED***
+    {
         Task<QuestionUserExam> LayDanhSachCauHoi(int user_id, int exam_id);
 
         Task SyncCauTraLoi(int questionExamId, int userAnswerId);
@@ -25,5 +25,5 @@ namespace BlazorVNPTQuiz.Repository
         Task<List<int>> LayIdBaithiDaThamGia(int userId);
 
 
-***REMOVED***
-***REMOVED***
+    }
+}

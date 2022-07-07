@@ -1,27 +1,27 @@
-﻿body ***REMOVED***
-***REMOVED***
+﻿body {
+}
 
 
-.toolbar***REMOVED***
+.toolbar{
     background-color:ghostwhite;
     margin-bottom:16px;
     margin-top:-16px;
     margin-left:8px;
-***REMOVED***
+}
 
 
 
-.title-category***REMOVED***
+.title-category{
     margin-top:16px;
-***REMOVED***
+}
 
-.list-category***REMOVED***
+.list-category{
     
     max-height:60vh;
     overflow:auto
 
-***REMOVED***
+}
 
-.main-height***REMOVED***
+.main-height{
     max-height:100vh
-***REMOVED***
+}

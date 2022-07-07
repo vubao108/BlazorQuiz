@@ -1,62 +1,62 @@
-.navbar-toggler ***REMOVED***
+.navbar-toggler {
     background-color: rgba(255, 255, 255, 0.1);
-***REMOVED***
+}
 
-.top-row ***REMOVED***
+.top-row {
     height: 3.5rem;
     background-color: rgba(0,0,0,0.4);
-***REMOVED***
+}
 
-.navbar-brand ***REMOVED***
+.navbar-brand {
     font-size: 1.1rem;
-***REMOVED***
+}
 
-.oi ***REMOVED***
+.oi {
     width: 2rem;
     font-size: 1.1rem;
     vertical-align: text-top;
     top: -2px;
-***REMOVED***
+}
 
-.nav-item ***REMOVED***
+.nav-item {
     font-size: 0.9rem;
     padding-bottom: 0.5rem;
-***REMOVED***
+}
 
-    .nav-item:first-of-type ***REMOVED***
+    .nav-item:first-of-type {
         padding-top: 1rem;
-***REMOVED***
+    }
 
-    .nav-item:last-of-type ***REMOVED***
+    .nav-item:last-of-type {
         padding-bottom: 1rem;
-***REMOVED***
+    }
 
-    .nav-item ::deep a ***REMOVED***
+    .nav-item ::deep a {
         color: #d7d7d7;
         border-radius: 4px;
         height: 3rem;
         display: flex;
         align-items: center;
         line-height: 3rem;
-***REMOVED***
+    }
 
-.nav-item ::deep a.active ***REMOVED***
+.nav-item ::deep a.active {
     background-color: rgba(255,255,255,0.25);
     color: white;
-***REMOVED***
+}
 
-.nav-item ::deep a:hover ***REMOVED***
+.nav-item ::deep a:hover {
     background-color: rgba(255,255,255,0.1);
     color: white;
-***REMOVED***
+}
 
-@media (min-width: 641px) ***REMOVED***
-    .navbar-toggler ***REMOVED***
+@media (min-width: 641px) {
+    .navbar-toggler {
         display: none;
-***REMOVED***
+    }
 
-    .collapse ***REMOVED***
+    .collapse {
         /* Never collapse the sidebar for wide screens */
         display: block;
-***REMOVED***
-***REMOVED***
+    }
+}
